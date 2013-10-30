@@ -28,6 +28,7 @@ namespace ProductFinder
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			rootNavigationController = new UINavigationController ();
+			rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (29, 130, 16);
 			// If you have defined a root view controller, set it here:
 			// window.RootViewController = myViewController;
 			mainView = new MainView ();

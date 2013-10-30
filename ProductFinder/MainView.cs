@@ -7,6 +7,7 @@ namespace ProductFinder
 {
 	public partial class MainView : UIViewController
 	{
+		ScanView scanView = new ScanView();
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -29,6 +30,10 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
+
+			this.btnEntrar.TouchUpInside += (sender, e) => {
+				this.NavigationController.PushViewController(scanView, true);
+			};
 		}
 	}
 }

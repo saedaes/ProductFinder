@@ -86,6 +86,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="ScanditSDK">
+      <HintPath>..\lib\ios\ScanditSDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -101,10 +104,20 @@
     <Compile Include="MainView.designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScanView.cs" />
+    <Compile Include="ScanView.designer.cs">
+      <DependentUpon>ScanView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScanditSDKRotatingBarcodePicker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <InterfaceDefinition Include="MainView_iPhone.xib" />
     <InterfaceDefinition Include="MainView_iPad.xib" />
+    <InterfaceDefinition Include="ScanView_iPhone.xib" />
+    <InterfaceDefinition Include="ScanView_iPad.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ProductFinder2.png" />
   </ItemGroup>
 </Project>

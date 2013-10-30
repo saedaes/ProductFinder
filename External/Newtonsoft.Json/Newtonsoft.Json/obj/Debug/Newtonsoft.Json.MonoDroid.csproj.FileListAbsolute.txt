@@ -1,0 +1,11 @@
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.MonoDroid.dll
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.MonoDroid.pdb
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.MonoDroid.dll.mdb
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.MonoDroid.apk
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\bin\Debug\Newtonsoft.Json.MonoDroid-Signed.apk
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.MonoDroid.dll
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.MonoDroid.pdb
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\obj\Debug\android\bin\Newtonsoft.Json.MonoDroid.apk
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\obj\Debug\R.cs.flag
+C:\Users\Javi\Desktop\carnet_movil\CarnetMovil\External\Newtonsoft.Json\Newtonsoft.Json\obj\Debug\uploadflags.txt

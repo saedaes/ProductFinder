@@ -1,0 +1,35 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ScanView.designer.cs">
+    <Files>
+      <File FileName="ProductFinder/AppDelegate.cs" Line="7" Column="24" />
+      <File FileName="ProductFinder/MainView.cs" Line="21" Column="42" />
+      <File FileName="../scandit-1.0.1/samples/iOSDemo/iOSDemo/ScanditSDKDemoViewController.cs" Line="46" Column="1" />
+      <File FileName="ProductFinder/ScanView.cs" Line="48" Column="3" />
+      <File FileName="ProductFinder/ScanditSDKRotatingBarcodePicker.cs" Line="14" Column="4" />
+      <File FileName="ProductFinder/ScanView.designer.cs" Line="16" Column="28" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="ProductFinder" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="ScanView.cs" expanded="True">
+              <Node name="ScanView.designer.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
