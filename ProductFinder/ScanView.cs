@@ -9,6 +9,8 @@ namespace ProductFinder
 	public partial class ScanView : UIViewController
 	{
 		private SIBarcodePicker picker;
+		NameSearchView nameSearchView;
+		//Hay que ingresar una llave apropiada para poder utilizar el api de lectura de codigo de barras.
 		public static string appKey = "Dr/S/jHREeOG5HfGLYYyGSCzjUXMnF/g1fJlTT1PxQE";
 
 		static bool UserInterfaceIdiomIsPhone {
@@ -18,7 +20,7 @@ namespace ProductFinder
 		public ScanView ()
 			: base (UserInterfaceIdiomIsPhone ? "ScanView_iPhone" : "ScanView_iPad", null)
 		{
-			this.Title = "Escaner";
+			this.Title = "Buscar Productos";
 			if (appKey.Length != 43) {
 				UIAlertView alert = new UIAlertView () { 
 					Title = "App key not set", Message = "Please set the app key in the ScanditSDKDemoViewController class."
@@ -46,17 +48,26 @@ namespace ProductFinder
 			// Perform any additional setup after loading the view, typically from a nib.
 
 			this.scanButton.TouchUpInside += (sender, e) => {
-				// Setup the barcode scanner
+
+				// Configurar el escaner de codigo de barras.
 				picker = new ScanditSDKRotatingBarcodePicker (appKey);
 				picker.OverlayController.Delegate = new overlayControllerDelegate(picker, this);
 				picker.OverlayController.ShowToolBar(true);
+				picker.OverlayController.SetToolBarButtonCaption("Cancelar");
 				picker.OverlayController.ShowSearchBar(true);
-				picker.OverlayController.SetSearchBarPlaceholderText("Busqueda por nombre de producto");
 				picker.OverlayController.SetSearchBarKeyboardType(UIKeyboardType.Default);
+				picker.OverlayController.SetSearchBarPlaceholderText("Búsqueda por nombre de producto");
+				picker.OverlayController.setSearchBarActionButtonCaption("Buscar");
+				picker.OverlayController.SetSearchBarCancelButtonCaption("NO");
 
 				PresentViewController (picker, true, null);
 
 				picker.StartScanning ();
+			};
+
+			this.btnNombre.TouchUpInside += (sender, e) => {
+				nameSearchView = new NameSearchView();
+				this.NavigationController.PushViewController(nameSearchView, true);
 			};
 		}
 
@@ -64,6 +75,7 @@ namespace ProductFinder
 		{
 			private SIBarcodePicker picker;
 			private UIViewController presentingViewController;
+			ProductDetailView pdView;
 
 			public overlayControllerDelegate(SIBarcodePicker picker, UIViewController presentingViewController) {
 				this.picker = picker;
@@ -71,21 +83,11 @@ namespace ProductFinder
 			}
 
 			public override void DidScanBarcode (SIOverlayController overlayController, NSDictionary barcode) {
-				Console.WriteLine ("barcode scanned: {0}, '{1}'", barcode["symbology"], barcode["barcode"]);
-
-				// stop the camera
+				pdView = new ProductDetailView ();
+				pdView.setProductBarCode (barcode["barcode"].ToString());
 				picker.StopScanning ();
-
-				UIAlertView alert = new UIAlertView () { 
-					Title = barcode["symbology"] + " Barcode Detected", Message = "" + barcode["barcode"]
-				};
-				alert.AddButton("OK");
-
-				alert.Clicked += (object sender, UIButtonEventArgs e) => {
-					picker.StartScanning ();
-				};
-
-				alert.Show ();
+				presentingViewController.NavigationController.PushViewController (pdView, true);
+				presentingViewController.DismissViewController (true, null);
 			}
 
 			public override void DidCancel (SIOverlayController overlayController, NSDictionary status) {
@@ -94,21 +96,10 @@ namespace ProductFinder
 			}
 
 			public override void DidManualSearch (SIOverlayController overlayController, string text) {
-				Console.WriteLine ("Search was used.");
-
-				// stop the camera
-				picker.StopScanning ();
-
-				UIAlertView alert = new UIAlertView () { 
-					Title = "User entered barcode", Message = "" + text
-				};
-				alert.AddButton("OK");
-
-				alert.Clicked += (object sender, UIButtonEventArgs e) => {
-					picker.StartScanning ();
-				};
-
-				alert.Show ();
+				pdView = new ProductDetailView ();
+				pdView.setProductName (text);
+				presentingViewController.NavigationController.PushViewController (pdView, true);
+				presentingViewController.DismissViewController (true, null);
 			}
 		}
 	}

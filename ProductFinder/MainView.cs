@@ -15,6 +15,7 @@ namespace ProductFinder
 		public MainView ()
 			: base (UserInterfaceIdiomIsPhone ? "MainView_iPhone" : "MainView_iPad", null)
 		{
+			this.Title = "FixBuy";
 		}
 
 		public override void DidReceiveMemoryWarning ()

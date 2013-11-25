@@ -13,6 +13,9 @@ namespace ProductFinder
 	partial class ScanView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnNombre { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnScan { get; set; }
 
 		[Outlet]
@@ -28,6 +31,11 @@ namespace ProductFinder
 			if (scanButton != null) {
 				scanButton.Dispose ();
 				scanButton = null;
+			}
+
+			if (btnNombre != null) {
+				btnNombre.Dispose ();
+				btnNombre = null;
 			}
 		}
 	}
