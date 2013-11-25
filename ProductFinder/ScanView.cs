@@ -3,6 +3,8 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using ScanditSDK;
+using System.Threading.Tasks;
+
 
 namespace ProductFinder
 {
@@ -73,6 +75,7 @@ namespace ProductFinder
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate
 		{
+			protected LoadingOverlay _loadPop = null;
 			private SIBarcodePicker picker;
 			private UIViewController presentingViewController;
 			ProductDetailView pdView;
@@ -83,11 +86,30 @@ namespace ProductFinder
 			}
 
 			public override void DidScanBarcode (SIOverlayController overlayController, NSDictionary barcode) {
-				pdView = new ProductDetailView ();
-				pdView.setProductBarCode (barcode["barcode"].ToString());
+				this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
+				this.presentingViewController.View.Add ( this._loadPop );
 				picker.StopScanning ();
-				presentingViewController.NavigationController.PushViewController (pdView, true);
 				presentingViewController.DismissViewController (true, null);
+				Task.Factory.StartNew (
+					// tasks allow you to use the lambda syntax to pass work
+					() => {
+						System.Threading.Thread.Sleep ( 5 * 1000 );
+					}
+					// ContinueWith allows you to specify an action that runs after the previous thread
+					// completes
+					// 
+					// By using TaskScheduler.FromCurrentSyncrhonizationContext, we can make sure that 
+					// this task now runs on the original calling thread, in this case the UI thread
+					// so that any UI updates are safe. in this example, we want to hide our overlay, 
+					// but we don't want to update the UI from a background thread.
+				).ContinueWith ( 
+					t => {
+						pdView = new ProductDetailView ();
+						pdView.setProductBarCode (barcode["barcode"].ToString());
+						presentingViewController.NavigationController.PushViewController (pdView, true);
+						this._loadPop.Hide ();
+					}, TaskScheduler.FromCurrentSynchronizationContext()
+				);
 			}
 
 			public override void DidCancel (SIOverlayController overlayController, NSDictionary status) {
@@ -96,10 +118,31 @@ namespace ProductFinder
 			}
 
 			public override void DidManualSearch (SIOverlayController overlayController, string text) {
-				pdView = new ProductDetailView ();
-				pdView.setProductName (text);
-				presentingViewController.NavigationController.PushViewController (pdView, true);
+				this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
+				this.presentingViewController.View.Add ( this._loadPop );
+				picker.StopScanning ();
 				presentingViewController.DismissViewController (true, null);
+
+				Task.Factory.StartNew (
+					// tasks allow you to use the lambda syntax to pass work
+					() => {
+						System.Threading.Thread.Sleep ( 5 * 1000 );
+					}
+					// ContinueWith allows you to specify an action that runs after the previous thread
+					// completes
+					// 
+					// By using TaskScheduler.FromCurrentSyncrhonizationContext, we can make sure that 
+					// this task now runs on the original calling thread, in this case the UI thread
+					// so that any UI updates are safe. in this example, we want to hide our overlay, 
+					// but we don't want to update the UI from a background thread.
+				).ContinueWith ( 
+					t => {
+						pdView = new ProductDetailView ();
+						pdView.setProductName (text);
+						presentingViewController.NavigationController.PushViewController (pdView, true);
+						this._loadPop.Hide ();
+					}, TaskScheduler.FromCurrentSynchronizationContext()
+				);
 			}
 		}
 	}

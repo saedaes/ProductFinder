@@ -120,6 +120,7 @@
     <Compile Include="NameSearchView.designer.cs">
       <DependentUpon>NameSearchView.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadingOverlay.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
