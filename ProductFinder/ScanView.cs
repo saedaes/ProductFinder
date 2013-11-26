@@ -66,8 +66,6 @@ namespace ProductFinder
 
 			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
 				newLocation = e.Locations [e.Locations.Length - 1];
-				latitud = newLocation.Coordinate.Latitude;
-				longitud = newLocation.Coordinate.Longitude;
 			};
 
 
@@ -88,6 +86,12 @@ namespace ProductFinder
 
 				picker.StartScanning ();
 			};
+
+			// Manejamos la actualizacion de la localizacion del dispositivo.
+			if (CLLocationManager.LocationServicesEnabled)
+				iPhoneLocationManager.StartUpdatingLocation ();
+			if (CLLocationManager.HeadingAvailable)
+				iPhoneLocationManager.StartUpdatingHeading ();
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate

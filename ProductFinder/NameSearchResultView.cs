@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.CoreGraphics;
 
 namespace ProductFinder
 {
@@ -71,7 +72,7 @@ namespace ProductFinder
 
 			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
-				return 80f;
+				return 120f;
 			}
 
 			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -82,6 +83,12 @@ namespace ProductFinder
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
 				ps = tableItems [indexPath.Row];
+
+				NSUrl nsUrl = new NSUrl (ps.imagen);
+				NSData data = NSData.FromUrl (nsUrl);
+				UIImage imagen = UIImage.LoadFromData (data);
+
+				cell.ImageView.Image = ScaleImage (imagen, 100);
 				cell.TextLabel.Text = ps.nombre;
 				cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
 				cell.TextLabel.Lines = 2 ;
@@ -98,6 +105,80 @@ namespace ProductFinder
 				pdView = new ProductDetailView ();
 				pdView.setProduct (tableItems [indexPath.Row]);
 				controller.NavigationController.PushViewController (pdView, true);
+			}
+
+			//Clase para reajustar el tamaño de las imagenes que se muestran en la tabla.
+			public static UIImage ScaleImage(UIImage image, int maxSize)
+			{
+
+				UIImage res;
+
+				using (CGImage imageRef = image.CGImage)
+				{
+					CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
+					CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
+					if (alphaInfo == CGImageAlphaInfo.None)
+					{
+						alphaInfo = CGImageAlphaInfo.NoneSkipLast;
+					}
+
+					int width, height;
+
+					width = imageRef.Width;
+					height = imageRef.Height;
+
+
+					if (height >= width)
+					{
+						width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
+						height = maxSize;
+					}
+					else
+					{
+						height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
+						width = maxSize;
+					}
+
+
+					CGBitmapContext bitmap;
+
+					if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
+					{
+						bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
+					}
+					else
+					{
+						bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
+					}
+
+					switch (image.Orientation)
+					{
+					case UIImageOrientation.Left:
+						bitmap.RotateCTM((float)Math.PI / 2);
+						bitmap.TranslateCTM(0, -height);
+						break;
+					case UIImageOrientation.Right:
+						bitmap.RotateCTM(-((float)Math.PI / 2));
+						bitmap.TranslateCTM(-width, 0);
+						break;
+					case UIImageOrientation.Up:
+						break;
+					case UIImageOrientation.Down:
+						bitmap.TranslateCTM(width, height);
+						bitmap.RotateCTM(-(float)Math.PI);
+						break;
+					}
+
+					bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+
+
+					res = UIImage.FromImage(bitmap.ToImage());
+					bitmap = null;
+
+				}
+
+
+				return res;
 			}	
 		}
 	}
