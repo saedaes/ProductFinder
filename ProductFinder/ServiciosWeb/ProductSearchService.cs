@@ -12,6 +12,7 @@ namespace ProductFinder
 		public string nombre {get;set;}
 		public string precio {get;set;}
 		public string imagen {get;set;}
+		public string descripcion { get; set;}
 
 		string resultURL = "";
 
@@ -71,6 +72,7 @@ namespace ProductFinder
 			ProductSearchService response = new ProductSearchService();
 			response.nombre = jObject["name"].ToString();
 			response.precio = jObject["price"].ToString();
+			response.descripcion = jObject ["description"].ToString ();
 			response.imagen = jObject["image"].ToString();
 
 			return response;

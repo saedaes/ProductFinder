@@ -116,11 +116,11 @@
     <Compile Include="ProductDetailView.designer.cs">
       <DependentUpon>ProductDetailView.cs</DependentUpon>
     </Compile>
-    <Compile Include="NameSearchView.cs" />
-    <Compile Include="NameSearchView.designer.cs">
-      <DependentUpon>NameSearchView.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoadingOverlay.cs" />
+    <Compile Include="NameSearchResultView.cs" />
+    <Compile Include="NameSearchResultView.designer.cs">
+      <DependentUpon>NameSearchResultView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -130,8 +130,8 @@
     <InterfaceDefinition Include="ScanView_iPad.xib" />
     <InterfaceDefinition Include="ProductDetailView_iPhone.xib" />
     <InterfaceDefinition Include="ProductDetailView_iPad.xib" />
-    <InterfaceDefinition Include="NameSearchView_iPhone.xib" />
-    <InterfaceDefinition Include="NameSearchView_iPad.xib" />
+    <InterfaceDefinition Include="NameSearchResultView_iPhone.xib" />
+    <InterfaceDefinition Include="NameSearchResultView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ProductFinder2.png" />

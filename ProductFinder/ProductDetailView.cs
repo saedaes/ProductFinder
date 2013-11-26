@@ -8,7 +8,7 @@ namespace ProductFinder
 	public partial class ProductDetailView : UIViewController
 	{
 		ProductSearchService pService;
-		String nombre ="";
+		ProductSearchService producto = null;
 		String barcode ="";
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -17,10 +17,11 @@ namespace ProductFinder
 		public ProductDetailView ()
 			: base (UserInterfaceIdiomIsPhone ? "ProductDetailView_iPhone" : "ProductDetailView_iPad", null)
 		{
+			this.Title = "Descripcion de producto";
 		}
 
-		public void setProductName(String nombre){
-			this.nombre = nombre;
+		public void setProduct(ProductSearchService product){
+			this.producto = product;
 		}
 
 		public void setProductBarCode(String barcode){
@@ -40,23 +41,32 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 			pService = new ProductSearchService ();
-			if (this.nombre != "") {
-				pService.setProductSearchString (nombre);
+			if (this.producto != null) {
+				//Establecer el nombre del producto
+				this.lblNombre.Text = producto.nombre;
+
+				//Establecer el precio del producto 
+				this.lblPrecio.Text = producto.precio;
+
+				//Establecer la imagen del producto
+				NSUrl nsUrl = new NSUrl (producto.imagen);
+				NSData data = NSData.FromUrl (nsUrl);
+				this.imgProducto.Image = UIImage.LoadFromData (data);
 			} else {
 				pService.setProductSearch (barcode);
+				ProductSearchService productob = pService.Find ();
+
+				//Establecer el nombre del producto
+				this.lblNombre.Text = productob.nombre;
+
+				//Establecer el precio del producto 
+				this.lblPrecio.Text = productob.precio;
+
+				//Establecer la imagen del producto
+				NSUrl nsUrl = new NSUrl (productob.imagen);
+				NSData data = NSData.FromUrl (nsUrl);
+				this.imgProducto.Image = UIImage.LoadFromData (data);
 			}
-			ProductSearchService producto = pService.Find ();
-
-			//Establecer el nombre del producto
-			this.lblNombre.Text = producto.nombre;
-
-			//Establecer el precio del producto 
-			this.lblPrecio.Text = producto.precio;
-
-			//Establecer la imagen del producto
-			NSUrl nsUrl = new NSUrl (producto.imagen);
-			NSData data = NSData.FromUrl (nsUrl);
-			this.imgProducto.Image = UIImage.LoadFromData (data);
 		}
 	}
 }
