@@ -19,10 +19,18 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnScan { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnTiendas { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton scanButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnNombre != null) {
+				btnNombre.Dispose ();
+				btnNombre = null;
+			}
+
 			if (btnScan != null) {
 				btnScan.Dispose ();
 				btnScan = null;
@@ -33,9 +41,9 @@ namespace ProductFinder
 				scanButton = null;
 			}
 
-			if (btnNombre != null) {
-				btnNombre.Dispose ();
-				btnNombre = null;
+			if (btnTiendas != null) {
+				btnTiendas.Dispose ();
+				btnTiendas = null;
 			}
 		}
 	}

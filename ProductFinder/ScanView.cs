@@ -5,12 +5,19 @@ using MonoTouch.UIKit;
 using ScanditSDK;
 using System.Threading.Tasks;
 using MonoTouch.CoreLocation;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace ProductFinder
 {
 	public partial class ScanView : UIViewController
 	{
+
+		protected LoadingOverlay _loadPop = null;
+
+		StoresService storesService;
+
 		//Declaramos el manejador para calcular la localizacion del dispositivo.
 		CLLocationManager iPhoneLocationManager = null;
 
@@ -47,16 +54,13 @@ namespace ProductFinder
 		{
 			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
+
 			// Release any cached data, images, etc that aren't in use.
 		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
-			double latitud;
-			double longitud;
 
 
 			//inicializacion del manejador de localizacion.
@@ -87,11 +91,50 @@ namespace ProductFinder
 				picker.StartScanning ();
 			};
 
+			this.btnTiendas.TouchUpInside += (sender, e) => {
+				this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
+				this.View.Add ( this._loadPop );
+				storesService = new StoresService();
+				Task.Factory.StartNew (
+					// tasks allow you to use the lambda syntax to pass work
+					() => {
+						System.Threading.Thread.Sleep ( 3 * 1000 );
+					}
+					// ContinueWith allows you to specify an action that runs after the previous thread
+					// completes
+					// 
+					// By using TaskScheduler.FromCurrentSyncrhonizationContext, we can make sure that 
+					// this task now runs on the original calling thread, in this case the UI thread
+					// so that any UI updates are safe. in this example, we want to hide our overlay, 
+					// but we don't want to update the UI from a background thread.
+				).ContinueWith ( 
+					t => {
+						StoresService tiendacercana = nearestStore(newLocation,storesService.All());
+						this._loadPop.Hide ();
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Tu tienda mas cercana es:", Message = ""+ tiendacercana.nombre + "\n "+ tiendacercana.direccion
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}, TaskScheduler.FromCurrentSynchronizationContext()
+				);
+			};
+
 			// Manejamos la actualizacion de la localizacion del dispositivo.
 			if (CLLocationManager.LocationServicesEnabled)
 				iPhoneLocationManager.StartUpdatingLocation ();
 			if (CLLocationManager.HeadingAvailable)
 				iPhoneLocationManager.StartUpdatingHeading ();
+		}
+
+		public StoresService nearestStore(CLLocation location, List<StoresService> stores){
+			StoresService nearStore = stores.ElementAt (0);
+			foreach (StoresService store in stores) {
+				if( (location.DistanceFrom(new CLLocation(Double.Parse(store.latitud),Double.Parse(store.longitud)))) < (location.DistanceFrom(new CLLocation(Double.Parse(nearStore.latitud), Double.Parse(nearStore.longitud)))) ) {
+					nearStore = store;
+				}
+			}
+			return nearStore;
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate

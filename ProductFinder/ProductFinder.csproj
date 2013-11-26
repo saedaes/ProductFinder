@@ -121,6 +121,7 @@
     <Compile Include="NameSearchResultView.designer.cs">
       <DependentUpon>NameSearchResultView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiciosWeb\StoresService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
