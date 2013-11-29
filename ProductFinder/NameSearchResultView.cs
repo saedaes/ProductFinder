@@ -29,7 +29,7 @@ namespace ProductFinder
 		{
 			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
+
 			// Release any cached data, images, etc that aren't in use.
 		}
 
@@ -38,12 +38,28 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
-			ps.setProductSearchString (this.nombre);
-			List<ProductSearchService> tableItems = ps.All ();
-			this.tblProducts.Source = new ProductsTableSource(tableItems, this);
-			this.lblSearch.Text = "Resultados para \"" + nombre +"\"";
-			this.tblProducts.TableHeaderView = this.headerView;
-			Add (this.tblProducts);
+			try{
+				ps.setProductSearchString (this.nombre);
+				List<ProductSearchService> tableItems = ps.All ();
+				this.tblProducts.Source = new ProductsTableSource(tableItems, this);
+				this.lblSearch.Text = "Resultados para \"" + nombre +"\"";
+				this.tblProducts.TableHeaderView = this.headerView;
+				Add (this.tblProducts);
+				if (tableItems.Count == 0) {
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Lo sentimos =(", Message = "La búsqueda de "+ "\""+nombre+"\""+"\n No produjo ningun resultado."
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
+			}
+			}catch(Exception e){
+				Console.WriteLine (e.ToString());
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
+			}
 		}
 
 		class ProductsTableSource : UITableViewSource 

@@ -40,32 +40,41 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 
-			pService = new ProductSearchService ();
-			if (this.producto != null) {
-				//Establecer el nombre del producto
-				this.lblNombre.Text = producto.nombre;
+			try{
+				pService = new ProductSearchService ();
+				if (this.producto != null) {
+					//Establecer el nombre del producto
+					this.lblNombre.Text = producto.nombre;
 
-				//Establecer el precio del producto 
-				this.lblPrecio.Text = producto.precio;
+					//Establecer el precio del producto 
+					this.lblPrecio.Text = producto.precio;
 
-				//Establecer la imagen del producto
-				NSUrl nsUrl = new NSUrl (producto.imagen);
-				NSData data = NSData.FromUrl (nsUrl);
-				this.imgProducto.Image = UIImage.LoadFromData (data);
-			} else {
-				pService.setProductSearch (barcode);
-				ProductSearchService productob = pService.Find ();
+					//Establecer la imagen del producto
+					NSUrl nsUrl = new NSUrl (producto.imagen);
+					NSData data = NSData.FromUrl (nsUrl);
+					this.imgProducto.Image = UIImage.LoadFromData (data);
+				} else {
+					pService.setProductSearch (barcode);
+					ProductSearchService productob = pService.Find ();
 
-				//Establecer el nombre del producto
-				this.lblNombre.Text = productob.nombre;
+					//Establecer el nombre del producto
+					this.lblNombre.Text = productob.nombre;
 
-				//Establecer el precio del producto 
-				this.lblPrecio.Text = productob.precio;
+					//Establecer el precio del producto 
+					this.lblPrecio.Text = productob.precio;
 
-				//Establecer la imagen del producto
-				NSUrl nsUrl = new NSUrl (productob.imagen);
-				NSData data = NSData.FromUrl (nsUrl);
-				this.imgProducto.Image = UIImage.LoadFromData (data);
+					//Establecer la imagen del producto
+					NSUrl nsUrl = new NSUrl (productob.imagen);
+					NSData data = NSData.FromUrl (nsUrl);
+					this.imgProducto.Image = UIImage.LoadFromData (data);
+				}
+			}catch(Exception e){
+				Console.WriteLine (e.ToString());
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
 			}
 		}
 	}

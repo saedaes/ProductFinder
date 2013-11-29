@@ -16,13 +16,7 @@ namespace ProductFinder
 
 		protected LoadingOverlay _loadPop = null;
 
-		StoresService storesService;
-
-		//Declaramos el manejador para calcular la localizacion del dispositivo.
-		CLLocationManager iPhoneLocationManager = null;
-
-		//Establecemos la variable que guardara la localizacion del dispositivo.
-		CLLocation newLocation;
+		MapViewController mvp;
 
 		//se declara la vista que muestra la camara para capturar codigos de barras.
 		private SIBarcodePicker picker;
@@ -63,16 +57,6 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 
-			//inicializacion del manejador de localizacion.
-			iPhoneLocationManager = new CLLocationManager ();
-			//Establecer la precision del manejador de localizacion.
-			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
-
-			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
-				newLocation = e.Locations [e.Locations.Length - 1];
-			};
-
-
 			this.scanButton.TouchUpInside += (sender, e) => {
 
 				// Configurar el escaner de codigo de barras.
@@ -94,7 +78,7 @@ namespace ProductFinder
 			this.btnTiendas.TouchUpInside += (sender, e) => {
 				this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
 				this.View.Add ( this._loadPop );
-				storesService = new StoresService();
+				mvp =  new MapViewController();
 				Task.Factory.StartNew (
 					// tasks allow you to use the lambda syntax to pass work
 					() => {
@@ -109,32 +93,11 @@ namespace ProductFinder
 					// but we don't want to update the UI from a background thread.
 				).ContinueWith ( 
 					t => {
-						StoresService tiendacercana = nearestStore(newLocation,storesService.All());
 						this._loadPop.Hide ();
-						UIAlertView alert = new UIAlertView () { 
-							Title = "Tu tienda mas cercana es:", Message = ""+ tiendacercana.nombre + "\n "+ tiendacercana.direccion
-						};
-						alert.AddButton("Aceptar");
-						alert.Show ();
+						this.NavigationController.PushViewController(mvp, true);
 					}, TaskScheduler.FromCurrentSynchronizationContext()
 				);
 			};
-
-			// Manejamos la actualizacion de la localizacion del dispositivo.
-			if (CLLocationManager.LocationServicesEnabled)
-				iPhoneLocationManager.StartUpdatingLocation ();
-			if (CLLocationManager.HeadingAvailable)
-				iPhoneLocationManager.StartUpdatingHeading ();
-		}
-
-		public StoresService nearestStore(CLLocation location, List<StoresService> stores){
-			StoresService nearStore = stores.ElementAt (0);
-			foreach (StoresService store in stores) {
-				if( (location.DistanceFrom(new CLLocation(Double.Parse(store.latitud),Double.Parse(store.longitud)))) < (location.DistanceFrom(new CLLocation(Double.Parse(nearStore.latitud), Double.Parse(nearStore.longitud)))) ) {
-					nearStore = store;
-				}
-			}
-			return nearStore;
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate
