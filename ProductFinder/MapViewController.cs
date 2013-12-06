@@ -19,6 +19,8 @@ namespace ProductFinder {
 
 		//Establecemos la variable que guardara la localizacion del dispositivo.
 		CLLocation newLocation;
+
+		UIBarButtonItem tiendaCercana;
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -26,9 +28,23 @@ namespace ProductFinder {
 			mapView = new MKMapView(View.Bounds);	
 			mapView.AutoresizingMask = UIViewAutoresizing.FlexibleDimensions;
 			View.AddSubview(mapView);
-
-			Title = "Tiendas registradas";
-
+			
+			//Verificar si el dispositivo es un ipad o un iphone para cargar la tabla correspondiente a cada dispositivo
+			if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+				Title= "Tiendas";
+				tiendaCercana = new UIBarButtonItem (UIBarButtonSystemItem.Search);
+				tiendaCercana.Target = this;
+				this.NavigationItem.RightBarButtonItem = tiendaCercana;
+			}else {
+				Title = "Tiendas registradas";
+				//Creamos el boton para buscar la tienda mas cercana.
+				tiendaCercana = new UIBarButtonItem();
+				tiendaCercana.Style = UIBarButtonItemStyle.Plain;
+				tiendaCercana.Target = this;
+				tiendaCercana.Title = "Buscar tienda cercana";
+				this.NavigationItem.RightBarButtonItem = tiendaCercana;
+			}
+	
 			//inicializacion del manejador de localizacion.
 			iPhoneLocationManager = new CLLocationManager ();
 			//Establecer la precision del manejador de localizacion.
@@ -50,15 +66,7 @@ namespace ProductFinder {
 			mapView.ShowsUserLocation = true;
 			MKUserLocation usr = mapView.UserLocation;
 			usr.Title = "Tú estas aqui";
-
-			//Creamos el boton para buscar la tienda mas cercana.
-			UIBarButtonItem tiendaCercana = new UIBarButtonItem();
-				tiendaCercana.Style = UIBarButtonItemStyle.Plain;
-			tiendaCercana.Target = this;
-			tiendaCercana.Title = "Buscar tienda cercana";
-			this.NavigationItem.RightBarButtonItem = tiendaCercana;
-
-
+			
 			// establecemos la region a mostrar, poniendo a Chihuahua como region
 			var coords = new CLLocationCoordinate2D(28.6352778, -106.08888890000003); // Chihuahua
 			var span = new MKCoordinateSpan(MilesToLatitudeDegrees (10), MilesToLongitudeDegrees (10, coords.Latitude));
@@ -136,7 +144,6 @@ namespace ProductFinder {
 			double radiansToDegrees = 180.0/Math.PI;
 			return (miles/earthRadius) * radiansToDegrees;
 		}
-
 
 		public double MilesToLongitudeDegrees(double miles, double atLatitude)
 		{

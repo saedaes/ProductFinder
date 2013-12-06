@@ -63,7 +63,12 @@ namespace ProductFinder
 			tableItems.Add ("Novedades");
 
 			this.headerView.BackgroundColor = UIColor.Clear;
-			this.tblOpciones.Source = new OptionsTableSource (tableItems, this);
+			//Verificar si el dispositivo es un ipad o un iphone para cargar la tabla correspondiente a cada dispositivo
+			if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+				this.tblOpciones.Source = new OptionsTableSourceIphone (tableItems, this);;
+			}else {
+				this.tblOpciones.Source = new OptionsTableSource (tableItems, this);
+			}
 			this.lblTitulo.Text = "FixBuy";
 			this.tblOpciones.TableHeaderView = this.headerView;
 			Add (this.tblOpciones);
@@ -189,6 +194,7 @@ namespace ProductFinder
 			}
 		}
 
+		//Table source para ipad
 		class OptionsTableSource : UITableViewSource 
 		{
 			List<String> tableItems;
@@ -291,7 +297,113 @@ namespace ProductFinder
 				}
 			}
 		}
-		//Clase para resimensionar las imagenes de la lista.
+		//Table source para Iphone
+		class OptionsTableSourceIphone : UITableViewSource 
+		{
+			List<String> tableItems;
+			string cellIdentifier = "TableCell";
+			ScanView controller;
+			private SIBarcodePicker picker;
+			protected LoadingOverlay _loadPop = null;
+			MapViewController mvp;
+
+			public OptionsTableSourceIphone (List<String> items, ScanView controller ) 
+			{
+				tableItems = items;
+				this.controller=controller;
+			}
+
+			public override int NumberOfSections (UITableView tableView)
+			{
+				return 1;
+			}
+
+			public override int RowsInSection (UITableView tableview, int section)
+			{
+				return tableItems.Count;
+			}
+
+			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			{
+				return 50f;
+			}
+
+			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			{
+				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+				//Employee employee = tableItems[indexPath.Section];
+
+
+				// if there are no cells to reuse, create a new one
+				if (cell == null)
+					cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
+				cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
+				cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
+				cell.DetailTextLabel.Lines = 2;
+				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(9);
+				cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
+				cell.DetailTextLabel.TextColor = UIColor.Gray;
+				if(indexPath.Row==0){
+					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/lupa-psd-468x468.png"),100);
+					cell.DetailTextLabel.Text = "Búsqueda por código o nombre de producto";
+				} else if(indexPath.Row == 1){
+					cell.ImageView.Image =ScaleImage(UIImage.FromFile("Images/mapas.png"),100);
+					cell.DetailTextLabel.Text = "Localiza tu tienda más cercana";
+				} else if(indexPath.Row == 2){
+					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/checklist.png"),100);
+					cell.DetailTextLabel.Text = "Administra tus listas";
+				} else if(indexPath.Row == 3){
+					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/power-button-155491_640.png"),100);
+					cell.DetailTextLabel.Text = "Inicia sesión con tu cuenta de FixBuy";
+				} else if (indexPath.Row == 4){
+					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/novedad.png"),100);
+					cell.DetailTextLabel.Text = "Entérate de lo más nuevo";
+				}
+
+				return cell;
+			}
+
+			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+			{
+				if(indexPath.Row==0){
+					// Configurar el escaner de codigo de barras.
+					picker = new ScanditSDKRotatingBarcodePicker (appKey);
+					picker.OverlayController.Delegate = new overlayControllerDelegate(picker, controller);
+					picker.OverlayController.ShowToolBar(true);
+					picker.OverlayController.ShowSearchBar(true);
+					picker.OverlayController.SetToolBarButtonCaption("Cancelar");
+					picker.OverlayController.SetSearchBarKeyboardType(UIKeyboardType.Default);
+					picker.OverlayController.SetSearchBarPlaceholderText("Búsqueda por nombre de producto");
+					picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
+					picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
+					controller.PresentViewController (picker, true, null);
+
+					picker.StartScanning ();
+				}else if(indexPath.Row==1){
+					this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
+					controller.View.Add ( this._loadPop );
+					mvp =  new MapViewController();
+					Task.Factory.StartNew (
+						() => {
+							System.Threading.Thread.Sleep ( 1 * 1000 );
+						}
+					).ContinueWith ( 
+						t => {
+							this._loadPop.Hide ();
+							controller.NavigationController.PushViewController(mvp, true);
+						}, TaskScheduler.FromCurrentSynchronizationContext()
+					);
+				}else if(indexPath.Row==2){
+
+				}else if(indexPath.Row==3){
+
+				} else if(indexPath.Row == 4){
+
+				}
+			}
+		}
+
+		//Metodo para redimensionar las imagenes de la lista.
 		public static UIImage ScaleImage(UIImage image, int maxSize)
 		{
 

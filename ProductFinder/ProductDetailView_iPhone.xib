@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailView">
             <connections>
-                <outlet property="imgProducto" destination="ZMY-d0-Llc" id="tjv-ne-UpO"/>
-                <outlet property="lblNombre" destination="eaM-WS-gNA" id="NCv-cn-xBD"/>
-                <outlet property="lblPrecio" destination="yDM-BI-lvO" id="X3g-Qk-8Uk"/>
+                <outlet property="imgProducto" destination="ZMY-d0-Llc" id="QHs-6T-DeA"/>
+                <outlet property="lblNombre" destination="eaM-WS-gNA" id="SKW-pa-wQ9"/>
+                <outlet property="lblPrecio" destination="yDM-BI-lvO" id="XKB-Kr-qdG"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
