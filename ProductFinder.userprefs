@@ -2,14 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ScanView.cs">
     <Files>
-      <File FileName="ProductFinder/LoadingOverlay.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ScanView.cs" Line="82" Column="28" />
-      <File FileName="ProductFinder/ServiciosWeb/ProductSearchService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/StoresService.cs" Line="19" Column="26" />
-      <File FileName="ProductFinder/MapViewController.cs" Line="42" Column="19" />
-      <File FileName="../uach_movil/UACHMovil-iOS/EventsView.cs" Line="57" Column="8" />
-      <File FileName="ProductFinder/NameSearchResultView.cs" Line="61" Column="19" />
-      <File FileName="ProductFinder/ProductDetailView.cs" Line="77" Column="19" />
+      <File FileName="ProductFinder/ScanView.cs" Line="15" Column="3" />
+      <File FileName="../../Desktop/Memoria 16gb/copaes-movil/CopaesMoviliOS/MainView.cs" Line="214" Column="52" />
+      <File FileName="ProductFinder/NameSearchResultView.cs" Line="21" Column="21" />
+      <File FileName="ProductFinder/UploadProductView.cs" Line="98" Column="8" />
+      <File FileName="ProductFinder/MainView.cs" Line="40" Column="2" />
+      <File FileName="ProductFinder/MapViewController.cs" Line="40" Column="5" />
+      <File FileName="ProductFinder/AppDelegate.cs" Line="31" Column="86" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

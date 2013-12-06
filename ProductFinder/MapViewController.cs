@@ -38,7 +38,6 @@ namespace ProductFinder {
 				newLocation = e.Locations [e.Locations.Length - 1];
 			};
 
-
 		    List<StoresService> tiendas = storesService.All ();
 
 			//mostramos los puntos rojos sobre cada una de las tiendas registradas.

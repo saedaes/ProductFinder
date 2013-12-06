@@ -94,6 +94,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="ServiciosWeb\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -123,6 +124,11 @@
     </Compile>
     <Compile Include="ServiciosWeb\StoresService.cs" />
     <Compile Include="MapViewController.cs" />
+    <Compile Include="UploadProductView.cs" />
+    <Compile Include="UploadProductView.designer.cs">
+      <DependentUpon>UploadProductView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camera.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -134,10 +140,19 @@
     <InterfaceDefinition Include="ProductDetailView_iPad.xib" />
     <InterfaceDefinition Include="NameSearchResultView_iPhone.xib" />
     <InterfaceDefinition Include="NameSearchResultView_iPad.xib" />
+    <InterfaceDefinition Include="UploadProductView_iPhone.xib" />
+    <InterfaceDefinition Include="UploadProductView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ProductFinder2.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\camera-icon.png" />
+    <BundleResource Include="Images\checklist.png" />
+    <BundleResource Include="Images\lupa-psd-468x468.png" />
+    <BundleResource Include="Images\mapas.png" />
+    <BundleResource Include="Images\novedad.png" />
+    <BundleResource Include="Images\power-button-155491_640.png" />
+    <BundleResource Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

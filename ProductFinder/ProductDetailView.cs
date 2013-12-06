@@ -71,9 +71,19 @@ namespace ProductFinder
 			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups =(", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+					Title = "Ups =(", Message = "No encontramos el producto, si asi lo deseas pueder dar de alta este producto."
 				};
-				alert.AddButton("Aceptar");
+				alert.AddButton("Registrar");
+				alert.AddButton ("Cancelar");
+				alert.Clicked += (s, o) => {
+					UploadProductView up = new UploadProductView();
+					up.setBarcode(this.barcode);
+					if(o.ButtonIndex == 0){
+						this.NavigationController.PushViewController(up,true);
+					}else{
+						this.NavigationController.PopViewControllerAnimated(true);
+					}
+				};
 				alert.Show ();
 			}
 		}

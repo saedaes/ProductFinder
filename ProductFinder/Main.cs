@@ -13,6 +13,8 @@ namespace ProductFinder
 		{
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
+			NSUserDefaults.StandardUserDefaults.SetValueForKey(NSArray.FromStrings("es"), new NSString("AppleLanguages"));
+			NSUserDefaults.StandardUserDefaults.Synchronize();
 			UIApplication.Main (args, null, "AppDelegate");
 		}
 	}

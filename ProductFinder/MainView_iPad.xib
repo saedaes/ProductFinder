@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductFinder2.png" id="NyX-ep-N4m">
-                    <rect key="frame" x="139" y="243" width="491" height="537"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpg" id="NyX-ep-N4m">
+                    <rect key="frame" x="244" y="372" width="280" height="280"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RI8-x4-4mE">
@@ -34,6 +34,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ProductFinder2.png" width="468" height="468"/>
+        <image name="logo.jpg" width="256" height="256"/>
     </resources>
 </document>

@@ -16,13 +16,25 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnNombre { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnNuevoProducto { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnScan { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnTiendas { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView headerView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblTitulo { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton scanButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITableView tblOpciones { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -31,9 +43,19 @@ namespace ProductFinder
 				btnNombre = null;
 			}
 
+			if (btnNuevoProducto != null) {
+				btnNuevoProducto.Dispose ();
+				btnNuevoProducto = null;
+			}
+
 			if (btnScan != null) {
 				btnScan.Dispose ();
 				btnScan = null;
+			}
+
+			if (btnTiendas != null) {
+				btnTiendas.Dispose ();
+				btnTiendas = null;
 			}
 
 			if (scanButton != null) {
@@ -41,9 +63,19 @@ namespace ProductFinder
 				scanButton = null;
 			}
 
-			if (btnTiendas != null) {
-				btnTiendas.Dispose ();
-				btnTiendas = null;
+			if (tblOpciones != null) {
+				tblOpciones.Dispose ();
+				tblOpciones = null;
+			}
+
+			if (headerView != null) {
+				headerView.Dispose ();
+				headerView = null;
+			}
+
+			if (lblTitulo != null) {
+				lblTitulo.Dispose ();
+				lblTitulo = null;
 			}
 		}
 	}
