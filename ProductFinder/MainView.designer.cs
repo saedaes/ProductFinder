@@ -13,13 +13,37 @@ namespace ProductFinder
 	partial class MainView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnBuscar { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnCodigo { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnEntrar { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITextField cmpNombre { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnEntrar != null) {
 				btnEntrar.Dispose ();
 				btnEntrar = null;
+			}
+
+			if (cmpNombre != null) {
+				cmpNombre.Dispose ();
+				cmpNombre = null;
+			}
+
+			if (btnBuscar != null) {
+				btnBuscar.Dispose ();
+				btnBuscar = null;
+			}
+
+			if (btnCodigo != null) {
+				btnCodigo.Dispose ();
+				btnCodigo = null;
 			}
 		}
 	}

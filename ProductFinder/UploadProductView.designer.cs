@@ -35,9 +35,17 @@ namespace ProductFinder
 
 		[Outlet]
 		MonoTouch.UIKit.UIImageView imgProducto { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIScrollView scrollView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (scrollView != null) {
+				scrollView.Dispose ();
+				scrollView = null;
+			}
+
 			if (btnFoto != null) {
 				btnFoto.Dispose ();
 				btnFoto = null;
@@ -46,6 +54,11 @@ namespace ProductFinder
 			if (btnGaleria != null) {
 				btnGaleria.Dispose ();
 				btnGaleria = null;
+			}
+
+			if (btnRegistrar != null) {
+				btnRegistrar.Dispose ();
+				btnRegistrar = null;
 			}
 
 			if (cmpCodigo != null) {
@@ -71,11 +84,6 @@ namespace ProductFinder
 			if (imgProducto != null) {
 				imgProducto.Dispose ();
 				imgProducto = null;
-			}
-
-			if (btnRegistrar != null) {
-				btnRegistrar.Dispose ();
-				btnRegistrar = null;
 			}
 		}
 	}

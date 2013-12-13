@@ -19,8 +19,7 @@ namespace ProductFinder
 		//Declaracion de la clase para mostrar el mensade de buscando... 
 		protected LoadingOverlay _loadPop = null;
 
-		//Hay que ingresar una llave apropiada para poder utilizar el api de lectura de codigo de barras.
-		public static string appKey = "Dr/S/jHREeOG5HfGLYYyGSCzjUXMnF/g1fJlTT1PxQE";
+
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -30,16 +29,7 @@ namespace ProductFinder
 			: base (UserInterfaceIdiomIsPhone ? "ScanView_iPhone" : "ScanView_iPad", null)
 		{
 			this.Title = "Menú";
-			if (appKey.Length != 43) {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Llave de scanner invalida", Message = "Contacte al administrador de la aplicacion"
-				};
-				alert.AddButton ("Aceptar");
-				alert.Show ();
-			} else {
-				// Prepare the picker such that it starts up faster.
-				SIBarcodePicker.Prepare (appKey, SICameraFacingDirection.Back);
-			}
+
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -262,7 +252,7 @@ namespace ProductFinder
 			{
 				if(indexPath.Row==0){
 					// Configurar el escaner de codigo de barras.
-					picker = new ScanditSDKRotatingBarcodePicker (appKey);
+					picker = new ScanditSDKRotatingBarcodePicker (MainView.appKey);
 					picker.OverlayController.Delegate = new overlayControllerDelegate(picker, controller);
 					picker.OverlayController.ShowToolBar(true);
 					picker.OverlayController.ShowSearchBar(true);
@@ -367,7 +357,7 @@ namespace ProductFinder
 			{
 				if(indexPath.Row==0){
 					// Configurar el escaner de codigo de barras.
-					picker = new ScanditSDKRotatingBarcodePicker (appKey);
+					picker = new ScanditSDKRotatingBarcodePicker (MainView.appKey);
 					picker.OverlayController.Delegate = new overlayControllerDelegate(picker, controller);
 					picker.OverlayController.ShowToolBar(true);
 					picker.OverlayController.ShowSearchBar(true);

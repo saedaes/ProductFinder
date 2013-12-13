@@ -153,6 +153,7 @@
     <BundleResource Include="Images\novedad.png" />
     <BundleResource Include="Images\power-button-155491_640.png" />
     <BundleResource Include="Resources\logo.jpg" />
+    <BundleResource Include="Resources\Barcode.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">
