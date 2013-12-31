@@ -13,8 +13,10 @@ namespace ProductFinder
 		public string direccion {get;set;}
 		public string latitud {get;set;}
 		public string longitud { get; set;}
+		public string imagen { get; set;}
 
-		string resultURL = "http://barcode.herokuapp.com/stores.json";
+		//string resultURL = "http://barcode.herokuapp.com/stores.json";
+		string resultURL = "http://192.168.1.70:3000/branches.json";
 
 		public StoresService ()
 		{
@@ -51,6 +53,7 @@ namespace ProductFinder
 			response.direccion = jObject["address"].ToString();
 			response.latitud = jObject ["latitude"].ToString ();
 			response.longitud = jObject["longitude"].ToString();
+			response.imagen = jObject ["branch_image_path"].ToString ();
 
 			return response;
 		}
