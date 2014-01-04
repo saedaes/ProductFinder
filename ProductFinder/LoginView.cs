@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Drawing;
+using Mono.Data.Sqlite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
@@ -7,6 +9,8 @@ namespace ProductFinder
 {
 	public partial class LoginView : UIViewController
 	{
+		private string _pathToDatabase;
+		LoginService loginService = new LoginService();
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -28,6 +32,51 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			this.cmpContraseña.SecureTextEntry = true;
+
+			// Figure out where the SQLite database will be.
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
+
+			this.btnEntrar.TouchUpInside += (sender, e) => {
+				if(cmpEmail.Text == "" || cmpContraseña.Text == ""){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "Debes ingresar tu email y tu contraseña primero"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				} else{
+					//Creamos la base de datos y la tabla de persona
+					using (var conn= new SQLite.SQLiteConnection(_pathToDatabase))
+					{
+						conn.DropTable<Person>();
+						conn.CreateTable<Person>();
+					}
+					loginService.setUserData(cmpEmail.Text,cmpContraseña.Text);
+
+					LoginService userData = loginService.Find();
+
+					if(userData.Id.Equals("invalido")){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Lo sentimos", Message = "Tus datos fueron invalidos, intentalo de nuevo"
+						};
+						alert.AddButton ("Aceptar");
+						alert.Show ();
+					}else{
+						var person = new Person {ID = int.Parse(userData.Id),  Name = userData.nombre, LastName = userData.paterno, SecondLastName = userData.materno};
+						using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+						{
+							db.Insert(person);
+						}
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Bienvenido", Message = "Bienvenido a Fixbuy " + userData.nombre
+						};
+						alert.AddButton ("Aceptar");
+						alert.Show ();
+						this.NavigationController.PopViewControllerAnimated(true);
+					}
+				}
+			};
 
 			this.btnRegistro.TouchUpInside += (sender, e) => {
 				RegistryView registry = new RegistryView();

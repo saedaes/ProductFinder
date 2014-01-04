@@ -34,9 +34,10 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			
+			this.cmpContraseña.SecureTextEntry = true;
+			this.cmpConfirmar.SecureTextEntry = true;
 			// Perform any additional setup after loading the view, typically from a nib.
-
+	
 			//Declaramos el actionsheet donde se mostrara el picker
 			actionSheetPicker = new ActionSheetPicker(this.View);
 			//Declaramos el data model para el sexo

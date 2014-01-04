@@ -13,6 +13,9 @@ namespace ProductFinder
 	partial class ScanView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnCerrarSesion { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnNombre { get; set; }
 
 		[Outlet]
@@ -29,6 +32,9 @@ namespace ProductFinder
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblTitulo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblusuario { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton scanButton { get; set; }
@@ -58,6 +64,16 @@ namespace ProductFinder
 				btnTiendas = null;
 			}
 
+			if (headerView != null) {
+				headerView.Dispose ();
+				headerView = null;
+			}
+
+			if (lblTitulo != null) {
+				lblTitulo.Dispose ();
+				lblTitulo = null;
+			}
+
 			if (scanButton != null) {
 				scanButton.Dispose ();
 				scanButton = null;
@@ -68,14 +84,14 @@ namespace ProductFinder
 				tblOpciones = null;
 			}
 
-			if (headerView != null) {
-				headerView.Dispose ();
-				headerView = null;
+			if (lblusuario != null) {
+				lblusuario.Dispose ();
+				lblusuario = null;
 			}
 
-			if (lblTitulo != null) {
-				lblTitulo.Dispose ();
-				lblTitulo = null;
+			if (btnCerrarSesion != null) {
+				btnCerrarSesion.Dispose ();
+				btnCerrarSesion = null;
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.CoreGraphics;
 using MonoTouch.MessageUI;
+using Mono.Data.Sqlite;
 namespace ProductFinder
 {
 	public partial class ScanView : UIViewController
@@ -19,7 +21,8 @@ namespace ProductFinder
 		//Declaracion de la clase para mostrar el mensade de buscando... 
 		protected LoadingOverlay _loadPop = null;
 
-
+		List<Person> people;
+		private string _pathToDatabase;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -44,6 +47,33 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
+
+			//Creamos la base de datos y la tabla de persona
+			using (var conn= new SQLite.SQLiteConnection(_pathToDatabase))
+			{
+				conn.CreateTable<Person>();
+			}
+
+			this.btnCerrarSesion.TouchUpInside += (sender, e) => {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Te vas? =(", Message = "Estas seguro que quieres cerrar la sesión?"
+				};
+				alert.AddButton("Aceptar");
+				alert.AddButton("Cancelar");
+				alert.Clicked += (s, o) => {
+					if(o.ButtonIndex == 0){
+						using (var conn= new SQLite.SQLiteConnection(_pathToDatabase))
+						{
+							conn.DropTable<Person>();
+							conn.CreateTable<Person>();
+						}
+					}
+					this.NavigationController.PopViewControllerAnimated(true);
+				};
+				alert.Show ();
+			};
 
 			List<String> tableItems = new List<String>();
 			tableItems.Add ("Buscar Productos");
@@ -118,6 +148,24 @@ namespace ProductFinder
 			// agregar la vista a la pantalla
 			this.View.AddSubview (toolbar);
 
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			//Hacemos la conexion a la bd para buscar si hay un usuario registrado
+			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+			{
+				people = new List<Person> (from p in db.Table<Person> () select p);
+			}
+			if (people.Count > 0) {
+				Person usuario = people.ElementAt (0);
+				this.lblusuario.Text = usuario.Name;
+				this.btnCerrarSesion.Hidden = false;
+			} else {
+				this.lblusuario.Text = "No has iniciado sesión";
+				this.btnCerrarSesion.Hidden = true;
+			}
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate

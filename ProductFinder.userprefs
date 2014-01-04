@@ -1,16 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPad" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/MapViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/RegistryView.cs">
     <Files>
-      <File FileName="ProductFinder/ServiciosWeb/ProductSearchService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/StoresService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/ProductSearchDetailService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NameSearchResultView.cs" Line="45" Column="81" />
-      <File FileName="ProductFinder/ProductStoresListView.cs" Line="47" Column="4" />
-      <File FileName="ProductFinder/ProductDetailView.cs" Line="62" Column="6" />
-      <File FileName="ProductFinder/AboutUsView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ScanView.cs" Line="248" Column="74" />
-      <File FileName="ProductFinder/MapViewController.cs" Line="105" Column="119" />
+      <File FileName="ProductFinder/ServiciosWeb/ProductSearchService.cs" Line="16" Column="3" />
+      <File FileName="ProductFinder/SQLite.cs" Line="1560" Column="1" />
+      <File FileName="ProductFinder/Person.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ServiciosWeb/LoginService.cs" Line="23" Column="64" />
+      <File FileName="ProductFinder/LoginView.cs" Line="35" Column="46" />
+      <File FileName="ProductFinder/ScanView.cs" Line="147" Column="5" />
+      <File FileName="ProductFinder/RegistryView.cs" Line="39" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

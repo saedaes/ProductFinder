@@ -90,6 +90,7 @@
     <Reference Include="ScanditSDK">
       <HintPath>..\lib\ios\ScanditSDK.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -150,6 +151,8 @@
     <Compile Include="ServiciosWeb\AgesService.cs" />
     <Compile Include="ServiciosWeb\LoginService.cs" />
     <Compile Include="ServiciosWeb\NewUserService.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="Person.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

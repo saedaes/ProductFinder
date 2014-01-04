@@ -1,51 +1,60 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using System.IO;
-using System.Text;
-
+using Newtonsoft.Json.Linq;
 namespace ProductFinder
 {
 	public class LoginService
 	{
+		public string Id {get;set;}
+		public string nombre {get;set;}
+		public string paterno { get; set;}
+		public string materno { get; set;}
+
+		string resultURL = "";
+
 		public LoginService ()
 		{
 		}
 
-		public String SetUserAndPassword (String user, String password){
-			string loginURL = "http://192.168.1.112:3000/user_new.json?email="+user+"&"+"password="+password;
-			WebRequest request = WebRequest.Create(loginURL);
-			request.Method = "POST";
+		public void setUserData(String email,String password){
+			this.resultURL = "http://192.168.1.112:3000/user_session/new.json?email="+email+"&password="+password;
+		}
 
-			string postData = "Esta es la peticion al servicio de autenticacion";
-			byte[] byteArray = Encoding.UTF8.GetBytes (postData);
-			// Set the ContentType property of the WebRequest.
-			request.ContentType = "application/x-www-form-urlencoded";
-			// Set the ContentLength property of the WebRequest.
-			request.ContentLength = byteArray.Length;
-			// Get the request stream.
-			Stream dataStream = request.GetRequestStream ();
-			// Write the data to the request stream.
-			dataStream.Write (byteArray, 0, byteArray.Length);
-			// Close the Stream object.
-			dataStream.Close ();
-			// Get the response.
-			WebResponse response = request.GetResponse ();
-			// Display the status.
-			//Console.WriteLine (((HttpWebResponse)response).StatusDescription);
-			// Get the stream containing content returned by the server.
-			dataStream = response.GetResponseStream ();
-			// Open the stream using a StreamReader for easy access.
-			StreamReader reader = new StreamReader (dataStream);
-			// Read the content.
-			string responseFromServer = reader.ReadToEnd ();
-			// Display the content.
-			Console.WriteLine (responseFromServer);
-			// Clean up the streams.
+		public LoginService Find()
+		{
+			return GetUser();
+		}
 
-			return responseFromServer;
-			reader.Close ();
-			dataStream.Close ();
-			response.Close ();
+		private LoginService GetUser()
+		{
+			WebClient client = new WebClient();
+			Stream stream = client.OpenRead(this.resultURL);
+			StreamReader reader = new StreamReader(stream);			
+			JObject jObject = JObject.Parse(reader.ReadLine());
+			LoginService user = LoginService.FromJObject(jObject);			
+			return user;
+		}
+
+		internal static LoginService FromJObject(JObject jObject)
+		{
+			LoginService response = new LoginService();
+			response.Id = jObject["id"].ToString();
+			response.nombre = jObject ["name"].ToString ();
+			response.paterno = jObject["last_name"].ToString();
+			response.materno = jObject ["second_last_name"].ToString ();
+
+			return response;
+		}
+
+		public override string ToString ()
+		{
+			if(nombre != null)
+				return nombre;
+			else
+				return base.ToString();
 		}
 	}
 }
