@@ -10,9 +10,9 @@ namespace ProductFinder
 	public class ProductSearchService
 	{
 		public string nombre {get;set;}
-		public string precio {get;set;}
 		public string imagen {get;set;}
 		public string descripcion { get; set;}
+		public string codigo { get; set;}
 
 		string resultURL = "";
 
@@ -25,7 +25,7 @@ namespace ProductFinder
 		}
 
 		public void setProductSearchString(String text){
-			this.resultURL = "http://barcode.herokuapp.com/findProductString.json?product="+text;
+			this.resultURL = "http://192.168.1.112:3000/products/find_by_description/"+text+".json";
 		}
 
 		public List<ProductSearchService> All()
@@ -71,9 +71,9 @@ namespace ProductFinder
 		{
 			ProductSearchService response = new ProductSearchService();
 			response.nombre = jObject["name"].ToString();
-			response.precio = jObject["price"].ToString();
 			response.descripcion = jObject ["description"].ToString ();
-			response.imagen = jObject["image"].ToString();
+			response.imagen = jObject["image_url"].ToString();
+			response.codigo = jObject ["bar_code"].ToString ();
 
 			return response;
 		}

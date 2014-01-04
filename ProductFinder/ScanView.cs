@@ -51,6 +51,7 @@ namespace ProductFinder
 			tableItems.Add ("Mis Listas");
 			tableItems.Add ("Iniciar Sesión");
 			tableItems.Add ("Novedades");
+			tableItems.Add ("Nuestros Servicios");
 
 			this.headerView.BackgroundColor = UIColor.Clear;
 			//Verificar si el dispositivo es un ipad o un iphone para cargar la tabla correspondiente a cada dispositivo
@@ -243,6 +244,9 @@ namespace ProductFinder
 				} else if (indexPath.Row == 4){
 					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/novedad.png"),100);
 					cell.DetailTextLabel.Text = "Entérate de lo más nuevo";
+				} else if (indexPath.Row == 5){
+					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/servicios.png"),100);
+					cell.DetailTextLabel.Text = "Consulta nuestros servicios";
 				}
 
 				return cell;
@@ -281,10 +285,15 @@ namespace ProductFinder
 				}else if(indexPath.Row==2){
 
 				}else if(indexPath.Row==3){
+					LoginView login = new LoginView ();
+					controller.NavigationController.PushViewController (login, true);
+				}else if(indexPath.Row == 4){
 
-				} else if(indexPath.Row == 4){
-
+				}else if(indexPath.Row == 5){
+					AboutUsView aboutUS = new AboutUsView ();
+					controller.NavigationController.PushViewController (aboutUS, true);
 				}
+
 			}
 		}
 		//Table source para Iphone

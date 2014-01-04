@@ -101,8 +101,9 @@ namespace ProductFinder {
 			//Añadimos el evento para buscar tienda mas cercana.
 			tiendaCercana.Clicked += (sender, e) => {
 				StoresService tiendac= nearestStore(newLocation,tiendas);
+					double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.latitud),Double.Parse(tiendac.longitud)))/1000;
 				UIAlertView alert = new UIAlertView () { 
-					Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion
+						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
 				};
 				alert.AddButton("Aceptar");
 				alert.Show ();

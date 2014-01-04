@@ -73,7 +73,7 @@ namespace ProductFinder
 			string cellIdentifier = "TableCell";
 			NameSearchResultView controller;
 			ProductSearchService ps;
-			ProductDetailView pdView;
+			ProductStoresListView pdView;
 
 			public ProductsTableSource (List<ProductSearchService> items, NameSearchResultView controller ) 
 			{
@@ -104,7 +104,7 @@ namespace ProductFinder
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
 				ps = tableItems [indexPath.Row];
-
+				Console.WriteLine (""+ps.imagen);
 				NSUrl nsUrl = new NSUrl (ps.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
 				UIImage imagen = UIImage.LoadFromData (data);
@@ -123,8 +123,8 @@ namespace ProductFinder
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
-				pdView = new ProductDetailView ();
-				pdView.setProduct (tableItems [indexPath.Row]);
+				pdView = new ProductStoresListView();
+				pdView.setProduct (tableItems [indexPath.Row].codigo);
 				controller.NavigationController.PushViewController (pdView, true);
 			}
 		}
@@ -135,7 +135,7 @@ namespace ProductFinder
 			string cellIdentifier = "TableCell";
 			NameSearchResultView controller;
 			ProductSearchService ps;
-			ProductDetailView pdView;
+			ProductStoresListView pdView;
 
 			public ProductsTableSourceIphone (List<ProductSearchService> items, NameSearchResultView controller ) 
 			{
@@ -185,8 +185,8 @@ namespace ProductFinder
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
-				pdView = new ProductDetailView ();
-				pdView.setProduct (tableItems [indexPath.Row]);
+				pdView = new ProductStoresListView ();
+				pdView.setProduct (tableItems [indexPath.Row].codigo);
 				controller.NavigationController.PushViewController (pdView, true);
 			}
 		}

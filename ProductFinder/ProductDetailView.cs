@@ -47,7 +47,7 @@ namespace ProductFinder
 					this.lblNombre.Text = producto.nombre;
 
 					//Establecer el precio del producto 
-					this.lblPrecio.Text = producto.precio;
+					//this.lblPrecio.Text = producto.precio;
 
 					//Establecer la imagen del producto
 					NSUrl nsUrl = new NSUrl (producto.imagen);
@@ -61,7 +61,7 @@ namespace ProductFinder
 					this.lblNombre.Text = productob.nombre;
 
 					//Establecer el precio del producto 
-					this.lblPrecio.Text = productob.precio;
+					//this.lblPrecio.Text = productob.precio;
 
 					//Establecer la imagen del producto
 					NSUrl nsUrl = new NSUrl (productob.imagen);

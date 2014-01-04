@@ -1,14 +1,16 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ServiciosWeb/ProductSearchService.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPad" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/MapViewController.cs">
     <Files>
-      <File FileName="ProductFinder/UploadProductView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MainView.cs" Line="141" Column="4" />
-      <File FileName="ProductFinder/ScanView.cs" Line="1" Column="1" />
-      <File FileName="../../Desktop/Memoria 16gb/copaes-movil/CopaesMoviliOS/ProgramasView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MapViewController.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NameSearchResultView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/ProductSearchService.cs" Line="24" Column="91" />
+      <File FileName="ProductFinder/ServiciosWeb/ProductSearchService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ServiciosWeb/StoresService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ServiciosWeb/ProductSearchDetailService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/NameSearchResultView.cs" Line="45" Column="81" />
+      <File FileName="ProductFinder/ProductStoresListView.cs" Line="47" Column="4" />
+      <File FileName="ProductFinder/ProductDetailView.cs" Line="62" Column="6" />
+      <File FileName="ProductFinder/AboutUsView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ScanView.cs" Line="248" Column="74" />
+      <File FileName="ProductFinder/MapViewController.cs" Line="105" Column="119" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

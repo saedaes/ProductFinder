@@ -129,6 +129,27 @@
       <DependentUpon>UploadProductView.cs</DependentUpon>
     </Compile>
     <Compile Include="Camera.cs" />
+    <Compile Include="ServiciosWeb\ProductSearchDetailService.cs" />
+    <Compile Include="ProductStoresListView.cs" />
+    <Compile Include="ProductStoresListView.designer.cs">
+      <DependentUpon>ProductStoresListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AboutUsView.cs" />
+    <Compile Include="AboutUsView.designer.cs">
+      <DependentUpon>AboutUsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginView.cs" />
+    <Compile Include="LoginView.designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistryView.cs" />
+    <Compile Include="RegistryView.designer.cs">
+      <DependentUpon>RegistryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionSheetPicker.cs" />
+    <Compile Include="ServiciosWeb\AgesService.cs" />
+    <Compile Include="ServiciosWeb\LoginService.cs" />
+    <Compile Include="ServiciosWeb\NewUserService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -142,6 +163,14 @@
     <InterfaceDefinition Include="NameSearchResultView_iPad.xib" />
     <InterfaceDefinition Include="UploadProductView_iPhone.xib" />
     <InterfaceDefinition Include="UploadProductView_iPad.xib" />
+    <InterfaceDefinition Include="ProductStoresListView_iPhone.xib" />
+    <InterfaceDefinition Include="ProductStoresListView_iPad.xib" />
+    <InterfaceDefinition Include="AboutUsView_iPhone.xib" />
+    <InterfaceDefinition Include="AboutUsView_iPad.xib" />
+    <InterfaceDefinition Include="LoginView_iPhone.xib" />
+    <InterfaceDefinition Include="LoginView_iPad.xib" />
+    <InterfaceDefinition Include="RegistryView_iPhone.xib" />
+    <InterfaceDefinition Include="RegistryView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ProductFinder2.png" />
@@ -154,6 +183,7 @@
     <BundleResource Include="Images\power-button-155491_640.png" />
     <BundleResource Include="Resources\logo.jpg" />
     <BundleResource Include="Resources\Barcode.png" />
+    <BundleResource Include="Images\servicios.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">
