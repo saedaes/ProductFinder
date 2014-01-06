@@ -16,7 +16,7 @@ namespace ProductFinder
 		public string imagen { get; set;}
 
 		//string resultURL = "http://barcode.herokuapp.com/stores.json";
-		string resultURL = "http://192.168.1.112:3000/branches.json";
+		string resultURL = "http://fixbuy.herokuapp.com/branches.json";
 
 		public StoresService ()
 		{

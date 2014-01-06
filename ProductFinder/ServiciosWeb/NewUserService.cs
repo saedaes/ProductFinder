@@ -12,8 +12,7 @@ namespace ProductFinder
 		}
 
 		public String SetUserData (String email, String password, String nombre, String paterno, String materno, String sexo, String edad){
-			string loginURL = "http://192.168.1.112:3000/user_new.json?email="+email+"&password="+password+"&name="+nombre+"&last_name="+paterno+"&second_last_name="+materno+"&sex="+sexo+"&age_range="+edad;
-			Console.WriteLine ("http://192.168.1.112:3000/user_new.json?email="+email+"&password="+password+"&name="+nombre+"&last_name="+paterno+"&second_last_name="+materno+"&sex="+sexo+"&age_range="+edad);
+			string loginURL = "http://fixbuy.herokuapp.com/user_new.json?email="+email+"&password="+password+"&name="+nombre+"&last_name="+paterno+"&second_last_name="+materno+"&sex="+sexo+"&age_range="+edad;
 			WebRequest request = WebRequest.Create(loginURL);
 			request.Method = "POST";
 
@@ -44,9 +43,9 @@ namespace ProductFinder
 			// Clean up the streams.
 
 			return responseFromServer;
-			reader.Close ();
-			dataStream.Close ();
-			response.Close ();
+			//reader.Close ();
+			//dataStream.Close ();
+			//response.Close ();
 		}
 	}
 }

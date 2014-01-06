@@ -115,7 +115,7 @@ namespace ProductFinder
 		protected LoadingOverlay _loadPop = null;
 		private SIBarcodePicker picker;
 		private UIViewController presentingViewController;
-		ProductDetailView pdView;
+		ProductStoresListView pdView;
 		NameSearchResultView nsrView;
 
 		public overlayControllerDelegate(SIBarcodePicker picker, UIViewController presentingViewController) {
@@ -134,8 +134,8 @@ namespace ProductFinder
 				}
 			).ContinueWith ( 
 				t => {
-					pdView = new ProductDetailView ();
-					pdView.setProductBarCode (barcode["barcode"].ToString());
+					pdView = new ProductStoresListView ();
+					pdView.setProduct (barcode["barcode"].ToString());
 					presentingViewController.NavigationController.PushViewController (pdView, true);
 					this._loadPop.Hide ();
 				}, TaskScheduler.FromCurrentSynchronizationContext()

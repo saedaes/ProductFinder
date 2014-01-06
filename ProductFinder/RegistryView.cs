@@ -117,7 +117,7 @@ namespace ProductFinder
 					String respuesta = newUserService.SetUserData(cmpEmail.Text,cmpContraseña.Text,cmpNombre.Text,cmpPaterno.Text,cmpMaterno.Text,sexo,edadId);
 					if(respuesta.Equals("\"error\"")){
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Ups :S", Message = "El correo electronico ya se encuentra registrado"
+							Title = "Ups :S", Message = "El correo electronico ya se encuentra registrado o no es valido"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show ();
@@ -126,6 +126,9 @@ namespace ProductFinder
 							Title = "Bienvenido", Message = "Tu registro se ha realizado con exito, ahora ve a la pantalla de inicio de sesión =)"
 						};
 						alert.AddButton("Aceptar");
+						alert.Clicked += (s, o) => {
+							this.NavigationController.PopViewControllerAnimated(true);
+						};
 						alert.Show ();
 					}
 					else{
@@ -133,9 +136,6 @@ namespace ProductFinder
 							Title = "ERROR", Message = "Error del Servidor, intentelo de nuevo"
 						};
 						alert.AddButton("Aceptar");
-						alert.Clicked += (s, o) => {
-							this.NavigationController.PopViewControllerAnimated(true);
-						};
 						alert.Show();
 					}
 				}

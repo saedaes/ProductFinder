@@ -46,54 +46,82 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 
-			//inicializacion del manejador de localizacion.
-			iPhoneLocationManager = new CLLocationManager ();
-			//Establecer la precision del manejador de localizacion.
-			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
+			try{
+				//inicializacion del manejador de localizacion.
+				iPhoneLocationManager = new CLLocationManager ();
+				//Establecer la precision del manejador de localizacion.
+				iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
 
-			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
-				newLocation = e.Locations [e.Locations.Length - 1];
-			};
-
-			productSearchDetailService.setProductBarcode (this.barcode);
-			List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
-
-			tiendaCercana = new UIBarButtonItem();
-			tiendaCercana.Style = UIBarButtonItemStyle.Plain;
-			tiendaCercana.Target = this;
-			tiendaCercana.Title = "Buscar tienda cercana";
-			this.NavigationItem.RightBarButtonItem = tiendaCercana;
-
-			tiendaCercana.Clicked += (sender, e) => {
-				ProductSearchDetailService tiendac= nearestStore(newLocation,tableItems);
-				double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.tienda_latitud),Double.Parse(tiendac.tienda_longitud)))/1000;
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.tienda_nombre + "\n "+ tiendac.tienda_direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
+				iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
+					newLocation = e.Locations [e.Locations.Length - 1];
 				};
-				alert.AddButton("Aceptar");
+
+				productSearchDetailService.setProductBarcode (this.barcode);
+				List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
+
+				tiendaCercana = new UIBarButtonItem();
+				tiendaCercana.Style = UIBarButtonItemStyle.Plain;
+				tiendaCercana.Target = this;
+				tiendaCercana.Title = "Buscar tienda cercana";
+				this.NavigationItem.RightBarButtonItem = tiendaCercana;
+
+				tiendaCercana.Clicked += (sender, e) => {
+					ProductSearchDetailService tiendac= nearestStore(newLocation,tableItems);
+					double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.tienda_latitud),Double.Parse(tiendac.tienda_longitud)))/1000;
+					distancia = Math.Round(distancia,2);
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.tienda_nombre + "\n "+ tiendac.tienda_direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
+				};  
+
+
+				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this);
+				} else {
+					this.tblStores.Source = new StoresTableSource (tableItems, this);
+				}
+
+				ProductSearchDetailService product = tableItems.ElementAt (0);
+				NSUrl nsUrl = new NSUrl (product.imagen);
+				NSData data = NSData.FromUrl (nsUrl);
+				this.imgProduct.Image = UIImage.LoadFromData (data);
+
+				this.lblproduct.Text = product.nombre;
+				this.lblDescription.Text = product.descripcion;
+				this.tblStores.TableHeaderView = this.headerView;
+				View.Add (this.tblStores);
+
+				// Manejamos la actualizacion de la localizacion del dispositivo.
+				if (CLLocationManager.LocationServicesEnabled)
+					iPhoneLocationManager.StartUpdatingLocation ();
+			}catch(System.ArgumentOutOfRangeException e){
+				Console.WriteLine (e.ToString());
+				didNotFidProduct();
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "No encontramos el producto, si asi lo deseas pueder dar de alta este producto."
+				};
+				alert.AddButton("Registrar");
+				alert.AddButton ("Cancelar");
+				alert.Clicked += (s, o) => {
+					UploadProductView up = new UploadProductView();
+					up.setBarcode(this.barcode);
+					if(o.ButtonIndex == 0){
+						this.NavigationController.PushViewController(up,true);
+					}else{
+						this.NavigationController.PopViewControllerAnimated(true);
+					}
+				};
 				alert.Show ();
-			};  
-
-
-			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-				this.tblStores.Source = new StoresTableSourceIphone (tableItems, this);
-			} else {
-				this.tblStores.Source = new StoresTableSource (tableItems, this);
 			}
+		}
 
-			ProductSearchDetailService product = tableItems.ElementAt (0);
-			NSUrl nsUrl = new NSUrl (product.imagen);
-			NSData data = NSData.FromUrl (nsUrl);
-			this.imgProduct.Image = UIImage.LoadFromData (data);
-
-			this.lblproduct.Text = product.nombre;
-			this.lblDescription.Text = product.descripcion;
-			this.tblStores.TableHeaderView = this.headerView;
-			View.Add (this.tblStores);
-
-			// Manejamos la actualizacion de la localizacion del dispositivo.
-			if (CLLocationManager.LocationServicesEnabled)
-				iPhoneLocationManager.StartUpdatingLocation ();
+		public void didNotFidProduct(){
+			this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
+			this.lblproduct.Text = "Producto no encontrado =S";
+			this.lblDescription.Text = "";
+			this.tblStores.BackgroundColor = UIColor.Clear;
 		}
 
 		//Metodo de busqueda de la tienda mas cercana.
@@ -115,7 +143,7 @@ namespace ProductFinder
 		string cellIdentifier = "TableCell";
 		ProductStoresListView controller;
 		ProductSearchDetailService ps;
-		ProductDetailView pdView;
+		//ProductDetailView pdView;
 
 		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller ) 
 		{

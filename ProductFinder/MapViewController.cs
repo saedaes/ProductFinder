@@ -58,7 +58,8 @@ namespace ProductFinder {
 
 			//mostramos los puntos rojos sobre cada una de las tiendas registradas.
 			foreach (StoresService tienda in tiendas) {
-				var annotation = new BasicMapAnnotation (new CLLocationCoordinate2D (Double.Parse(tienda.latitud), Double.Parse(tienda.longitud)), ""+tienda.nombre, ""+tienda.direccion);
+				double distancia1 = iPhoneLocationManager.Location.DistanceFrom(new CLLocation(Double.Parse(tienda.latitud),Double.Parse(tienda.longitud)))/1000;
+				var annotation = new BasicMapAnnotation (new CLLocationCoordinate2D (Double.Parse(tienda.latitud), Double.Parse(tienda.longitud)), ""+tienda.nombre+" ("+Math.Round(distancia1,2)+"km)", ""+tienda.direccion);
 				mapView.AddAnnotation (annotation);			
 			}
 
@@ -101,7 +102,7 @@ namespace ProductFinder {
 			//Añadimos el evento para buscar tienda mas cercana.
 			tiendaCercana.Clicked += (sender, e) => {
 				StoresService tiendac= nearestStore(newLocation,tiendas);
-					double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.latitud),Double.Parse(tiendac.longitud)))/1000;
+				double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.latitud),Double.Parse(tiendac.longitud)))/1000;
 				UIAlertView alert = new UIAlertView () { 
 						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
 				};

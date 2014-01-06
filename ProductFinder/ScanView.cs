@@ -24,6 +24,7 @@ namespace ProductFinder
 		List<Person> people;
 		private string _pathToDatabase;
 
+		List<String> tableItems;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -56,6 +57,12 @@ namespace ProductFinder
 				conn.CreateTable<Person>();
 			}
 
+			//Hacemos la conexion a la bd para buscar si hay un usuario registrado
+			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+			{
+				people = new List<Person> (from p in db.Table<Person> () select p);
+			}
+
 			this.btnCerrarSesion.TouchUpInside += (sender, e) => {
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Te vas? =(", Message = "Estas seguro que quieres cerrar la sesión?"
@@ -69,13 +76,13 @@ namespace ProductFinder
 							conn.DropTable<Person>();
 							conn.CreateTable<Person>();
 						}
+						this.NavigationController.PopViewControllerAnimated(true);
 					}
-					this.NavigationController.PopViewControllerAnimated(true);
 				};
 				alert.Show ();
 			};
 
-			List<String> tableItems = new List<String>();
+			tableItems = new List<String>();
 			tableItems.Add ("Buscar Productos");
 			tableItems.Add ("Buscar Tiendas Registradas");
 			tableItems.Add ("Mis Listas");
@@ -88,7 +95,7 @@ namespace ProductFinder
 			if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 				this.tblOpciones.Source = new OptionsTableSourceIphone (tableItems, this);;
 			}else {
-				this.tblOpciones.Source = new OptionsTableSource (tableItems, this);
+				this.tblOpciones.Source = new OptionsTableSource (tableItems, this,people.Count);
 			}
 			this.lblTitulo.Text = "FixBuy";
 			this.tblOpciones.TableHeaderView = this.headerView;
@@ -160,12 +167,14 @@ namespace ProductFinder
 			}
 			if (people.Count > 0) {
 				Person usuario = people.ElementAt (0);
-				this.lblusuario.Text = usuario.Name;
+				this.lblusuario.Text = usuario.Name + " "+usuario.LastName;
 				this.btnCerrarSesion.Hidden = false;
 			} else {
 				this.lblusuario.Text = "No has iniciado sesión";
 				this.btnCerrarSesion.Hidden = true;
 			}
+			this.tblOpciones.Source = new OptionsTableSource (tableItems, this,people.Count);
+			this.tblOpciones.ReloadData ();
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate
@@ -173,7 +182,7 @@ namespace ProductFinder
 			protected LoadingOverlay _loadPop = null;
 			private SIBarcodePicker picker;
 			private UIViewController presentingViewController;
-			ProductDetailView pdView;
+			ProductStoresListView pdView;
 			NameSearchResultView nsrView;
 
 			public overlayControllerDelegate(SIBarcodePicker picker, UIViewController presentingViewController) {
@@ -192,8 +201,8 @@ namespace ProductFinder
 					}
 				).ContinueWith ( 
 					t => {
-						pdView = new ProductDetailView ();
-						pdView.setProductBarCode (barcode["barcode"].ToString());
+						pdView = new ProductStoresListView ();
+						pdView.setProduct (barcode["barcode"].ToString());
 						presentingViewController.NavigationController.PushViewController (pdView, true);
 						this._loadPop.Hide ();
 					}, TaskScheduler.FromCurrentSynchronizationContext()
@@ -242,11 +251,12 @@ namespace ProductFinder
 			private SIBarcodePicker picker;
 			protected LoadingOverlay _loadPop = null;
 			MapViewController mvp;
-
-			public OptionsTableSource (List<String> items, ScanView controller ) 
+			int conn;
+			public OptionsTableSource (List<String> items, ScanView controller, int query ) 
 			{
 				tableItems = items;
 				this.controller=controller;
+				conn= query;
 			}
 
 			public override int NumberOfSections (UITableView tableView)
@@ -331,10 +341,30 @@ namespace ProductFinder
 						}, TaskScheduler.FromCurrentSynchronizationContext()
 					);
 				}else if(indexPath.Row==2){
-
+					if (conn == 1) {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups!", Message = "Esta opcion aun no sta lista pero lo estara en breve =)"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					} else {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Debes iniciar sesión para acceder a tus listas"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}
 				}else if(indexPath.Row==3){
-					LoginView login = new LoginView ();
-					controller.NavigationController.PushViewController (login, true);
+					if (conn == 1) {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Ya has iniciado sesión"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					} else {
+						LoginView login = new LoginView ();
+						controller.NavigationController.PushViewController (login, true);
+					}
 				}else if(indexPath.Row == 4){
 
 				}else if(indexPath.Row == 5){

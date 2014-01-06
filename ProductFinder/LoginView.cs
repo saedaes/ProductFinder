@@ -56,7 +56,7 @@ namespace ProductFinder
 
 					LoginService userData = loginService.Find();
 
-					if(userData.Id.Equals("invalido")){
+					if(userData.Id.Equals("Invalido")){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Lo sentimos", Message = "Tus datos fueron invalidos, intentalo de nuevo"
 						};
