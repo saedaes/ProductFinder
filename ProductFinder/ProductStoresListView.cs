@@ -114,7 +114,7 @@ namespace ProductFinder
 					}
 				};
 				alert.Show ();
-			}
+			} 
 		}
 
 		public void didNotFidProduct(){

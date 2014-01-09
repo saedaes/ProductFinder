@@ -99,26 +99,31 @@ namespace ProductFinder
 			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+				UIImage imagen;
+					// if there are no cells to reuse, create a new one
+					if (cell == null)
+						cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
+					ps = tableItems [indexPath.Row];
+					Console.WriteLine (""+ps.imagen);
+					NSUrl nsUrl = new NSUrl (ps.imagen);
+					NSData data = NSData.FromUrl (nsUrl);
+				if (data != null) {
+					imagen = UIImage.LoadFromData (data);
+				} else {
+					imagen = UIImage.FromFile ("Images/noImage.jpg"); 
+				}
 
-				// if there are no cells to reuse, create a new one
-				if (cell == null)
-					cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-				ps = tableItems [indexPath.Row];
-				Console.WriteLine (""+ps.imagen);
-				NSUrl nsUrl = new NSUrl (ps.imagen);
-				NSData data = NSData.FromUrl (nsUrl);
-				UIImage imagen = UIImage.LoadFromData (data);
-
-				cell.ImageView.Image = ScaleImage (imagen, 100);
-				cell.TextLabel.Text = ps.nombre;
-				cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
-				cell.TextLabel.Lines = 2 ;
-				cell.DetailTextLabel.Text = ps.descripcion;
-				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (15);
-				cell.DetailTextLabel.TextColor = UIColor.Gray;
-				cell.DetailTextLabel.Lines = 2;
-				cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-				return cell;
+					cell.ImageView.Image = ScaleImage (imagen, 100);
+					cell.TextLabel.Text = ps.nombre;
+					cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
+					cell.TextLabel.Lines = 2 ;
+					cell.DetailTextLabel.Text = ps.descripcion;
+					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (15);
+					cell.DetailTextLabel.TextColor = UIColor.Gray;
+					cell.DetailTextLabel.Lines = 2;
+					cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+					return cell;
+				
 			}
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)

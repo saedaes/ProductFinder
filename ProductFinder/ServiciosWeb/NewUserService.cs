@@ -15,7 +15,7 @@ namespace ProductFinder
 			string loginURL = "http://fixbuy.herokuapp.com/user_new.json?email="+email+"&password="+password+"&name="+nombre+"&last_name="+paterno+"&second_last_name="+materno+"&sex="+sexo+"&age_range="+edad;
 			WebRequest request = WebRequest.Create(loginURL);
 			request.Method = "POST";
-
+			System.Net.ServicePointManager.Expect100Continue = false;
 			string postData = "Esta es la peticion al servicio de autenticacion";
 			byte[] byteArray = Encoding.UTF8.GetBytes (postData);
 			// Set the ContentType property of the WebRequest.
@@ -43,9 +43,9 @@ namespace ProductFinder
 			// Clean up the streams.
 
 			return responseFromServer;
-			//reader.Close ();
+			reader.Close ();
 			//dataStream.Close ();
-			//response.Close ();
+			response.Close ();
 		}
 	}
 }

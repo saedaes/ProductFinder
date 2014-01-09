@@ -343,7 +343,7 @@ namespace ProductFinder
 				}else if(indexPath.Row==2){
 					if (conn == 1) {
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Ups!", Message = "Esta opcion aun no sta lista pero lo estara en breve =)"
+							Title = "Ups!", Message = "Esta opcion aun no esta lista pero lo estara en breve =)"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show ();

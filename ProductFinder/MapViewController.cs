@@ -104,7 +104,7 @@ namespace ProductFinder {
 				StoresService tiendac= nearestStore(newLocation,tiendas);
 				double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.latitud),Double.Parse(tiendac.longitud)))/1000;
 				UIAlertView alert = new UIAlertView () { 
-						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
+						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion+"\n"+"Distancia: " + Math.Round(distancia,2) +"km"
 				};
 				alert.AddButton("Aceptar");
 				alert.Show ();
