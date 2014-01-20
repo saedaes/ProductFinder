@@ -13,19 +13,31 @@ namespace ProductFinder
 	partial class MyListsView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnCancel { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnNewList { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UITextField cmpLista { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView headerView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView modalView { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UITableView tblLists { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (tblLists != null) {
-				tblLists.Dispose ();
-				tblLists = null;
+			if (btnNewList != null) {
+				btnNewList.Dispose ();
+				btnNewList = null;
 			}
 
 			if (headerView != null) {
@@ -33,9 +45,29 @@ namespace ProductFinder
 				headerView = null;
 			}
 
-			if (btnNewList != null) {
-				btnNewList.Dispose ();
-				btnNewList = null;
+			if (tblLists != null) {
+				tblLists.Dispose ();
+				tblLists = null;
+			}
+
+			if (modalView != null) {
+				modalView.Dispose ();
+				modalView = null;
+			}
+
+			if (btnCancel != null) {
+				btnCancel.Dispose ();
+				btnCancel = null;
+			}
+
+			if (btnAceptar != null) {
+				btnAceptar.Dispose ();
+				btnAceptar = null;
+			}
+
+			if (cmpLista != null) {
+				cmpLista.Dispose ();
+				cmpLista = null;
 			}
 		}
 	}

@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="ServiciosWeb\ListsService.cs" />
     <Compile Include="ServiciosWeb\NewListService.cs" />
+    <Compile Include="ServiciosWeb\AddProductToListService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

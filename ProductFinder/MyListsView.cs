@@ -18,10 +18,11 @@ namespace ProductFinder
 		public MyListsView ()
 			: base (UserInterfaceIdiomIsPhone ? "MyListsView_iPhone" : "MyListsView_iPad", null)
 		{
+			this.Title = "Mis listas";
 		}
 
 		public override void DidReceiveMemoryWarning ()
-		{
+		{	
 			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
 			
@@ -33,27 +34,70 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			try{
 				ls = new ListsService ();
-				//ls.setUserId (ScanView.user_id.ToString ());
-				ls.setUserId ("23");
+				ls.setUserId (ScanView.user_id.ToString ());
+				//ls.setUserId ("23");
 				List<ListsService> tableItems = ls.All ();
 
 				this.tblLists.Source = new ListsTableSource (tableItems, this);
 				this.tblLists.TableHeaderView = this.headerView;
 				this.Add (tblLists);
 
+				//Configuramos la vista de popup
+				modalView.BackgroundColor = UIColor.White;
+				modalView.Layer.BorderWidth = 1.0f;
+				modalView.Layer.BorderColor = UIColor.Black.CGColor;
+				modalView.Layer.CornerRadius = 8;
+				this.Add(modalView);
+				modalView.Hidden = true;
+
 				this.btnNewList.TouchUpInside += (sender, e) => {
-					UIViewController modalViewcontroller = new UIViewController()
-					{
-						ModalTransitionStyle = UIModalTransitionStyle.CoverVertical,
-						ModalPresentationStyle = UIModalPresentationStyle.FormSheet,
-					} ;
-					this.NavigationController.PresentViewController(modalViewcontroller,true,null);
+					modalView.Hidden = false;
+				};
+
+				this.btnAceptar.TouchUpInside += (sender, e) => {
+					if(cmpLista.Text == ""){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Debes ingresar el nombre de la lista"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}else{
+						NewListService nls = new NewListService();
+						String respuesta = nls.SetListData(cmpLista.Text,ScanView.user_id.ToString());
+						if(respuesta.Equals("\"lista ya existe\"")){
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Ups :S", Message = "Ese nombre de lista ya se encuentra registrado"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+							cmpLista.Text = "";
+						}else{
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Lista creada", Message = "Tu nueva lista \""+cmpLista.Text+"\" ha sido creada =D"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+
+							tableItems = ls.All ();
+							this.tblLists.Source = new ListsTableSource (tableItems, this);
+							this.tblLists.ReloadData();
+							cmpLista.Text = "";
+							modalView.Hidden = true;
+							cmpLista.ResignFirstResponder();
+						}
+					}
+				};
+
+				this.btnCancel.TouchUpInside += (sender, e) => {
+					cmpLista.Text = "";
+					cmpLista.ResignFirstResponder();
+					modalView.Hidden = true;
 				};
 
 			} catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups :S", Message = "Aun no tienes registrada una lista, crea una nueva lista =D"
+					Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo"
 				};
 				alert.AddButton("Aceptar");
 				alert.Show ();
@@ -103,6 +147,7 @@ namespace ProductFinder
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
 			cell.DetailTextLabel.TextColor = UIColor.Gray;
+			cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 			return cell;
 		}
 

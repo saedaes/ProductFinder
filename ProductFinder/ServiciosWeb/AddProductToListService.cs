@@ -5,18 +5,17 @@ using System.Text;
 
 namespace ProductFinder
 {
-	public class NewListService
+	public class AddProductToListService
 	{
-		public NewListService ()
+		public AddProductToListService ()
 		{
 		}
-
-		public String SetListData (String name, String user_id){
-			string loginURL = "http://fixbuy.herokuapp.com/list_new.json?name="+name+"&user_id="+user_id;
+		public String SetData (String product_id, String list_id){
+			string loginURL = "http://fixbuy.herokuapp.com/add_product_list.json?product="+product_id+"&list="+list_id;
 			WebRequest request = WebRequest.Create(loginURL);
 			request.Method = "POST";
 			System.Net.ServicePointManager.Expect100Continue = false;
-			string postData = "Esta es la peticion al servicio de nueva lista";
+			string postData = "Esta es la peticion al servicio de nuevo producto en lista";
 			byte[] byteArray = Encoding.UTF8.GetBytes (postData);
 			// Set the ContentType property of the WebRequest.
 			request.ContentType = "application/x-www-form-urlencoded";
