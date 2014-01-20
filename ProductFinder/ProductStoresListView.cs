@@ -78,9 +78,9 @@ namespace ProductFinder
 
 
 				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this);
+					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, iPhoneLocationManager);
 				} else {
-					this.tblStores.Source = new StoresTableSource (tableItems, this);
+					this.tblStores.Source = new StoresTableSource (tableItems, this, iPhoneLocationManager);
 				}
 
 				ProductSearchDetailService product = tableItems.ElementAt (0);
@@ -143,27 +143,36 @@ namespace ProductFinder
 		string cellIdentifier = "TableCell";
 		ProductStoresListView controller;
 		ProductSearchDetailService ps;
-		//ProductDetailView pdView;
+		ProductDetailView pdView;
+		CLLocationManager location;
 
-		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller ) 
+		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager ) 
 		{
 			tableItems = items;
 			this.controller=controller;
+			this.location = iPhoneLocationManager;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
 		{
-			return 1;
+			return tableItems.Count;
 		}
 
 		public override int RowsInSection (UITableView tableview, int section)
 		{
-			return tableItems.Count;		   
+			return 1;	   
 		}
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 120f;
+		}
+
+		public override string TitleForHeader (UITableView tableView, int section)
+		{
+			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[section].tienda_latitud),Double.Parse(tableItems[section].tienda_longitud)))/1000;
+			String title = "Distancia: "+ Math.Round(distancia,2)+ "km";
+			return title;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -172,8 +181,8 @@ namespace ProductFinder
 
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			ps = tableItems [indexPath.Row];
+				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
+			ps = tableItems [indexPath.Section];
 
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
@@ -185,7 +194,7 @@ namespace ProductFinder
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.TextLabel.Lines = 2 ;
 			cell.DetailTextLabel.Text = "$"+ps.precio;
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (25);
+			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
 			cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
@@ -194,9 +203,10 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			//pdView = new ProductDetailView ();
-			//pdView.setProduct (tableItems [indexPath.Row]);
-			//controller.NavigationController.PushViewController (pdView, true);
+			pdView = new ProductDetailView ();
+			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
+			pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
+			controller.NavigationController.PushViewController (pdView, true);
 		}
 
 		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.
@@ -280,26 +290,35 @@ namespace ProductFinder
 		ProductStoresListView controller;
 		ProductSearchDetailService ps;
 		ProductDetailView pdView;
+		CLLocationManager location;
 
-		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller ) 
+		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager ) 
 		{
 			tableItems = items;
 			this.controller=controller;
+			this.location = iPhoneLocationManager;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
 		{
-			return 1;
+			return tableItems.Count;
 		}
 
 		public override int RowsInSection (UITableView tableview, int section)
 		{
-			return tableItems.Count;		   
+			return 1;	   
 		}
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 50f;
+		}
+
+		public override string TitleForHeader (UITableView tableView, int section)
+		{
+			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[section].tienda_latitud),Double.Parse(tableItems[section].tienda_longitud)))/1000;
+			String title = "Distancia: "+ Math.Round(distancia,2)+ "km";
+			return title;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -308,19 +327,21 @@ namespace ProductFinder
 
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			ps = tableItems [indexPath.Row];
+				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
+			ps = tableItems [indexPath.Section];
 
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
+			Console.WriteLine (""+ps.tienda_imagen);
 			UIImage imagen = UIImage.LoadFromData (data);
 
 			cell.ImageView.Image = ScaleImage (imagen, 50);
+			cell.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			cell.TextLabel.Text = ps.tienda_nombre;
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(10);
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
 			cell.TextLabel.Lines = 2 ;
-			cell.DetailTextLabel.Text = "Precio: $"+ps.precio;
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (7);
+			cell.DetailTextLabel.Text = "$"+ps.precio;
+			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (16);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
 			cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
@@ -329,9 +350,10 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			//pdView = new ProductDetailView ();
-			//pdView.setProduct (tableItems [indexPath.Row]);
-			//controller.NavigationController.PushViewController (pdView, true);
+			pdView = new ProductDetailView ();
+			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
+			pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
+			controller.NavigationController.PushViewController (pdView, true);
 		}
 
 		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.

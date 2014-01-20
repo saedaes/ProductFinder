@@ -16,7 +16,7 @@ namespace ProductFinder
 			WebRequest request = WebRequest.Create(loginURL);
 			request.Method = "POST";
 			System.Net.ServicePointManager.Expect100Continue = false;
-			string postData = "Esta es la peticion al servicio de autenticacion";
+			string postData = "Esta es la peticion al servicio de nuevo usuario";
 			byte[] byteArray = Encoding.UTF8.GetBytes (postData);
 			// Set the ContentType property of the WebRequest.
 			request.ContentType = "application/x-www-form-urlencoded";

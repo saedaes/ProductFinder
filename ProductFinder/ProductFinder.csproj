@@ -153,6 +153,12 @@
     <Compile Include="ServiciosWeb\NewUserService.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="MyListsView.cs" />
+    <Compile Include="MyListsView.designer.cs">
+      <DependentUpon>MyListsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiciosWeb\ListsService.cs" />
+    <Compile Include="ServiciosWeb\NewListService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -174,6 +180,8 @@
     <InterfaceDefinition Include="LoginView_iPad.xib" />
     <InterfaceDefinition Include="RegistryView_iPhone.xib" />
     <InterfaceDefinition Include="RegistryView_iPad.xib" />
+    <InterfaceDefinition Include="MyListsView_iPhone.xib" />
+    <InterfaceDefinition Include="MyListsView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ProductFinder2.png" />
@@ -189,6 +197,13 @@
     <BundleResource Include="Images\servicios.png" />
     <BundleResource Include="Images\noImage.jpg" />
     <BundleResource Include="Resources\noProduct.jpg" />
+    <BundleResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\checklist.png" />
+    <BundleResource Include="Resources\new_list64.png" />
+    <BundleResource Include="Images\location.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\location_iconBlue.png" />
+    <BundleResource Include="Images\list128.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

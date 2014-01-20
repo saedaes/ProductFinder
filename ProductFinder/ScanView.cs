@@ -20,11 +20,15 @@ namespace ProductFinder
 		MFMailComposeViewController mailController;
 		//Declaracion de la clase para mostrar el mensade de buscando... 
 		protected LoadingOverlay _loadPop = null;
-
+		//Lista donde se guardan los resultados de la consulta en la bd
 		List<Person> people;
+		//String donde se guarda la ruta de la bd
 		private string _pathToDatabase;
-
+		//Lista donde se encuentran los elementos del menu
 		List<String> tableItems;
+		//variable que guarda el id del usuario logeado
+		public static int user_id;
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -93,7 +97,7 @@ namespace ProductFinder
 			this.headerView.BackgroundColor = UIColor.Clear;
 			//Verificar si el dispositivo es un ipad o un iphone para cargar la tabla correspondiente a cada dispositivo
 			if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
-				this.tblOpciones.Source = new OptionsTableSourceIphone (tableItems, this);;
+				this.tblOpciones.Source = new OptionsTableSourceIphone (tableItems, this, people.Count);
 			}else {
 				this.tblOpciones.Source = new OptionsTableSource (tableItems, this,people.Count);
 			}
@@ -167,14 +171,21 @@ namespace ProductFinder
 			}
 			if (people.Count > 0) {
 				Person usuario = people.ElementAt (0);
+				ScanView.user_id = usuario.ID;
 				this.lblusuario.Text = usuario.Name + " "+usuario.LastName;
 				this.btnCerrarSesion.Hidden = false;
 			} else {
 				this.lblusuario.Text = "No has iniciado sesión";
 				this.btnCerrarSesion.Hidden = true;
 			}
-			this.tblOpciones.Source = new OptionsTableSource (tableItems, this,people.Count);
-			this.tblOpciones.ReloadData ();
+			//Verificar si el dispositivo es un ipad o un iphone para cargar la tabla correspondiente a cada dispositivo
+			if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+				this.tblOpciones.Source = new OptionsTableSourceIphone (tableItems, this, people.Count);
+				this.tblOpciones.ReloadData ();
+			}else {
+				this.tblOpciones.Source = new OptionsTableSource (tableItems, this,people.Count);
+				this.tblOpciones.ReloadData ();
+			}
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate
@@ -256,7 +267,7 @@ namespace ProductFinder
 			{
 				tableItems = items;
 				this.controller=controller;
-				conn= query;
+				conn = query;
 			}
 
 			public override int NumberOfSections (UITableView tableView)
@@ -342,11 +353,9 @@ namespace ProductFinder
 					);
 				}else if(indexPath.Row==2){
 					if (conn == 1) {
-						UIAlertView alert = new UIAlertView () { 
-							Title = "Ups!", Message = "Esta opcion aun no esta lista pero lo estara en breve =)"
-						};
-						alert.AddButton("Aceptar");
-						alert.Show ();
+						MyListsView myLists = new MyListsView ();
+						this.controller.NavigationController.PushViewController (myLists, true);
+
 					} else {
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Espera!", Message = "Debes iniciar sesión para acceder a tus listas"
@@ -383,11 +392,12 @@ namespace ProductFinder
 			private SIBarcodePicker picker;
 			protected LoadingOverlay _loadPop = null;
 			MapViewController mvp;
-
-			public OptionsTableSourceIphone (List<String> items, ScanView controller ) 
+			int conn;
+			public OptionsTableSourceIphone (List<String> items, ScanView controller, int query ) 
 			{
 				tableItems = items;
 				this.controller=controller;
+				conn = query;
 			}
 
 			public override int NumberOfSections (UITableView tableView)
@@ -435,6 +445,9 @@ namespace ProductFinder
 				} else if (indexPath.Row == 4){
 					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/novedad.png"),100);
 					cell.DetailTextLabel.Text = "Entérate de lo más nuevo";
+				} else if (indexPath.Row == 5){
+					cell.ImageView.Image = ScaleImage(UIImage.FromFile("Images/servicios.png"),100);
+					cell.DetailTextLabel.Text = "Consulta nuestros servicios";
 				}
 
 				return cell;
@@ -442,40 +455,64 @@ namespace ProductFinder
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
-				if(indexPath.Row==0){
+				if (indexPath.Row == 0) {
 					// Configurar el escaner de codigo de barras.
 					picker = new ScanditSDKRotatingBarcodePicker (MainView.appKey);
-					picker.OverlayController.Delegate = new overlayControllerDelegate(picker, controller);
-					picker.OverlayController.ShowToolBar(true);
-					picker.OverlayController.ShowSearchBar(true);
-					picker.OverlayController.SetToolBarButtonCaption("Cancelar");
-					picker.OverlayController.SetSearchBarKeyboardType(UIKeyboardType.Default);
-					picker.OverlayController.SetSearchBarPlaceholderText("Búsqueda por nombre de producto");
-					picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
-					picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
+					picker.OverlayController.Delegate = new overlayControllerDelegate (picker, controller);
+					picker.OverlayController.ShowToolBar (true);
+					picker.OverlayController.ShowSearchBar (true);
+					picker.OverlayController.SetToolBarButtonCaption ("Cancelar");
+					picker.OverlayController.SetSearchBarKeyboardType (UIKeyboardType.Default);
+					picker.OverlayController.SetSearchBarPlaceholderText ("Búsqueda por nombre de producto");
+					picker.OverlayController.SetCameraSwitchVisibility (SICameraSwitchVisibility.OnTablet);
+					picker.OverlayController.SetTextForInitializingCamera ("Iniciando la camara");
 					controller.PresentViewController (picker, true, null);
 
 					picker.StartScanning ();
-				}else if(indexPath.Row==1){
+				} else if (indexPath.Row == 1) {
 					this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
-					controller.View.Add ( this._loadPop );
-					mvp =  new MapViewController();
+					controller.View.Add (this._loadPop);
+					mvp = new MapViewController ();
 					Task.Factory.StartNew (
 						() => {
-							System.Threading.Thread.Sleep ( 1 * 1000 );
+							System.Threading.Thread.Sleep (1 * 1000);
 						}
-					).ContinueWith ( 
+					).ContinueWith (
 						t => {
 							this._loadPop.Hide ();
-							controller.NavigationController.PushViewController(mvp, true);
-						}, TaskScheduler.FromCurrentSynchronizationContext()
+							controller.NavigationController.PushViewController (mvp, true);
+						}, TaskScheduler.FromCurrentSynchronizationContext ()
 					);
 				}else if(indexPath.Row==2){
-
+					if (conn == 1) {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups!", Message = "Esta opcion aun no esta lista pero lo estara en breve =)"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					} else {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Debes iniciar sesión para acceder a tus listas"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}
 				}else if(indexPath.Row==3){
+					if (conn == 1) {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Ya has iniciado sesión"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					} else {
+						LoginView login = new LoginView ();
+						controller.NavigationController.PushViewController (login, true);
+					}
+				}else if(indexPath.Row == 4){
 
-				} else if(indexPath.Row == 4){
-
+				}else if(indexPath.Row == 5){
+					AboutUsView aboutUS = new AboutUsView ();
+					controller.NavigationController.PushViewController (aboutUS, true);
 				}
 			}
 		}

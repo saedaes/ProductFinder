@@ -13,16 +13,39 @@ namespace ProductFinder
 	partial class ProductDetailView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnLista { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIImageView imgProducto { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIImageView imgTienda { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITextView lblDescripcion { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblNombre { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblPrecio { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblTiendaDireccion { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblTiendaDistancia { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblTiendaNombre { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (imgProducto != null) {
+				imgProducto.Dispose ();
+				imgProducto = null;
+			}
+
 			if (lblNombre != null) {
 				lblNombre.Dispose ();
 				lblNombre = null;
@@ -33,9 +56,34 @@ namespace ProductFinder
 				lblPrecio = null;
 			}
 
-			if (imgProducto != null) {
-				imgProducto.Dispose ();
-				imgProducto = null;
+			if (lblDescripcion != null) {
+				lblDescripcion.Dispose ();
+				lblDescripcion = null;
+			}
+
+			if (imgTienda != null) {
+				imgTienda.Dispose ();
+				imgTienda = null;
+			}
+
+			if (lblTiendaNombre != null) {
+				lblTiendaNombre.Dispose ();
+				lblTiendaNombre = null;
+			}
+
+			if (lblTiendaDireccion != null) {
+				lblTiendaDireccion.Dispose ();
+				lblTiendaDireccion = null;
+			}
+
+			if (lblTiendaDistancia != null) {
+				lblTiendaDistancia.Dispose ();
+				lblTiendaDistancia = null;
+			}
+
+			if (btnLista != null) {
+				btnLista.Dispose ();
+				btnLista = null;
 			}
 		}
 	}

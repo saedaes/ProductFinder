@@ -22,20 +22,13 @@ namespace ProductFinder
 		MonoTouch.UIKit.UITextField cmpContraseña { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UITextField cmpContraseñaIphone { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpEmail { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (cmpEmail != null) {
-				cmpEmail.Dispose ();
-				cmpEmail = null;
-			}
-
-			if (cmpContraseña != null) {
-				cmpContraseña.Dispose ();
-				cmpContraseña = null;
-			}
-
 			if (btnEntrar != null) {
 				btnEntrar.Dispose ();
 				btnEntrar = null;
@@ -44,6 +37,21 @@ namespace ProductFinder
 			if (btnRegistro != null) {
 				btnRegistro.Dispose ();
 				btnRegistro = null;
+			}
+
+			if (cmpContraseña != null) {
+				cmpContraseña.Dispose ();
+				cmpContraseña = null;
+			}
+
+			if (cmpEmail != null) {
+				cmpEmail.Dispose ();
+				cmpEmail = null;
+			}
+
+			if (cmpContraseñaIphone != null) {
+				cmpContraseñaIphone.Dispose ();
+				cmpContraseñaIphone = null;
 			}
 		}
 	}

@@ -7,9 +7,9 @@ namespace ProductFinder
 {
 	public partial class ProductDetailView : UIViewController
 	{
-		ProductSearchService pService;
-		ProductSearchService producto = null;
+		ProductSearchDetailService producto;
 		String barcode ="";
+		Double distancia;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -20,12 +20,9 @@ namespace ProductFinder
 			this.Title = "Descripcion de producto";
 		}
 
-		public void setProduct(ProductSearchService product){
+		public void setProductAndDistance(ProductSearchDetailService product, Double distance){
 			this.producto = product;
-		}
-
-		public void setProductBarCode(String barcode){
-			this.barcode = barcode;
+			this.distancia = distance;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -41,33 +38,32 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 			try{
-				pService = new ProductSearchService ();
-				if (this.producto != null) {
-					//Establecer el nombre del producto
-					this.lblNombre.Text = producto.nombre;
 
-					//Establecer el precio del producto 
-					//this.lblPrecio.Text = producto.precio;
+				NSUrl nsUrl = new NSUrl (producto.imagen);
+				NSData data = NSData.FromUrl (nsUrl);
+				this.imgProducto.Image = UIImage.LoadFromData (data);
 
-					//Establecer la imagen del producto
-					NSUrl nsUrl = new NSUrl (producto.imagen);
-					NSData data = NSData.FromUrl (nsUrl);
-					this.imgProducto.Image = UIImage.LoadFromData (data);
-				} else {
-					pService.setProductSearch (barcode);
-					ProductSearchService productob = pService.Find ();
+				//Establecemos la informacion del producto
+				this.lblNombre.Text = producto.nombre;
+				this.lblPrecio.Text = "$"+producto.precio;
+				this.lblDescripcion.Text = producto.descripcion;
 
-					//Establecer el nombre del producto
-					this.lblNombre.Text = productob.nombre;
+				//Establecemos la informacion de la tienda
+				NSUrl nsurl = new NSUrl(producto.tienda_imagen);
+				NSData data1 = NSData.FromUrl(nsurl);
+				this.imgTienda.Image = UIImage.LoadFromData(data1);
+				this.lblTiendaNombre.Text = producto.tienda_nombre;
+				this.lblTiendaDireccion.Text = producto.tienda_direccion;
+				this.lblTiendaDistancia.Text = "A "+ Math.Round(distancia,2)+"km de tu ubicación";
 
-					//Establecer el precio del producto 
-					//this.lblPrecio.Text = productob.precio;
-
-					//Establecer la imagen del producto
-					NSUrl nsUrl = new NSUrl (productob.imagen);
-					NSData data = NSData.FromUrl (nsUrl);
-					this.imgProducto.Image = UIImage.LoadFromData (data);
-				}
+				this.btnLista.TouchUpInside += (sender, e) => {
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Añadir a mi lista", Message = "¿Deseas añadir este producto a una de tus listas?"
+					};
+					alert.AddButton("Añadir");
+					alert.AddButton ("Cancelar");
+					alert.Show();
+				};
 			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 

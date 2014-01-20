@@ -25,6 +25,12 @@ namespace ProductFinder
 		MonoTouch.UIKit.UILabel lblproduct { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel lblSectionTitle { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView sectionHeader { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITableView tblStores { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -39,6 +45,11 @@ namespace ProductFinder
 				imgProduct = null;
 			}
 
+			if (lblDescription != null) {
+				lblDescription.Dispose ();
+				lblDescription = null;
+			}
+
 			if (lblproduct != null) {
 				lblproduct.Dispose ();
 				lblproduct = null;
@@ -49,9 +60,14 @@ namespace ProductFinder
 				tblStores = null;
 			}
 
-			if (lblDescription != null) {
-				lblDescription.Dispose ();
-				lblDescription = null;
+			if (sectionHeader != null) {
+				sectionHeader.Dispose ();
+				sectionHeader = null;
+			}
+
+			if (lblSectionTitle != null) {
+				lblSectionTitle.Dispose ();
+				lblSectionTitle = null;
 			}
 		}
 	}

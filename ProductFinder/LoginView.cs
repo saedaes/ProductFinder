@@ -11,6 +11,7 @@ namespace ProductFinder
 	{
 		private string _pathToDatabase;
 		LoginService loginService = new LoginService();
+		UITextField contraseña;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -32,14 +33,23 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			this.cmpContraseña.SecureTextEntry = true;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.cmpContraseñaIphone.SecureTextEntry = true;
+			} else {
+				this.cmpContraseña.SecureTextEntry = true;
+			}
 
 			// Figure out where the SQLite database will be.
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
 			this.btnEntrar.TouchUpInside += (sender, e) => {
-				if(cmpEmail.Text == "" || cmpContraseña.Text == ""){
+				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+					contraseña = cmpContraseñaIphone;
+				} else{
+					contraseña = cmpContraseña;
+				}
+				if(cmpEmail.Text == "" || contraseña.Text == ""){
 					UIAlertView alert = new UIAlertView () { 
 						Title = "Espera!", Message = "Debes ingresar tu email y tu contraseña primero"
 					};
@@ -52,7 +62,11 @@ namespace ProductFinder
 						conn.DropTable<Person>();
 						conn.CreateTable<Person>();
 					}
-					loginService.setUserData(cmpEmail.Text,cmpContraseña.Text);
+					if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+						loginService.setUserData(cmpEmail.Text, cmpContraseñaIphone.Text);
+					}else{
+						loginService.setUserData(cmpEmail.Text,cmpContraseña.Text);
+					}
 
 					LoginService userData = loginService.Find();
 
