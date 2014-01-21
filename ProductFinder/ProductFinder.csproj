@@ -205,6 +205,7 @@
     <BundleResource Include="Resources\add.png" />
     <BundleResource Include="Resources\location_iconBlue.png" />
     <BundleResource Include="Images\list128.png" />
+    <BundleResource Include="Resources\blue-cross.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

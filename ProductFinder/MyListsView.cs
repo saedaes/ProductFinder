@@ -40,7 +40,7 @@ namespace ProductFinder
 
 				this.tblLists.Source = new ListsTableSource (tableItems, this);
 				this.tblLists.TableHeaderView = this.headerView;
-				this.Add (tblLists);
+				this.Add (this.tblLists);
 
 				//Configuramos la vista de popup
 				modalView.BackgroundColor = UIColor.White;

@@ -9,6 +9,7 @@ namespace ProductFinder
 {
 	public class ProductSearchDetailService
 	{
+		public string id { get; set;}
 		public string nombre {get;set;}
 		public string imagen {get;set;}
 		public string descripcion { get; set;}
@@ -72,6 +73,7 @@ namespace ProductFinder
 		internal static ProductSearchDetailService FromJObject(JObject jObject)
 		{
 			ProductSearchDetailService response = new ProductSearchDetailService();
+			response.id = jObject ["id"].ToString ();
 			response.nombre = jObject["name"].ToString();
 			response.descripcion = jObject ["description"].ToString ();
 			response.imagen = jObject["image_url"].ToString();
