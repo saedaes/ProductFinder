@@ -189,11 +189,13 @@ namespace ProductFinder
 		string cellIdentifier = "TableCell";
 		ProductDetailView controller;
 		ProductSearchDetailService producto;
+		int cantidad;
 		public AddToListsTableSource (List<ListsService> items, ProductDetailView controller, ProductSearchDetailService producto, int cantidad) 
 		{
 			tableItems = items;
 			this.controller = controller;
 			this.producto = producto;
+			this.cantidad = cantidad;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -237,7 +239,7 @@ namespace ProductFinder
 			alert.Clicked += (sender, e) => {
 				if(e.ButtonIndex == 0){
 					AddProductToListService addproduct = new AddProductToListService ();
-					String respuesta = addproduct.SetData (producto.id, tableItems [indexPath.Row].id);
+					String respuesta = addproduct.SetData (producto.id, tableItems [indexPath.Row].id,this.cantidad.ToString());
 					if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
 						UIAlertView alert2 = new UIAlertView () { 
 							Title = "Ups =S", Message = "Este producto ya se encuentra registrado en esta lista."

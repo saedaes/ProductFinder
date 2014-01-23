@@ -4,6 +4,10 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Threading.Tasks;
 using ScanditSDK;
+using MonoTouch.Dialog;
+using MonoTouch.CoreLocation;
+using Mono.Data.Sqlite;
+using System.IO;
 
 namespace ProductFinder
 {
@@ -15,6 +19,11 @@ namespace ProductFinder
 		protected LoadingOverlay _loadPop = null;
 
 		private SIBarcodePicker picker;
+
+		//Inicializamos la localizacion
+		CLLocationManager iPhoneLocationManager = null;
+
+		private string _pathToDatabase;
 
 		//Hay que ingresar una llave apropiada para poder utilizar el api de lectura de codigo de barras.
 		public static string appKey = "Dr/S/jHREeOG5HfGLYYyGSCzjUXMnF/g1fJlTT1PxQE";
@@ -50,8 +59,22 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			
-			// Perform any additional setup after loading the view, typically from a nib.
+
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
+
+			//Creamos la base de datos y la tabla de persona
+			using (var conn= new SQLite.SQLiteConnection(_pathToDatabase))
+			{
+				conn.CreateTable<Person>();
+			}
+
+			iPhoneLocationManager = new CLLocationManager ();
+			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
+			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
+			};
+			if (CLLocationManager.LocationServicesEnabled)
+				iPhoneLocationManager.StartUpdatingLocation ();
 
 			//Boton para entrar al menu de la aplicacion.
 			this.btnEntrar.TouchUpInside += (sender, e) => {

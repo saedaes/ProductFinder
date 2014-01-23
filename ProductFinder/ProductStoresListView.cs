@@ -168,11 +168,27 @@ namespace ProductFinder
 			return 120f;
 		}
 
-		public override string TitleForHeader (UITableView tableView, int section)
+		public override float GetHeightForHeader (UITableView tableView, int section)
 		{
+			if (section == 0) {
+				return 25f;
+			} else {
+				return 25f;
+			}
+		}
+
+		public override UIView GetViewForHeader (UITableView tableView, int section)
+		{
+			UIView header = new UIView(new RectangleF(2,2,tableView.Bounds.Width,25));
+			UIImageView image = new UIImageView(new RectangleF(5,-3,20f,20f));
+			image.Image = UIImage.FromFile ("Images/locationred.png");
+			UILabel label = new UILabel (new RectangleF (image.Bounds.Width + 5, -3, header.Bounds.Width - image.Bounds.Width - 5, 25f));
 			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[section].tienda_latitud),Double.Parse(tableItems[section].tienda_longitud)))/1000;
-			String title = "Distancia: "+ Math.Round(distancia,2)+ "km";
-			return title;
+			label.Text = " "+ Math.Round(distancia,2)+ "km";
+			label.Font = UIFont.SystemFontOfSize (17);
+			header.AddSubview (image);
+			header.AddSubview (label);
+			return header;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -314,11 +330,27 @@ namespace ProductFinder
 			return 50f;
 		}
 
-		public override string TitleForHeader (UITableView tableView, int section)
+		public override float GetHeightForHeader (UITableView tableView, int section)
 		{
+			if (section == 0) {
+				return 15f;
+			} else {
+				return 15f;
+			}
+		}
+
+		public override UIView GetViewForHeader (UITableView tableView, int section)
+		{
+			UIView header = new UIView(new RectangleF(2,2,tableView.Bounds.Width,18));
+			UIImageView image = new UIImageView(new RectangleF(5,-3,10f,10f));
+			image.Image = UIImage.FromFile ("Images/locationred.png");
+			UILabel label = new UILabel (new RectangleF (image.Bounds.Width + 5, -3, header.Bounds.Width - image.Bounds.Width - 5, 15f));
 			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[section].tienda_latitud),Double.Parse(tableItems[section].tienda_longitud)))/1000;
-			String title = "Distancia: "+ Math.Round(distancia,2)+ "km";
-			return title;
+			label.Text = " "+ Math.Round(distancia,2)+ "km";
+			label.Font = UIFont.SystemFontOfSize (10);
+			header.AddSubview (image);
+			header.AddSubview (label);
+			return header;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)

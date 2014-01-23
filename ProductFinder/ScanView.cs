@@ -55,7 +55,7 @@ namespace ProductFinder
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
-			//Creamos la base de datos y la tabla de persona
+			//Creamos la base de datos y la tabla de persona, en caso de que ya exista no hace nada.
 			using (var conn= new SQLite.SQLiteConnection(_pathToDatabase))
 			{
 				conn.CreateTable<Person>();
