@@ -34,7 +34,7 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			try{
 				ls = new ListsService ();
-				ls.setUserId (ScanView.user_id.ToString ());
+				ls.setUserId (MainView.userId.ToString());
 				//ls.setUserId ("23");
 				List<ListsService> tableItems = ls.All ();
 
@@ -153,7 +153,9 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-
+			ProductsInListView pls = new ProductsInListView ();
+			pls.setListId (tableItems [indexPath.Row].id);
+			controller.NavigationController.PushViewController (pls, true);
 		}
 
 		//Metodo para redimensionar las imagenes de la lista.

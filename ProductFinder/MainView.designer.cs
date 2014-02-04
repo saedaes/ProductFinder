@@ -22,10 +22,23 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnEntrar { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnListas { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpNombre { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnBuscar != null) {
+				btnBuscar.Dispose ();
+				btnBuscar = null;
+			}
+
+			if (btnCodigo != null) {
+				btnCodigo.Dispose ();
+				btnCodigo = null;
+			}
+
 			if (btnEntrar != null) {
 				btnEntrar.Dispose ();
 				btnEntrar = null;
@@ -36,14 +49,9 @@ namespace ProductFinder
 				cmpNombre = null;
 			}
 
-			if (btnBuscar != null) {
-				btnBuscar.Dispose ();
-				btnBuscar = null;
-			}
-
-			if (btnCodigo != null) {
-				btnCodigo.Dispose ();
-				btnCodigo = null;
+			if (btnListas != null) {
+				btnListas.Dispose ();
+				btnListas = null;
 			}
 		}
 	}

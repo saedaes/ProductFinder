@@ -130,6 +130,7 @@ namespace ProductFinder
 			{
 				pdView = new ProductStoresListView();
 				pdView.setProduct (tableItems [indexPath.Row].codigo);
+				Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 				controller.NavigationController.PushViewController (pdView, true);
 			}
 		}

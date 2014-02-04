@@ -8,6 +8,8 @@ using MonoTouch.Dialog;
 using MonoTouch.CoreLocation;
 using Mono.Data.Sqlite;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProductFinder
 {
@@ -25,6 +27,10 @@ namespace ProductFinder
 
 		private string _pathToDatabase;
 
+		//Lista donde se guardan los resultados de la consulta en la bd
+		List<Person> people;
+
+		public static int userId;
 		//Hay que ingresar una llave apropiada para poder utilizar el api de lectura de codigo de barras.
 		public static string appKey = "Dr/S/jHREeOG5HfGLYYyGSCzjUXMnF/g1fJlTT1PxQE";
 
@@ -69,6 +75,16 @@ namespace ProductFinder
 				conn.CreateTable<Person>();
 			}
 
+			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+			{
+				people = new List<Person> (from p in db.Table<Person> () select p);
+			}
+
+			if(people.Count > 0){
+				Person user = people.ElementAt(0);
+				MainView.userId = user.ID;
+			}
+
 			iPhoneLocationManager = new CLLocationManager ();
 			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
 			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
@@ -80,6 +96,24 @@ namespace ProductFinder
 			this.btnEntrar.TouchUpInside += (sender, e) => {
 				scanView = new ScanView();
 				this.NavigationController.PushViewController(scanView, true);
+			};
+
+			this.btnListas.TouchUpInside += (sender, e) => {
+				using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+				{
+					people = new List<Person> (from p in db.Table<Person> () select p);
+				}
+				if(people.Count > 0){
+					Person user = people.ElementAt(0);
+					MyListsView mylists = new MyListsView();
+					this.NavigationController.PushViewController(mylists,true);
+				}else{
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "Debes iniciar sesion para acceder a tus listas"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				}
 			};
 
 			//Boton para hacer busqueda por nombre de producto
@@ -131,6 +165,13 @@ namespace ProductFinder
 		{
 			base.TouchesBegan (touches, evt);
 			this.View.EndEditing (true);
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			// Prepare the picker such that it starts up faster.
+			SIBarcodePicker.Prepare (appKey, SICameraFacingDirection.Back);
 		}
 	}
 	public class overlayControllerDelegate : SIOverlayControllerDelegate

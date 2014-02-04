@@ -1,14 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPad" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ProductStoresListView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPad.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ProductDetailView.cs">
     <Files>
-      <File FileName="ProductFinder/ProductDetailView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/Camera.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/UploadProductView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ProductStoresListView.cs" Line="170" Column="3" />
-      <File FileName="ProductFinder/MapViewController.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ScanView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MainView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ProductDetailView.cs" Line="164" Column="7" />
+      <File FileName="ProductFinder/ScanView.cs" Line="357" Column="79" />
+      <File FileName="ProductFinder/ServiciosWeb/ProductsInListService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/MyListsView.cs" Line="37" Column="45" />
+      <File FileName="ProductFinder/ServiciosWeb/AddProductToListService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ProductsInListView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/MainView.cs" Line="85" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

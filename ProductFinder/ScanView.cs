@@ -171,7 +171,7 @@ namespace ProductFinder
 			}
 			if (people.Count > 0) {
 				Person usuario = people.ElementAt (0);
-				ScanView.user_id = usuario.ID;
+				MainView.userId = usuario.ID;
 				this.lblusuario.Text = usuario.Name + " "+usuario.LastName;
 				this.btnCerrarSesion.Hidden = false;
 			} else {
@@ -355,7 +355,6 @@ namespace ProductFinder
 					if (conn == 1) {
 						MyListsView myLists = new MyListsView ();
 						this.controller.NavigationController.PushViewController (myLists, true);
-
 					} else {
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Espera!", Message = "Debes iniciar sesión para acceder a tus listas"

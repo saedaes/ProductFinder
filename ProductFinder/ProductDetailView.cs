@@ -8,7 +8,7 @@ using MonoTouch.CoreGraphics;
 using Mono.Data.Sqlite;
 using System.IO;
 using System.Net;
-
+using System.Globalization;
 namespace ProductFinder
 {
 	public partial class ProductDetailView : UIViewController
@@ -28,7 +28,7 @@ namespace ProductFinder
 		public ProductDetailView ()
 			: base (UserInterfaceIdiomIsPhone ? "ProductDetailView_iPhone" : "ProductDetailView_iPad", null)
 		{
-			this.Title = "Descripcion de producto";
+			this.Title = "Descripcion";
 		}
 
 		public void setProductAndDistance(ProductSearchDetailService product, Double distance){
@@ -64,7 +64,7 @@ namespace ProductFinder
 
 				//Establecemos la informacion del producto
 				this.lblNombre.Text = producto.nombre;
-				this.lblPrecio.Text = "$"+producto.precio;
+				this.lblPrecio.Text = "$"+producto.precio.ToString("#,#", CultureInfo.InvariantCulture);
 				this.lblDescripcion.Text = producto.descripcion;
 				this.lblDescripcion.Font = UIFont.SystemFontOfSize(25);
 				//Establecemos la informacion de la tienda
@@ -111,6 +111,26 @@ namespace ProductFinder
 					}
 				};
 
+				int cantidad = 0;
+				btnMas.TouchUpInside += (sender, e) => {
+					cantidad ++;
+					this.cmpCantidad.Text = cantidad.ToString();
+				};
+
+				btnMenos.TouchUpInside += (sender, e) => {
+					cantidad --;
+					if(cantidad < 0){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "La cantidad minima es 1"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show();
+						this.cmpCantidad.Text = "1";
+					}else{
+						this.cmpCantidad.Text = cantidad.ToString();
+					}
+				};
+
 				this.btnAceptarCantidad.TouchUpInside += (sender, e) => {
 					try{
 						if(cmpCantidad.Text.Equals("")){
@@ -149,7 +169,8 @@ namespace ProductFinder
 						};
 						alert.AddButton("Aceptar");
 						alert.Show();
-					}catch(System.Exception){
+					}catch(System.Exception ext){
+						Console.WriteLine(ext.ToString());
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Ups :S", Message = "Ocurrió un problema, inténtalo de nuevo"
 						};
@@ -161,7 +182,6 @@ namespace ProductFinder
 				btnCerrarLista.TouchUpInside += (sender, e) => {
 					ListsView.Hidden = true;
 				};
-
 			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 

@@ -22,6 +22,12 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnLista { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnMas { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnMenos { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpCantidad { get; set; }
 
 		[Outlet]
@@ -59,6 +65,11 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnAceptarCantidad != null) {
+				btnAceptarCantidad.Dispose ();
+				btnAceptarCantidad = null;
+			}
+
 			if (btnCerrarLista != null) {
 				btnCerrarLista.Dispose ();
 				btnCerrarLista = null;
@@ -67,6 +78,11 @@ namespace ProductFinder
 			if (btnLista != null) {
 				btnLista.Dispose ();
 				btnLista = null;
+			}
+
+			if (cmpCantidad != null) {
+				cmpCantidad.Dispose ();
+				cmpCantidad = null;
 			}
 
 			if (imgProducto != null) {
@@ -114,24 +130,24 @@ namespace ProductFinder
 				ListsView = null;
 			}
 
-			if (tblLists != null) {
-				tblLists.Dispose ();
-				tblLists = null;
-			}
-
 			if (QuantityView != null) {
 				QuantityView.Dispose ();
 				QuantityView = null;
 			}
 
-			if (cmpCantidad != null) {
-				cmpCantidad.Dispose ();
-				cmpCantidad = null;
+			if (tblLists != null) {
+				tblLists.Dispose ();
+				tblLists = null;
 			}
 
-			if (btnAceptarCantidad != null) {
-				btnAceptarCantidad.Dispose ();
-				btnAceptarCantidad = null;
+			if (btnMas != null) {
+				btnMas.Dispose ();
+				btnMas = null;
+			}
+
+			if (btnMenos != null) {
+				btnMenos.Dispose ();
+				btnMenos = null;
 			}
 		}
 	}

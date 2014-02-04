@@ -11,6 +11,8 @@
                 <outlet property="btnAceptarCantidad" destination="ngb-go-cei" id="LTp-ej-b9c"/>
                 <outlet property="btnCerrarLista" destination="QlQ-f0-mEy" id="EE3-H4-lkf"/>
                 <outlet property="btnLista" destination="BJo-ys-Ylj" id="uIL-bX-FHr"/>
+                <outlet property="btnMas" destination="98g-e3-ox8" id="jZo-EW-VtT"/>
+                <outlet property="btnMenos" destination="Xca-Cr-avD" id="D7k-rl-etK"/>
                 <outlet property="cmpCantidad" destination="6Yp-Te-Okh" id="kji-Q9-Df9"/>
                 <outlet property="imgProducto" destination="dDL-Aj-HQE" id="aPI-9N-oTI"/>
                 <outlet property="imgTienda" destination="fUe-G4-EOw" id="TdD-HU-eJg"/>
@@ -125,8 +127,8 @@
                     <rect key="frame" x="176" y="435" width="416" height="174"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="6Yp-Te-Okh">
-                            <rect key="frame" x="53" y="72" width="300" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="6Yp-Te-Okh">
+                            <rect key="frame" x="155" y="72" width="106" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -146,6 +148,18 @@
                             <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="98g-e3-ox8">
+                            <rect key="frame" x="269" y="60" width="31" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="50"/>
+                            <state key="normal" title="+"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xca-Cr-avD">
+                            <rect key="frame" x="122" y="60" width="25" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="50"/>
+                            <state key="normal" title="-"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>

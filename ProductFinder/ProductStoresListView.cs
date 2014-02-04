@@ -6,7 +6,7 @@ using MonoTouch.UIKit;
 using MonoTouch.CoreGraphics;
 using MonoTouch.CoreLocation;
 using System.Linq;
-
+using System.Globalization;
 namespace ProductFinder
 {
 	public partial class ProductStoresListView : UIViewController
@@ -209,7 +209,7 @@ namespace ProductFinder
 			cell.TextLabel.Text = ps.tienda_nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.TextLabel.Lines = 2 ;
-			cell.DetailTextLabel.Text = "$"+ps.precio;
+			cell.DetailTextLabel.Text = "$"+ps.precio.ToString("#,#", CultureInfo.InvariantCulture);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;

@@ -165,6 +165,8 @@
     <Compile Include="ProductsInListView.designer.cs">
       <DependentUpon>ProductsInListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiciosWeb\ProductsInListService.cs" />
+    <Compile Include="ServiciosWeb\AddProductFromBarcode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -206,6 +208,9 @@
     <BundleResource Include="Images\noImage.jpg" />
     <BundleResource Include="Images\list128.png" />
     <BundleResource Include="Images\locationred.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\blue-cross.png" />
+    <BundleResource Include="Resources\location_iconBlue.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">
