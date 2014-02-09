@@ -320,6 +320,15 @@ namespace ProductFinder
 
 				return cell;
 			}
+			
+			public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
+			{
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Espera!", Message = "=D"
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
+			}
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{

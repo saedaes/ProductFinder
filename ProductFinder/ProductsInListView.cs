@@ -142,7 +142,7 @@ namespace ProductFinder
 		List<ProductsInListService> tableItems;
 		string cellIdentifier = "TableCell";
 		ProductsInListView controller;
-
+		ProductStoresListView pdView;
 		public ProductsTableSource (List<ProductsInListService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
@@ -187,7 +187,10 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-
+			pdView = new ProductStoresListView();
+			pdView.setProduct (tableItems [indexPath.Row].codigo);
+			Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
+			controller.NavigationController.PushViewController (pdView, true);
 		}
 
 		//Metodo para redimensionar las imagenes de la lista.

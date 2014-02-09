@@ -113,17 +113,27 @@ namespace ProductFinder
 					imagen = UIImage.FromFile ("Images/noImage.jpg"); 
 				}
 
-					cell.ImageView.Image = ScaleImage (imagen, 100);
-					cell.TextLabel.Text = ps.nombre;
-					cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
-					cell.TextLabel.Lines = 2 ;
-					cell.DetailTextLabel.Text = ps.descripcion;
-					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (15);
-					cell.DetailTextLabel.TextColor = UIColor.Gray;
-					cell.DetailTextLabel.Lines = 2;
-					cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-					return cell;
+				cell.ImageView.Image = ScaleImage (imagen, 100);
+				cell.TextLabel.Text = ps.nombre;
+				cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
+				cell.TextLabel.Lines = 2 ;
+				cell.DetailTextLabel.Text = ps.descripcion;
+				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (15);
+				cell.DetailTextLabel.TextColor = UIColor.Gray;
+				cell.DetailTextLabel.Lines = 2;
+				cell.Accessory = UITableViewCellAccessory.DetailButton;
+				return cell;
 				
+			}
+
+			public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
+			{
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Añadir a tus listas", Message = "Deseas agregar este producto a una de tus listas?"
+				};
+				alert.AddButton ("SI");
+				alert.AddButton ("NO");
+				alert.Show ();
 			}
 
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)

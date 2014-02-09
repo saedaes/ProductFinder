@@ -76,7 +76,6 @@ namespace ProductFinder
 					alert.Show ();
 				};  
 
-
 				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, iPhoneLocationManager);
 				} else {
@@ -209,12 +208,28 @@ namespace ProductFinder
 			cell.TextLabel.Text = ps.tienda_nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.TextLabel.Lines = 2 ;
-			cell.DetailTextLabel.Text = "$"+ps.precio.ToString("#,#", CultureInfo.InvariantCulture);
+			double precio = Double.Parse (ps.precio);
+			cell.DetailTextLabel.Text = "$" + precio.ToString("#,#", CultureInfo.InvariantCulture);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
-			cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			cell.Accessory = UITableViewCellAccessory.DetailButton;
 			return cell;
+		}
+
+		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
+		{
+			UIAlertView alert = new UIAlertView () { 
+				Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportacion, ¿le gustaria reportar el precio de este producto para su revision?"
+			};
+			alert.AddButton("SI");
+			alert.AddButton("NO");
+			alert.Clicked += (sender, e) => {
+				if(e.ButtonIndex == 0){
+					//aqui se hara la conexion al servicio de reporte
+				}
+			};
+			alert.Show();
 		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)

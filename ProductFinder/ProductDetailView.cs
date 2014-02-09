@@ -64,7 +64,8 @@ namespace ProductFinder
 
 				//Establecemos la informacion del producto
 				this.lblNombre.Text = producto.nombre;
-				this.lblPrecio.Text = "$"+producto.precio.ToString("#,#", CultureInfo.InvariantCulture);
+				double precio = Double.Parse(producto.precio);
+				this.lblPrecio.Text = "$"+precio.ToString("#,#",CultureInfo.InvariantCulture);
 				this.lblDescripcion.Text = producto.descripcion;
 				this.lblDescripcion.Font = UIFont.SystemFontOfSize(25);
 				//Establecemos la informacion de la tienda
@@ -111,7 +112,8 @@ namespace ProductFinder
 					}
 				};
 
-				int cantidad = 0;
+				int cantidad = 1;
+				this.cmpCantidad.Text = cantidad.ToString();
 				btnMas.TouchUpInside += (sender, e) => {
 					cantidad ++;
 					this.cmpCantidad.Text = cantidad.ToString();
@@ -119,13 +121,14 @@ namespace ProductFinder
 
 				btnMenos.TouchUpInside += (sender, e) => {
 					cantidad --;
-					if(cantidad < 0){
+					if(cantidad < 1){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Espera!", Message = "La cantidad minima es 1"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show();
-						this.cmpCantidad.Text = "1";
+						cantidad = 1;
+						this.cmpCantidad.Text = cantidad.ToString();
 					}else{
 						this.cmpCantidad.Text = cantidad.ToString();
 					}
