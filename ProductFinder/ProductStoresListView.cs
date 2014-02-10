@@ -7,6 +7,7 @@ using MonoTouch.CoreGraphics;
 using MonoTouch.CoreLocation;
 using System.Linq;
 using System.Globalization;
+using System.IO;
 namespace ProductFinder
 {
 	public partial class ProductStoresListView : UIViewController
@@ -20,6 +21,11 @@ namespace ProductFinder
 		CLLocation newLocation;
 
 		UIBarButtonItem tiendaCercana;
+
+		private string _pathToDatabase;
+
+		//Lista donde se guardan los resultados de la consulta en la bd
+		List<Person> people;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -47,6 +53,14 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 			try{
+				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
+
+				using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+				{
+					people = new List<Person> (from p in db.Table<Person> () select p);
+				}
+
 				//inicializacion del manejador de localizacion.
 				iPhoneLocationManager = new CLLocationManager ();
 				//Establecer la precision del manejador de localizacion.
@@ -77,9 +91,9 @@ namespace ProductFinder
 				};  
 
 				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, iPhoneLocationManager);
+					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, iPhoneLocationManager,people.Count);
 				} else {
-					this.tblStores.Source = new StoresTableSource (tableItems, this, iPhoneLocationManager);
+					this.tblStores.Source = new StoresTableSource (tableItems, this, iPhoneLocationManager,people.Count);
 				}
 
 				ProductSearchDetailService product = tableItems.ElementAt (0);
@@ -144,12 +158,14 @@ namespace ProductFinder
 		ProductSearchDetailService ps;
 		ProductDetailView pdView;
 		CLLocationManager location;
+		int conn;
 
-		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager ) 
+		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 		{
 			tableItems = items;
 			this.controller=controller;
 			this.location = iPhoneLocationManager;
+			this.conn = conn;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -219,17 +235,39 @@ namespace ProductFinder
 
 		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
 		{
-			UIAlertView alert = new UIAlertView () { 
-				Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportacion, ¿le gustaria reportar el precio de este producto para su revision?"
-			};
-			alert.AddButton("SI");
-			alert.AddButton("NO");
-			alert.Clicked += (sender, e) => {
-				if(e.ButtonIndex == 0){
-					//aqui se hara la conexion al servicio de reporte
-				}
-			};
-			alert.Show();
+			if (conn > 0) {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportacion, ¿le gustaria reportar el precio de este producto para su revision?"
+				};
+				alert.AddButton ("SI");
+				alert.AddButton ("NO");
+				alert.Clicked += (sender, e) => {
+					if (e.ButtonIndex == 0) {
+						ReportService report = new ReportService();
+						String respuesta = report.SetData(MainView.userId.ToString(),tableItems[indexPath.Row].id,tableItems[indexPath.Row].tienda_id,tableItems[indexPath.Row].precio);
+						if (respuesta.Equals("\"correct\"")){
+							UIAlertView alert2 = new UIAlertView () { 
+								Title = "Muchas gracias!", Message = "En FixBuy estamos comprometidos con ofrecer siempre la informacion correcta, muchas gracias por tu reporte =)"
+							};
+							alert2.AddButton ("Aceptar");
+							alert2.Show ();
+						}else{
+							UIAlertView alert3 = new UIAlertView () { 
+								Title = "UPS :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+							};
+							alert3.AddButton ("Aceptar");
+							alert3.Show ();
+						}
+					}
+				};
+				alert.Show ();
+			} else {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Espera!", Message = "Debes iniciar sesión para poder reportar el precio incorrecto"
+				};
+				alert.AddButton ("Aceptar");
+				alert.Show ();
+			}
 		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
@@ -322,12 +360,14 @@ namespace ProductFinder
 		ProductSearchDetailService ps;
 		ProductDetailView pdView;
 		CLLocationManager location;
+		int conn;
 
-		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager ) 
+		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 		{
 			tableItems = items;
 			this.controller=controller;
 			this.location = iPhoneLocationManager;
+			this.conn = conn;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -401,6 +441,43 @@ namespace ProductFinder
 			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
 			pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
 			controller.NavigationController.PushViewController (pdView, true);
+		}
+
+		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
+		{
+			if (conn > 0) {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportacion, ¿le gustaria reportar el precio de este producto para su revision?"
+				};
+				alert.AddButton ("SI");
+				alert.AddButton ("NO");
+				alert.Clicked += (sender, e) => {
+					if (e.ButtonIndex == 0) {
+						ReportService report = new ReportService();
+						String respuesta = report.SetData(MainView.userId.ToString(),tableItems[indexPath.Row].id,tableItems[indexPath.Row].tienda_id,tableItems[indexPath.Row].precio);
+						if (respuesta.Equals("\"correct\"")){
+							UIAlertView alert2 = new UIAlertView () { 
+								Title = "Muchas gracias!", Message = "En FixBuy estamos comprometidos con ofrecer siempre la informacion correcta, muchas gracias por tu reporte =)"
+							};
+							alert2.AddButton ("Aceptar");
+							alert2.Show ();
+						}else{
+							UIAlertView alert3 = new UIAlertView () { 
+								Title = "UPS :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+							};
+							alert3.AddButton ("Aceptar");
+							alert3.Show ();
+						}
+					}
+				};
+				alert.Show ();
+			} else {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Espera!", Message = "Debes iniciar sesión para poder reportar el precio incorrecto"
+				};
+				alert.AddButton ("Aceptar");
+				alert.Show ();
+			}
 		}
 
 		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.

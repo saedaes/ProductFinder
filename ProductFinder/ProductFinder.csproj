@@ -168,6 +168,8 @@
     <Compile Include="ServiciosWeb\ProductsInListService.cs" />
     <Compile Include="ServiciosWeb\AddProductFromBarcode.cs" />
     <Compile Include="ServiciosWeb\CompareListsService.cs" />
+    <Compile Include="ServiciosWeb\BannersService.cs" />
+    <Compile Include="ServiciosWeb\ReportService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

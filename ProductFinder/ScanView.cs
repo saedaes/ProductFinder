@@ -11,6 +11,7 @@ using System.Linq;
 using MonoTouch.CoreGraphics;
 using MonoTouch.MessageUI;
 using Mono.Data.Sqlite;
+using System.Threading;
 namespace ProductFinder
 {
 	public partial class ScanView : UIViewController
@@ -28,8 +29,14 @@ namespace ProductFinder
 		public static int user_id;
 
 		private SIBarcodePicker picker;
+
 		MapViewController mvp;
 
+		BannersService bannersService;
+
+		BannersService element;
+
+		int x;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -213,12 +220,34 @@ namespace ProductFinder
 
 			// agregar la vista a la pantalla
 			this.View.AddSubview (toolbar);
+			//Leemos el servicio de los banners
+			this.bannersService = new BannersService ();
+			List<BannersService> banners = bannersService.All ();
 
+			NSTimer.CreateRepeatingScheduledTimer (TimeSpan.FromSeconds (5), delegate {
+				element = banners.ElementAt (x);
+				NSUrl nsurl = new NSUrl(element.imagen);
+				NSData data1 = NSData.FromUrl(nsurl);
+				bannerImage.Image = UIImage.LoadFromData (data1);
+				if(x == banners.Count-1){
+					x= 0;
+				}else{
+					x++;
+				}
+			});
+
+			UIButton button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
+			bannerImage.Add (button);
+			button.TouchUpInside += (sender, e) => {
+				NSUrl url = new NSUrl (element.link);
+				UIApplication.SharedApplication.OpenUrl (url);
+			};
 		}
 
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+			x = 0;
 			//Hacemos la conexion a la bd para buscar si hay un usuario registrado
 			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
 			{

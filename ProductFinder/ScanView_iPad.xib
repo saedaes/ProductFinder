@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanView">
             <connections>
+                <outlet property="bannerImage" destination="sGn-lg-JvV" id="YiP-Hh-OML"/>
                 <outlet property="btnCerrarSesion" destination="RXM-dU-ymg" id="EKc-Bs-XkP"/>
                 <outlet property="btnListas" destination="Qdj-Io-3Dy" id="THD-fG-Zam"/>
                 <outlet property="btnNovedades" destination="R2k-fV-Jg0" id="75y-UV-3sU"/>
@@ -13,6 +14,7 @@
                 <outlet property="btnServicios" destination="pzb-as-yyg" id="AAV-Se-TMj"/>
                 <outlet property="btnSesion" destination="de0-Pu-L2d" id="DFa-04-59L"/>
                 <outlet property="btnTiendas" destination="QrG-Uy-ksR" id="QiL-3R-FcV"/>
+                <outlet property="headerImage" destination="mLh-rN-eHJ" id="AFx-Kz-Au3"/>
                 <outlet property="lblusuario" destination="edf-Fo-z7a" id="j3A-9U-CPd"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -29,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RXM-dU-ymg">
-                    <rect key="frame" x="661" y="100" width="95" height="30"/>
+                    <rect key="frame" x="653" y="100" width="95" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Cerrar Sesión">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -119,8 +121,12 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fixBuy.png" id="mLh-rN-eHJ">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fixBuy.png" id="mLh-rN-eHJ">
                     <rect key="frame" x="187" y="140" width="397" height="117"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sGn-lg-JvV">
+                    <rect key="frame" x="12" y="812" width="744" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
