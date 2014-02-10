@@ -104,7 +104,6 @@ namespace ProductFinder
 					people = new List<Person> (from p in db.Table<Person> () select p);
 				}
 				if(people.Count > 0){
-					Person user = people.ElementAt(0);
 					MyListsView mylists = new MyListsView();
 					this.NavigationController.PushViewController(mylists,true);
 				}else{

@@ -16,13 +16,25 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnCerrarSesion { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnListas { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnNombre { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnNovedades { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnNuevoProducto { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnScan { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnServicios { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnSesion { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnTiendas { get; set; }
@@ -44,6 +56,11 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnCerrarSesion != null) {
+				btnCerrarSesion.Dispose ();
+				btnCerrarSesion = null;
+			}
+
 			if (btnNombre != null) {
 				btnNombre.Dispose ();
 				btnNombre = null;
@@ -74,6 +91,11 @@ namespace ProductFinder
 				lblTitulo = null;
 			}
 
+			if (lblusuario != null) {
+				lblusuario.Dispose ();
+				lblusuario = null;
+			}
+
 			if (scanButton != null) {
 				scanButton.Dispose ();
 				scanButton = null;
@@ -84,14 +106,24 @@ namespace ProductFinder
 				tblOpciones = null;
 			}
 
-			if (lblusuario != null) {
-				lblusuario.Dispose ();
-				lblusuario = null;
+			if (btnListas != null) {
+				btnListas.Dispose ();
+				btnListas = null;
 			}
 
-			if (btnCerrarSesion != null) {
-				btnCerrarSesion.Dispose ();
-				btnCerrarSesion = null;
+			if (btnSesion != null) {
+				btnSesion.Dispose ();
+				btnSesion = null;
+			}
+
+			if (btnNovedades != null) {
+				btnNovedades.Dispose ();
+				btnNovedades = null;
+			}
+
+			if (btnServicios != null) {
+				btnServicios.Dispose ();
+				btnServicios = null;
 			}
 		}
 	}

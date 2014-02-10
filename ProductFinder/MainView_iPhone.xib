@@ -9,6 +9,7 @@
                 <outlet property="btnBuscar" destination="0GE-9X-qDO" id="BPp-mI-SPz"/>
                 <outlet property="btnCodigo" destination="TSj-m7-Nw7" id="OAi-U2-cUd"/>
                 <outlet property="btnEntrar" destination="uvK-Rj-aes" id="Exy-Qj-9FF"/>
+                <outlet property="btnListas" destination="6lp-o2-2Jl" id="s6x-Y3-AZp"/>
                 <outlet property="cmpNombre" destination="17Q-lB-urL" id="DCP-eb-fvo"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -46,6 +47,13 @@
                     <rect key="frame" x="260" y="374" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="Barcode.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6lp-o2-2Jl">
+                    <rect key="frame" x="20" y="72" width="75" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Mis Listas">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>

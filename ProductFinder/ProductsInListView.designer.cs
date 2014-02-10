@@ -19,29 +19,44 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnCerrar { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnComparar { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnScan { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UITextField cmpAmount { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView CompareView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView headerView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITableView tblCompare { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITableView tblProducts { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnScan != null) {
-				btnScan.Dispose ();
-				btnScan = null;
-			}
-
-			if (tblProducts != null) {
-				tblProducts.Dispose ();
-				tblProducts = null;
-			}
-
 			if (amountView != null) {
 				amountView.Dispose ();
 				amountView = null;
+			}
+
+			if (btnAceptar != null) {
+				btnAceptar.Dispose ();
+				btnAceptar = null;
+			}
+
+			if (btnScan != null) {
+				btnScan.Dispose ();
+				btnScan = null;
 			}
 
 			if (cmpAmount != null) {
@@ -49,9 +64,34 @@ namespace ProductFinder
 				cmpAmount = null;
 			}
 
-			if (btnAceptar != null) {
-				btnAceptar.Dispose ();
-				btnAceptar = null;
+			if (tblProducts != null) {
+				tblProducts.Dispose ();
+				tblProducts = null;
+			}
+
+			if (CompareView != null) {
+				CompareView.Dispose ();
+				CompareView = null;
+			}
+
+			if (tblCompare != null) {
+				tblCompare.Dispose ();
+				tblCompare = null;
+			}
+
+			if (headerView != null) {
+				headerView.Dispose ();
+				headerView = null;
+			}
+
+			if (btnCerrar != null) {
+				btnCerrar.Dispose ();
+				btnCerrar = null;
+			}
+
+			if (btnComparar != null) {
+				btnComparar.Dispose ();
+				btnComparar = null;
 			}
 		}
 	}

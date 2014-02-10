@@ -11,6 +11,7 @@ using System.Linq;
 using MonoTouch.CoreGraphics;
 using MonoTouch.MessageUI;
 using Mono.Data.Sqlite;
+using System.Globalization;
 
 namespace ProductFinder
 {
@@ -19,6 +20,7 @@ namespace ProductFinder
 		String list_id = "";
 		String barcode = "";
 		private SIBarcodePicker picker;
+		CompareListsService compareListService;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -80,6 +82,11 @@ namespace ProductFinder
 			amountView.Layer.BorderWidth = 1.0f;
 			amountView.Layer.BorderColor = UIColor.Black.CGColor;
 			amountView.Layer.CornerRadius = 8;
+
+			//Configuramos la vista popup de comparacion de listas
+			CompareView.Layer.BorderWidth = 1.0f;
+			CompareView.Layer.BorderColor = UIColor.Black.CGColor;
+			CompareView.Layer.CornerRadius = 8;
 			
 			ProductsInListService pls = new ProductsInListService ();
 			pls.setListId (this.list_id);
@@ -88,6 +95,23 @@ namespace ProductFinder
 			Add (tblProducts);
 			tblProducts.Add (amountView);
 			this.amountView.Hidden = true;
+			tblProducts.Add (CompareView);
+			this.CompareView.Hidden = true;
+
+			this.btnComparar.TouchUpInside += (sender, e) => {
+				compareListService = new CompareListsService();
+				compareListService.setListId(this.list_id);
+				List<CompareListsService> tableItems2 = compareListService.All();
+				this.tblCompare.Source = new CompareTableSource(tableItems2,this);
+				tblCompare.TableHeaderView = this.headerView;
+				CompareView.Add(tblCompare);
+				this.tblCompare.ReloadData();
+				CompareView.Hidden = false;
+			};
+
+			this.btnCerrar.TouchUpInside += (sender, e) => {
+				CompareView.Hidden = true;
+			};
 
 			this.btnScan.TouchUpInside += (sender, e) => {
 				picker = new ScanditSDKRotatingBarcodePicker (MainView.appKey);
@@ -170,7 +194,7 @@ namespace ProductFinder
 
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
+				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
 			NSUrl nsurl = new NSUrl(tableItems[indexPath.Row].imagen);
 			NSData data = NSData.FromUrl(nsurl);
 			cell.ImageView.Image = ScaleImage (UIImage.LoadFromData(data), 100);
@@ -178,8 +202,8 @@ namespace ProductFinder
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.DetailTextLabel.Lines = 2;
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
-			cell.DetailTextLabel.Text = tableItems [indexPath.Row].descripcion;
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
+			cell.DetailTextLabel.Text = tableItems [indexPath.Row].cantidad + " pzas";
+			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.DetailTextLabel.TextColor = UIColor.Gray;
 			cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
 			return cell;
@@ -191,6 +215,131 @@ namespace ProductFinder
 			pdView.setProduct (tableItems [indexPath.Row].codigo);
 			Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 			controller.NavigationController.PushViewController (pdView, true);
+		}
+
+		//Metodo para redimensionar las imagenes de la lista.
+		public static UIImage ScaleImage(UIImage image, int maxSize)
+		{
+
+			UIImage res;
+
+			using (CGImage imageRef = image.CGImage)
+			{
+				CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
+				CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
+				if (alphaInfo == CGImageAlphaInfo.None)
+				{
+					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
+				}
+
+				int width, height;
+
+				width = imageRef.Width;
+				height = imageRef.Height;
+
+
+				if (height >= width)
+				{
+					width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
+					height = maxSize;
+				}
+				else
+				{
+					height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
+					width = maxSize;
+				}
+
+
+				CGBitmapContext bitmap;
+
+				if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
+				{
+					bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
+				}
+				else
+				{
+					bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
+				}
+
+				switch (image.Orientation)
+				{
+				case UIImageOrientation.Left:
+					bitmap.RotateCTM((float)Math.PI / 2);
+					bitmap.TranslateCTM(0, -height);
+					break;
+				case UIImageOrientation.Right:
+					bitmap.RotateCTM(-((float)Math.PI / 2));
+					bitmap.TranslateCTM(-width, 0);
+					break;
+				case UIImageOrientation.Up:
+					break;
+				case UIImageOrientation.Down:
+					bitmap.TranslateCTM(width, height);
+					bitmap.RotateCTM(-(float)Math.PI);
+					break;
+				}
+
+				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+
+
+				res = UIImage.FromImage(bitmap.ToImage());
+				bitmap = null;
+
+			}
+
+			return res;
+		}	
+	}
+
+	//Table source para comparacion de lista ipad
+	class CompareTableSource : UITableViewSource 
+	{
+		List<CompareListsService> tableItems;
+		string cellIdentifier = "TableCell";
+		ProductsInListView controller;
+
+		public CompareTableSource (List<CompareListsService> items, ProductsInListView controller) 
+		{
+			tableItems = items;
+			this.controller = controller;
+		}
+
+		public override int NumberOfSections (UITableView tableView)
+		{
+			return 1;
+		}
+
+		public override int RowsInSection (UITableView tableview, int section)
+		{
+			return tableItems.Count;		   
+		}
+
+		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+		{
+			return 80f;
+		}
+
+		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		{
+			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+
+			// if there are no cells to reuse, create a new one
+			if (cell == null)
+				cell = new UITableViewCell (UITableViewCellStyle.Value1 , cellIdentifier);
+			NSUrl nsurl = new NSUrl(tableItems[indexPath.Row].imagen);
+			NSData data = NSData.FromUrl(nsurl);
+			cell.ImageView.Image = ScaleImage (UIImage.LoadFromData(data), 60);
+			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
+			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
+			cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
+			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
+			cell.DetailTextLabel.TextColor = UIColor.Gray;
+			return cell;
+		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
 		}
 
 		//Metodo para redimensionar las imagenes de la lista.

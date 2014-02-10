@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="ServiciosWeb\ProductsInListService.cs" />
     <Compile Include="ServiciosWeb\AddProductFromBarcode.cs" />
+    <Compile Include="ServiciosWeb\CompareListsService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -211,6 +212,13 @@
     <BundleResource Include="Resources\add.png" />
     <BundleResource Include="Resources\blue-cross.png" />
     <BundleResource Include="Resources\location_iconBlue.png" />
+    <BundleResource Include="Resources\buscar.png" />
+    <BundleResource Include="Resources\lista.png" />
+    <BundleResource Include="Resources\mapa1.png" />
+    <BundleResource Include="Resources\noticias.png" />
+    <BundleResource Include="Resources\servicios.png" />
+    <BundleResource Include="Resources\sesion.png" />
+    <BundleResource Include="Resources\fixBuy.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

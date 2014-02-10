@@ -15,6 +15,7 @@ namespace ProductFinder
 		public string descripcion { get; set;}
 		public string list_id { get; set;}
 		public string codigo { get; set;}
+		public string cantidad { get; set;}
 
 		string resultURL = "";
 
@@ -69,6 +70,7 @@ namespace ProductFinder
 			response.imagen = jObject["image_url"].ToString();
 			response.list_id = jObject ["list_id"].ToString ();
 			response.codigo = jObject ["bar_code"].ToString ();
+			response.cantidad = jObject ["product_amount"].ToString ();
 
 			return response;
 		}
