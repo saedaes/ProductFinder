@@ -83,6 +83,7 @@ namespace ProductFinder
 			if(people.Count > 0){
 				Person user = people.ElementAt(0);
 				MainView.userId = user.ID;
+				Console.WriteLine ("El Id de usuario es: "+ user.ID);
 			}
 
 			iPhoneLocationManager = new CLLocationManager ();

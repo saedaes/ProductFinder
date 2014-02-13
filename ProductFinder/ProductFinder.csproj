@@ -221,6 +221,8 @@
     <BundleResource Include="Resources\servicios.png" />
     <BundleResource Include="Resources\sesion.png" />
     <BundleResource Include="Resources\fixBuy.png" />
+    <BundleResource Include="Resources\checklist.png" />
+    <BundleResource Include="Resources\new_list64.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

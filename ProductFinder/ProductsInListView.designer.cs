@@ -19,10 +19,19 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnCancelar { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnCerrar { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnComparar { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnMas { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnMenos { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnScan { get; set; }
@@ -54,34 +63,9 @@ namespace ProductFinder
 				btnAceptar = null;
 			}
 
-			if (btnScan != null) {
-				btnScan.Dispose ();
-				btnScan = null;
-			}
-
-			if (cmpAmount != null) {
-				cmpAmount.Dispose ();
-				cmpAmount = null;
-			}
-
-			if (tblProducts != null) {
-				tblProducts.Dispose ();
-				tblProducts = null;
-			}
-
-			if (CompareView != null) {
-				CompareView.Dispose ();
-				CompareView = null;
-			}
-
-			if (tblCompare != null) {
-				tblCompare.Dispose ();
-				tblCompare = null;
-			}
-
-			if (headerView != null) {
-				headerView.Dispose ();
-				headerView = null;
+			if (btnCancelar != null) {
+				btnCancelar.Dispose ();
+				btnCancelar = null;
 			}
 
 			if (btnCerrar != null) {
@@ -92,6 +76,46 @@ namespace ProductFinder
 			if (btnComparar != null) {
 				btnComparar.Dispose ();
 				btnComparar = null;
+			}
+
+			if (btnScan != null) {
+				btnScan.Dispose ();
+				btnScan = null;
+			}
+
+			if (cmpAmount != null) {
+				cmpAmount.Dispose ();
+				cmpAmount = null;
+			}
+
+			if (CompareView != null) {
+				CompareView.Dispose ();
+				CompareView = null;
+			}
+
+			if (headerView != null) {
+				headerView.Dispose ();
+				headerView = null;
+			}
+
+			if (tblCompare != null) {
+				tblCompare.Dispose ();
+				tblCompare = null;
+			}
+
+			if (tblProducts != null) {
+				tblProducts.Dispose ();
+				tblProducts = null;
+			}
+
+			if (btnMas != null) {
+				btnMas.Dispose ();
+				btnMas = null;
+			}
+
+			if (btnMenos != null) {
+				btnMenos.Dispose ();
+				btnMenos = null;
 			}
 		}
 	}

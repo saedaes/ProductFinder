@@ -229,6 +229,7 @@ namespace ProductFinder
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
+			cell.DetailTextLabel.TextAlignment = UITextAlignment.Left;
 			cell.Accessory = UITableViewCellAccessory.DetailButton;
 			return cell;
 		}

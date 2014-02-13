@@ -17,10 +17,13 @@ namespace ProductFinder
 {
 	public partial class ProductsInListView : UIViewController
 	{
-		String list_id = "";
-		String barcode = "";
+		public static string list_id = "";
+		public static string barcode = "";
 		private SIBarcodePicker picker;
 		CompareListsService compareListService;
+		ProductsInListService pls = new ProductsInListService ();
+		List<ProductsInListService> tableItems;
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -31,39 +34,11 @@ namespace ProductFinder
 		}
 
 		public void setListId(String id){
-			list_id = id;
+			ProductsInListView.list_id = id;
 		}
 
 		public void setBarcode(String bar_code){
-			this.barcode = bar_code;
-			AddProductFromBarcode apfb = new AddProductFromBarcode ();
-			String respuesta = apfb.SetData (barcode, list_id, "1");
-			Console.WriteLine (respuesta);
-			if (respuesta.Equals ("El producto ya existe en esta lista")) {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups :S", Message = "Este producto ya se encuentra registrado en tu lista"
-				};
-				alert.AddButton ("Aceptar");
-				alert.Show ();
-			} else if (respuesta.Equals ("El producto no existe")) {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups :S", Message = "Este producto no esta registrado en fixbuy =("
-				};
-				alert.AddButton ("Aceptar");
-				alert.Show ();
-			} else {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Producto Agregado", Message = "El producto ha sido agregado a tu lista =D"
-				};
-				alert.AddButton("Aceptar");
-				alert.Show ();
-
-				//ProductsInListService pls = new ProductsInListService ();
-				//pls.setListId (this.list_id);
-				//List<ProductsInListService> tableItems = pls.All ();
-				//this.tblProducts.Source = new ProductsTableSource (tableItems, this);
-				//tblProducts.ReloadData ();
-			}
+			ProductsInListView.barcode = bar_code;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -87,10 +62,9 @@ namespace ProductFinder
 			CompareView.Layer.BorderWidth = 1.0f;
 			CompareView.Layer.BorderColor = UIColor.Black.CGColor;
 			CompareView.Layer.CornerRadius = 8;
-			
-			ProductsInListService pls = new ProductsInListService ();
-			pls.setListId (this.list_id);
-			List<ProductsInListService> tableItems = pls.All ();
+
+			pls.setListId (ProductsInListView.list_id);
+			tableItems = pls.All ();
 			this.tblProducts.Source = new ProductsTableSource (tableItems, this);
 			Add (tblProducts);
 			tblProducts.Add (amountView);
@@ -100,7 +74,7 @@ namespace ProductFinder
 
 			this.btnComparar.TouchUpInside += (sender, e) => {
 				compareListService = new CompareListsService();
-				compareListService.setListId(this.list_id);
+				compareListService.setListId(ProductsInListView.list_id);
 				List<CompareListsService> tableItems2 = compareListService.All();
 				this.tblCompare.Source = new CompareTableSource(tableItems2,this);
 				tblCompare.TableHeaderView = this.headerView;
@@ -120,15 +94,84 @@ namespace ProductFinder
 				picker.OverlayController.SetToolBarButtonCaption("Cancelar");
 				picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
 				picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
-				this.NavigationController.PresentViewController (picker, true, null);
+				this.NavigationController.PushViewController(picker,true);
 
 				picker.StartScanning ();
 
 			};
 
 			this.btnAceptar.TouchUpInside += (sender, e) => {
-				this.amountView.Hidden = true;
+				AddProductFromBarcode apfb = new AddProductFromBarcode ();
+				String respuesta = apfb.SetData ( ProductsInListView.barcode, ProductsInListView.list_id, cmpAmount.Text);
+				Console.WriteLine (respuesta);
+				if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups :S", Message = "Este producto ya se encuentra registrado en tu lista"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				} else if (respuesta.Equals ("\"El producto no existe\"")) {
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups :S", Message = "Este producto no esta registrado en fixbuy =("
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				} else {
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Producto Agregado", Message = "El producto ha sido agregado a tu lista =D"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
+					pls.setListId (ProductsInListView.list_id);
+					tableItems = pls.All ();
+					this.tblProducts.Source = new ProductsTableSource (tableItems, this);
+					tblProducts.ReloadData ();
+					this.amountView.Hidden = true;
+					pickerControllerDelegate.scanned = false;
+				}
 			};
+
+			this.btnCancelar.TouchUpInside += (sender, e) => {
+				this.amountView.Hidden = true;
+				pickerControllerDelegate.scanned = false;
+			};
+
+			int cantidad = 1;
+			this.cmpAmount.Text = cantidad.ToString ();
+			btnMas.TouchUpInside += (sender, e) => {
+				cantidad ++;
+				this.cmpAmount.Text = cantidad.ToString();
+			};
+
+			btnMenos.TouchUpInside += (sender, e) => {
+				cantidad --;
+				if(cantidad < 1){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "La cantidad minima es 1"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show();
+					cantidad = 1;
+					this.cmpAmount.Text = cantidad.ToString();
+				}else{
+					this.cmpAmount.Text = cantidad.ToString();
+				}
+			};
+
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			if (pickerControllerDelegate.scanned == true) {
+				this.amountView.Hidden = false;
+			}
+		}
+
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			pickerControllerDelegate.scanned = false;
 		}
 
 	}
@@ -138,7 +181,7 @@ namespace ProductFinder
 		private SIBarcodePicker picker;
 		private UIViewController presentingViewController;
 		ProductsInListView pdl;
-
+		public static bool scanned = false;
 		public pickerControllerDelegate(SIBarcodePicker picker, UIViewController presentingViewController) {
 			this.picker = picker;
 			this.presentingViewController = presentingViewController;
@@ -148,14 +191,16 @@ namespace ProductFinder
 			picker.StopScanning ();
 			pdl = new ProductsInListView();
 			pdl.setBarcode(barcode["barcode"].ToString());
-			presentingViewController.DismissViewController (true, null);
+			pickerControllerDelegate.scanned = true;
+			presentingViewController.NavigationController.PopViewControllerAnimated (true);
 		}
 
 		public override void DidCancel (SIOverlayController overlayController, NSDictionary status) {
-			presentingViewController.DismissViewController (true, null);
+			presentingViewController.NavigationController.PopViewControllerAnimated (true);
 		}
 
-		public override void DidManualSearch (SIOverlayController overlayController, string text) {
+		public override void DidManualSearch (SIOverlayController overlayController, string text)
+		{
 
 		}
 	}

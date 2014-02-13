@@ -1,9 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4_64.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/MainView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ProductStoresListView.cs">
     <Files>
-      <File FileName="ProductFinder/ScanView.cs" Line="13" Column="24" />
-      <File FileName="ProductFinder/ProductStoresListView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ScanView.cs" Line="244" Column="10" />
+      <File FileName="ProductFinder/ProductStoresListView.cs" Line="232" Column="62" />
       <File FileName="ProductFinder/MainView.cs" Line="101" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

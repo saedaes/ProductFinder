@@ -37,6 +37,11 @@ namespace ProductFinder
 		BannersService element;
 
 		int x;
+
+		NSTimer timer;
+
+		List<BannersService> banners;
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -222,19 +227,7 @@ namespace ProductFinder
 			this.View.AddSubview (toolbar);
 			//Leemos el servicio de los banners
 			this.bannersService = new BannersService ();
-			List<BannersService> banners = bannersService.All ();
-
-			NSTimer.CreateRepeatingScheduledTimer (TimeSpan.FromSeconds (5), delegate {
-				element = banners.ElementAt (x);
-				NSUrl nsurl = new NSUrl(element.imagen);
-				NSData data1 = NSData.FromUrl(nsurl);
-				bannerImage.Image = UIImage.LoadFromData (data1);
-				if(x == banners.Count-1){
-					x= 0;
-				}else{
-					x++;
-				}
-			});
+			banners = bannersService.All ();
 
 			UIButton button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
 			bannerImage.Add (button);
@@ -247,7 +240,25 @@ namespace ProductFinder
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
+
 			x = 0;
+
+			timer = NSTimer.CreateRepeatingScheduledTimer (TimeSpan.FromSeconds (5), delegate {
+				if (banners.Count > 0){
+					element = banners.ElementAt (x);
+					NSUrl nsurl = new NSUrl(element.imagen);
+					NSData data1 = NSData.FromUrl(nsurl);
+					bannerImage.Image = UIImage.LoadFromData (data1);
+					if(x == banners.Count-1){
+						x= 0;
+					}else{
+						x++;
+					}
+				}else{
+					bannerImage.Hidden = true;
+				}
+			});
+
 			//Hacemos la conexion a la bd para buscar si hay un usuario registrado
 			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
 			{
@@ -262,6 +273,13 @@ namespace ProductFinder
 				this.lblusuario.Text = "No has iniciado sesión";
 				this.btnCerrarSesion.Hidden = true;
 			}
+		}
+
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			timer.Invalidate ();
+			timer = null;
 		}
 
 		public class overlayControllerDelegate : SIOverlayControllerDelegate

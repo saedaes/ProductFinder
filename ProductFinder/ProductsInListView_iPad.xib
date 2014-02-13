@@ -9,13 +9,16 @@
                 <outlet property="CompareView" destination="dfH-9x-Fkt" id="ISy-Lq-Cj8"/>
                 <outlet property="amountView" destination="Alp-ym-L3Z" id="jSO-93-0mG"/>
                 <outlet property="btnAceptar" destination="z6O-sg-rG0" id="Sfs-eM-0Ic"/>
+                <outlet property="btnCancelar" destination="U40-Jt-vDO" id="73n-Ag-6jY"/>
                 <outlet property="btnCerrar" destination="n2P-qu-Ema" id="3eV-85-Mob"/>
                 <outlet property="btnComparar" destination="GUE-in-4Af" id="wmz-46-5Xb"/>
+                <outlet property="btnMas" destination="oot-hx-Sp8" id="mZc-mX-fvZ"/>
+                <outlet property="btnMenos" destination="zPv-Pb-nOV" id="aVP-75-yTN"/>
                 <outlet property="btnScan" destination="M6K-Km-o8A" id="OFG-OM-qFv"/>
                 <outlet property="cmpAmount" destination="w6H-ag-T0U" id="Hyh-Y9-xiR"/>
                 <outlet property="headerView" destination="G0x-1l-aVQ" id="pdj-yV-PUh"/>
                 <outlet property="tblCompare" destination="fxv-Q3-yXe" id="Edb-60-sNi"/>
-                <outlet property="tblProducts" destination="xXS-jk-0dP" id="h6b-gs-lFm"/>
+                <outlet property="tblProducts" destination="xXS-jk-0dP" id="gbu-yf-rg4"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -80,16 +83,23 @@
                     <rect key="frame" x="164" y="423" width="443" height="148"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="w6H-ag-T0U">
+                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="w6H-ag-T0U">
                             <rect key="frame" x="108" y="54" width="226" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z6O-sg-rG0">
-                            <rect key="frame" x="191" y="92" width="61" height="30"/>
+                            <rect key="frame" x="108" y="92" width="61" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Aceptar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U40-Jt-vDO">
+                            <rect key="frame" x="273" y="92" width="61" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Cancelar">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
