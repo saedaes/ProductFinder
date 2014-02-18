@@ -182,7 +182,11 @@ namespace ProductFinder
 
 			// boton acerca de
 			UIBarButtonItem btnacercaDe = new UIBarButtonItem (UIBarButtonSystemItem.Bookmarks);
-			btnacercaDe.Clicked += (s, e) => { new UIAlertView ("FIX BUY", "Informacion sobre la aplicacion o la empresa de la misma.", null, "Aceptar", null).Show (); };
+			btnacercaDe.Clicked += (s, e) => { new UIAlertView ("Términos y Condiciones", "Este sitio web ofrece servicios para sus usuarios y clientes. Tales servicios corresponden al almacenamiento de listas y comparación de precios de productos como a su vez la localización de tiendas, entre otros." +"\n"+
+				"Al momento de registrarse y utilizar este sitio web usted acepta atenerse a nuestros términos y condiciones, por lo que es necesario que se lea atentamente los mismos a continuación:" + "\n"+
+				"Fixbuy se compromete a realizar un cuidadoso manejo de la información del cliente, velando por la confidencialidad de todos los datos suministrados."+"\n"+
+				"Se espera que el usuario haga un uso responsable del sitio web y no altere de ninguna manera el contenido de esta para un uso indebido." + "\n"+
+				"A su vez la empresa (Tienda Comercial) se comprometa a proporcionar datos correctos y actualizados acerca de sus precios y ofertas. Y a su vez respetar dicha información por el periodo de tiempo que esta establezca.", null, "Aceptar", null).Show (); };
 			// fixed width
 			//UIBarButtonItem fixedWidth = new UIBarButtonItem (UIBarButtonSystemItem.FixedSpace);
 			//fixedWidth.Width = 35;
@@ -225,15 +229,27 @@ namespace ProductFinder
 
 			// agregar la vista a la pantalla
 			this.View.AddSubview (toolbar);
-			//Leemos el servicio de los banners
-			this.bannersService = new BannersService ();
-			banners = bannersService.All ();
+			try{
+				//Leemos el servicio de los banners
+				this.bannersService = new BannersService ();
+				banners = bannersService.All ();
+			} catch (System.Net.WebException){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "UPS :S", Message = "Hubo un error al conectarse a internet la seccion de banners no puede mostrarse, por favor verifica tu conexión a internet"
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
+			}
 
 			UIButton button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
 			bannerImage.Add (button);
 			button.TouchUpInside += (sender, e) => {
-				NSUrl url = new NSUrl (element.link);
-				UIApplication.SharedApplication.OpenUrl (url);
+				if(element != null){
+					if(element.link != null){
+						NSUrl url = new NSUrl (element.link);
+						UIApplication.SharedApplication.OpenUrl (url);
+					}
+				}
 			};
 		}
 
@@ -244,18 +260,24 @@ namespace ProductFinder
 			x = 0;
 
 			timer = NSTimer.CreateRepeatingScheduledTimer (TimeSpan.FromSeconds (5), delegate {
-				if (banners.Count > 0){
-					element = banners.ElementAt (x);
-					NSUrl nsurl = new NSUrl(element.imagen);
-					NSData data1 = NSData.FromUrl(nsurl);
-					bannerImage.Image = UIImage.LoadFromData (data1);
-					if(x == banners.Count-1){
-						x= 0;
+				try{
+					if (banners.Count > 0){
+						element = banners.ElementAt (x);
+						NSUrl nsurl = new NSUrl(element.imagen);
+						NSData data1 = NSData.FromUrl(nsurl);
+						bannerImage.Image = UIImage.LoadFromData (data1);
+						if(x == banners.Count-1){
+							x= 0;
+						}else{
+							x++;
+						}
 					}else{
-						x++;
+						bannerImage.Hidden = true;
 					}
-				}else{
-					bannerImage.Hidden = true;
+				} catch (System.NullReferenceException){
+					timer.Invalidate ();
+				} catch (System.ArgumentNullException){
+					timer.Invalidate();
 				}
 			});
 
@@ -339,7 +361,7 @@ namespace ProductFinder
 				).ContinueWith ( 
 					t => {
 						nsrView = new NameSearchResultView();
-						nsrView.setProductName (text);
+						nsrView.setProductName (text.Trim());
 						presentingViewController.NavigationController.PushViewController (nsrView, true);
 						this._loadPop.Hide ();
 					}, TaskScheduler.FromCurrentSynchronizationContext()

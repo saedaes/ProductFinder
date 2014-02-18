@@ -170,6 +170,8 @@
     <Compile Include="ServiciosWeb\CompareListsService.cs" />
     <Compile Include="ServiciosWeb\BannersService.cs" />
     <Compile Include="ServiciosWeb\ReportService.cs" />
+    <Compile Include="ServiciosWeb\DestroyService.cs" />
+    <Compile Include="SecondMapViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -223,6 +225,10 @@
     <BundleResource Include="Resources\fixBuy.png" />
     <BundleResource Include="Resources\checklist.png" />
     <BundleResource Include="Resources\new_list64.png" />
+    <BundleResource Include="Images\trash48.png" />
+    <BundleResource Include="Images\trash24.png" />
+    <BundleResource Include="Images\add_to_list24.png" />
+    <BundleResource Include="Images\add_to_list48.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

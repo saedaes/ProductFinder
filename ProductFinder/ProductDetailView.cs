@@ -49,6 +49,15 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 			try{
+
+				this.btnMapa.SetBackgroundImage(UIImage.FromFile("Images/locationred.png"),UIControlState.Normal);
+
+				this.btnMapa.TouchUpInside += (sender, e) => {
+					SecondMapViewController mapView = new SecondMapViewController();
+					mapView.setTienda(this.producto);
+					NavigationController.PushViewController(mapView,true);
+				};
+
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
@@ -60,7 +69,12 @@ namespace ProductFinder
 
 				NSUrl nsUrl = new NSUrl (producto.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
-				this.imgProducto.Image = UIImage.LoadFromData (data);
+				if(data!= null){
+					this.imgProducto.Image = UIImage.LoadFromData (data);
+				}else{
+					this.imgProducto.Image = UIImage.FromFile("Images/noImage.jpg");
+				}
+
 
 				//Establecemos la informacion del producto
 				this.lblNombre.Text = producto.nombre;
@@ -71,7 +85,11 @@ namespace ProductFinder
 				//Establecemos la informacion de la tienda
 				NSUrl nsurl = new NSUrl(producto.tienda_imagen);
 				NSData data1 = NSData.FromUrl(nsurl);
-				this.imgTienda.Image = UIImage.LoadFromData(data1);
+				if(data1 != null){
+					this.imgTienda.Image = UIImage.LoadFromData(data1);
+				}else{
+					this.imgTienda.Image = UIImage.FromFile("Images/noImage.jpg");
+				}
 				this.lblTiendaNombre.Text = producto.tienda_nombre;
 				this.lblTiendaDireccion.Text = producto.tienda_direccion;
 				this.lblTiendaDistancia.Text = "A "+ Math.Round(distancia,2)+"km de tu ubicación";
@@ -147,7 +165,6 @@ namespace ProductFinder
 							cmpCantidad.ResignFirstResponder();
 							QuantityView.Hidden = true;
 							ListsView.BackgroundColor = UIColor.GroupTableViewBackgroundColor;
-							QuantityView.Hidden = true;
 							ls = new ListsService();
 							Person persona = people.ElementAt(0);
 							ls.setUserId (persona.ID.ToString());

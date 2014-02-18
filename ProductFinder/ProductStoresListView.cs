@@ -99,8 +99,11 @@ namespace ProductFinder
 				ProductSearchDetailService product = tableItems.ElementAt (0);
 				NSUrl nsUrl = new NSUrl (product.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
-				this.imgProduct.Image = UIImage.LoadFromData (data);
-
+				if(data!=null){
+					this.imgProduct.Image = UIImage.LoadFromData (data);
+				}else{
+					this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
+				}
 				this.lblproduct.Text = product.nombre;
 				this.lblDescription.Text = product.descripcion;
 				this.tblStores.TableHeaderView = this.headerView;
@@ -159,7 +162,10 @@ namespace ProductFinder
 		ProductDetailView pdView;
 		CLLocationManager location;
 		int conn;
-
+		List<UIView> vistas = new List<UIView> ();
+		List<UIButton> botones = new List<UIButton> ();
+		List<UILabel> distancias = new List<UILabel> ();
+		UIImage image = UIImage.FromFile ("Images/locationred.png");
 		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 		{
 			tableItems = items;
@@ -170,40 +176,17 @@ namespace ProductFinder
 
 		public override int NumberOfSections (UITableView tableView)
 		{
-			return tableItems.Count;
+			return 1;
 		}
 
 		public override int RowsInSection (UITableView tableview, int section)
 		{
-			return 1;	   
+			return tableItems.Count;	   
 		}
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 120f;
-		}
-
-		public override float GetHeightForHeader (UITableView tableView, int section)
-		{
-			if (section == 0) {
-				return 25f;
-			} else {
-				return 25f;
-			}
-		}
-
-		public override UIView GetViewForHeader (UITableView tableView, int section)
-		{
-			UIView header = new UIView(new RectangleF(2,2,tableView.Bounds.Width,25));
-			UIImageView image = new UIImageView(new RectangleF(5,-3,20f,20f));
-			image.Image = UIImage.FromFile ("Images/locationred.png");
-			UILabel label = new UILabel (new RectangleF (image.Bounds.Width + 5, -3, header.Bounds.Width - image.Bounds.Width - 5, 25f));
-			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[section].tienda_latitud),Double.Parse(tableItems[section].tienda_longitud)))/1000;
-			label.Text = " "+ Math.Round(distancia,2)+ "km";
-			label.Font = UIFont.SystemFontOfSize (17);
-			header.AddSubview (image);
-			header.AddSubview (label);
-			return header;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -213,25 +196,54 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
-			ps = tableItems [indexPath.Section];
+			ps = tableItems [indexPath.Row];
 
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
-			Console.WriteLine (""+ps.tienda_imagen);
-			UIImage imagen = UIImage.LoadFromData (data);
-
-			cell.ImageView.Image = ScaleImage (imagen, 100);
+			if (data != null) {
+				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),80);
+			} else {
+				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 80);
+			}
 			cell.TextLabel.Text = ps.tienda_nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.TextLabel.Lines = 2 ;
 			double precio = Double.Parse (ps.precio);
-			cell.DetailTextLabel.Text = "$" + precio.ToString("#,#", CultureInfo.InvariantCulture);
+			cell.DetailTextLabel.Text = "$" + precio.ToString("#,#", CultureInfo.InvariantCulture)+ " ";
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
 			cell.DetailTextLabel.TextAlignment = UITextAlignment.Left;
-			cell.Accessory = UITableViewCellAccessory.DetailButton;
+			UIView vista = new UIView ();
+			vista.Tag = indexPath.Row;
+			vistas.Add (vista);
+			UIButton boton = new UIButton ();
+			boton.Tag = indexPath.Row;
+			botones.Add (boton);
+			UILabel distancia = new UILabel ();
+			distancia.Tag = indexPath.Row;
+			distancias.Add (distancia);
+			cell.AccessoryView = getDistanceView (indexPath.Row);
 			return cell;
+		}
+
+		public UIView getDistanceView(int index){
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, image.Size.Width, image.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage (image, UIControlState.Normal);
+			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
+			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 50f, 25f);
+			Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
+			distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
+			distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
+			vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
+			botones.ElementAt(index).TouchUpInside += (sender, e) => {
+				SecondMapViewController mapView = new SecondMapViewController();
+				mapView.setTienda(tableItems[index]);
+				this.controller.NavigationController.PushViewController(mapView, true);
+			};
+			vistas.ElementAt(index).AddSubview (botones.ElementAt(index));
+			vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
+			return vistas.ElementAt(index);
 		}
 
 		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)

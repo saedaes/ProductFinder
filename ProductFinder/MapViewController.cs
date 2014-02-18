@@ -58,6 +58,7 @@ namespace ProductFinder {
 
 			//mostramos los puntos rojos sobre cada una de las tiendas registradas.
 			foreach (StoresService tienda in tiendas) {
+					Console.WriteLine(tienda.nombre +" " + tienda.latitud + " "+tienda.longitud);
 				double distancia1 = iPhoneLocationManager.Location.DistanceFrom(new CLLocation(Double.Parse(tienda.latitud),Double.Parse(tienda.longitud)))/1000;
 				var annotation = new BasicMapAnnotation (new CLLocationCoordinate2D (Double.Parse(tienda.latitud), Double.Parse(tienda.longitud)), ""+tienda.nombre+" ("+Math.Round(distancia1,2)+"km)", ""+tienda.direccion);
 				mapView.AddAnnotation (annotation);			

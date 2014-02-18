@@ -135,7 +135,7 @@ namespace ProductFinder
 					).ContinueWith ( 
 						t => {
 							nsr = new NameSearchResultView();
-							nsr.setProductName(this.cmpNombre.Text);
+							nsr.setProductName(this.cmpNombre.Text.Trim());
 							this.NavigationController.PushViewController(nsr,true);
 							this._loadPop.Hide ();
 						}, TaskScheduler.FromCurrentSynchronizationContext()

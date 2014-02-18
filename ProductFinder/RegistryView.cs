@@ -13,6 +13,7 @@ namespace ProductFinder
 		PickerDataModel pickerDataModel;
 		PickerDataModelAges pickerDataModelAges;
 		AgesService agesService;
+		UITextField contraseña;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -34,9 +35,12 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			this.cmpContraseña.SecureTextEntry = true;
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+				this.cmpContraseñaIphone.SecureTextEntry = true;
+			} else {
+				this.cmpContraseña.SecureTextEntry = true;
+			}
 			this.cmpConfirmar.SecureTextEntry = true;
-			// Perform any additional setup after loading the view, typically from a nib.
 	
 			//Declaramos el actionsheet donde se mostrara el picker
 			actionSheetPicker = new ActionSheetPicker(this.View);
@@ -81,6 +85,12 @@ namespace ProductFinder
 			};
 
 			this.btnRegistrar.TouchUpInside += (sender, e) => {
+				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+					contraseña = cmpContraseñaIphone;
+				} else{
+					contraseña = cmpContraseña;
+				}
+
 				if(this.cmpEmail.Text == "" || this.cmpNombre.Text == "" || this.cmpPaterno.Text =="" || this.cmpMaterno.Text == "" || this.cmpContraseña.Text == "" || this.cmpConfirmar.Text == ""){
 					UIAlertView alert = new UIAlertView () { 
 						Title = "Espera!", Message = "Debes ingresar todos los campos"
@@ -114,7 +124,7 @@ namespace ProductFinder
 					this.cmpConfirmar.Text= "";
 				}else{
 					NewUserService newUserService = new NewUserService();
-					String respuesta = newUserService.SetUserData(cmpEmail.Text,cmpContraseña.Text,cmpNombre.Text,cmpPaterno.Text,cmpMaterno.Text,sexo,edadId);
+					String respuesta = newUserService.SetUserData(cmpEmail.Text,contraseña.Text,cmpNombre.Text,cmpPaterno.Text,cmpMaterno.Text,sexo,edadId);
 					if(respuesta.Equals("\"error\"")){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Ups :S", Message = "El correo electronico ya se encuentra registrado o no es valido"

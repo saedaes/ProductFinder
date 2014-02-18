@@ -11,6 +11,7 @@
                 <outlet property="btnAceptarCantidad" destination="ngb-go-cei" id="LTp-ej-b9c"/>
                 <outlet property="btnCerrarLista" destination="QlQ-f0-mEy" id="EE3-H4-lkf"/>
                 <outlet property="btnLista" destination="BJo-ys-Ylj" id="uIL-bX-FHr"/>
+                <outlet property="btnMapa" destination="FTw-vH-dJZ" id="RQk-aO-1ia"/>
                 <outlet property="btnMas" destination="98g-e3-ox8" id="jZo-EW-VtT"/>
                 <outlet property="btnMenos" destination="Xca-Cr-avD" id="D7k-rl-etK"/>
                 <outlet property="cmpCantidad" destination="6Yp-Te-Okh" id="kji-Q9-Df9"/>
@@ -119,10 +120,6 @@
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_iconBlue.png" id="6hi-WK-Rr3">
-                    <rect key="frame" x="25" y="755" width="25" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <view contentMode="scaleToFill" id="0Sk-qh-lWP">
                     <rect key="frame" x="176" y="435" width="416" height="174"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -163,6 +160,13 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FTw-vH-dJZ">
+                    <rect key="frame" x="25" y="754" width="29" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -172,6 +176,5 @@
     <resources>
         <image name="add.png" width="512" height="512"/>
         <image name="blue-cross.png" width="300" height="300"/>
-        <image name="location_iconBlue.png" width="32" height="32"/>
     </resources>
 </document>

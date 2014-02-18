@@ -28,6 +28,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UITextField cmpContraseña { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UITextField cmpContraseñaIphone { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpEmail { get; set; }
 
 		[Outlet]
@@ -52,6 +55,11 @@ namespace ProductFinder
 				btnEdad = null;
 			}
 
+			if (btnRegistrar != null) {
+				btnRegistrar.Dispose ();
+				btnRegistrar = null;
+			}
+
 			if (btnSexo != null) {
 				btnSexo.Dispose ();
 				btnSexo = null;
@@ -60,6 +68,11 @@ namespace ProductFinder
 			if (cmpConfirmar != null) {
 				cmpConfirmar.Dispose ();
 				cmpConfirmar = null;
+			}
+
+			if (cmpContraseñaIphone != null) {
+				cmpContraseñaIphone.Dispose ();
+				cmpContraseñaIphone = null;
 			}
 
 			if (cmpContraseña != null) {
@@ -95,11 +108,6 @@ namespace ProductFinder
 			if (lblSexo != null) {
 				lblSexo.Dispose ();
 				lblSexo = null;
-			}
-
-			if (btnRegistrar != null) {
-				btnRegistrar.Dispose ();
-				btnRegistrar = null;
 			}
 		}
 	}

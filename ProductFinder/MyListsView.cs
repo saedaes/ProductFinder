@@ -11,6 +11,7 @@ namespace ProductFinder
 	public partial class MyListsView : UIViewController
 	{
 		ListsService ls;
+		public static UITableView tableView;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -36,6 +37,8 @@ namespace ProductFinder
 				ls = new ListsService ();
 				ls.setUserId (MainView.userId.ToString());
 				List<ListsService> tableItems = ls.All ();
+
+				MyListsView.tableView = this.tblLists;
 
 				//Verificamos si estamos en iphone o ipad para cargar la lista correcta
 				if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
@@ -121,7 +124,8 @@ namespace ProductFinder
 		List<ListsService> tableItems;
 		string cellIdentifier = "TableCell";
 		MyListsView controller;
-
+		List<UIButton> botones = new List<UIButton> ();
+		UIImage imagen = UIImage.FromFile ("Images/trash48.png");
 		public ListsTableSource (List<ListsService> items, MyListsView controller) 
 		{
 			tableItems = items;
@@ -157,8 +161,50 @@ namespace ProductFinder
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
 			cell.DetailTextLabel.TextColor = UIColor.Gray;
-			cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
+			UIButton boton = new UIButton ();
+			boton.Tag = indexPath.Row;
+			botones.Add (boton);
+			cell.AccessoryView = getButton (indexPath.Row);
 			return cell;
+		}
+
+		public UIButton getButton(int index){
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
+			botones.ElementAt(index).TouchUpInside += (sender, e) => {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Borrar?", Message = "Deseas borrar esta lista?"
+				};
+				alert.AddButton ("Aceptar");
+				alert.AddButton ("Cancelar");
+				alert.Clicked += (s, o) => {
+					if(o.ButtonIndex == 0){
+						DestroyService destroyService = new DestroyService ();
+						String respuesta = destroyService.destroyList (tableItems[index].id);
+						if (respuesta.Equals ("\"correct\"")) {
+							UIAlertView alert1 = new UIAlertView () { 
+								Title = "Lita borrada", Message = "La lista ha sido borrada =)"
+							};
+							alert1.AddButton("Aceptar");
+							alert1.Show ();
+							ListsService ls = new ListsService();
+							ls.setUserId(MainView.userId.ToString());
+							List<ListsService> listas = ls.All();
+							MyListsView.tableView.Source = new ListsTableSource(listas,this.controller);
+							MyListsView.tableView.ReloadData ();
+						}else if(respuesta.Equals("\"error\"")){
+							UIAlertView alert2 = new UIAlertView () { 
+								Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo"
+							};
+							alert2.AddButton("Aceptar");
+							alert2.Show ();
+						}
+					}
+				};
+				alert.Show ();
+			};
+			return botones.ElementAt(index);
 		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
@@ -248,7 +294,8 @@ namespace ProductFinder
 		List<ListsService> tableItems;
 		string cellIdentifier = "TableCell";
 		MyListsView controller;
-
+		List<UIButton> botones = new List<UIButton> ();
+		UIImage imagen = UIImage.FromFile ("Images/trash24.png");
 		public ListsTableSourceIphone (List<ListsService> items, MyListsView controller) 
 		{
 			tableItems = items;
@@ -284,8 +331,50 @@ namespace ProductFinder
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(7);
 			cell.DetailTextLabel.TextColor = UIColor.Gray;
-			cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
+			UIButton boton = new UIButton ();
+			boton.Tag = indexPath.Row;
+			botones.Add (boton);
+			cell.AccessoryView = getButton (indexPath.Row);
 			return cell;
+		}
+
+		public UIButton getButton(int index){
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
+			botones.ElementAt(index).TouchUpInside += (sender, e) => {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Borrar?", Message = "Deseas borrar esta lista?"
+				};
+				alert.AddButton ("Aceptar");
+				alert.AddButton ("Cancelar");
+				alert.Clicked += (s, o) => {
+					if(o.ButtonIndex == 0){
+						DestroyService destroyService = new DestroyService ();
+						String respuesta = destroyService.destroyList (tableItems[index].id);
+						if (respuesta.Equals ("\"correct\"")) {
+							UIAlertView alert1 = new UIAlertView () { 
+								Title = "Lita borrada", Message = "La lista ha sido borrada =)"
+							};
+							alert1.AddButton("Aceptar");
+							alert1.Show ();
+							ListsService ls = new ListsService();
+							ls.setUserId(MainView.userId.ToString());
+							List<ListsService> listas = ls.All();
+							MyListsView.tableView.Source = new ListsTableSource(listas,this.controller);
+							MyListsView.tableView.ReloadData ();
+						}else if(respuesta.Equals("\"error\"")){
+							UIAlertView alert2 = new UIAlertView () { 
+								Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo"
+							};
+							alert2.AddButton("Aceptar");
+							alert2.Show ();
+						}
+					}
+				};
+				alert.Show ();
+			};
+			return botones.ElementAt(index);
 		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
@@ -293,11 +382,6 @@ namespace ProductFinder
 			ProductsInListView pls = new ProductsInListView ();
 			pls.setListId (tableItems [indexPath.Row].id);
 			controller.NavigationController.PushViewController (pls, true);
-		}
-
-		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
-		{
-
 		}
 
 		//Metodo para redimensionar las imagenes de la lista.

@@ -63,9 +63,9 @@ namespace ProductFinder
 						conn.CreateTable<Person>();
 					}
 					if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
-						loginService.setUserData(cmpEmail.Text, cmpContraseñaIphone.Text);
+						loginService.setUserData(cmpEmail.Text.Trim(), cmpContraseñaIphone.Text);
 					}else{
-						loginService.setUserData(cmpEmail.Text,cmpContraseña.Text);
+						loginService.setUserData(cmpEmail.Text.Trim(), cmpContraseña.Text);
 					}
 
 					LoginService userData = loginService.Find();
