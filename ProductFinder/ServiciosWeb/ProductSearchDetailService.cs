@@ -19,6 +19,8 @@ namespace ProductFinder
 		public string tienda_imagen { get; set;}
 		public string tienda_latitud { get; set;}
 		public string tienda_longitud { get; set;}
+		public string inicio_validez { get; set;}
+		public string final_validez { get; set;}
 
 		string resultURL = "";
 
@@ -83,6 +85,8 @@ namespace ProductFinder
 			response.tienda_imagen = jObject ["branch_image_path"].ToString ();
 			response.tienda_latitud = jObject ["latitude"].ToString ();
 			response.tienda_longitud = jObject ["longitude"].ToString ();
+			response.inicio_validez = jObject ["validity_start"].ToString ();
+			response.final_validez = jObject ["validity_end"].ToString ();
 
 			return response;
 		}

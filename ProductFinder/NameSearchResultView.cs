@@ -5,7 +5,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.CoreGraphics;
 using System.Linq;
-
+using System.Net;
 namespace ProductFinder
 {
 	public partial class NameSearchResultView : UIViewController
@@ -42,9 +42,6 @@ namespace ProductFinder
 			
 			// Perform any additional setup after loading the view, typically from a nib.
 			try{
-				ps.setProductSearchString (this.nombre);
-				List<ProductSearchService> tableItems = ps.All ();
-
 				//Configuramos la vista popup de cantidad
 				AmountView.Layer.BorderWidth = 1.0f;
 				AmountView.Layer.BorderColor = UIColor.Black.CGColor;
@@ -60,6 +57,9 @@ namespace ProductFinder
 				tblProducts.Add(this.ListsView);
 				ListsView.Hidden = true;
 
+				ps.setProductSearchString (this.nombre);
+				List<ProductSearchService> tableItems = ps.All ();
+
 				if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 					this.tblProducts.Source = new ProductsTableSourceIphone(tableItems, this, MainView.userId);
 				}else {
@@ -73,19 +73,44 @@ namespace ProductFinder
 						Title = "Lo sentimos =(", Message = "La búsqueda de "+ "\""+nombre+"\""+"\n No produjo ningun resultado."
 					};
 					alert.AddButton("Aceptar");
+					alert.Clicked += (sender, e) => {
+						NavigationController.PopViewControllerAnimated(true);
+					};
 					alert.Show ();
 				}
 
 				this.btnAceptar.TouchUpInside += (sender, e) => {
-					AmountView.Hidden = true;
-					ListsService ls = new ListsService();
-					Console.WriteLine("Este es el id de usuario: "+MainView.userId.ToString());
-					ls.setUserId(MainView.userId.ToString());
-					List<ListsService> listItems = ls.All();
-					this.tblLists.Source = new AddToListsTableSource(listItems,this,NameSearchResultView.product_id,int.Parse(cmpAmount.Text));
-					ListsView.Add(tblLists);
-					this.tblLists.ReloadData();
-					ListsView.Hidden = false;
+					try{
+						AmountView.Hidden = true;
+						ListsService ls = new ListsService();
+						Console.WriteLine("Este es el id de usuario: "+MainView.userId.ToString());
+						ls.setUserId(MainView.userId.ToString());
+						List<ListsService> listItems = ls.All();
+						if(listItems.Count > 0){
+							this.tblLists.Source = new AddToListsTableSource(listItems,this,NameSearchResultView.product_id,int.Parse(cmpAmount.Text));
+							ListsView.Add(tblLists);
+							this.tblLists.ReloadData();
+							ListsView.Hidden = false;
+						}else{
+							UIAlertView alert = new UIAlertView () { 
+								Title = "No tienes listas", Message = "No tienes listas registradas, porfavor ve a \"Mis listas\" para crear una nueva"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+						}
+					}catch(System.Net.WebException){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal,no se pudieron cargar tus listas, verifica tu conexión a internet e intentalo de nuevo."
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}catch(Exception){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}
 				};
 
 				btnCerrar.TouchUpInside += (sender, e) => {
@@ -113,12 +138,23 @@ namespace ProductFinder
 						this.cmpAmount.Text = cantidad.ToString();
 					}
 				};
-			}catch(Exception e){
-				Console.WriteLine (e.ToString());
+			}catch(System.Net.WebException){
 				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups =(", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+					Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
 				};
 				alert.AddButton("Aceptar");
+				alert.Clicked += (sender, e) => {
+					NavigationController.PopViewControllerAnimated(true);
+				};
+				alert.Show ();
+			}catch(Exception){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+				};
+				alert.AddButton("Aceptar");
+				alert.Clicked += (sender, e) => {
+					NavigationController.PopViewControllerAnimated(true);
+				};
 				alert.Show ();
 			}
 		}
@@ -216,7 +252,7 @@ namespace ProductFinder
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
 				pdView = new ProductStoresListView();
-				pdView.setProduct (tableItems [indexPath.Row].codigo);
+				pdView.setProduct (tableItems [indexPath.Row].codigo,1);
 				Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 				controller.NavigationController.PushViewController (pdView, true);
 			}
@@ -317,7 +353,7 @@ namespace ProductFinder
 			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 			{
 				pdView = new ProductStoresListView ();
-				pdView.setProduct (tableItems [indexPath.Row].codigo);
+				pdView.setProduct (tableItems [indexPath.Row].codigo,1);
 				controller.NavigationController.PushViewController (pdView, true);
 			}
 		}
@@ -449,22 +485,36 @@ namespace ProductFinder
 				alert.AddButton ("Cancelar");
 				alert.Show ();
 				alert.Clicked += (sender, e) => {
-					if(e.ButtonIndex == 0){
-						AddProductToListService addproduct = new AddProductToListService ();
-						String respuesta = addproduct.SetData (producto, tableItems [indexPath.Row].id,this.cantidad.ToString());
-						if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
-							UIAlertView alert2 = new UIAlertView () { 
-								Title = "Ups =S", Message = "Este producto ya se encuentra registrado en esta lista."
-							};
-							alert2.AddButton ("Aceptar");
-							alert2.Show ();
-						} else {
-							UIAlertView alert3 = new UIAlertView () { 
-								Title = "Producto agregado", Message = "Este producto ha sido agregado a la lista \""+tableItems[indexPath.Row].nombre+"\""
-							};
-							alert3.AddButton ("Aceptar");
-							alert3.Show ();
+					try{
+						if(e.ButtonIndex == 0){
+							AddProductToListService addproduct = new AddProductToListService ();
+							String respuesta = addproduct.SetData (producto, tableItems [indexPath.Row].id,this.cantidad.ToString());
+							if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
+								UIAlertView alert2 = new UIAlertView () { 
+									Title = "Ups =S", Message = "Este producto ya se encuentra registrado en esta lista."
+								};
+								alert2.AddButton ("Aceptar");
+								alert2.Show ();
+							} else {
+								UIAlertView alert3 = new UIAlertView () { 
+									Title = "Producto agregado", Message = "Este producto ha sido agregado a la lista \""+tableItems[indexPath.Row].nombre+"\""
+								};
+								alert3.AddButton ("Aceptar");
+								alert3.Show ();
+							}
 						}
+					}catch(System.Net.WebException){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+						};
+						alerta.AddButton("Aceptar");
+						alerta.Show ();
+					}catch(Exception){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+						};
+						alerta.AddButton("Aceptar");
+						alerta.Show ();
 					}
 				};
 

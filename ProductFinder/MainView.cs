@@ -10,7 +10,7 @@ using Mono.Data.Sqlite;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Globalization;
 namespace ProductFinder
 {
 	public partial class MainView : UIViewController
@@ -198,10 +198,19 @@ namespace ProductFinder
 				}
 			).ContinueWith ( 
 				t => {
-					pdView = new ProductStoresListView ();
-					pdView.setProduct (barcode["barcode"].ToString());
-					presentingViewController.NavigationController.PushViewController (pdView, true);
-					this._loadPop.Hide ();
+					if(barcode["symbology"].ToString().Equals("QR")){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Mensaje", Message = ""+barcode["barcode"].ToString()
+						};
+						alert.AddButton ("Aceptar");
+						alert.Show ();
+						this._loadPop.Hide ();
+					}else{
+						pdView = new ProductStoresListView ();
+						pdView.setProduct (barcode["barcode"].ToString(),0);
+						presentingViewController.NavigationController.PushViewController (pdView, true);
+						this._loadPop.Hide ();
+					}
 				}, TaskScheduler.FromCurrentSynchronizationContext()
 			);
 		}

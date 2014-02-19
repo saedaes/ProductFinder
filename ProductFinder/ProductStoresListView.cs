@@ -27,6 +27,8 @@ namespace ProductFinder
 		//Lista donde se guardan los resultados de la consulta en la bd
 		List<Person> people;
 
+		//variable para saber desde que vista se esta llegando
+		int previousView = 0;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -36,8 +38,10 @@ namespace ProductFinder
 		{
 		}
 
-		public void setProduct(String barcode){
+		public void setProduct(String barcode, int previousView){
 			this.barcode = barcode;
+			this.previousView = previousView;
+			Console.WriteLine ("Viene de la vista: " + this.previousView);
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -115,21 +119,6 @@ namespace ProductFinder
 			}catch(System.ArgumentOutOfRangeException e){
 				Console.WriteLine (e.ToString());
 				didNotFidProduct();
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups =(", Message = "No encontramos el producto, si asi lo deseas pueder dar de alta este producto."
-				};
-				alert.AddButton("Registrar");
-				alert.AddButton ("Cancelar");
-				alert.Clicked += (s, o) => {
-					UploadProductView up = new UploadProductView();
-					up.setBarcode(this.barcode);
-					if(o.ButtonIndex == 0){
-						this.NavigationController.PushViewController(up,true);
-					}else{
-						this.NavigationController.PopViewControllerAnimated(true);
-					}
-				};
-				alert.Show ();
 			} 
 		}
 
@@ -138,6 +127,33 @@ namespace ProductFinder
 			this.lblproduct.Text = "Producto no encontrado =S";
 			this.lblDescription.Text = "";
 			this.tblStores.BackgroundColor = UIColor.Clear;
+			//Si es 0 viene del escaner codigo, si es 1 viene de la vista de resultados de busqueda por nombre o de la vista de productos en lista
+			if (this.previousView == 0) {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "No encontramos el producto, si asi lo deseas pueder dar de alta este producto."
+				};
+				alert.AddButton ("Registrar");
+				alert.AddButton ("Cancelar");
+				alert.Clicked += (s, o) => {
+					UploadProductView up = new UploadProductView ();
+					up.setBarcode (this.barcode);
+					if (o.ButtonIndex == 0) {
+						this.NavigationController.PushViewController (up, true);
+					} else {
+						this.NavigationController.PopViewControllerAnimated (true);
+					}
+				};
+				alert.Show ();
+			} else {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "Lo sentimos pero por el momento este producto no se encuentra en ninguna de nuestras tiendas registradas."
+				};
+				alert.AddButton ("Aceptar");
+				alert.Clicked += (s, o) => {
+					this.NavigationController.PopViewControllerAnimated (true);
+				};
+				alert.Show ();
+			}
 		}
 
 		//Metodo de busqueda de la tienda mas cercana.

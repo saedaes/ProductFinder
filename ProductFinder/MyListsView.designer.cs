@@ -22,6 +22,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnNewList { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnNewListBig { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpLista { get; set; }
 
 		[Outlet]
@@ -35,24 +38,9 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnNewList != null) {
-				btnNewList.Dispose ();
-				btnNewList = null;
-			}
-
-			if (headerView != null) {
-				headerView.Dispose ();
-				headerView = null;
-			}
-
-			if (tblLists != null) {
-				tblLists.Dispose ();
-				tblLists = null;
-			}
-
-			if (modalView != null) {
-				modalView.Dispose ();
-				modalView = null;
+			if (btnAceptar != null) {
+				btnAceptar.Dispose ();
+				btnAceptar = null;
 			}
 
 			if (btnCancel != null) {
@@ -60,14 +48,34 @@ namespace ProductFinder
 				btnCancel = null;
 			}
 
-			if (btnAceptar != null) {
-				btnAceptar.Dispose ();
-				btnAceptar = null;
+			if (btnNewList != null) {
+				btnNewList.Dispose ();
+				btnNewList = null;
 			}
 
 			if (cmpLista != null) {
 				cmpLista.Dispose ();
 				cmpLista = null;
+			}
+
+			if (headerView != null) {
+				headerView.Dispose ();
+				headerView = null;
+			}
+
+			if (modalView != null) {
+				modalView.Dispose ();
+				modalView = null;
+			}
+
+			if (tblLists != null) {
+				tblLists.Dispose ();
+				tblLists = null;
+			}
+
+			if (btnNewListBig != null) {
+				btnNewListBig.Dispose ();
+				btnNewListBig = null;
 			}
 		}
 	}

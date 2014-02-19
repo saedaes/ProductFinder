@@ -229,6 +229,7 @@
     <BundleResource Include="Images\trash24.png" />
     <BundleResource Include="Images\add_to_list24.png" />
     <BundleResource Include="Images\add_to_list48.png" />
+    <BundleResource Include="Resources\new_list128.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">

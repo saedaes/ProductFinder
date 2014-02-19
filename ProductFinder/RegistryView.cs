@@ -4,7 +4,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Net;
 namespace ProductFinder
 {
 	public partial class RegistryView : UIViewController
@@ -60,11 +60,26 @@ namespace ProductFinder
 			};
 
 			this.btnEdad.TouchUpInside += (sender, e) => {
-				agesService = new AgesService();
-				List<AgesService> edades = agesService.All();
-				pickerDataModelAges.Items = edades;
-				actionSheetPicker.Picker.Source = pickerDataModelAges;
-				actionSheetPicker.Show();
+				try{
+					agesService = new AgesService();
+					List<AgesService> edades = agesService.All();
+					pickerDataModelAges.Items = edades;
+					actionSheetPicker.Picker.Source = pickerDataModelAges;
+					actionSheetPicker.Show();
+				}catch(System.Net.WebException){
+					UIAlertView alert = new UIAlertView(){
+						Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show();
+				}catch(Exception ex){
+					Console.WriteLine(ex.ToString());
+					UIAlertView alert = new UIAlertView(){
+						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show();
+				}
 			};
 			String sexo = "";
 			pickerDataModel.ValueChanged += (sender, e) => {
@@ -85,71 +100,84 @@ namespace ProductFinder
 			};
 
 			this.btnRegistrar.TouchUpInside += (sender, e) => {
-				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-					contraseña = cmpContraseñaIphone;
-				} else{
-					contraseña = cmpContraseña;
-				}
+				try{
+					if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+						contraseña = cmpContraseñaIphone;
+					} else{
+						contraseña = cmpContraseña;
+					}
 
-				if(this.cmpEmail.Text == "" || this.cmpNombre.Text == "" || this.cmpPaterno.Text =="" || this.cmpMaterno.Text == "" || this.cmpContraseña.Text == "" || this.cmpConfirmar.Text == ""){
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Espera!", Message = "Debes ingresar todos los campos"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show ();
-				}else if(this.lblSexo.Text.Equals("No se ha seleccionado el sexo")){
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Espera!", Message = "Debes elegir tu sexo"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show ();
-				}else if(edadId.Equals("")){
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Espera!", Message = "Debes elegir tu rango de edad"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show ();
-				} else if(this.cmpContraseña.Text.Length < 8){
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Espera!", Message = "Tu contraseña debe tener minimo 8 caracteres"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show ();
-				} else if(this.cmpContraseña.Text != this.cmpConfirmar.Text){
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Espera!", Message = "La contraseña no coincide con la confirmacion"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show ();
-					this.cmpConfirmar.Text= "";
-				}else{
-					NewUserService newUserService = new NewUserService();
-					String respuesta = newUserService.SetUserData(cmpEmail.Text,contraseña.Text,cmpNombre.Text,cmpPaterno.Text,cmpMaterno.Text,sexo,edadId);
-					if(respuesta.Equals("\"error\"")){
+					if(this.cmpEmail.Text == "" || this.cmpNombre.Text == "" || this.cmpPaterno.Text =="" || this.cmpMaterno.Text == "" || this.cmpContraseña.Text == "" || this.cmpConfirmar.Text == ""){
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Ups :S", Message = "El correo electronico ya se encuentra registrado o no es valido"
+							Title = "Espera!", Message = "Debes ingresar todos los campos"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show ();
-					} else if(respuesta.Equals("\"correct\"")){
+					}else if(this.lblSexo.Text.Equals("No se ha seleccionado el sexo")){
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Bienvenido", Message = "Tu registro se ha realizado con exito, ahora ve a la pantalla de inicio de sesión =)"
+							Title = "Espera!", Message = "Debes elegir tu sexo"
 						};
 						alert.AddButton("Aceptar");
-						alert.Clicked += (s, o) => {
-							this.NavigationController.PopViewControllerAnimated(true);
-						};
 						alert.Show ();
-					}
-					else{
-						UIAlertView alert = new UIAlertView(){
-							Title = "ERROR", Message = "Error del Servidor, intentelo de nuevo"
+					}else if(edadId.Equals("")){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Debes elegir tu rango de edad"
 						};
 						alert.AddButton("Aceptar");
-						alert.Show();
+						alert.Show ();
+					} else if(this.cmpContraseña.Text.Length < 8){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Tu contraseña debe tener minimo 8 caracteres"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					} else if(this.cmpContraseña.Text != this.cmpConfirmar.Text){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "La contraseña no coincide con la confirmacion"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+						this.cmpConfirmar.Text= "";
+					}else{
+						NewUserService newUserService = new NewUserService();
+						String respuesta = newUserService.SetUserData(cmpEmail.Text,contraseña.Text,cmpNombre.Text,cmpPaterno.Text,cmpMaterno.Text,sexo,edadId);
+						if(respuesta.Equals("\"error\"")){
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Ups :S", Message = "El correo electronico ya se encuentra registrado o no es valido"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+						} else if(respuesta.Equals("\"correct\"")){
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Bienvenido", Message = "Tu registro se ha realizado con exito, ahora ve a la pantalla de inicio de sesión =)"
+							};
+							alert.AddButton("Aceptar");
+							alert.Clicked += (s, o) => {
+								this.NavigationController.PopViewControllerAnimated(true);
+							};
+							alert.Show ();
+						}
+						else{
+							UIAlertView alert = new UIAlertView(){
+								Title = "ERROR", Message = "Error del Servidor, intentelo de nuevo"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show();
+						}
 					}
+				}catch(System.Net.WebException){
+					UIAlertView alert = new UIAlertView(){
+						Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show();
+				}catch(Exception){
+					UIAlertView alert = new UIAlertView(){
+						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show();
 				}
-
 			};
 		}
 

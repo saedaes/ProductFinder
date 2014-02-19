@@ -49,6 +49,19 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 			try{
+				//Configuramos la vista popup de cantidad
+				QuantityView.Layer.BorderWidth = 1.0f;
+				QuantityView.Layer.BorderColor = UIColor.Black.CGColor;
+				QuantityView.Layer.CornerRadius = 8;
+				this.Add(QuantityView);
+				QuantityView.Hidden = true;
+
+				//Configuramos la vista de popup de listas
+				ListsView.Layer.BorderWidth = 1.0f;
+				ListsView.Layer.BorderColor = UIColor.Black.CGColor;
+				ListsView.Layer.CornerRadius = 8;
+				this.Add(this.ListsView);
+				ListsView.Hidden = true;
 
 				this.btnMapa.SetBackgroundImage(UIImage.FromFile("Images/locationred.png"),UIControlState.Normal);
 
@@ -93,21 +106,8 @@ namespace ProductFinder
 				this.lblTiendaNombre.Text = producto.tienda_nombre;
 				this.lblTiendaDireccion.Text = producto.tienda_direccion;
 				this.lblTiendaDistancia.Text = "A "+ Math.Round(distancia,2)+"km de tu ubicación";
-
-				//Configuramos la vista popup de cantidad
-				QuantityView.Layer.BorderWidth = 1.0f;
-				QuantityView.Layer.BorderColor = UIColor.Black.CGColor;
-				QuantityView.Layer.CornerRadius = 8;
-				this.Add(QuantityView);
-				QuantityView.Hidden = true;
-
-				//Configuramos la vista de popup de listas
-				ListsView.Layer.BorderWidth = 1.0f;
-				ListsView.Layer.BorderColor = UIColor.Black.CGColor;
-				ListsView.Layer.CornerRadius = 8;
-				this.Add(this.ListsView);
-				ListsView.Hidden = true;
-
+				this.lblVigencia.Text = "Vigencia del "+ producto.inicio_validez+ " Al "+ producto.final_validez;
+			
 				this.btnLista.TouchUpInside += (sender, e) => {
 					if(people.Count > 0){
 						UIAlertView alert = new UIAlertView () { 
@@ -169,11 +169,20 @@ namespace ProductFinder
 							Person persona = people.ElementAt(0);
 							ls.setUserId (persona.ID.ToString());
 							List<ListsService> tableItems = ls.All (); 
-							this.tblLists.Source = new AddToListsTableSource (tableItems, this,this.producto,int.Parse(cmpCantidad.Text));
-							ListsView.Add(this.tblLists);
-							this.tblLists.ReloadData();
-							ListsView.Hidden = false;
-							cmpCantidad.Text = "";
+							if(tableItems.Count > 0){
+								this.tblLists.Source = new AddToListsTableSource (tableItems, this,this.producto,int.Parse(cmpCantidad.Text));
+								ListsView.Add(this.tblLists);
+								this.tblLists.ReloadData();
+								ListsView.Hidden = false;
+								cmpCantidad.Text = "";
+							}else{
+								UIAlertView alert = new UIAlertView () { 
+									Title = "No tienes listas", Message = "No tienes listas registradas, porfavor ve a \"Mis listas\" para crear una nueva"
+								};
+								alert.AddButton("Registrar");
+								alert.AddButton ("Cancelar");
+								alert.Show();
+							}
 						}
 					}catch(System.FormatException ex ){
 						Console.WriteLine(ex.ToString());
@@ -185,7 +194,7 @@ namespace ProductFinder
 						QuantityView.Hidden = false;
 					}catch(System.Net.WebException){
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Ups :S", Message = "Ocurrió un problema, verifica tu conexión a internet e inténtalo de nuevo"
+							Title = "Ups :S", Message = "Algo salio mal,no se pudieron cargar tus listas, verifica tu conexión a internet e inténtalo de nuevo"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show();
@@ -205,19 +214,9 @@ namespace ProductFinder
 			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups =(", Message = "No encontramos el producto, si asi lo deseas pueder dar de alta este producto."
+					Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
 				};
-				alert.AddButton("Registrar");
-				alert.AddButton ("Cancelar");
-				alert.Clicked += (s, o) => {
-					UploadProductView up = new UploadProductView();
-					up.setBarcode(this.barcode);
-					if(o.ButtonIndex == 0){
-						this.NavigationController.PushViewController(up,true);
-					}else{
-						this.NavigationController.PopViewControllerAnimated(true);
-					}
-				};
+				alert.AddButton("Aceptar");
 				alert.Show ();
 			}
 		}
@@ -277,22 +276,36 @@ namespace ProductFinder
 			alert.AddButton ("Cancelar");
 			alert.Show ();
 			alert.Clicked += (sender, e) => {
-				if(e.ButtonIndex == 0){
-					AddProductToListService addproduct = new AddProductToListService ();
-					String respuesta = addproduct.SetData (producto.id, tableItems [indexPath.Row].id,this.cantidad.ToString());
-					if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
-						UIAlertView alert2 = new UIAlertView () { 
-							Title = "Ups =S", Message = "Este producto ya se encuentra registrado en esta lista."
-						};
-						alert2.AddButton ("Aceptar");
-						alert2.Show ();
-					} else {
-						UIAlertView alert3 = new UIAlertView () { 
-							Title = "Producto agregado", Message = "Este producto ha sido agregado a la lista \""+tableItems[indexPath.Row].nombre+"\""
-						};
-						alert3.AddButton ("Aceptar");
-						alert3.Show ();
+				try{
+					if(e.ButtonIndex == 0){
+						AddProductToListService addproduct = new AddProductToListService ();
+						String respuesta = addproduct.SetData (producto.id, tableItems [indexPath.Row].id,this.cantidad.ToString());
+						if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
+							UIAlertView alert2 = new UIAlertView () { 
+								Title = "Ups =S", Message = "Este producto ya se encuentra registrado en esta lista."
+							};
+							alert2.AddButton ("Aceptar");
+							alert2.Show ();
+						} else {
+							UIAlertView alert3 = new UIAlertView () { 
+								Title = "Producto agregado", Message = "Este producto ha sido agregado a la lista \""+tableItems[indexPath.Row].nombre+"\""
+							};
+							alert3.AddButton ("Aceptar");
+							alert3.Show ();
+						}
 					}
+				}catch(System.Net.WebException){
+					UIAlertView alerta = new UIAlertView () { 
+						Title = "Ups =S", Message = "Algo salio mal, por favor verifica tu conexión a internet e intentalo de nuevo."
+					};
+					alerta.AddButton ("Aceptar");
+					alerta.Show ();
+				}catch(Exception){
+					UIAlertView alerta = new UIAlertView () { 
+						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+					};
+					alerta.AddButton ("Aceptar");
+					alerta.Show ();
 				}
 			};
 

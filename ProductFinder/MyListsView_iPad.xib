@@ -9,6 +9,7 @@
                 <outlet property="btnAceptar" destination="rOy-3M-LuH" id="rCa-uJ-9Xk"/>
                 <outlet property="btnCancel" destination="3bU-N8-jkj" id="ZXi-9r-hNg"/>
                 <outlet property="btnNewList" destination="0By-RH-OcK" id="wwV-a6-GnG"/>
+                <outlet property="btnNewListBig" destination="Pk7-6X-AV4" id="OiU-CY-AH4"/>
                 <outlet property="cmpLista" destination="fvn-iC-PEc" id="YTv-zj-MfM"/>
                 <outlet property="headerView" destination="s6s-R3-OCX" id="SKA-IP-qfb"/>
                 <outlet property="modalView" destination="Dqn-Fk-OXv" id="GUu-c7-54f"/>
@@ -22,12 +23,12 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fFw-cu-E2U">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" id="s6s-R3-OCX">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="191"/>
+                    <rect key="frame" x="0.0" y="53" width="768" height="191"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checklist.png" id="VU9-IC-W8Y">
@@ -85,13 +86,22 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pk7-6X-AV4">
+                    <rect key="frame" x="234" y="362" width="300" height="300"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="new_list128.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
     </objects>
     <resources>
         <image name="checklist.png" width="602" height="602"/>
+        <image name="new_list128.png" width="128" height="128"/>
         <image name="new_list64.png" width="64" height="64"/>
     </resources>
 </document>

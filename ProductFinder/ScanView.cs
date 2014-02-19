@@ -329,7 +329,7 @@ namespace ProductFinder
 				).ContinueWith ( 
 					t => {
 						pdView = new ProductStoresListView ();
-						pdView.setProduct (barcode["barcode"].ToString());
+						pdView.setProduct (barcode["barcode"].ToString(),0);
 						presentingViewController.NavigationController.PushViewController (pdView, true);
 						this._loadPop.Hide ();
 					}, TaskScheduler.FromCurrentSynchronizationContext()

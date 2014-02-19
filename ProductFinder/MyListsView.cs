@@ -5,7 +5,7 @@ using MonoTouch.UIKit;
 using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.CoreGraphics;
-
+using System.Net;
 namespace ProductFinder
 {
 	public partial class MyListsView : UIViewController
@@ -34,12 +34,34 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 			try{
+
+				//Configuramos la vista de popup
+				modalView.BackgroundColor = UIColor.White;
+				modalView.Layer.BorderWidth = 1.0f;
+				modalView.Layer.BorderColor = UIColor.Black.CGColor;
+				modalView.Layer.CornerRadius = 8;
+				modalView.Hidden = true;
+
 				ls = new ListsService ();
 				ls.setUserId (MainView.userId.ToString());
 				List<ListsService> tableItems = ls.All ();
-
 				MyListsView.tableView = this.tblLists;
 
+				if(tableItems.Count == 0){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "No tienes listas", Message = "Aun no tienes listas registradas, presiona el boton central para crear una nueva lista =)"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
+					this.tblLists.Hidden = true;
+					this.headerView.Hidden = true;
+					this.btnNewListBig.Hidden = false;
+					this.Add(modalView);
+				}else{
+					btnNewListBig.Hidden = true;
+					tblLists.Add(modalView);
+				}
+		
 				//Verificamos si estamos en iphone o ipad para cargar la lista correcta
 				if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 					this.tblLists.Source = new ListsTableSourceIphone (tableItems, this);
@@ -50,54 +72,71 @@ namespace ProductFinder
 				this.tblLists.TableHeaderView = this.headerView;
 				this.Add (this.tblLists);
 
-				//Configuramos la vista de popup
-				modalView.BackgroundColor = UIColor.White;
-				modalView.Layer.BorderWidth = 1.0f;
-				modalView.Layer.BorderColor = UIColor.Black.CGColor;
-				modalView.Layer.CornerRadius = 8;
-				this.Add(modalView);
-				modalView.Hidden = true;
+				this.btnNewListBig.TouchUpInside += (sender, e) => {
+					modalView.Hidden = false;
+					this.Add(modalView);
+				};
 
 				this.btnNewList.TouchUpInside += (sender, e) => {
 					modalView.Hidden = false;
+					Console.WriteLine("SIMON!!!");
 				};
 
 				this.btnAceptar.TouchUpInside += (sender, e) => {
-					if(cmpLista.Text == ""){
+					try{
+						if(cmpLista.Text == ""){
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Espera!", Message = "Debes ingresar el nombre de la lista"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+						}else{
+							NewListService nls = new NewListService();
+							String respuesta = nls.SetListData(cmpLista.Text, MainView.userId.ToString());
+							if(respuesta.Equals("\"lista ya existe\"")){
+								UIAlertView alert = new UIAlertView () { 
+									Title = "Ups :S", Message = "Ese nombre de lista ya se encuentra registrado"
+								};
+								alert.AddButton("Aceptar");
+								alert.Show ();
+								cmpLista.Text = "";
+							}else{
+								UIAlertView alert = new UIAlertView () { 
+									Title = "Lista creada", Message = "Tu nueva lista \""+cmpLista.Text+"\" ha sido creada =D"
+								};
+								alert.AddButton("Aceptar");
+								alert.Show ();
+
+								tableItems = ls.All ();
+								//Verificamos si estamos en iphone o ipad para cargar la lista correcta
+								if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+									this.tblLists.Source = new ListsTableSourceIphone (tableItems, this);
+								}else{
+									this.tblLists.Source = new ListsTableSource (tableItems, this);
+								}
+								this.Add(tblLists);
+								this.tblLists.ReloadData();
+								cmpLista.Text = "";
+								modalView.Hidden = true;
+								cmpLista.ResignFirstResponder();
+								this.tblLists.Hidden = false;
+								this.headerView.Hidden = false;
+								this.btnNewListBig.Hidden = true;
+								tblLists.Add(modalView);
+							}
+						}
+					}catch(System.Net.WebException){
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Espera!", Message = "Debes ingresar el nombre de la lista"
+							Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show ();
-					}else{
-						NewListService nls = new NewListService();
-						String respuesta = nls.SetListData(cmpLista.Text, MainView.userId.ToString());
-						if(respuesta.Equals("\"lista ya existe\"")){
-							UIAlertView alert = new UIAlertView () { 
-								Title = "Ups :S", Message = "Ese nombre de lista ya se encuentra registrado"
-							};
-							alert.AddButton("Aceptar");
-							alert.Show ();
-							cmpLista.Text = "";
-						}else{
-							UIAlertView alert = new UIAlertView () { 
-								Title = "Lista creada", Message = "Tu nueva lista \""+cmpLista.Text+"\" ha sido creada =D"
-							};
-							alert.AddButton("Aceptar");
-							alert.Show ();
-
-							tableItems = ls.All ();
-							//Verificamos si estamos en iphone o ipad para cargar la lista correcta
-							if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
-								this.tblLists.Source = new ListsTableSourceIphone (tableItems, this);
-							}else{
-								this.tblLists.Source = new ListsTableSource (tableItems, this);
-							}
-							this.tblLists.ReloadData();
-							cmpLista.Text = "";
-							modalView.Hidden = true;
-							cmpLista.ResignFirstResponder();
-						}
+					}catch(Exception){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
 					}
 				};
 
@@ -106,8 +145,13 @@ namespace ProductFinder
 					cmpLista.ResignFirstResponder();
 					modalView.Hidden = true;
 				};
-
-			} catch(Exception e){
+			}catch(System.Net.WebException){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups :S", Message = "Algo salio mal,verifica tu conexion a internet e intentalo de nuevo"
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
+			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo"
@@ -115,6 +159,13 @@ namespace ProductFinder
 				alert.AddButton("Aceptar");
 				alert.Show ();
 			}
+		}
+
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			this.headerView.Hidden = false;
+			this.tblLists.Hidden = false;
 		}
 	}
 

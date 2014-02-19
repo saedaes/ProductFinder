@@ -12,7 +12,7 @@ using MonoTouch.CoreGraphics;
 using MonoTouch.MessageUI;
 using Mono.Data.Sqlite;
 using System.Globalization;
-
+using System.Net;
 namespace ProductFinder
 {
 	public partial class ProductsInListView : UIViewController
@@ -54,112 +54,169 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			ProductsInListView.tableView = this.tblProducts;
-			//Configuramos la vista popup de cantidad
-			amountView.Layer.BorderWidth = 1.0f;
-			amountView.Layer.BorderColor = UIColor.Black.CGColor;
-			amountView.Layer.CornerRadius = 8;
+			try{
+				ProductsInListView.tableView = this.tblProducts;
+				//Configuramos la vista popup de cantidad
+				amountView.Layer.BorderWidth = 1.0f;
+				amountView.Layer.BorderColor = UIColor.Black.CGColor;
+				amountView.Layer.CornerRadius = 8;
 
-			//Configuramos la vista popup de comparacion de listas
-			CompareView.Layer.BorderWidth = 1.0f;
-			CompareView.Layer.BorderColor = UIColor.Black.CGColor;
-			CompareView.Layer.CornerRadius = 8;
+				//Configuramos la vista popup de comparacion de listas
+				CompareView.Layer.BorderWidth = 1.0f;
+				CompareView.Layer.BorderColor = UIColor.Black.CGColor;
+				CompareView.Layer.CornerRadius = 8;
 
-			pls.setListId (ProductsInListView.list_id);
-			tableItems = pls.All ();
-			this.tblProducts.Source = new ProductsTableSource (tableItems, this);
-			Add (tblProducts);
-			tblProducts.Add (amountView);
-			this.amountView.Hidden = true;
-			tblProducts.Add (CompareView);
-			this.CompareView.Hidden = true;
+				pls.setListId (ProductsInListView.list_id);
+				tableItems = pls.All ();
+				this.tblProducts.Source = new ProductsTableSource (tableItems, this);
+				Add (tblProducts);
+				tblProducts.Add (amountView);
+				this.amountView.Hidden = true;
+				tblProducts.Add (CompareView);
+				this.CompareView.Hidden = true;
 
-			this.btnComparar.TouchUpInside += (sender, e) => {
-				compareListService = new CompareListsService();
-				compareListService.setListId(ProductsInListView.list_id);
-				List<CompareListsService> tableItems2 = compareListService.All();
-				this.tblCompare.Source = new CompareTableSource(tableItems2,this);
-				tblCompare.TableHeaderView = this.headerView;
-				CompareView.Add(tblCompare);
-				this.tblCompare.ReloadData();
-				CompareView.Hidden = false;
-			};
+				this.btnComparar.TouchUpInside += (sender, e) => {
+					try{
+						if(tableItems.Count > 0){
+							compareListService = new CompareListsService();
+							compareListService.setListId(ProductsInListView.list_id);
+							List<CompareListsService> tableItems2 = compareListService.All();
+							if(tableItems2.Count > 0){
+								this.tblCompare.Source = new CompareTableSource(tableItems2,this);
+								tblCompare.TableHeaderView = this.headerView;
+								CompareView.Add(tblCompare);
+								this.tblCompare.ReloadData();
+								CompareView.Hidden = false;
+							}else{
+								UIAlertView alerta = new UIAlertView () { 
+									Title = "Lo sentimos =(", Message = "Los productos de tu lista no se encuentran en su totalidad en ninguna de nuestras tiendas."
+								};
+								alerta.AddButton ("Aceptar");
+								alerta.Show ();
+							}
+						}else{
+							UIAlertView alerta = new UIAlertView () { 
+								Title = "Espera!", Message = "No tienes productos en esta lista, agrega productos para que puedas comparar entre tiendas =)"
+							};
+							alerta.AddButton ("Aceptar");
+							alerta.Show ();
+						}
+					}catch(System.Net.WebException){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+						};
+						alerta.AddButton ("Aceptar");
+						alerta.Show ();
+					}catch(Exception){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo."
+						};
+						alerta.AddButton ("Aceptar");
+						alerta.Show ();
+					}
+				};
 
-			this.btnCerrar.TouchUpInside += (sender, e) => {
-				CompareView.Hidden = true;
-			};
+				this.btnCerrar.TouchUpInside += (sender, e) => {
+					CompareView.Hidden = true;
+				};
 
-			this.btnScan.TouchUpInside += (sender, e) => {
-				picker = new ScanditSDKRotatingBarcodePicker (MainView.appKey);
-				picker.OverlayController.Delegate = new pickerControllerDelegate(picker, this);
-				picker.OverlayController.ShowToolBar(true);
-				picker.OverlayController.SetToolBarButtonCaption("Cancelar");
-				picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
-				picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
-				this.NavigationController.PushViewController(picker,true);
+				this.btnScan.TouchUpInside += (sender, e) => {
+					picker = new ScanditSDKRotatingBarcodePicker (MainView.appKey);
+					picker.OverlayController.Delegate = new pickerControllerDelegate(picker, this);
+					picker.OverlayController.ShowToolBar(true);
+					picker.OverlayController.SetToolBarButtonCaption("Cancelar");
+					picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
+					picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
+					this.NavigationController.PushViewController(picker,true);
 
-				picker.StartScanning ();
+					picker.StartScanning ();
 
-			};
+				};
 
-			this.btnAceptar.TouchUpInside += (sender, e) => {
-				AddProductFromBarcode apfb = new AddProductFromBarcode ();
-				String respuesta = apfb.SetData ( ProductsInListView.barcode, ProductsInListView.list_id, cmpAmount.Text);
-				Console.WriteLine (respuesta);
-				if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Ups :S", Message = "Este producto ya se encuentra registrado en tu lista"
-					};
-					alert.AddButton ("Aceptar");
-					alert.Show ();
-				} else if (respuesta.Equals ("\"El producto no existe\"")) {
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Ups :S", Message = "Este producto no esta registrado en fixbuy =("
-					};
-					alert.AddButton ("Aceptar");
-					alert.Show ();
-				} else {
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Producto Agregado", Message = "El producto ha sido agregado a tu lista =D"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show ();
-					pls.setListId (ProductsInListView.list_id);
-					tableItems = pls.All ();
-					this.tblProducts.Source = new ProductsTableSource (tableItems, this);
-					tblProducts.ReloadData ();
+				this.btnAceptar.TouchUpInside += (sender, e) => {
+					try{
+						AddProductFromBarcode apfb = new AddProductFromBarcode ();
+						String respuesta = apfb.SetData ( ProductsInListView.barcode, ProductsInListView.list_id, cmpAmount.Text);
+						Console.WriteLine (respuesta);
+						if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Ups :S", Message = "Este producto ya se encuentra registrado en tu lista"
+							};
+							alert.AddButton ("Aceptar");
+							alert.Show ();
+						} else if (respuesta.Equals ("\"El producto no existe\"")) {
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Ups :S", Message = "Este producto no esta registrado en fixbuy =("
+							};
+							alert.AddButton ("Aceptar");
+							alert.Show ();
+						} else {
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Producto Agregado", Message = "El producto ha sido agregado a tu lista =D"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+							pls.setListId (ProductsInListView.list_id);
+							tableItems = pls.All ();
+							this.tblProducts.Source = new ProductsTableSource (tableItems, this);
+							tblProducts.ReloadData ();
+							this.amountView.Hidden = true;
+							pickerControllerDelegate.scanned = false;
+						}
+					}catch(System.Net.WebException){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+						};
+						alerta.AddButton ("Aceptar");
+						alerta.Show ();
+					}catch(Exception){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo."
+						};
+						alerta.AddButton ("Aceptar");
+						alerta.Show ();
+					}
+				};
+
+				this.btnCancelar.TouchUpInside += (sender, e) => {
 					this.amountView.Hidden = true;
 					pickerControllerDelegate.scanned = false;
-				}
-			};
+				};
 
-			this.btnCancelar.TouchUpInside += (sender, e) => {
-				this.amountView.Hidden = true;
-				pickerControllerDelegate.scanned = false;
-			};
-
-			int cantidad = 1;
-			this.cmpAmount.Text = cantidad.ToString ();
-			btnMas.TouchUpInside += (sender, e) => {
-				cantidad ++;
-				this.cmpAmount.Text = cantidad.ToString();
-			};
-
-			btnMenos.TouchUpInside += (sender, e) => {
-				cantidad --;
-				if(cantidad < 1){
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Espera!", Message = "La cantidad minima es 1"
-					};
-					alert.AddButton("Aceptar");
-					alert.Show();
-					cantidad = 1;
+				int cantidad = 1;
+				this.cmpAmount.Text = cantidad.ToString ();
+				btnMas.TouchUpInside += (sender, e) => {
+					cantidad ++;
 					this.cmpAmount.Text = cantidad.ToString();
-				}else{
-					this.cmpAmount.Text = cantidad.ToString();
-				}
-			};
+				};
 
+				btnMenos.TouchUpInside += (sender, e) => {
+					cantidad --;
+					if(cantidad < 1){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "La cantidad minima es 1"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show();
+						cantidad = 1;
+						this.cmpAmount.Text = cantidad.ToString();
+					}else{
+						this.cmpAmount.Text = cantidad.ToString();
+					}
+				};
+			}catch(System.Net.WebException){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+				};
+				alert.AddButton("Aceptar");
+				alert.Show();
+			}catch(Exception){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+				};
+				alert.AddButton("Aceptar");
+				alert.Show();
+			}
 		}
 
 		public override void ViewWillAppear (bool animated)
@@ -309,7 +366,7 @@ namespace ProductFinder
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
 			pdView = new ProductStoresListView();
-			pdView.setProduct (tableItems [indexPath.Row].codigo);
+			pdView.setProduct (tableItems [indexPath.Row].codigo,1);
 			Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 			controller.NavigationController.PushViewController (pdView, true);
 		}
@@ -489,7 +546,7 @@ namespace ProductFinder
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
 			pdView = new ProductStoresListView();
-			pdView.setProduct (tableItems [indexPath.Row].codigo);
+			pdView.setProduct (tableItems [indexPath.Row].codigo,1);
 			Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 			controller.NavigationController.PushViewController (pdView, true);
 		}

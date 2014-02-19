@@ -23,6 +23,7 @@
                 <outlet property="lblTiendaDireccion" destination="zaG-vA-8CV" id="sRt-8y-VL0"/>
                 <outlet property="lblTiendaDistancia" destination="6rA-Al-bWo" id="vOb-cS-6WM"/>
                 <outlet property="lblTiendaNombre" destination="S0u-QC-eIG" id="cmq-Hz-zMW"/>
+                <outlet property="lblVigencia" destination="WvU-Aq-Tc1" id="7Vc-Cp-edZ"/>
                 <outlet property="tblLists" destination="JKo-ZA-t8h" id="TFY-33-T4G"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -167,6 +168,13 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vigencia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WvU-Aq-Tc1">
+                    <rect key="frame" x="25" y="944" width="632" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
