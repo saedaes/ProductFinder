@@ -8,6 +8,12 @@
             <connections>
                 <outlet property="bannerImage" destination="sGn-lg-JvV" id="YiP-Hh-OML"/>
                 <outlet property="btnCerrarSesion" destination="RXM-dU-ymg" id="EKc-Bs-XkP"/>
+                <outlet property="btnInfo1" destination="A9z-9i-Bgo" id="QQt-n0-HLI"/>
+                <outlet property="btnInfo2" destination="ueG-BS-YQp" id="QJg-NB-l9X"/>
+                <outlet property="btnInfo3" destination="Hwb-xC-NLk" id="wdv-Wp-X9u"/>
+                <outlet property="btnInfo4" destination="r9Q-dq-aVZ" id="b96-Ne-hcP"/>
+                <outlet property="btnInfo5" destination="1S4-8U-Qga" id="Qcx-PW-Onl"/>
+                <outlet property="btnInfo6" destination="D9H-W6-V6A" id="e8t-qp-U1B"/>
                 <outlet property="btnListas" destination="Qdj-Io-3Dy" id="THD-fG-Zam"/>
                 <outlet property="btnNovedades" destination="R2k-fV-Jg0" id="75y-UV-3sU"/>
                 <outlet property="btnScan" destination="Xo7-Z0-ygt" id="0A7-Rq-FrX"/>
@@ -129,6 +135,48 @@
                     <rect key="frame" x="12" y="812" width="744" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A9z-9i-Bgo">
+                    <rect key="frame" x="154" y="265" width="25" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="info48.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D9H-W6-V6A">
+                    <rect key="frame" x="713" y="579" width="25" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="info48.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1S4-8U-Qga">
+                    <rect key="frame" x="435" y="579" width="25" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="info48.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r9Q-dq-aVZ">
+                    <rect key="frame" x="154" y="579" width="25" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="info48.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hwb-xC-NLk">
+                    <rect key="frame" x="713" y="265" width="25" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="info48.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ueG-BS-YQp">
+                    <rect key="frame" x="435" y="265" width="25" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="info48.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -138,6 +186,7 @@
     <resources>
         <image name="buscar.png" width="256" height="256"/>
         <image name="fixBuy.png" width="600" height="256"/>
+        <image name="info48.png" width="48" height="48"/>
         <image name="lista.png" width="256" height="256"/>
         <image name="mapa1.png" width="256" height="256"/>
         <image name="noticias.png" width="256" height="256"/>

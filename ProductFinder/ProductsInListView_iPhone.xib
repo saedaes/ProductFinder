@@ -7,18 +7,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductsInListView">
             <connections>
                 <outlet property="CompareView" destination="d59-Q8-3mg" id="VGb-vm-aTy"/>
-                <outlet property="amountView" destination="ZLm-CE-sEF" id="uIw-3o-L3w"/>
-                <outlet property="btnAceptar" destination="64I-cH-2qX" id="Lua-YL-ASC"/>
-                <outlet property="btnCancelar" destination="VoT-AY-rYn" id="dnY-xv-hiD"/>
+                <outlet property="amountView" destination="ZLm-CE-sEF" id="DsH-YC-ngv"/>
+                <outlet property="btnAceptar" destination="64I-cH-2qX" id="pmQ-E2-inz"/>
+                <outlet property="btnCancelar" destination="VoT-AY-rYn" id="rhf-io-UeL"/>
                 <outlet property="btnCerrar" destination="PUl-YD-EIs" id="25q-jj-lHW"/>
-                <outlet property="btnComparar" destination="3UF-BF-BXY" id="M7h-wl-j7u"/>
-                <outlet property="btnMas" destination="o6m-si-wnM" id="kbZ-oE-lbQ"/>
-                <outlet property="btnMenos" destination="GMx-LS-HwO" id="Ww5-1i-aRI"/>
-                <outlet property="btnScan" destination="LfU-LO-X3m" id="vpB-mX-rEg"/>
-                <outlet property="cmpAmount" destination="zRu-RH-7o1" id="aSg-eA-hcp"/>
-                <outlet property="headerView" destination="Dig-sJ-9T4" id="ZwA-Zg-mUK"/>
-                <outlet property="tblCompare" destination="icr-nM-yjS" id="4uH-Uy-H3d"/>
-                <outlet property="tblProducts" destination="RjN-2y-K3J" id="Fig-hN-dxb"/>
+                <outlet property="btnComparar" destination="3UF-BF-BXY" id="mho-gP-cG6"/>
+                <outlet property="btnMas" destination="o6m-si-wnM" id="kzg-PQ-bai"/>
+                <outlet property="btnMenos" destination="GMx-LS-HwO" id="FKA-AH-0UP"/>
+                <outlet property="btnScan" destination="LfU-LO-X3m" id="zBd-8K-7bz"/>
+                <outlet property="cmpAmount" destination="zRu-RH-7o1" id="AK6-fo-k2v"/>
+                <outlet property="headerView" destination="Dig-sJ-9T4" id="F8W-uz-S0Z"/>
+                <outlet property="tblCompare" destination="icr-nM-yjS" id="Uwj-XH-HZG"/>
+                <outlet property="tblProducts" destination="RjN-2y-K3J" id="weO-Mc-ZnO"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -128,6 +128,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>

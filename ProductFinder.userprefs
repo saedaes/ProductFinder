@@ -1,15 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPad.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/NameSearchResultView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPad" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ToastView.cs">
     <Files>
-      <File FileName="ProductFinder/ScanView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NameSearchResultView.cs" Line="190" Column="5" />
-      <File FileName="ProductFinder/ProductStoresListView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MyListsView.cs" Line="128" Column="53" />
-      <File FileName="ProductFinder/ServiciosWeb/LoginService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/BannersService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MapViewController.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ProductsInListView.cs" Line="395" Column="60" />
+      <File FileName="ProductFinder/RegistryView.cs" Line="8" Column="24" />
+      <File FileName="ProductFinder/LoginView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/MyListsView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/NameSearchResultView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ProductsInListView.cs" Line="74" Column="3" />
+      <File FileName="ProductFinder/ServiciosWeb/AgesService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ToastView.cs" Line="11" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

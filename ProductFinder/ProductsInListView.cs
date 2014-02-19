@@ -66,14 +66,15 @@ namespace ProductFinder
 				CompareView.Layer.BorderColor = UIColor.Black.CGColor;
 				CompareView.Layer.CornerRadius = 8;
 
-				pls.setListId (ProductsInListView.list_id);
-				tableItems = pls.All ();
-				this.tblProducts.Source = new ProductsTableSource (tableItems, this);
-				Add (tblProducts);
 				tblProducts.Add (amountView);
 				this.amountView.Hidden = true;
 				tblProducts.Add (CompareView);
 				this.CompareView.Hidden = true;
+
+				pls.setListId (ProductsInListView.list_id);
+				tableItems = pls.All ();
+				this.tblProducts.Source = new ProductsTableSource (tableItems, this);
+				Add (tblProducts);
 
 				this.btnComparar.TouchUpInside += (sender, e) => {
 					try{

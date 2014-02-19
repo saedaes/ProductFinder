@@ -42,6 +42,9 @@ namespace ProductFinder
 
 		List<BannersService> banners;
 
+		UIButton button;
+
+		bool bannerError = false;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -79,6 +82,43 @@ namespace ProductFinder
 			{
 				people = new List<Person> (from p in db.Table<Person> () select p);
 			}
+
+			//Eventos para los botones de informacion
+			this.btnInfo1.TouchUpInside += (sender, e) => {
+				ToastView view = new ToastView("Busca productos por código de barras o nombre", 3000);
+				view.SetGravity(ToastGravity.Center,0,0);
+				view.Show();
+			};
+
+			this.btnInfo2.TouchUpInside += (sender, e) => {
+				ToastView view = new ToastView("Localiza todas las tiendas registradas en FIXBUY", 3000);
+				view.SetGravity(ToastGravity.Center,0,0);
+				view.Show();
+			};
+
+			this.btnInfo3.TouchUpInside += (sender, e) => {
+				ToastView view = new ToastView("Administra tus listas y los productos en ellas", 3000);
+				view.SetGravity(ToastGravity.Center,0,0);
+				view.Show();
+			};
+
+			this.btnInfo4.TouchUpInside += (sender, e) => {
+				ToastView view = new ToastView("Inicia Sesion en FIXBUY para poder acceder a tus listas y más!", 3000);
+				view.SetGravity(ToastGravity.Center,0,0);
+				view.Show();
+			};
+
+			this.btnInfo5.TouchUpInside += (sender, e) => {
+				ToastView view = new ToastView("Entérate de lo más nuevo!", 3000);
+				view.SetGravity(ToastGravity.Center,0,0);
+				view.Show();
+			};
+
+			this.btnInfo6.TouchUpInside += (sender, e) => {
+				ToastView view = new ToastView("Consulta los servicios que ofrece FIXBUY", 3000);
+				view.SetGravity(ToastGravity.Center,0,0);
+				view.Show();
+			};
 
 			this.btnCerrarSesion.TouchUpInside += (sender, e) => {
 				UIAlertView alert = new UIAlertView () { 
@@ -241,14 +281,18 @@ namespace ProductFinder
 				alert.Show ();
 			}
 
-			UIButton button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
+			button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
 			bannerImage.Add (button);
 			button.TouchUpInside += (sender, e) => {
-				if(element != null){
-					if(element.link != null){
-						NSUrl url = new NSUrl (element.link);
-						UIApplication.SharedApplication.OpenUrl (url);
+				try{
+					if(bannerError == false){
+						if(element.imagen != ""){
+							NSUrl url = new NSUrl (element.link);
+							UIApplication.SharedApplication.OpenUrl (url);
+						}
 					}
+				}catch(Exception){
+					//solo atrapamos la excepcion, no hacemos nada
 				}
 			};
 		}
@@ -276,8 +320,19 @@ namespace ProductFinder
 					}
 				} catch (System.NullReferenceException){
 					timer.Invalidate ();
+					button.Dispose();
+					Console.WriteLine("primera excepcion");
+					bannerError = true;
 				} catch (System.ArgumentNullException){
 					timer.Invalidate();
+					button.Dispose();
+					Console.WriteLine("segunda excepcion");
+					bannerError = true;
+				} catch (Exception){
+					timer.Invalidate();
+					button.Dispose();
+					Console.WriteLine("tercera excepcion");
+					bannerError = true;
 				}
 			});
 
