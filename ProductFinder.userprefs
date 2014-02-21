@@ -1,14 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPad" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ToastView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/MapViewController.cs">
     <Files>
-      <File FileName="ProductFinder/RegistryView.cs" Line="8" Column="24" />
-      <File FileName="ProductFinder/LoginView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MyListsView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NameSearchResultView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ProductsInListView.cs" Line="74" Column="3" />
-      <File FileName="ProductFinder/ServiciosWeb/AgesService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ToastView.cs" Line="11" Column="24" />
+      <File FileName="ProductFinder/RegistryView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/MapViewController.cs" Line="127" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

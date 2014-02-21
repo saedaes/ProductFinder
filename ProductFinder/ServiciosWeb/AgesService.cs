@@ -12,7 +12,7 @@ namespace ProductFinder
 		public string nombre {get;set;}
 		public string id {get;set;}
 
-		string resultURL = "http://fixbuy.herokuapp.com/age_ranges.json";
+		string resultURL = "http://fixbuy.herokuapp.com/age_ranges_movil.json";
 
 		public AgesService ()
 		{

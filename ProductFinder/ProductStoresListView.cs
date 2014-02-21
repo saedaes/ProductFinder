@@ -449,9 +449,11 @@ namespace ProductFinder
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			Console.WriteLine (""+ps.tienda_imagen);
-			UIImage imagen = UIImage.LoadFromData (data);
-
-			cell.ImageView.Image = ScaleImage (imagen, 50);
+			if (data != null) {
+				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),50);
+			} else {
+				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 50);
+			}
 			cell.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			cell.TextLabel.Text = ps.tienda_nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);

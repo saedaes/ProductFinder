@@ -8,9 +8,12 @@
             <connections>
                 <outlet property="ListsView" destination="mlO-5u-LDk" id="Fun-cY-9r5"/>
                 <outlet property="QuantityView" destination="f8s-FZ-aRI" id="Pn8-LX-BVC"/>
-                <outlet property="btnAceptarCantidad" destination="dCA-2B-MBw" id="I5n-tP-3m4"/>
+                <outlet property="btnAceptarCantidad" destination="dCA-2B-MBw" id="fVe-O7-Y3P"/>
                 <outlet property="btnCerrarLista" destination="7vX-yV-0h4" id="brC-yB-ZjF"/>
                 <outlet property="btnLista" destination="PPv-zJ-UD7" id="qcm-df-y5A"/>
+                <outlet property="btnMapa" destination="NqT-aF-6UZ" id="EaX-2g-168"/>
+                <outlet property="btnMas" destination="wQ5-Us-Mkl" id="70x-f8-vKS"/>
+                <outlet property="btnMenos" destination="MqO-RH-LRC" id="8D3-rz-yVd"/>
                 <outlet property="cmpCantidad" destination="AWA-sq-f9e" id="1be-tq-5zB"/>
                 <outlet property="imgProducto" destination="ZMY-d0-Llc" id="QHs-6T-DeA"/>
                 <outlet property="imgTienda" destination="Zdg-4M-CyX" id="UEy-i7-jDX"/>
@@ -20,6 +23,7 @@
                 <outlet property="lblTiendaDireccion" destination="2bK-nN-OQP" id="8Uh-Ab-6a5"/>
                 <outlet property="lblTiendaDistancia" destination="DnQ-f9-Po8" id="CKB-im-5da"/>
                 <outlet property="lblTiendaNombre" destination="E7M-kX-MRt" id="VKb-49-78Y"/>
+                <outlet property="lblVigencia" destination="s85-4C-d1E" id="RDB-Rc-dk0"/>
                 <outlet property="tblLists" destination="Q1l-rR-qxc" id="HqG-SR-DCR"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -46,7 +50,7 @@
                     <rect key="frame" x="6" y="74" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descripcion del producto" id="U7b-DF-Huk">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Descripcion del producto" id="U7b-DF-Huk">
                     <rect key="frame" x="6" y="182" width="305" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,22 +87,18 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PPv-zJ-UD7">
-                    <rect key="frame" x="291" y="430" width="20" height="25"/>
+                    <rect key="frame" x="271" y="435" width="40" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="add.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_iconBlue.png" id="3LB-QT-9GB">
-                    <rect key="frame" x="15" y="410" width="21" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <view contentMode="scaleToFill" id="mlO-5u-LDk">
-                    <rect key="frame" x="18" y="85" width="280" height="368"/>
+                    <rect key="frame" x="18" y="85" width="280" height="351"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q1l-rR-qxc">
-                            <rect key="frame" x="0.0" y="49" width="280" height="319"/>
+                            <rect key="frame" x="0.0" y="49" width="280" height="302"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </tableView>
@@ -123,8 +123,8 @@
                     <rect key="frame" x="20" y="185" width="280" height="109"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="AWA-sq-f9e">
-                            <rect key="frame" x="20" y="42" width="240" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="AWA-sq-f9e">
+                            <rect key="frame" x="83" y="40" width="115" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -143,9 +143,35 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wQ5-Us-Mkl">
+                            <rect key="frame" x="194" y="34" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                            <state key="normal" title="+"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MqO-RH-LRC">
+                            <rect key="frame" x="40" y="34" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                            <state key="normal" title="-"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NqT-aF-6UZ">
+                    <rect key="frame" x="6" y="406" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s85-4C-d1E">
+                    <rect key="frame" x="6" y="447" width="257" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -155,6 +181,5 @@
     <resources>
         <image name="add.png" width="512" height="512"/>
         <image name="blue-cross.png" width="300" height="300"/>
-        <image name="location_iconBlue.png" width="32" height="32"/>
     </resources>
 </document>

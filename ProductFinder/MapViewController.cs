@@ -102,28 +102,41 @@ namespace ProductFinder {
 
 			//Añadimos el evento para buscar tienda mas cercana.
 			tiendaCercana.Clicked += (sender, e) => {
-				StoresService tiendac= nearestStore(newLocation,tiendas);
-				double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.latitud),Double.Parse(tiendac.longitud)))/1000;
-				UIAlertView alert = new UIAlertView () { 
-						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion+"\n"+"Distancia: " + Math.Round(distancia,2) +"km"
-				};
-				alert.AddButton("Aceptar");
-				alert.Show ();
+				try{
+					StoresService tiendac= nearestStore(newLocation,tiendas);
+					double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.latitud),Double.Parse(tiendac.longitud)))/1000;
+					UIAlertView alert = new UIAlertView () { 
+							Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.nombre + "\n "+ tiendac.direccion+"\n"+"Distancia: " + Math.Round(distancia,2) +"km"
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
 
-				var coords1 = new CLLocationCoordinate2D(Double.Parse(tiendac.latitud), Double.Parse(tiendac.longitud));
-				var span1 = new MKCoordinateSpan(MilesToLatitudeDegrees (0.2), MilesToLongitudeDegrees (0.2, coords.Latitude));
+					var coords1 = new CLLocationCoordinate2D(Double.Parse(tiendac.latitud), Double.Parse(tiendac.longitud));
+					var span1 = new MKCoordinateSpan(MilesToLatitudeDegrees (0.2), MilesToLongitudeDegrees (0.2, coords.Latitude));
 
-				// set the coords and zoom on the map
-				mapView.Region = new MKCoordinateRegion (coords1, span1);
+					// set the coords and zoom on the map
+					mapView.Region = new MKCoordinateRegion (coords1, span1);
+				}catch(Exception){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups =(", Message = "Algo salio mal, por favor intentalo de nuevo."
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
+				}
 			};  
 
 			// Manejamos la actualizacion de la localizacion del dispositivo.
 			if (CLLocationManager.LocationServicesEnabled)
 				iPhoneLocationManager.StartUpdatingLocation ();
-			} catch(Exception e){
-				Console.WriteLine (e.ToString());
+			} catch(System.Net.WebException){
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Ups =(", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
+			} catch(Exception){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "Algo salio mal, por favor intentalo de nuevo."
 				};
 				alert.AddButton("Aceptar");
 				alert.Show ();

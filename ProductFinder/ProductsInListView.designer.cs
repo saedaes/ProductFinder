@@ -43,6 +43,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIView CompareView { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView FooterView { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView headerView { get; set; }
 
 		[Outlet]
@@ -78,6 +81,16 @@ namespace ProductFinder
 				btnComparar = null;
 			}
 
+			if (btnMas != null) {
+				btnMas.Dispose ();
+				btnMas = null;
+			}
+
+			if (btnMenos != null) {
+				btnMenos.Dispose ();
+				btnMenos = null;
+			}
+
 			if (btnScan != null) {
 				btnScan.Dispose ();
 				btnScan = null;
@@ -108,14 +121,9 @@ namespace ProductFinder
 				tblProducts = null;
 			}
 
-			if (btnMas != null) {
-				btnMas.Dispose ();
-				btnMas = null;
-			}
-
-			if (btnMenos != null) {
-				btnMenos.Dispose ();
-				btnMenos = null;
+			if (FooterView != null) {
+				FooterView.Dispose ();
+				FooterView = null;
 			}
 		}
 	}

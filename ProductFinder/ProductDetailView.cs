@@ -94,7 +94,11 @@ namespace ProductFinder
 				double precio = Double.Parse(producto.precio);
 				this.lblPrecio.Text = "$"+precio.ToString("#,#",CultureInfo.InvariantCulture);
 				this.lblDescripcion.Text = producto.descripcion;
-				this.lblDescripcion.Font = UIFont.SystemFontOfSize(25);
+				if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+					this.lblDescripcion.Font = UIFont.SystemFontOfSize(10);
+				}else{
+					this.lblDescripcion.Font = UIFont.SystemFontOfSize(25);
+				}
 				//Establecemos la informacion de la tienda
 				NSUrl nsurl = new NSUrl(producto.tienda_imagen);
 				NSData data1 = NSData.FromUrl(nsurl);

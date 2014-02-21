@@ -34,6 +34,14 @@ namespace ProductFinder
 		//Hay que ingresar una llave apropiada para poder utilizar el api de lectura de codigo de barras.
 		public static string appKey = "Dr/S/jHREeOG5HfGLYYyGSCzjUXMnF/g1fJlTT1PxQE";
 
+		#region declaracion de variables para mover la vista al aparecer el teclado
+		private UIView activeview;             // Controller that activated the keyboard
+		private float scroll_amount = 0.0f;    // amount to scroll 
+		private float bottom = 0.0f;           // bottom point
+		private float offset = 10.0f;          // extra offset
+		private bool moveViewUp = false;           // which direction are we moving
+		#endregion
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -65,6 +73,16 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			#region observadores del teclado
+			// Keyboard popup
+			NSNotificationCenter.DefaultCenter.AddObserver
+			(UIKeyboard.DidShowNotification,KeyBoardUpNotification);
+
+			// Keyboard Down
+			NSNotificationCenter.DefaultCenter.AddObserver
+			(UIKeyboard.WillHideNotification,KeyBoardDownNotification);
+			#endregion
 
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
@@ -143,7 +161,32 @@ namespace ProductFinder
 				}
 			};
 
-			this.cmpNombre.ShouldReturn += (textField) => { textField.ResignFirstResponder(); return true; };
+			this.cmpNombre.ShouldReturn += (textField) => {
+				if(this.cmpNombre.Text == ""){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "Debes ingresar el nombre del producto a buscar"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				}else{
+					this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
+					this.View.Add ( this._loadPop );
+					this.cmpNombre.ResignFirstResponder();
+					Task.Factory.StartNew (
+						() => {
+							System.Threading.Thread.Sleep ( 1 * 1000 );
+						}
+					).ContinueWith ( 
+						t => {
+							nsr = new NameSearchResultView();
+							nsr.setProductName(this.cmpNombre.Text.Trim());
+							this.NavigationController.PushViewController(nsr,true);
+							this._loadPop.Hide ();
+						}, TaskScheduler.FromCurrentSynchronizationContext()
+					);
+				} 
+				return true; 
+			};
 
 			//Boton para iniciar el escaner de codigo de barras
 			this.btnCodigo.TouchUpInside += (sender, e) => {
@@ -172,6 +215,58 @@ namespace ProductFinder
 			base.ViewWillAppear (animated);
 			// Prepare the picker such that it starts up faster.
 			SIBarcodePicker.Prepare (appKey, SICameraFacingDirection.Back);
+		}
+
+		private void KeyBoardUpNotification(NSNotification notification)
+		{
+			// get the keyboard size
+			var val = new NSValue(notification.UserInfo.ValueForKey(UIKeyboard.FrameBeginUserInfoKey).Handle);
+			RectangleF r = val.RectangleFValue;
+
+			// Find what opened the keyboard
+			foreach (UIView view in this.View.Subviews) {
+				if (view.IsFirstResponder)
+					activeview = view;
+			}
+			if (activeview != null) {
+				// Bottom of the controller = initial position + height + offset      
+				bottom = (activeview.Frame.Y + activeview.Frame.Height + offset);
+			}
+			// Calculate how far we need to scroll
+			scroll_amount = (r.Height - (View.Frame.Size.Height - bottom)) ;
+
+			// Perform the scrolling
+			if (scroll_amount > 0) {
+				moveViewUp = true;
+				ScrollTheView (moveViewUp);
+			} else {
+				moveViewUp = false;
+			}
+		}
+
+		private void KeyBoardDownNotification(NSNotification notification)
+		{
+			if(moveViewUp){ScrollTheView(false);}
+		}
+
+		private void ScrollTheView(bool move)
+		{
+
+			// scroll the view up or down
+			UIView.BeginAnimations (string.Empty, System.IntPtr.Zero);
+			UIView.SetAnimationDuration (0.3);
+
+			RectangleF frame = View.Frame;
+
+			if (move) {
+				frame.Y -= scroll_amount;
+			} else {
+				frame.Y += scroll_amount;
+				scroll_amount = 0;
+			}
+
+			View.Frame = frame;
+			UIView.CommitAnimations();
 		}
 	}
 	public class overlayControllerDelegate : SIOverlayControllerDelegate

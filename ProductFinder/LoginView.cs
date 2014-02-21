@@ -12,6 +12,13 @@ namespace ProductFinder
 		private string _pathToDatabase;
 		LoginService loginService = new LoginService();
 		UITextField contraseña;
+		#region declaracion de variables para mover la vista al aparecer el teclado
+		private UIView activeview;             // Controller that activated the keyboard
+		private float scroll_amount = 0.0f;    // amount to scroll 
+		private float bottom = 0.0f;           // bottom point
+		private float offset = 10.0f;          // extra offset
+		private bool moveViewUp = false;           // which direction are we moving
+		#endregion
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -33,6 +40,17 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			#region observadores del teclado
+			// Keyboard popup
+			NSNotificationCenter.DefaultCenter.AddObserver
+			(UIKeyboard.DidShowNotification,KeyBoardUpNotification);
+
+			// Keyboard Down
+			NSNotificationCenter.DefaultCenter.AddObserver
+			(UIKeyboard.WillHideNotification,KeyBoardDownNotification);
+			#endregion
+
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				this.cmpContraseñaIphone.SecureTextEntry = true;
 			} else {
@@ -110,6 +128,65 @@ namespace ProductFinder
 				RegistryView registry = new RegistryView();
 				this.NavigationController.PushViewController(registry, true);
 			};
+		}
+		public override void TouchesBegan (NSSet touches, UIEvent evt)
+		{
+			base.TouchesBegan (touches, evt);
+			this.View.EndEditing (true);
+		}
+
+		private void KeyBoardUpNotification(NSNotification notification)
+		{
+			// get the keyboard size
+			var val = new NSValue(notification.UserInfo.ValueForKey(UIKeyboard.FrameBeginUserInfoKey).Handle);
+			RectangleF r = val.RectangleFValue;
+
+			// Find what opened the keyboard
+			foreach (UIView view in this.View.Subviews) {
+				if (view.IsFirstResponder)
+					activeview = view;
+			}
+
+			if (activeview != null) {
+				// Bottom of the controller = initial position + height + offset      
+				bottom = (activeview.Frame.Y + activeview.Frame.Height + offset);
+			}
+
+			// Calculate how far we need to scroll
+			scroll_amount = (r.Height - (View.Frame.Size.Height - bottom)) ;
+
+			// Perform the scrolling
+			if (scroll_amount > 0) {
+				moveViewUp = true;
+				ScrollTheView (moveViewUp);
+			} else {
+				moveViewUp = false;
+			}
+		}
+
+		private void KeyBoardDownNotification(NSNotification notification)
+		{
+			if(moveViewUp){ScrollTheView(false);}
+		}
+
+		private void ScrollTheView(bool move)
+		{
+
+			// scroll the view up or down
+			UIView.BeginAnimations (string.Empty, System.IntPtr.Zero);
+			UIView.SetAnimationDuration (0.3);
+
+			RectangleF frame = View.Frame;
+
+			if (move) {
+				frame.Y -= scroll_amount;
+			} else {
+				frame.Y += scroll_amount;
+				scroll_amount = 0;
+			}
+
+			View.Frame = frame;
+			UIView.CommitAnimations();
 		}
 	}
 }
