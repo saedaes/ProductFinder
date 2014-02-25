@@ -14,7 +14,6 @@ namespace ProductFinder
 	public partial class ProductDetailView : UIViewController
 	{
 		ProductSearchDetailService producto;
-		String barcode ="";
 		Double distancia;
 		ListsService ls;
 		//Lista donde se guardan los resultados de la consulta en la bd
@@ -63,7 +62,7 @@ namespace ProductFinder
 				this.Add(this.ListsView);
 				ListsView.Hidden = true;
 
-				this.btnMapa.SetBackgroundImage(UIImage.FromFile("Images/locationred.png"),UIControlState.Normal);
+				this.btnMapa.SetBackgroundImage(Images.mapa,UIControlState.Normal);
 
 				this.btnMapa.TouchUpInside += (sender, e) => {
 					SecondMapViewController mapView = new SecondMapViewController();
@@ -83,9 +82,10 @@ namespace ProductFinder
 				NSUrl nsUrl = new NSUrl (producto.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
 				if(data!= null){
-					this.imgProducto.Image = UIImage.LoadFromData (data);
+					Images.imagenDetalle = UIImage.LoadFromData(data);
+					this.imgProducto.Image = Images.imagenDetalle;
 				}else{
-					this.imgProducto.Image = UIImage.FromFile("Images/noImage.jpg");
+					this.imgProducto.Image = Images.sinImagen;
 				}
 
 
@@ -103,9 +103,10 @@ namespace ProductFinder
 				NSUrl nsurl = new NSUrl(producto.tienda_imagen);
 				NSData data1 = NSData.FromUrl(nsurl);
 				if(data1 != null){
-					this.imgTienda.Image = UIImage.LoadFromData(data1);
+					Images.imagenDetalleTienda = UIImage.LoadFromData(data1);
+					this.imgTienda.Image = Images.imagenDetalleTienda;
 				}else{
-					this.imgTienda.Image = UIImage.FromFile("Images/noImage.jpg");
+					this.imgTienda.Image = Images.sinImagen;
 				}
 				this.lblTiendaNombre.Text = producto.tienda_nombre;
 				this.lblTiendaDireccion.Text = producto.tienda_direccion;
@@ -215,6 +216,57 @@ namespace ProductFinder
 				btnCerrarLista.TouchUpInside += (sender, e) => {
 					ListsView.Hidden = true;
 				};
+
+				btnBadPrice.TouchUpInside += (sender, e) => {
+					if (MainView.userId != 0) {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportación, ¿le gustaría reportar el precio de este producto para su revision?"
+						} ;
+						alert.AddButton ("SI");
+						alert.AddButton ("NO");
+						alert.Clicked += (s , o) => {
+							try{
+								if(o.ButtonIndex == 0){
+									ReportService report = new ReportService();
+									String respuesta = report.SetData(MainView.userId.ToString(),this.producto.id,this.producto.tienda_id,this.producto.precio);
+									if (respuesta.Equals("\"correct\"")){
+										UIAlertView alert2 = new UIAlertView () { 
+											Title = "Muchas gracias!", Message = "En FixBuy estamos comprometidos con ofrecer siempre la informacion correcta, muchas gracias por tu reporte =)"
+										} ;
+										alert2.AddButton ("Aceptar");
+										alert2.Show ();
+									}else{
+										UIAlertView alert3 = new UIAlertView () { 
+											Title = "UPS :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+										} ;
+										alert3.AddButton ("Aceptar");
+										alert3.Show ();
+									}
+								}
+							}catch(System.Net.WebException){
+								UIAlertView alerta = new UIAlertView () { 
+									Title = "UPS :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+								} ;
+								alerta.AddButton ("Aceptar");
+								alerta.Show ();
+							}catch(Exception){
+								UIAlertView alerta = new UIAlertView () { 
+									Title = "UPS :S", Message = "Algo salio mal, por favor intentalo de nuevo"
+								} ;
+								alerta.AddButton ("Aceptar");
+								alerta.Show ();
+							}
+						};
+						alert.Show ();
+					}  else {
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Espera!", Message = "Debes iniciar sesió para poder reportar el precio incorrecto"
+						} ;
+						alert.AddButton ("Aceptar");
+						alert.Show ();
+					}
+				};
+
 			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 
@@ -230,13 +282,12 @@ namespace ProductFinder
 	{
 		List<ListsService> tableItems;
 		string cellIdentifier = "TableCell";
-		ProductDetailView controller;
 		ProductSearchDetailService producto;
 		int cantidad;
+		AddProductToListService addproduct = new AddProductToListService ();
 		public AddToListsTableSource (List<ListsService> items, ProductDetailView controller, ProductSearchDetailService producto, int cantidad) 
 		{
 			tableItems = items;
-			this.controller = controller;
 			this.producto = producto;
 			this.cantidad = cantidad;
 		}
@@ -263,7 +314,7 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/list128.png"), 50);
+			cell.ImageView.Image = ScaleImage (Images.lista, 50);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
@@ -282,7 +333,6 @@ namespace ProductFinder
 			alert.Clicked += (sender, e) => {
 				try{
 					if(e.ButtonIndex == 0){
-						AddProductToListService addproduct = new AddProductToListService ();
 						String respuesta = addproduct.SetData (producto.id, tableItems [indexPath.Row].id,this.cantidad.ToString());
 						if (respuesta.Equals ("\"El producto ya existe en esta lista\"")) {
 							UIAlertView alert2 = new UIAlertView () { 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -25,10 +25,9 @@
                     <attributedString key="attributedText">
                         <fragment content="Bienvenido a FIXBUY        ">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="28" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="28" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
@@ -37,160 +36,135 @@ CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKA
 </string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content" base64-UTF8="YES">
-CQ
-</string>
-                            <attributes>
-                                <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment content="Como utilizar FixBuy">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                            <attributes>
-                                <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
-	Enfoca con tu cámara el código de barras de cualquier producto y podrás comparar el precio del artículo en distintos supermercados.
 
-	</string>
+Enfoca con tu cámara el código de barras de cualquier producto y podrás comparar el precio del artículo en distintos supermercados.
+
+</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment content="En la tienda o donde quieras">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
-	Además, puedes buscar artículos y servicios tecleando su nombre o descripción en nuestra aplicación: en tus ratos libres o incluso cuando estés en el mismo supermercado . 
-	Cualquier lugar es apropiado para completar tu lista de la compra utilizando FixBuy.
+Además, puedes buscar artículos y servicios tecleando su nombre o descripción en nuestra aplicación: en tus ratos libres o incluso cuando estés en el mismo supermercado . Cualquier lugar es apropiado para completar tu lista de la compra utilizando FixBuy.
 	
-	</string>
+</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment content="Da de alta nuevos productos en nuestro sistema">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
-	No encuentras lo que estas buscando, puedes agregarlo a FixBuy y así pronto lo encontraras con nosotros, colabora con la comunidad de FixBuy!!
+No encuentras lo que estas buscando, puedes agregarlo a FixBuy y así pronto lo encontraras con nosotros, colabora con la comunidad de FixBuy!!
 	
-	</string>
+</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment content="Crea tus listas de la compra">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
-	Añade tus productos a tus listas de la compra con un solo botón. Puedes crear tantas listas como quieras
+Añade tus productos a tus listas de la compra con un solo botón. Puedes crear tantas listas como quieras
 
-	</string>
+</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment content="Elige el supermercado más cercano ahorrando tiempo y dinero">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
-	Utiliza FixBuy para localizar las tiendas mas cercanas al sitio donde te encuentres, Ademas enterate del punto mas cercano donde encontrar exactamente lo que buscas.   
+Utiliza FixBuy para localizar las tiendas mas cercanas al sitio donde te encuentres, Ademas enterate del punto mas cercano donde encontrar exactamente lo que buscas.   
 	
-	</string>
+</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment content="Compara tu lista entre distintos supermercados">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
-	Obtén de manera practica y rápida los diferentes precios y sitios donde puedes encontrar el producto o servicio que buscas.
+Obtén de manera practica y rápida los diferentes precios y sitios donde puedes encontrar el producto o servicio que buscas.
 
 
-     </string>
+</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
-                        <fragment content=" ¿TIENES UNA TIENDA O NEGOCIO?">
+                        <fragment content="¿TIENES UNA TIENDA O NEGOCIO?">
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="NSColor" red="0.0" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                         <fragment>
                             <string key="content">
 
-	Registrate en nuestra aplicación
+Registrate en nuestra aplicación
 
-	- Informa de tus productos y/o servicios a nuestros usuarios cuando estén en cualquier lugar elaborando su lista de la compra o en el mismo momento de hacerla en el punto de venta. 
+- Informa de tus productos y/o servicios a nuestros usuarios cuando estén en cualquier lugar elaborando su lista de la compra o en el mismo momento de hacerla en el punto de venta. 
 	
-	- Anúnciate en el mejor momento con tus spots, banners, textos, fotos…
+- Anúnciate en el mejor momento con tus spots, banners, textos, fotos…
 
-	-Tanto si eres fabricante, distribuidor, prestador de servicios no desaproveches esta oportunidad de incrementar tus ventas
+-Tanto si eres fabricante, distribuidor, prestador de servicios no desaproveches esta oportunidad de incrementar tus ventas
 
-	- Consulta mas detalles  en: http://fixbuy.heroku.com</string>
+- Consulta mas detalles  en: http://fixbuy.heroku.com</string>
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
                     </attributedString>

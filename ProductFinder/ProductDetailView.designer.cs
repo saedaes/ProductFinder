@@ -16,6 +16,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnAceptarCantidad { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnBadPrice { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnCerrarLista { get; set; }
 
 		[Outlet]
@@ -71,6 +74,11 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnBadPrice != null) {
+				btnBadPrice.Dispose ();
+				btnBadPrice = null;
+			}
+
 			if (btnAceptarCantidad != null) {
 				btnAceptarCantidad.Dispose ();
 				btnAceptarCantidad = null;
@@ -146,6 +154,11 @@ namespace ProductFinder
 				lblTiendaNombre = null;
 			}
 
+			if (lblVigencia != null) {
+				lblVigencia.Dispose ();
+				lblVigencia = null;
+			}
+
 			if (ListsView != null) {
 				ListsView.Dispose ();
 				ListsView = null;
@@ -159,11 +172,6 @@ namespace ProductFinder
 			if (tblLists != null) {
 				tblLists.Dispose ();
 				tblLists = null;
-			}
-
-			if (lblVigencia != null) {
-				lblVigencia.Dispose ();
-				lblVigencia = null;
 			}
 		}
 	}

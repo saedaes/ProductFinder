@@ -83,7 +83,6 @@ namespace ProductFinder
 					try{
 						AmountView.Hidden = true;
 						ListsService ls = new ListsService();
-						Console.WriteLine("Este es el id de usuario: "+MainView.userId.ToString());
 						ls.setUserId(MainView.userId.ToString());
 						List<ListsService> listItems = ls.All();
 						if(listItems.Count > 0){
@@ -168,7 +167,6 @@ namespace ProductFinder
 			ProductStoresListView pdView;
 			int user;
 			List<UIButton> botones = new List<UIButton> ();
-			UIImage imagen = UIImage.FromFile ("Images/add_to_list48.png");
 			public ProductsTableSource (List<ProductSearchService> items, NameSearchResultView controller, int user ) 
 			{
 				tableItems = items;
@@ -203,7 +201,7 @@ namespace ProductFinder
 				if (data != null) {
 					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 80);
 				} else {
-					cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 80); 
+					cell.ImageView.Image = ScaleImage (Images.sinImagen, 80); 
 				}
 				cell.TextLabel.Text = ps.nombre;
 				cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
@@ -221,8 +219,8 @@ namespace ProductFinder
 			}
 
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
-				botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirALista48.Size.Width, Images.añadirALista48.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage(Images.añadirALista48,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					if(this.user == 0){
@@ -253,7 +251,6 @@ namespace ProductFinder
 			{
 				pdView = new ProductStoresListView();
 				pdView.setProduct (tableItems [indexPath.Row].codigo,1);
-				Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 				controller.NavigationController.PushViewController (pdView, true);
 			}
 		}
@@ -267,7 +264,6 @@ namespace ProductFinder
 			ProductStoresListView pdView;
 			int user;
 			List<UIButton> botones = new List<UIButton> ();
-			UIImage imagen = UIImage.FromFile ("Images/add_to_list24.png");
 			public ProductsTableSourceIphone (List<ProductSearchService> items, NameSearchResultView controller, int  user) 
 			{
 				tableItems = items;
@@ -304,7 +300,7 @@ namespace ProductFinder
 				if (data != null) {
 					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 50);
 				} else {
-					cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 50); 
+					cell.ImageView.Image = ScaleImage (Images.sinImagen, 50); 
 				}
 				cell.TextLabel.Text = ps.nombre;
 				cell.TextLabel.Font = UIFont.SystemFontOfSize(10);
@@ -322,8 +318,8 @@ namespace ProductFinder
 			}
 
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
-				botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirALista24.Size.Width, Images.añadirALista24.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage(Images.añadirALista24,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					if(this.user == 0){
@@ -435,13 +431,11 @@ namespace ProductFinder
 		{
 			List<ListsService> tableItems;
 			string cellIdentifier = "TableCell";
-			NameSearchResultView controller;
 			String producto;
 			int cantidad;
 			public AddToListsTableSource (List<ListsService> items, NameSearchResultView controller, String producto, int cantidad) 
 			{
 				tableItems = items;
-				this.controller = controller;
 				this.producto = producto;
 				this.cantidad = cantidad;
 			}
@@ -468,7 +462,7 @@ namespace ProductFinder
 				// if there are no cells to reuse, create a new one
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/list128.png"), 50);
+				cell.ImageView.Image = ScaleImage (Images.lista, 50);
 				cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 				cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
 				cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);

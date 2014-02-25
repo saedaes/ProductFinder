@@ -4,7 +4,6 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Threading.Tasks;
 using ScanditSDK;
-using MonoTouch.Dialog;
 using MonoTouch.CoreLocation;
 using Mono.Data.Sqlite;
 using System.IO;

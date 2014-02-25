@@ -176,7 +176,6 @@ namespace ProductFinder
 		string cellIdentifier = "TableCell";
 		MyListsView controller;
 		List<UIButton> botones = new List<UIButton> ();
-		UIImage imagen = UIImage.FromFile ("Images/trash48.png");
 		public ListsTableSource (List<ListsService> items, MyListsView controller) 
 		{
 			tableItems = items;
@@ -205,7 +204,7 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/list128.png"), 80);
+			cell.ImageView.Image = ScaleImage (Images.lista, 80);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.DetailTextLabel.Lines = 2;
@@ -220,8 +219,8 @@ namespace ProductFinder
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
 				UIAlertView alert = new UIAlertView () { 
@@ -346,7 +345,6 @@ namespace ProductFinder
 		string cellIdentifier = "TableCell";
 		MyListsView controller;
 		List<UIButton> botones = new List<UIButton> ();
-		UIImage imagen = UIImage.FromFile ("Images/trash24.png");
 		public ListsTableSourceIphone (List<ListsService> items, MyListsView controller) 
 		{
 			tableItems = items;
@@ -375,7 +373,7 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/list128.png"), 40);
+			cell.ImageView.Image = ScaleImage (Images.lista, 40);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(10);
 			cell.DetailTextLabel.Lines = 2;
@@ -390,8 +388,8 @@ namespace ProductFinder
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura24.Size.Width, Images.basura24.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(Images.basura24,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
 				UIAlertView alert = new UIAlertView () { 
@@ -412,7 +410,7 @@ namespace ProductFinder
 							ListsService ls = new ListsService();
 							ls.setUserId(MainView.userId.ToString());
 							List<ListsService> listas = ls.All();
-							MyListsView.tableView.Source = new ListsTableSource(listas,this.controller);
+							MyListsView.tableView.Source = new ListsTableSourceIphone(listas,this.controller);
 							MyListsView.tableView.ReloadData ();
 						}else if(respuesta.Equals("\"error\"")){
 							UIAlertView alert2 = new UIAlertView () { 

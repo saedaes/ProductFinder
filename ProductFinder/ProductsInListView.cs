@@ -286,7 +286,6 @@ namespace ProductFinder
 		ProductsInListView controller;
 		ProductStoresListView pdView;
 		List<UIButton> botones = new List<UIButton> ();
-		UIImage imagen = UIImage.FromFile ("Images/trash48.png");
 		public ProductsTableSource (List<ProductsInListService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
@@ -320,7 +319,7 @@ namespace ProductFinder
 			if (data != null) {
 				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 80);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 80);
+				cell.ImageView.Image = ScaleImage (Images.sinImagen, 80);
 			}
 			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
@@ -338,8 +337,8 @@ namespace ProductFinder
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
 				UIAlertView alert = new UIAlertView () { 
@@ -381,8 +380,8 @@ namespace ProductFinder
 						UIAlertView alerta = new UIAlertView () { 
 							Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
 						};
-						alert.AddButton("Aceptar");
-						alert.Show();
+						alerta.AddButton("Aceptar");
+						alerta.Show();
 					}
 				};
 				alert.Show ();
@@ -395,7 +394,6 @@ namespace ProductFinder
 		{
 			pdView = new ProductStoresListView();
 			pdView.setProduct (tableItems [indexPath.Row].codigo,1);
-			Console.WriteLine ("el codigo es " + tableItems [indexPath.Row].codigo);
 			controller.NavigationController.PushViewController (pdView, true);
 		}
 
@@ -481,7 +479,6 @@ namespace ProductFinder
 		ProductsInListView controller;
 		ProductStoresListView pdView;
 		List<UIButton> botones = new List<UIButton> ();
-		UIImage imagen = UIImage.FromFile ("Images/trash24.png");
 		public ProductsTableSourceIphone (List<ProductsInListService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
@@ -532,8 +529,8 @@ namespace ProductFinder
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, imagen.Size.Width, imagen.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage(imagen,UIControlState.Normal);
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura24.Size.Width, Images.basura24.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(Images.basura24,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
 
@@ -673,11 +670,9 @@ namespace ProductFinder
 	{
 		List<CompareListsService> tableItems;
 		string cellIdentifier = "TableCell";
-		ProductsInListView controller;
 		public CompareTableSource (List<CompareListsService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
-			this.controller = controller;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -707,7 +702,7 @@ namespace ProductFinder
 			if (data != null) {
 				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 60);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile("Images/noImage.jpg"), 60);
+				cell.ImageView.Image = ScaleImage (Images.sinImagen, 60);
 			}
 			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
@@ -796,16 +791,14 @@ namespace ProductFinder
 		}	
 	}
 
-	//Table source para comparacion de lista ipad
+	//Table source para comparacion de lista iphone
 	class CompareTableSourceIphone : UITableViewSource 
 	{
 		List<CompareListsService> tableItems;
 		string cellIdentifier = "TableCell";
-		ProductsInListView controller;
 		public CompareTableSourceIphone (List<CompareListsService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
-			this.controller = controller;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -835,7 +828,7 @@ namespace ProductFinder
 			if (data != null) {
 				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 30);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile("Images/noImage.jpg"), 30);
+				cell.ImageView.Image = ScaleImage(Images.sinImagen, 30);
 			}
 			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(9);

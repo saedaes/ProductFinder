@@ -41,7 +41,6 @@ namespace ProductFinder
 		public void setProduct(String barcode, int previousView){
 			this.barcode = barcode;
 			this.previousView = previousView;
-			Console.WriteLine ("Viene de la vista: " + this.previousView);
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -106,7 +105,7 @@ namespace ProductFinder
 				if(data!=null){
 					this.imgProduct.Image = UIImage.LoadFromData (data);
 				}else{
-					this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
+					this.imgProduct.Image = Images.sinImagen;
 				}
 				this.lblproduct.Text = product.nombre;
 				this.lblDescription.Text = product.descripcion;
@@ -117,7 +116,6 @@ namespace ProductFinder
 				if (CLLocationManager.LocationServicesEnabled)
 					iPhoneLocationManager.StartUpdatingLocation ();
 			}catch(System.ArgumentOutOfRangeException e){
-				Console.WriteLine (e.ToString());
 				didNotFidProduct();
 			} 
 		}
@@ -181,7 +179,6 @@ namespace ProductFinder
 		List<UIView> vistas = new List<UIView> ();
 		List<UIButton> botones = new List<UIButton> ();
 		List<UILabel> distancias = new List<UILabel> ();
-		UIImage image = UIImage.FromFile ("Images/locationred.png");
 		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 		{
 			tableItems = items;
@@ -244,8 +241,8 @@ namespace ProductFinder
 		}
 
 		public UIView getDistanceView(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, image.Size.Width, image.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage (image, UIControlState.Normal);
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 50f, 25f);
 			Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
@@ -261,44 +258,7 @@ namespace ProductFinder
 			vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
 			return vistas.ElementAt(index);
 		}
-
-		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
-		{
-			if (conn > 0) {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportacion, ¿le gustaria reportar el precio de este producto para su revision?"
-				};
-				alert.AddButton ("SI");
-				alert.AddButton ("NO");
-				alert.Clicked += (sender, e) => {
-					if (e.ButtonIndex == 0) {
-						ReportService report = new ReportService();
-						String respuesta = report.SetData(MainView.userId.ToString(),tableItems[indexPath.Row].id,tableItems[indexPath.Row].tienda_id,tableItems[indexPath.Row].precio);
-						if (respuesta.Equals("\"correct\"")){
-							UIAlertView alert2 = new UIAlertView () { 
-								Title = "Muchas gracias!", Message = "En FixBuy estamos comprometidos con ofrecer siempre la informacion correcta, muchas gracias por tu reporte =)"
-							};
-							alert2.AddButton ("Aceptar");
-							alert2.Show ();
-						}else{
-							UIAlertView alert3 = new UIAlertView () { 
-								Title = "UPS :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
-							};
-							alert3.AddButton ("Aceptar");
-							alert3.Show ();
-						}
-					}
-				};
-				alert.Show ();
-			} else {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Espera!", Message = "Debes iniciar sesión para poder reportar el precio incorrecto"
-				};
-				alert.AddButton ("Aceptar");
-				alert.Show ();
-			}
-		}
-
+			
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
 			pdView = new ProductDetailView ();
@@ -390,7 +350,6 @@ namespace ProductFinder
 		ProductDetailView pdView;
 		CLLocationManager location;
 		int conn;
-
 		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 		{
 			tableItems = items;
@@ -462,7 +421,6 @@ namespace ProductFinder
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (16);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
-			cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			return cell;
 		}
 
@@ -473,44 +431,7 @@ namespace ProductFinder
 			pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
 			controller.NavigationController.PushViewController (pdView, true);
 		}
-
-		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
-		{
-			if (conn > 0) {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Gracias por su reporte", Message = "Estamos revisando constantemente los precios de los productos y le agradecemos su aportacion, ¿le gustaria reportar el precio de este producto para su revision?"
-				};
-				alert.AddButton ("SI");
-				alert.AddButton ("NO");
-				alert.Clicked += (sender, e) => {
-					if (e.ButtonIndex == 0) {
-						ReportService report = new ReportService();
-						String respuesta = report.SetData(MainView.userId.ToString(),tableItems[indexPath.Row].id,tableItems[indexPath.Row].tienda_id,tableItems[indexPath.Row].precio);
-						if (respuesta.Equals("\"correct\"")){
-							UIAlertView alert2 = new UIAlertView () { 
-								Title = "Muchas gracias!", Message = "En FixBuy estamos comprometidos con ofrecer siempre la informacion correcta, muchas gracias por tu reporte =)"
-							};
-							alert2.AddButton ("Aceptar");
-							alert2.Show ();
-						}else{
-							UIAlertView alert3 = new UIAlertView () { 
-								Title = "UPS :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
-							};
-							alert3.AddButton ("Aceptar");
-							alert3.Show ();
-						}
-					}
-				};
-				alert.Show ();
-			} else {
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Espera!", Message = "Debes iniciar sesión para poder reportar el precio incorrecto"
-				};
-				alert.AddButton ("Aceptar");
-				alert.Show ();
-			}
-		}
-
+			
 		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.
 		public static UIImage ScaleImage(UIImage image, int maxSize)
 		{

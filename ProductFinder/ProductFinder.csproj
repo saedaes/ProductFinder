@@ -97,7 +97,9 @@
       <HintPath>..\lib\ios\ScanditSDK.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
-    <Reference Include="MonoTouch.Dialog-1" />
+    <Reference Include="Newtonsoft.Json.MonoTouch">
+      <HintPath>..\External\Newtonsoft.Json\Newtonsoft.Json\bin\Release\Newtonsoft.Json.MonoTouch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -179,6 +181,7 @@
     <Compile Include="ServiciosWeb\DestroyService.cs" />
     <Compile Include="SecondMapViewController.cs" />
     <Compile Include="ToastView.cs" />
+    <Compile Include="Images.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -209,14 +212,8 @@
     <BundleResource Include="Resources\ProductFinder2.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\camera-icon.png" />
-    <BundleResource Include="Images\checklist.png" />
-    <BundleResource Include="Images\lupa-psd-468x468.png" />
-    <BundleResource Include="Images\mapas.png" />
-    <BundleResource Include="Images\novedad.png" />
-    <BundleResource Include="Images\power-button-155491_640.png" />
     <BundleResource Include="Resources\logo.jpg" />
     <BundleResource Include="Resources\Barcode.png" />
-    <BundleResource Include="Images\servicios.png" />
     <BundleResource Include="Images\noImage.jpg" />
     <BundleResource Include="Images\list128.png" />
     <BundleResource Include="Images\locationred.png" />
@@ -239,11 +236,6 @@
     <BundleResource Include="Resources\new_list128.png" />
     <BundleResource Include="Resources\info24.png" />
     <BundleResource Include="Resources\info48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\External\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj">
-      <Project>{12448CD5-D860-4C1C-8B9F-139F3794B9BC}</Project>
-      <Name>Newtonsoft.Json.MonoTouch</Name>
-    </ProjectReference>
+    <BundleResource Include="Resources\bad_price.png" />
   </ItemGroup>
 </Project>

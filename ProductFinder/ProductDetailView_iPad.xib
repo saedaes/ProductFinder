@@ -9,6 +9,7 @@
                 <outlet property="ListsView" destination="Wb4-ad-vbJ" id="KkS-gl-xNY"/>
                 <outlet property="QuantityView" destination="0Sk-qh-lWP" id="2MM-GK-Es0"/>
                 <outlet property="btnAceptarCantidad" destination="ngb-go-cei" id="LTp-ej-b9c"/>
+                <outlet property="btnBadPrice" destination="bFB-1o-Vit" id="ulC-zp-i3D"/>
                 <outlet property="btnCerrarLista" destination="QlQ-f0-mEy" id="EE3-H4-lkf"/>
                 <outlet property="btnLista" destination="BJo-ys-Ylj" id="uIL-bX-FHr"/>
                 <outlet property="btnMapa" destination="FTw-vH-dJZ" id="RQk-aO-1ia"/>
@@ -175,6 +176,13 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bFB-1o-Vit">
+                    <rect key="frame" x="688" y="158" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button" image="bad_price.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -183,6 +191,7 @@
     </objects>
     <resources>
         <image name="add.png" width="512" height="512"/>
+        <image name="bad_price.png" width="256" height="256"/>
         <image name="blue-cross.png" width="300" height="300"/>
     </resources>
 </document>

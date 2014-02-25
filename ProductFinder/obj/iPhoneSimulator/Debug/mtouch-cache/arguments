@@ -10,8 +10,6 @@
 	-sim \
 	/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Debug/ProductFinder.app \
 	-r \
-	/Users/marco/Projects/ProductFinder/External/Newtonsoft.Json/Newtonsoft.Json/bin/Debug/Newtonsoft.Json.MonoTouch.dll \
-	-r \
 	/Developer/MonoTouch/usr/lib/mono/2.1/System.dll \
 	-r \
 	/Developer/MonoTouch/usr/lib/mono/2.1/System.Xml.dll \
@@ -24,7 +22,7 @@
 	-r \
 	/Developer/MonoTouch/usr/lib/mono/2.1/Mono.Data.Sqlite.dll \
 	-r \
-	/Developer/MonoTouch/usr/lib/mono/2.1/MonoTouch.Dialog-1.dll \
+	/Users/marco/Projects/ProductFinder/External/Newtonsoft.Json/Newtonsoft.Json/bin/Release/Newtonsoft.Json.MonoTouch.dll \
 	-debug \
 	-nolink \
 	-sdk \
