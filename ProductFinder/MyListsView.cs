@@ -79,7 +79,6 @@ namespace ProductFinder
 
 				this.btnNewList.TouchUpInside += (sender, e) => {
 					modalView.Hidden = false;
-					Console.WriteLine("SIMON!!!");
 				};
 
 				this.btnAceptar.TouchUpInside += (sender, e) => {
@@ -363,7 +362,7 @@ namespace ProductFinder
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
-			return 50f;
+			return 70f;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -373,9 +372,9 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (Images.lista, 40);
+			cell.ImageView.Image = ScaleImage (Images.lista, 60);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(10);
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
 			cell.DetailTextLabel.Lines = 2;
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(7);
@@ -388,8 +387,8 @@ namespace ProductFinder
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura24.Size.Width, Images.basura24.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage(Images.basura24,UIControlState.Normal);
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
 				UIAlertView alert = new UIAlertView () { 

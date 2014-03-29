@@ -9,12 +9,17 @@
                 <outlet property="AmountView" destination="yr1-ne-ajr" id="A1e-5y-oCQ"/>
                 <outlet property="ListsView" destination="Z0Y-Rj-nAT" id="OtS-kR-aZN"/>
                 <outlet property="btnAceptar" destination="cYN-dP-Wzi" id="OER-a7-tpZ"/>
+                <outlet property="btnAceptarLista" destination="Qck-PJ-r3b" id="qUz-Hx-2I0"/>
+                <outlet property="btnCancelarLista" destination="RnB-zK-vTy" id="uqD-ux-Mgt"/>
                 <outlet property="btnCerrar" destination="dDM-LK-qsk" id="64p-Tc-poX"/>
                 <outlet property="btnMas" destination="a27-s4-JoD" id="6WG-xO-eBv"/>
                 <outlet property="btnMenos" destination="gXS-Of-Rtm" id="860-XE-lll"/>
+                <outlet property="btnNuevaLista" destination="iJT-bu-6BP" id="JvL-XG-Cdx"/>
                 <outlet property="cmpAmount" destination="QAB-L9-lqh" id="cwa-q8-znY"/>
+                <outlet property="cmpListName" destination="MEY-Jy-HWX" id="UdK-No-Qro"/>
                 <outlet property="headerView" destination="maN-DM-bOY" id="K94-lA-Yav"/>
                 <outlet property="lblSearch" destination="g0M-tB-knz" id="qwL-vm-JXd"/>
+                <outlet property="newListView" destination="zrN-Ab-gbi" id="v8u-9Z-st4"/>
                 <outlet property="tblLists" destination="mtD-gV-8aa" id="CSM-iW-mqU"/>
                 <outlet property="tblProducts" destination="qHg-Yj-8cl" id="yeQ-Me-9mN"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -67,6 +72,12 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iJT-bu-6BP">
+                            <rect key="frame" x="0.0" y="7" width="34" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                            <state key="normal" title="+"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </view>
@@ -105,6 +116,40 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
                             <state key="normal" title="-"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="zrN-Ab-gbi">
+                    <rect key="frame" x="9" y="75" width="303" height="105"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrese el nombre de la lista" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Kc-aY-XBr">
+                            <rect key="frame" x="20" y="10" width="263" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="MEY-Jy-HWX">
+                            <rect key="frame" x="20" y="38" width="263" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qck-PJ-r3b">
+                            <rect key="frame" x="20" y="75" width="60" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Aceptar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RnB-zK-vTy">
+                            <rect key="frame" x="210" y="75" width="73" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Cancelar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

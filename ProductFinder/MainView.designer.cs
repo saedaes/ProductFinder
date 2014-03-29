@@ -26,6 +26,12 @@ namespace ProductFinder
 
 		[Outlet]
 		MonoTouch.UIKit.UITextField cmpNombre { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView faceBookView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblUserName { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -44,14 +50,24 @@ namespace ProductFinder
 				btnEntrar = null;
 			}
 
+			if (btnListas != null) {
+				btnListas.Dispose ();
+				btnListas = null;
+			}
+
 			if (cmpNombre != null) {
 				cmpNombre.Dispose ();
 				cmpNombre = null;
 			}
 
-			if (btnListas != null) {
-				btnListas.Dispose ();
-				btnListas = null;
+			if (faceBookView != null) {
+				faceBookView.Dispose ();
+				faceBookView = null;
+			}
+
+			if (lblUserName != null) {
+				lblUserName.Dispose ();
+				lblUserName = null;
 			}
 		}
 	}

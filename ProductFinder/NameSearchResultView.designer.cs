@@ -19,6 +19,12 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnAceptarLista { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnCancelarLista { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnCerrar { get; set; }
 
 		[Outlet]
@@ -28,7 +34,13 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnMenos { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnNuevaLista { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpAmount { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITextField cmpListName { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIView headerView { get; set; }
@@ -40,6 +52,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIView ListsView { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView newListView { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITableView tblLists { get; set; }
 
 		[Outlet]
@@ -47,39 +62,39 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (headerView != null) {
-				headerView.Dispose ();
-				headerView = null;
+			if (btnCancelarLista != null) {
+				btnCancelarLista.Dispose ();
+				btnCancelarLista = null;
 			}
 
-			if (lblSearch != null) {
-				lblSearch.Dispose ();
-				lblSearch = null;
+			if (btnAceptarLista != null) {
+				btnAceptarLista.Dispose ();
+				btnAceptarLista = null;
 			}
 
-			if (tblProducts != null) {
-				tblProducts.Dispose ();
-				tblProducts = null;
+			if (cmpListName != null) {
+				cmpListName.Dispose ();
+				cmpListName = null;
 			}
 
-			if (ListsView != null) {
-				ListsView.Dispose ();
-				ListsView = null;
-			}
-
-			if (tblLists != null) {
-				tblLists.Dispose ();
-				tblLists = null;
-			}
-
-			if (btnCerrar != null) {
-				btnCerrar.Dispose ();
-				btnCerrar = null;
+			if (newListView != null) {
+				newListView.Dispose ();
+				newListView = null;
 			}
 
 			if (AmountView != null) {
 				AmountView.Dispose ();
 				AmountView = null;
+			}
+
+			if (btnAceptar != null) {
+				btnAceptar.Dispose ();
+				btnAceptar = null;
+			}
+
+			if (btnCerrar != null) {
+				btnCerrar.Dispose ();
+				btnCerrar = null;
 			}
 
 			if (btnMas != null) {
@@ -92,14 +107,39 @@ namespace ProductFinder
 				btnMenos = null;
 			}
 
+			if (btnNuevaLista != null) {
+				btnNuevaLista.Dispose ();
+				btnNuevaLista = null;
+			}
+
 			if (cmpAmount != null) {
 				cmpAmount.Dispose ();
 				cmpAmount = null;
 			}
 
-			if (btnAceptar != null) {
-				btnAceptar.Dispose ();
-				btnAceptar = null;
+			if (headerView != null) {
+				headerView.Dispose ();
+				headerView = null;
+			}
+
+			if (lblSearch != null) {
+				lblSearch.Dispose ();
+				lblSearch = null;
+			}
+
+			if (ListsView != null) {
+				ListsView.Dispose ();
+				ListsView = null;
+			}
+
+			if (tblLists != null) {
+				tblLists.Dispose ();
+				tblLists = null;
+			}
+
+			if (tblProducts != null) {
+				tblProducts.Dispose ();
+				tblProducts = null;
 			}
 		}
 	}

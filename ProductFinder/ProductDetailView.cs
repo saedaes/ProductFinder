@@ -9,6 +9,7 @@ using Mono.Data.Sqlite;
 using System.IO;
 using System.Net;
 using System.Globalization;
+using MonoTouch.FacebookConnect;
 namespace ProductFinder
 {
 	public partial class ProductDetailView : UIViewController
@@ -20,6 +21,8 @@ namespace ProductFinder
 		List<Person> people;
 		//String donde se guarda la ruta de la bd
 		private string _pathToDatabase;
+		NSData data;
+		string HelloId = null;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -80,7 +83,7 @@ namespace ProductFinder
 				}
 
 				NSUrl nsUrl = new NSUrl (producto.imagen);
-				NSData data = NSData.FromUrl (nsUrl);
+				data = NSData.FromUrl (nsUrl);
 				if(data!= null){
 					Images.imagenDetalle = UIImage.LoadFromData(data);
 					this.imgProducto.Image = Images.imagenDetalle;
@@ -260,10 +263,66 @@ namespace ProductFinder
 						alert.Show ();
 					}  else {
 						UIAlertView alert = new UIAlertView () { 
-							Title = "Espera!", Message = "Debes iniciar sesió para poder reportar el precio incorrecto"
+							Title = "Espera!", Message = "Debes iniciar sesión para poder reportar el precio incorrecto"
 						} ;
 						alert.AddButton ("Aceptar");
 						alert.Show ();
+					}
+				};
+
+				btnFacebook.TouchUpInside += (sender, e) => {
+					try{
+					if(MainView.isWithFacebook == true){
+						UIAlertView alert = new UIAlertView () { 
+								Title = "Quieres publicar este producto?", Message = "Deseas publicar este producto en tu perfil de Facebook?"
+						} ;
+						alert.AddButton ("Aceptar");
+						alert.AddButton("Cancelar");
+							alert.Clicked += (s , o) => {
+								if(o.ButtonIndex == 0){
+									var post = new NSMutableDictionary ();
+									if(data != null){
+										post.Add (new NSString ("message"), new NSString (producto.imagen+ "\t"+producto.nombre+ "\t("+producto.descripcion+")" + "\nGracias a FixBuy encontre mi producto =D"));
+									}else{
+										post.Add (new NSString ("message"), new NSString (producto.nombre + "\t("+producto.descripcion+")" + "\nGracias a FixBuy encontre mi producto =D "));
+									}
+									// Ask for publish_actions permissions in context
+									if (!FBSession.ActiveSession.Permissions.Contains ("publish_actions")) {
+										// No permissions found in session, ask for it
+										FBSession.ActiveSession.RequestNewPublishPermissions (new [] { "publish_actions" }, FBSessionDefaultAudience.Friends, (session, error) => {
+											if (error != null) 
+												InvokeOnMainThread (() => new UIAlertView ("Ups =S", "Ocurrio un error intentalo de nuevo", null, "Aceptar", null).Show ());
+											else {
+												// If permissions granted, publish the story
+												FBRequestConnection.StartWithGraphPath ("me/feed", post, "POST", (connection, result, err) => {
+													if (err != null)
+														InvokeOnMainThread (() => new UIAlertView ("Ups =S", "Ocurrio un error intentalo de nuevo", null, "Aceptar", null).Show ());
+													else {
+														HelloId = (result as FBGraphObject)["id"] as NSString;
+														InvokeOnMainThread (() => new UIAlertView ("Producto publicado =)", "El producto que FixBuy te ayudo a encontrar a sido publicado en tu biografia =)", null, "Aceptar", null).Show ());
+													}
+												});
+											}
+										});
+									} else {
+										// If permissions is found, publish the story
+										FBRequestConnection.StartWithGraphPath ("me/feed", post, "POST", (connection, result, err) => {
+											if (err != null)
+												InvokeOnMainThread (() => new UIAlertView ("Ups =S", "Ocurrio un error intentalo de nuevo", null, "Ok", null).Show ());
+											else {
+												HelloId = (result as FBGraphObject)["id"] as NSString;
+												InvokeOnMainThread (() => new UIAlertView ("Producto publicado =)", "El producto que FixBuy te ayudo a encontrar a sido publicado en tu biografia =)", null, "Aceptar", null).Show ());
+											}
+										});
+									}
+								}
+							};
+						alert.Show ();
+					}else{
+						InvokeOnMainThread (() => new UIAlertView ("No has entrado a Facebook", "Debes iniciar sesion en Facebook para poder publicar tu producto, por favor regresa a la pantalla inicial para iniciar sesion en Facebook", null, "Aceptar", null).Show ());
+					}
+					}catch(Exception exc){
+						Console.WriteLine("UPS: " + exc.ToString());
 					}
 				};
 

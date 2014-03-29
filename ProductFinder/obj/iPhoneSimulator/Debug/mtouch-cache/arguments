@@ -1,4 +1,4 @@
-# Version: 7.0.6.168 (2ed9bc9)
+# Version: 7.2.0.2 (58c3efa)
 # [first argument, ignore] # /Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Debug/mtouch.exe
 /Developer/MonoTouch/usr/bin/mtouch \
 	-sdkroot \
@@ -23,10 +23,12 @@
 	/Developer/MonoTouch/usr/lib/mono/2.1/Mono.Data.Sqlite.dll \
 	-r \
 	/Users/marco/Projects/ProductFinder/External/Newtonsoft.Json/Newtonsoft.Json/bin/Release/Newtonsoft.Json.MonoTouch.dll \
+	-r \
+	/Users/marco/Projects/ProductFinder/Components/facebookios-3.11.1/lib/ios/MonoTouch.FacebookConnect.dll \
 	-debug \
 	-nolink \
 	-sdk \
-	7.0 \
+	7.1 \
 	-targetver \
 	7.0 \
 	--abi=i386 \

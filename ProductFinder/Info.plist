@@ -25,5 +25,16 @@
 	<string>FixBuy</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.fixbuy.fixbuy</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb661258913936079</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string></string>
+		</dict>
+	</array>
 </dict>
 </plist>

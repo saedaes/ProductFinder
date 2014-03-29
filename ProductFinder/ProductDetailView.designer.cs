@@ -22,6 +22,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnCerrarLista { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnFacebook { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnLista { get; set; }
 
 		[Outlet]
@@ -74,14 +77,19 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnBadPrice != null) {
-				btnBadPrice.Dispose ();
-				btnBadPrice = null;
+			if (btnFacebook != null) {
+				btnFacebook.Dispose ();
+				btnFacebook = null;
 			}
 
 			if (btnAceptarCantidad != null) {
 				btnAceptarCantidad.Dispose ();
 				btnAceptarCantidad = null;
+			}
+
+			if (btnBadPrice != null) {
+				btnBadPrice.Dispose ();
+				btnBadPrice = null;
 			}
 
 			if (btnCerrarLista != null) {

@@ -14,6 +14,8 @@ namespace ProductFinder
 		String nombre = "";
 		public static UIView amount;
 		public static String product_id = "";
+		NewListService nls;
+		ListsService ls;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -56,6 +58,13 @@ namespace ProductFinder
 				ListsView.Layer.CornerRadius = 8;
 				tblProducts.Add(this.ListsView);
 				ListsView.Hidden = true;
+
+				//Configuramos la vista popup de nueva lista
+				newListView.Layer.BorderWidth = 1.0f;
+				newListView.Layer.BorderColor = UIColor.Black.CGColor;
+				newListView.Layer.CornerRadius = 8;
+				tblProducts.Add(newListView);
+				newListView.Hidden = true;
 
 				ps.setProductSearchString (this.nombre);
 				List<ProductSearchService> tableItems = ps.All ();
@@ -137,6 +146,65 @@ namespace ProductFinder
 						this.cmpAmount.Text = cantidad.ToString();
 					}
 				};
+
+				btnNuevaLista.TouchUpInside += (sender, e) => {
+					this.newListView.Hidden = false;
+				};
+
+				btnCancelarLista.TouchUpInside += (sender, e) => {
+					this.newListView.Hidden = true;
+				};
+
+				btnAceptarLista.TouchUpInside += (sender, e) => {
+					try{
+						if(cmpListName.Text == ""){
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Espera!", Message = "Debes ingresar el nombre de la lista"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+						}else{
+							nls = new NewListService();
+							String respuesta = nls.SetListData(cmpListName.Text, MainView.userId.ToString());
+							if(respuesta.Equals("\"lista ya existe\"")){
+								UIAlertView alert = new UIAlertView () { 
+									Title = "Ups :S", Message = "Ese nombre de lista ya se encuentra registrado"
+								};
+								alert.AddButton("Aceptar");
+								alert.Show ();
+								cmpListName.Text = "";
+							}else{
+								UIAlertView alert = new UIAlertView () { 
+									Title = "Lista creada", Message = "Tu nueva lista \""+cmpListName.Text+"\" ha sido creada =D"
+								};
+								alert.AddButton("Aceptar");
+								alert.Show ();
+								ls = new ListsService();
+								ls.setUserId(MainView.userId.ToString());
+								List<ListsService> items = ls.All ();
+								this.tblLists.Source = new AddToListsTableSource(items,this,NameSearchResultView.product_id,int.Parse(cmpAmount.Text));
+								this.tblLists.ReloadData();
+								cmpListName.Text = "";
+								newListView.Hidden = true;
+								cmpListName.ResignFirstResponder();
+							}
+						}
+					}catch(System.Net.WebException){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}catch(Exception exc){
+						Console.WriteLine(exc.ToString());
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}
+				};
+
 			}catch(System.Net.WebException){
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
@@ -283,7 +351,7 @@ namespace ProductFinder
 
 			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
-				return 50f;
+				return 70f;
 			}
 
 			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -298,15 +366,15 @@ namespace ProductFinder
 				NSUrl nsUrl = new NSUrl (ps.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
 				if (data != null) {
-					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 50);
+					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 60);
 				} else {
-					cell.ImageView.Image = ScaleImage (Images.sinImagen, 50); 
+					cell.ImageView.Image = ScaleImage (Images.sinImagen, 60); 
 				}
 				cell.TextLabel.Text = ps.nombre;
-				cell.TextLabel.Font = UIFont.SystemFontOfSize(10);
+				cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
 				cell.TextLabel.Lines = 2 ;
 				cell.DetailTextLabel.Text = ps.descripcion;
-				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (7);
+				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (10);
 				cell.DetailTextLabel.TextColor = UIColor.Gray;
 				cell.DetailTextLabel.Lines = 2;
 				UIButton addToList = new UIButton();
@@ -318,8 +386,8 @@ namespace ProductFinder
 			}
 
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirALista24.Size.Width, Images.añadirALista24.Size.Height);
-				botones.ElementAt(index).SetBackgroundImage(Images.añadirALista24,UIControlState.Normal);
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirALista48.Size.Width, Images.añadirALista48.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage(Images.añadirALista48,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					if(this.user == 0){

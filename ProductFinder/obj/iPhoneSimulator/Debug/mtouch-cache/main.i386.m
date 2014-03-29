@@ -10,6 +10,7 @@ void monotouch_register_assemblies ()
 {
 	monotouch_open_and_register ("monotouch.dll");
 	monotouch_open_and_register ("ScanditSDK.dll");
+	monotouch_open_and_register ("MonoTouch.FacebookConnect.dll");
 
 }
 

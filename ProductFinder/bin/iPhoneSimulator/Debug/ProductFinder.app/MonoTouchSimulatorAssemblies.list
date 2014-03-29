@@ -3,5 +3,6 @@ System.dll
 System.Core.dll
 System.Xml.dll
 ScanditSDK.dll
+MonoTouch.FacebookConnect.dll
 Newtonsoft.Json.MonoTouch.dll
 System.Runtime.Serialization.dll

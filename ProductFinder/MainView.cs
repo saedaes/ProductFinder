@@ -10,6 +10,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
+using MonoTouch.FacebookConnect; //Para conectar la app con facebook
 namespace ProductFinder
 {
 	public partial class MainView : UIViewController
@@ -39,6 +40,15 @@ namespace ProductFinder
 		private float bottom = 0.0f;           // bottom point
 		private float offset = 10.0f;          // extra offset
 		private bool moveViewUp = false;           // which direction are we moving
+		#endregion
+
+		#region declaracion variables de FaceBook
+		private string [] ExtendedPermissions = new [] { "user_about_me", "read_stream"};
+
+		FBLoginView loginView;
+		FBProfilePictureView pictureView;
+		IFBGraphUser user;
+		public static bool isWithFacebook;
 		#endregion
 
 		static bool UserInterfaceIdiomIsPhone {
@@ -81,6 +91,37 @@ namespace ProductFinder
 			// Keyboard Down
 			NSNotificationCenter.DefaultCenter.AddObserver
 			(UIKeyboard.WillHideNotification,KeyBoardDownNotification);
+			#endregion
+
+			#region declaracion de vista de Facebook
+			// Create the Facebook LogIn View with the needed Permissions
+			// https://developers.facebook.com/ios/login-ui-control/
+			loginView = new FBLoginView (ExtendedPermissions) {
+				Frame = new RectangleF (0,0,45, 45)
+			};
+			// Hook up to FetchedUserInfo event, so you know when
+			// you have the user information available
+			loginView.FetchedUserInfo += (sender, e) => {
+				user = e.User;
+				pictureView.ProfileID = user.GetId ();
+				MainView.isWithFacebook = true;
+			};
+			// Clean user Picture and label when Logged Out
+			loginView.ShowingLoggedOutUser += (sender, e) => {
+				pictureView.ProfileID = null;
+				lblUserName.Text = string.Empty;
+				MainView.isWithFacebook = false;
+			};
+
+			// Create view that will display user's profile picture
+			// https://developers.facebook.com/ios/profilepicture-ui-control/
+
+			pictureView = new FBProfilePictureView () {
+				Frame = new RectangleF (loginView.Bounds.Width, 0, 45, 45)
+			};
+					
+			this.faceBookView.Add(loginView);
+			this.faceBookView.Add(pictureView);
 			#endregion
 
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);

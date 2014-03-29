@@ -11,6 +11,7 @@
                 <outlet property="btnAceptarCantidad" destination="ngb-go-cei" id="LTp-ej-b9c"/>
                 <outlet property="btnBadPrice" destination="bFB-1o-Vit" id="ulC-zp-i3D"/>
                 <outlet property="btnCerrarLista" destination="QlQ-f0-mEy" id="EE3-H4-lkf"/>
+                <outlet property="btnFacebook" destination="vHZ-zl-oh2" id="UNc-qD-M5e"/>
                 <outlet property="btnLista" destination="BJo-ys-Ylj" id="uIL-bX-FHr"/>
                 <outlet property="btnMapa" destination="FTw-vH-dJZ" id="RQk-aO-1ia"/>
                 <outlet property="btnMas" destination="98g-e3-ox8" id="jZo-EW-VtT"/>
@@ -183,6 +184,13 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vHZ-zl-oh2">
+                    <rect key="frame" x="253" y="75" width="45" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="facebook.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -193,5 +201,6 @@
         <image name="add.png" width="512" height="512"/>
         <image name="bad_price.png" width="256" height="256"/>
         <image name="blue-cross.png" width="300" height="300"/>
+        <image name="facebook.png" width="150" height="150"/>
     </resources>
 </document>

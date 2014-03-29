@@ -90,6 +90,14 @@ namespace ProductFinder
 						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.tienda_nombre + "\n "+ tiendac.tienda_direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
 					};
 					alert.AddButton("Aceptar");
+					alert.AddButton("Mapa");
+					alert.Clicked += (s , o) => {
+						if(o.ButtonIndex == 1){
+							SecondMapViewController mapView = new SecondMapViewController();
+							mapView.setTienda(tiendac);
+							this.NavigationController.PushViewController(mapView, true);
+						}
+					};
 					alert.Show ();
 				};  
 

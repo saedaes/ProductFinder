@@ -24,6 +24,9 @@
     <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -47,7 +50,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>81DE42C5-E1E0-4585-937A-A471EDDC93E9</CodesignProvision>
+    <CodesignProvision>D48B5B8B-0728-4276-9109-0C167C37CE3A</CodesignProvision>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>cjk,mideast,other</MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -100,11 +107,14 @@
     <Reference Include="Newtonsoft.Json.MonoTouch">
       <HintPath>..\External\Newtonsoft.Json\Newtonsoft.Json\bin\Release\Newtonsoft.Json.MonoTouch.dll</HintPath>
     </Reference>
+    <Reference Include="MonoTouch.FacebookConnect">
+      <HintPath>..\Components\facebookios-3.11.1\lib\ios\MonoTouch.FacebookConnect.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="ServiciosWeb\" />
     <Folder Include="Images\" />
+    <Folder Include="FacebookSDKResources.bundle\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -209,33 +219,21 @@
     <InterfaceDefinition Include="ProductsInListView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ProductFinder2.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\camera-icon.png" />
-    <BundleResource Include="Resources\logo.jpg" />
-    <BundleResource Include="Resources\Barcode.png" />
     <BundleResource Include="Images\noImage.jpg" />
     <BundleResource Include="Images\list128.png" />
     <BundleResource Include="Images\locationred.png" />
-    <BundleResource Include="Resources\add.png" />
-    <BundleResource Include="Resources\blue-cross.png" />
-    <BundleResource Include="Resources\location_iconBlue.png" />
-    <BundleResource Include="Resources\buscar.png" />
-    <BundleResource Include="Resources\lista.png" />
-    <BundleResource Include="Resources\mapa1.png" />
-    <BundleResource Include="Resources\noticias.png" />
-    <BundleResource Include="Resources\servicios.png" />
-    <BundleResource Include="Resources\sesion.png" />
-    <BundleResource Include="Resources\fixBuy.png" />
-    <BundleResource Include="Resources\checklist.png" />
-    <BundleResource Include="Resources\new_list64.png" />
     <BundleResource Include="Images\trash48.png" />
     <BundleResource Include="Images\trash24.png" />
     <BundleResource Include="Images\add_to_list24.png" />
     <BundleResource Include="Images\add_to_list48.png" />
-    <BundleResource Include="Resources\new_list128.png" />
-    <BundleResource Include="Resources\info24.png" />
-    <BundleResource Include="Resources\info48.png" />
-    <BundleResource Include="Resources\bad_price.png" />
+    <BundleResource Include="FacebookSDKResources.bundle\Contents\Resources\en.lproj\Localizable.strings" />
+    <BundleResource Include="FacebookSDKResources.bundle\Contents\Resources\he.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="facebookios">
+      <Version>3.11.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>
