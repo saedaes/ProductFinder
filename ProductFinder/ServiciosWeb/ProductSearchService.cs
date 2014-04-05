@@ -21,10 +21,6 @@ namespace ProductFinder
 		{
 		}
 
-		public void setProductSearch(String barcode){
-			this.resultURL = "http://fixbuy.herokuapp.com/findProduct.json?product="+barcode;
-		}
-
 		public void setProductSearchString(String text){
 			this.resultURL = "http://fixbuy.herokuapp.com/products/find_by_description/"+text+".json";
 		}

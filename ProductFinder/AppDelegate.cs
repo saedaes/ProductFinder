@@ -36,7 +36,7 @@ namespace ProductFinder
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			rootNavigationController = new UINavigationController ();
-			rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (7, 129, 181);
+			rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 115, 0);
 			rootNavigationController.NavigationBar.TintColor = UIColor.White;
 			UITextAttributes atributes = new UITextAttributes();
 			atributes.TextColor = UIColor.White;

@@ -30,7 +30,13 @@ namespace ProductFinder
 		//Lista donde se guardan los resultados de la consulta en la bd
 		List<Person> people;
 
+		//Lista donde se guardan los resultados de la consulta en la bd
+		List<State> states;
+
 		public static int userId;
+
+		public static int localityId;
+
 		//Hay que ingresar una llave apropiada para poder utilizar el api de lectura de codigo de barras.
 		public static string appKey = "Dr/S/jHREeOG5HfGLYYyGSCzjUXMnF/g1fJlTT1PxQE";
 
@@ -131,17 +137,25 @@ namespace ProductFinder
 			using (var conn= new SQLite.SQLiteConnection(_pathToDatabase))
 			{
 				conn.CreateTable<Person>();
+				conn.CreateTable<State> ();
 			}
 
 			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
 			{
 				people = new List<Person> (from p in db.Table<Person> () select p);
+				states = new List<State> (from s in db.Table<State> () select s);
 			}
 
 			if(people.Count > 0){
 				Person user = people.ElementAt(0);
 				MainView.userId = user.ID;
 				Console.WriteLine ("El Id de usuario es: "+ user.ID);
+			}
+
+			if(states.Count > 0){
+				State estado = states.ElementAt(0);
+				MainView.localityId = estado.localityId;
+				Console.WriteLine ("El Id de localidad es: "+ estado.stateId);
 			}
 
 			iPhoneLocationManager = new CLLocationManager ();
@@ -182,7 +196,20 @@ namespace ProductFinder
 					};
 					alert.AddButton ("Aceptar");
 					alert.Show ();
-				}else{
+				}
+				else if (states.Count < 1){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "Debes seleccionar tu ubicacion antes de comenzar a usar FixBuy, por favor ingresa " +
+							"Al menu de opciones para establecerla"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Clicked += (s, o) => {
+						StatesView statesView = new StatesView();
+						this.NavigationController.PushViewController(statesView, true);
+					};
+					alert.Show ();
+				}
+				else{
 					this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
 					this.View.Add ( this._loadPop );
 					this.cmpNombre.ResignFirstResponder();
@@ -208,7 +235,20 @@ namespace ProductFinder
 					};
 					alert.AddButton ("Aceptar");
 					alert.Show ();
-				}else{
+				}
+				else if (states.Count < 1){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "Debes seleccionar tu ubicacion antes de comenzar a usar FixBuy, por favor ingresa " +
+							"Al menu de opciones para establecerla"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Clicked += (s, o) => {
+						StatesView statesView = new StatesView();
+						this.NavigationController.PushViewController(statesView, true);
+					};
+					alert.Show ();
+				}
+				else{
 					this._loadPop = new LoadingOverlay (UIScreen.MainScreen.Bounds);
 					this.View.Add ( this._loadPop );
 					this.cmpNombre.ResignFirstResponder();
@@ -230,18 +270,31 @@ namespace ProductFinder
 
 			//Boton para iniciar el escaner de codigo de barras
 			this.btnCodigo.TouchUpInside += (sender, e) => {
-				// Configurar el escaner de codigo de barras.
-				picker = new ScanditSDKRotatingBarcodePicker (appKey);
-				picker.OverlayController.Delegate = new overlayControllerDelegate(picker, this);
-				picker.OverlayController.ShowToolBar(true);
-				picker.OverlayController.ShowSearchBar(true);
-				picker.OverlayController.SetToolBarButtonCaption("Cancelar");
-				picker.OverlayController.SetSearchBarKeyboardType(UIKeyboardType.Default);
-				picker.OverlayController.SetSearchBarPlaceholderText("Búsqueda por nombre de producto");
-				picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
-				picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
-				this.PresentViewController (picker, true, null);
-				picker.StartScanning ();
+				if(states.Count > 0){
+					// Configurar el escaner de codigo de barras.
+					picker = new ScanditSDKRotatingBarcodePicker (appKey);
+					picker.OverlayController.Delegate = new overlayControllerDelegate(picker, this);
+					picker.OverlayController.ShowToolBar(true);
+					picker.OverlayController.ShowSearchBar(true);
+					picker.OverlayController.SetToolBarButtonCaption("Cancelar");
+					picker.OverlayController.SetSearchBarKeyboardType(UIKeyboardType.Default);
+					picker.OverlayController.SetSearchBarPlaceholderText("Búsqueda por nombre de producto");
+					picker.OverlayController.SetCameraSwitchVisibility(SICameraSwitchVisibility.OnTablet);
+					picker.OverlayController.SetTextForInitializingCamera("Iniciando la camara");
+					this.PresentViewController (picker, true, null);
+					picker.StartScanning ();
+				}else{
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Espera!", Message = "Debes seleccionar tu ubicacion antes de comenzar a usar FixBuy, por favor ingresa " +
+							"Al menu de opciones para establecerla"
+					};
+					alert.AddButton ("Aceptar");
+					alert.Clicked += (s, o) => {
+						StatesView statesView = new StatesView();
+						this.NavigationController.PushViewController(statesView, true);
+					};
+					alert.Show ();
+				}
 			};
 		}
 		public override void TouchesBegan (NSSet touches, UIEvent evt)
@@ -255,6 +308,23 @@ namespace ProductFinder
 			base.ViewWillAppear (animated);
 			// Prepare the picker such that it starts up faster.
 			SIBarcodePicker.Prepare (appKey, SICameraFacingDirection.Back);
+			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+			{
+				people = new List<Person> (from p in db.Table<Person> () select p);
+				states = new List<State> (from s in db.Table<State> () select s);
+			}
+
+			if(people.Count > 0){
+				Person user = people.ElementAt(0);
+				MainView.userId = user.ID;
+				Console.WriteLine ("El Id de usuario es: "+ user.ID);
+			}
+
+			if(states.Count > 0){
+				State estado = states.ElementAt(0);
+				MainView.localityId = estado.localityId;
+				Console.WriteLine ("El Id de localidad es: "+ estado.localityId);
+			}
 		}
 
 		private void KeyBoardUpNotification(NSNotification notification)

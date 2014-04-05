@@ -73,7 +73,7 @@ namespace ProductFinder
 					newLocation = e.Locations [e.Locations.Length - 1];
 				};
 
-				productSearchDetailService.setProductBarcode (this.barcode);
+				productSearchDetailService.setProductBarcode (this.barcode, MainView.localityId.ToString());
 				List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
 
 				tiendaCercana = new UIBarButtonItem();
@@ -117,7 +117,7 @@ namespace ProductFinder
 				}
 				this.lblproduct.Text = product.nombre;
 				this.lblDescription.Text = product.descripcion;
-				this.tblStores.TableHeaderView = this.headerView;
+				//this.tblStores.TableHeaderView = this.headerView;
 				View.Add (this.tblStores);
 
 				// Manejamos la actualizacion de la localizacion del dispositivo.

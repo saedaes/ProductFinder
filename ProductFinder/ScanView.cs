@@ -68,6 +68,10 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 
+			//Ocultamos el boton de tiendas registradas temporalmente
+			this.btnTiendas.Hidden = true;
+			this.btnInfo2.Hidden = true;
+
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
@@ -109,7 +113,7 @@ namespace ProductFinder
 			};
 
 			this.btnInfo5.TouchUpInside += (sender, e) => {
-				ToastView view = new ToastView("Entérate de lo más nuevo!", 3000);
+				ToastView view = new ToastView("Establece tu ubicación para una busqueda mas eficaz!", 3000);
 				view.SetGravity(ToastGravity.Center,0,0);
 				view.Show();
 			};
@@ -203,7 +207,8 @@ namespace ProductFinder
 
 			//Boton Novedades
 			this.btnNovedades.TouchUpInside += (sender, e) => {
-
+				StatesView statesView = new StatesView();
+				this.NavigationController.PushViewController(statesView, true);
 			};
 
 			//Boton Nuestros Servicios

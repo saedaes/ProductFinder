@@ -48,7 +48,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignProvision>D48B5B8B-0728-4276-9109-0C167C37CE3A</CodesignProvision>
     <IpaPackageName>
@@ -192,6 +191,13 @@
     <Compile Include="SecondMapViewController.cs" />
     <Compile Include="ToastView.cs" />
     <Compile Include="Images.cs" />
+    <Compile Include="StatesView.cs" />
+    <Compile Include="StatesView.designer.cs">
+      <DependentUpon>StatesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiciosWeb\StatesService.cs" />
+    <Compile Include="ServiciosWeb\LocalityService.cs" />
+    <Compile Include="State.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -217,6 +223,8 @@
     <InterfaceDefinition Include="MyListsView_iPad.xib" />
     <InterfaceDefinition Include="ProductsInListView_iPhone.xib" />
     <InterfaceDefinition Include="ProductsInListView_iPad.xib" />
+    <InterfaceDefinition Include="StatesView_iPhone.xib" />
+    <InterfaceDefinition Include="StatesView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\noImage.jpg" />
@@ -229,6 +237,35 @@
     <BundleResource Include="FacebookSDKResources.bundle\Contents\Resources\en.lproj\Localizable.strings" />
     <BundleResource Include="FacebookSDKResources.bundle\Contents\Resources\he.lproj\Localizable.strings" />
     <BundleResource Include="Resources\facebook.png" />
+    <BundleResource Include="Resources\fix.png" />
+    <BundleResource Include="Resources\Adds-Add-list-icon.png" />
+    <BundleResource Include="Resources\Circle_Green.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add_to_list24.png" />
+    <BundleResource Include="Resources\add_to_list48.png" />
+    <BundleResource Include="Resources\bad_price.png" />
+    <BundleResource Include="Resources\blucircle.png" />
+    <BundleResource Include="Resources\blue-cross.png" />
+    <BundleResource Include="Resources\fb.ico" />
+    <BundleResource Include="Resources\fixBuy.png" />
+    <BundleResource Include="Resources\location_iconBlue.png" />
+    <BundleResource Include="Resources\locationred.png" />
+    <BundleResource Include="Resources\mapa.png" />
+    <BundleResource Include="Resources\mapa1.png" />
+    <BundleResource Include="Resources\noImage.jpg" />
+    <BundleResource Include="Resources\noticias.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\FIXBUY_LOGO-01.png" />
+    <BundleResource Include="Resources\info24.png" />
+    <BundleResource Include="Resources\info48.png" />
+    <BundleResource Include="Resources\SesionV.png" />
+    <BundleResource Include="Resources\listaV.png" />
+    <BundleResource Include="Resources\buscarV.png" />
+    <BundleResource Include="Resources\mapaV.png" />
+    <BundleResource Include="Resources\serviciosV.png" />
+    <BundleResource Include="Resources\Barcode.png" />
+    <BundleResource Include="Resources\listIcon.png" />
+    <BundleResource Include="Resources\menu.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="facebookios">
