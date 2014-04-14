@@ -88,7 +88,8 @@ namespace ProductFinder
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
+			this.Add (faceBookView);
+			this.Add (facebookView2);
 			#region observadores del teclado
 			// Keyboard popup
 			NSNotificationCenter.DefaultCenter.AddObserver
@@ -123,10 +124,10 @@ namespace ProductFinder
 			// https://developers.facebook.com/ios/profilepicture-ui-control/
 
 			pictureView = new FBProfilePictureView () {
-				Frame = new RectangleF (loginView.Bounds.Width, 0, 45, 45)
+				Frame = new RectangleF (0, 0, 45, 45)
 			};
 					
-			this.faceBookView.Add(loginView);
+			this.facebookView2.Add(loginView);
 			this.faceBookView.Add(pictureView);
 			#endregion
 

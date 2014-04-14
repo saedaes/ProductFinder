@@ -362,7 +362,7 @@ namespace ProductFinder
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
-			return 70f;
+			return 100f;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -372,9 +372,9 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (Images.lista, 60);
+			cell.ImageView.Image = ScaleImage (Images.lista, 70);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(16);
 			cell.DetailTextLabel.Lines = 2;
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(7);

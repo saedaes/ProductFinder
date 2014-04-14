@@ -12,6 +12,7 @@
                 <outlet property="btnListas" destination="pja-Vp-ved" id="BWC-mC-WqQ"/>
                 <outlet property="cmpNombre" destination="i1p-jA-dxS" id="rcV-4f-6Nl"/>
                 <outlet property="faceBookView" destination="ivF-jN-yup" id="1A7-dR-dEs"/>
+                <outlet property="facebookView2" destination="zod-lA-LDk" id="gDo-3Z-OfL"/>
                 <outlet property="lblUserName" destination="Ykh-mp-oMN" id="awY-Yo-z1Y"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -21,8 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fix.png" id="NyX-ep-N4m">
-                    <rect key="frame" x="195" y="317" width="378" height="136"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FIXBUY_LOGO-01.png" id="NyX-ep-N4m">
+                    <rect key="frame" x="141" y="284" width="494" height="341"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RI8-x4-4mE">
@@ -77,6 +78,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" id="zod-lA-LDk">
+                    <rect key="frame" x="703" y="959" width="45" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -85,7 +91,7 @@
     </objects>
     <resources>
         <image name="Barcode.png" width="256" height="256"/>
-        <image name="fix.png" width="350" height="130"/>
+        <image name="FIXBUY_LOGO-01.png" width="4267" height="3200"/>
         <image name="listIcon.png" width="128" height="128"/>
         <image name="menu.png" width="640" height="438"/>
     </resources>

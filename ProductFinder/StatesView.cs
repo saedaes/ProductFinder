@@ -65,11 +65,25 @@ namespace ProductFinder
 			}
 
 			this.btnEstado.TouchUpInside += (sender, e) => {
-				statesService = new StatesService();
-				List<StatesService> estados = statesService.All();
-				pickerDataModel.Items = estados;
-				actionSheetPicker.Picker.Source = pickerDataModel;
-				actionSheetPicker.Show();
+				try{
+					statesService = new StatesService();
+					List<StatesService> estados = statesService.All();
+					pickerDataModel.Items = estados;
+					actionSheetPicker.Picker.Source = pickerDataModel;
+					actionSheetPicker.Show();
+				}catch (System.Net.WebException){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups =S", Message = "No se puede mostrar la lista de estados, verifica tu conexión a internet e intentalo de nuevo."
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				}catch(Exception){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
+				}
 			};
 
 
@@ -79,13 +93,27 @@ namespace ProductFinder
 			};
 
 			this.btnLocalidad.TouchUpInside += (sender, e) => {
-				if(stateId != ""){
-					localityService = new LocalityService();
-					localityService.setState(stateId);
-					List<LocalityService> localidades = localityService.All();
-					pickerDataModelLocality.Items = localidades;
-					actionSheetPicker.Picker.Source = pickerDataModelLocality;
-					actionSheetPicker.Show();
+				try{
+					if(stateId != ""){
+						localityService = new LocalityService();
+						localityService.setState(stateId);
+						List<LocalityService> localidades = localityService.All();
+						pickerDataModelLocality.Items = localidades;
+						actionSheetPicker.Picker.Source = pickerDataModelLocality;
+						actionSheetPicker.Show();
+					}
+				}catch(System.Net.WebException){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups =S", Message = "No se puede mostrar la lista de localidades, verifica tu conexión a internet e intentalo de nuevo."
+					};
+					alert.AddButton ("Aceptar");
+					alert.Show ();
+				}catch(Exception){
+					UIAlertView alert = new UIAlertView () { 
+						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+					};
+					alert.AddButton("Aceptar");
+					alert.Show ();
 				}
 			};
 				
@@ -95,22 +123,30 @@ namespace ProductFinder
 			};
 
 			btnGuardar.TouchUpInside += (sender, e) => {
-				if(this.stateId != "" && this.localityId != ""){
-					var state = new State {stateId = int.Parse( this.stateId), state = lblEstado.Text, localityId = int.Parse(this.localityId), locality = lblLocalidad.Text};
-					using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
-					{
-						db.DropTable<State>();
-						db.CreateTable<State>();
-						db.Insert(state);
-					}
+				try{
+					if(this.stateId != "" && this.localityId != ""){
+						var state = new State {stateId = int.Parse( this.stateId), state = lblEstado.Text, localityId = int.Parse(this.localityId), locality = lblLocalidad.Text};
+						using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
+						{
+							db.DropTable<State>();
+							db.CreateTable<State>();
+							db.Insert(state);
+						}
 
-					MainView.localityId = state.localityId;
+						MainView.localityId = state.localityId;
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Bien! =D", Message = "Gracias por definir tu estado y localidad ahora puedes empezar a buscar productos con FixBuy =D"
+						};
+						alert.AddButton ("Aceptar");
+						alert.Show ();
+						this.NavigationController.PopViewControllerAnimated(true);
+					}
+				}catch(Exception){
 					UIAlertView alert = new UIAlertView () { 
-						Title = "Bien! =D", Message = "Gracias por definir tu estado y localidad ahora puedes empezar a buscar productos con FixBuy =D"
+						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
 					};
-					alert.AddButton ("Aceptar");
+					alert.AddButton("Aceptar");
 					alert.Show ();
-					this.NavigationController.PopViewControllerAnimated(true);
 				}
 			};
 		}

@@ -12,6 +12,7 @@
                 <outlet property="btnListas" destination="6lp-o2-2Jl" id="s6x-Y3-AZp"/>
                 <outlet property="cmpNombre" destination="17Q-lB-urL" id="DCP-eb-fvo"/>
                 <outlet property="faceBookView" destination="4hO-oX-9Dk" id="qGE-5P-uZX"/>
+                <outlet property="facebookView2" destination="0L3-uN-GZh" id="j4j-AK-f6V"/>
                 <outlet property="lblUserName" destination="7DP-DN-JaM" id="BAo-WR-8r5"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -73,6 +74,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="0L3-uN-GZh">
+                    <rect key="frame" x="267" y="514" width="45" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </subviews>

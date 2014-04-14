@@ -497,7 +497,7 @@ namespace ProductFinder
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
-			return 70f;
+			return 100f;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -506,21 +506,22 @@ namespace ProductFinder
 
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
+				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
 			NSUrl nsurl = new NSUrl(tableItems[indexPath.Row].imagen);
 			NSData data = NSData.FromUrl(nsurl);
 			if (data != null) {
-				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 70);
+				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 100);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 70);
+				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 100);
 			}
 			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
 			cell.DetailTextLabel.Lines = 2;
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
-			cell.DetailTextLabel.Text = tableItems [indexPath.Row].cantidad + " pza(s) ";
+			cell.DetailTextLabel.Text = "\n"+tableItems [indexPath.Row].cantidad + " pza(s) ";
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(12);
 			cell.DetailTextLabel.TextColor = UIColor.Gray;
+			cell.DetailTextLabel.Lines = 2;
 			UIButton boton = new UIButton ();
 			boton.Tag = indexPath.Row;
 			botones.Add (boton);
@@ -709,7 +710,7 @@ namespace ProductFinder
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
-			cell.DetailTextLabel.TextColor = UIColor.Gray;
+			cell.DetailTextLabel.TextColor = UIColor.Red;
 			return cell;
 		}
 
@@ -813,7 +814,7 @@ namespace ProductFinder
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
-			return 40f;
+			return 90f;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -822,20 +823,23 @@ namespace ProductFinder
 
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Value1 , cellIdentifier);
+				cell = new UITableViewCell (UITableViewCellStyle.Subtitle , cellIdentifier);
 			NSUrl nsurl = new NSUrl(tableItems[indexPath.Row].imagen);
 			NSData data = NSData.FromUrl(nsurl);
 			if (data != null) {
-				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 30);
+				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 60);
 			} else {
-				cell.ImageView.Image = ScaleImage(Images.sinImagen, 30);
+				cell.ImageView.Image = ScaleImage(Images.sinImagen, 60);
 			}
 			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(9);
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
+			cell.TextLabel.Lines = 3;
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
-			cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(9);
-			cell.DetailTextLabel.TextColor = UIColor.Gray;
+			Double precio = Double.Parse (tableItems [indexPath.Row].precio);
+			cell.DetailTextLabel.Text = "\n"+precio.ToString ("C2");
+			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(14);
+			cell.DetailTextLabel.Lines = 2;
+			cell.DetailTextLabel.TextColor = UIColor.Red;
 			return cell;
 		}
 

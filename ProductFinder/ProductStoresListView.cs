@@ -83,22 +83,29 @@ namespace ProductFinder
 				this.NavigationItem.RightBarButtonItem = tiendaCercana;
 
 				tiendaCercana.Clicked += (sender, e) => {
-					ProductSearchDetailService tiendac= nearestStore(newLocation,tableItems);
-					double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.tienda_latitud),Double.Parse(tiendac.tienda_longitud)))/1000;
-					distancia = Math.Round(distancia,2);
-					UIAlertView alert = new UIAlertView () { 
-						Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.tienda_nombre + "\n "+ tiendac.tienda_direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
-					};
-					alert.AddButton("Aceptar");
-					alert.AddButton("Mapa");
-					alert.Clicked += (s , o) => {
-						if(o.ButtonIndex == 1){
-							SecondMapViewController mapView = new SecondMapViewController();
-							mapView.setTienda(tiendac);
-							this.NavigationController.PushViewController(mapView, true);
-						}
-					};
-					alert.Show ();
+					if(this.newLocation == null){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "No podemos saber tu ubicacion =(", Message = "Para que FixBuy funcione correctamente necesitas permitirnos saber tu ubicacion, para hacer esto por favot dirigete a las ajustes > Privacidad > Localización para darle permiso a FixBuy"
+						};
+						alert.AddButton("Aceptar");
+					}else{
+						ProductSearchDetailService tiendac= nearestStore(newLocation,tableItems);
+						double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.tienda_latitud),Double.Parse(tiendac.tienda_longitud)))/1000;
+						distancia = Math.Round(distancia,2);
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Tu tienda mas cercana es:", Message = ""+ tiendac.tienda_nombre + "\n "+ tiendac.tienda_direccion+"\n"+"Distancia: " + distancia.ToString() +"km"
+						};
+						alert.AddButton("Aceptar");
+						alert.AddButton("Mapa");
+						alert.Clicked += (s , o) => {
+							if(o.ButtonIndex == 1){
+								SecondMapViewController mapView = new SecondMapViewController();
+								mapView.setTienda(tiendac);
+								this.NavigationController.PushViewController(mapView, true);
+							}
+						};
+						alert.Show ();
+					}
 				};  
 
 				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
@@ -123,7 +130,7 @@ namespace ProductFinder
 				// Manejamos la actualizacion de la localizacion del dispositivo.
 				if (CLLocationManager.LocationServicesEnabled)
 					iPhoneLocationManager.StartUpdatingLocation ();
-			}catch(System.ArgumentOutOfRangeException e){
+			}catch(System.ArgumentOutOfRangeException){
 				didNotFidProduct();
 			} 
 		}
@@ -230,7 +237,7 @@ namespace ProductFinder
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.TextLabel.Lines = 2 ;
 			double precio = Double.Parse (ps.precio);
-			cell.DetailTextLabel.Text = "$" + precio.ToString("#,#", CultureInfo.InvariantCulture)+ " ";
+			cell.DetailTextLabel.Text = precio.ToString("C2")+ " ";
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 2;
@@ -252,7 +259,7 @@ namespace ProductFinder
 			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
 			botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
-			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 50f, 25f);
+			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
 			Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
 			distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
 			distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
@@ -358,6 +365,9 @@ namespace ProductFinder
 		ProductDetailView pdView;
 		CLLocationManager location;
 		int conn;
+		List<UIView> vistas = new List<UIView> ();
+		List<UIButton> botones = new List<UIButton> ();
+		List<UILabel> distancias = new List<UILabel> ();
 		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 		{
 			tableItems = items;
@@ -368,68 +378,74 @@ namespace ProductFinder
 
 		public override int NumberOfSections (UITableView tableView)
 		{
-			return tableItems.Count;
+			return 1;
 		}
 
 		public override int RowsInSection (UITableView tableview, int section)
 		{
-			return 1;	   
+			return tableItems.Count;   
 		}
 
 		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
-			return 50f;
+			return 130f;
 		}
-
-		public override float GetHeightForHeader (UITableView tableView, int section)
-		{
-			if (section == 0) {
-				return 15f;
-			} else {
-				return 15f;
-			}
-		}
-
-		public override UIView GetViewForHeader (UITableView tableView, int section)
-		{
-			UIView header = new UIView(new RectangleF(2,2,tableView.Bounds.Width,18));
-			UIImageView image = new UIImageView(new RectangleF(5,-3,10f,10f));
-			image.Image = UIImage.FromFile ("Images/locationred.png");
-			UILabel label = new UILabel (new RectangleF (image.Bounds.Width + 5, -3, header.Bounds.Width - image.Bounds.Width - 5, 15f));
-			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[section].tienda_latitud),Double.Parse(tableItems[section].tienda_longitud)))/1000;
-			label.Text = " "+ Math.Round(distancia,2)+ "km";
-			label.Font = UIFont.SystemFontOfSize (10);
-			header.AddSubview (image);
-			header.AddSubview (label);
-			return header;
-		}
-
+			
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
+				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
 			ps = tableItems [indexPath.Section];
 
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
-			Console.WriteLine (""+ps.tienda_imagen);
 			if (data != null) {
-				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),50);
+				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),100);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 50);
+				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 100);
 			}
 			cell.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			cell.TextLabel.Text = ps.tienda_nombre;
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
+			cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
 			cell.TextLabel.Lines = 2 ;
-			cell.DetailTextLabel.Text = "$"+ps.precio;
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (16);
+			double precio = Double.Parse (ps.precio);
+			cell.DetailTextLabel.Text = precio.ToString("C2")+ " ";
+			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (20);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
-			cell.DetailTextLabel.Lines = 2;
+			cell.DetailTextLabel.Lines = 3;
+			UIView vista = new UIView ();
+			vista.Tag = indexPath.Row;
+			vistas.Add (vista);
+			UIButton boton = new UIButton ();
+			boton.Tag = indexPath.Row;
+			botones.Add (boton);
+			UILabel distancia = new UILabel ();
+			distancia.Tag = indexPath.Row;
+			distancias.Add (distancia);
+			cell.AccessoryView = getDistanceView (indexPath.Row);
 			return cell;
+		}
+
+		public UIView getDistanceView(int index){
+			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
+			botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
+			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
+			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
+			Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
+			distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
+			distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
+			vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
+			botones.ElementAt(index).TouchUpInside += (sender, e) => {
+				SecondMapViewController mapView = new SecondMapViewController();
+				mapView.setTienda(tableItems[index]);
+				this.controller.NavigationController.PushViewController(mapView, true);
+			};
+			vistas.ElementAt(index).AddSubview (botones.ElementAt(index));
+			vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
+			return vistas.ElementAt(index);
 		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)

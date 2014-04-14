@@ -31,6 +31,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIView faceBookView { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView facebookView2 { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel lblUserName { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -68,6 +71,11 @@ namespace ProductFinder
 			if (lblUserName != null) {
 				lblUserName.Dispose ();
 				lblUserName = null;
+			}
+
+			if (facebookView2 != null) {
+				facebookView2.Dispose ();
+				facebookView2 = null;
 			}
 		}
 	}

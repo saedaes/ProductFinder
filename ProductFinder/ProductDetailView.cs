@@ -95,7 +95,7 @@ namespace ProductFinder
 				//Establecemos la informacion del producto
 				this.lblNombre.Text = producto.nombre;
 				double precio = Double.Parse(producto.precio);
-				this.lblPrecio.Text = "$"+precio.ToString("#,#",CultureInfo.InvariantCulture);
+				this.lblPrecio.Text = precio.ToString("C2");
 				this.lblDescripcion.Text = producto.descripcion;
 				if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 					this.lblDescripcion.Font = UIFont.SystemFontOfSize(10);
