@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -22,12 +22,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FIXBUY_LOGO-01.png" id="i6J-k3-mdk">
-                    <rect key="frame" x="0.0" y="115" width="320" height="251"/>
+                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FIXBUY100px.png" id="i6J-k3-mdk">
+                    <rect key="frame" x="7" y="201" width="292" height="105"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uvK-Rj-aes">
-                    <rect key="frame" x="260" y="83" width="40" height="24"/>
+                    <rect key="frame" x="261" y="75" width="52" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="menu.png">
                         <color key="titleColor" red="0.3143540608" green="0.74898437500000004" blue="0.065927882970000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -35,13 +35,13 @@
                     </state>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escribe el nombre del producto" textAlignment="center" minimumFontSize="17" id="17Q-lB-urL">
-                    <rect key="frame" x="20" y="336" width="280" height="30"/>
+                    <rect key="frame" x="21" y="348" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0GE-9X-qDO">
-                    <rect key="frame" x="136" y="374" width="49" height="30"/>
+                    <rect key="frame" x="137" y="386" width="49" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Buscar">
                         <color key="titleColor" red="0.3143540608" green="0.74898437500000004" blue="0.065927882970000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,14 +49,14 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TSj-m7-Nw7">
-                    <rect key="frame" x="260" y="374" width="40" height="30"/>
+                    <rect key="frame" x="261" y="386" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="Barcode.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6lp-o2-2Jl">
-                    <rect key="frame" x="223" y="83" width="29" height="24"/>
+                    <rect key="frame" x="202" y="74" width="51" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="listIcon.png">
                         <color key="titleColor" red="0.31435406076151029" green="0.74898437500000004" blue="0.065927882966737988" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,7 +64,7 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" id="4hO-oX-9Dk">
-                    <rect key="frame" x="20" y="72" width="95" height="68"/>
+                    <rect key="frame" x="21" y="75" width="95" height="68"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7DP-DN-JaM">
@@ -90,7 +90,7 @@
     </objects>
     <resources>
         <image name="Barcode.png" width="256" height="256"/>
-        <image name="FIXBUY_LOGO-01.png" width="4267" height="3200"/>
+        <image name="FIXBUY100px.png" width="418" height="139"/>
         <image name="listIcon.png" width="128" height="128"/>
         <image name="menu.png" width="640" height="438"/>
     </resources>

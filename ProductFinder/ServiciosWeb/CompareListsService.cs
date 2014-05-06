@@ -9,6 +9,7 @@ namespace ProductFinder
 {
 	public class CompareListsService
 	{
+		public string id	 {get;set;}
 		public string nombre {get;set;}
 		public string imagen {get;set;}
 		public string precio {get;set;}
@@ -50,6 +51,7 @@ namespace ProductFinder
 		internal static CompareListsService FromJObject(JObject jObject)
 		{
 			CompareListsService response = new CompareListsService();
+			response.id 	= jObject["id"].ToString ();
 			response.nombre = jObject["name"].ToString();
 			response.imagen = jObject["photo"].ToString();
 			response.precio = jObject ["tot"].ToString ();

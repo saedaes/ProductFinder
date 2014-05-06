@@ -16,10 +16,16 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnAceptarCantidad { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnAceptarNuevaLista { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnBadPrice { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnCerrarLista { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnCerrarNombreNL { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnFacebook { get; set; }
@@ -37,7 +43,13 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIButton btnMenos { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnNuevaLista { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITextField cmpCantidad { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITextField cmpNewList { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIImageView imgProducto { get; set; }
@@ -70,6 +82,9 @@ namespace ProductFinder
 		MonoTouch.UIKit.UIView ListsView { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView NewListView { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView QuantityView { get; set; }
 
 		[Outlet]
@@ -77,14 +92,19 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnFacebook != null) {
-				btnFacebook.Dispose ();
-				btnFacebook = null;
+			if (btnCerrarNombreNL != null) {
+				btnCerrarNombreNL.Dispose ();
+				btnCerrarNombreNL = null;
 			}
 
 			if (btnAceptarCantidad != null) {
 				btnAceptarCantidad.Dispose ();
 				btnAceptarCantidad = null;
+			}
+
+			if (btnAceptarNuevaLista != null) {
+				btnAceptarNuevaLista.Dispose ();
+				btnAceptarNuevaLista = null;
 			}
 
 			if (btnBadPrice != null) {
@@ -95,6 +115,11 @@ namespace ProductFinder
 			if (btnCerrarLista != null) {
 				btnCerrarLista.Dispose ();
 				btnCerrarLista = null;
+			}
+
+			if (btnFacebook != null) {
+				btnFacebook.Dispose ();
+				btnFacebook = null;
 			}
 
 			if (btnLista != null) {
@@ -117,9 +142,19 @@ namespace ProductFinder
 				btnMenos = null;
 			}
 
+			if (btnNuevaLista != null) {
+				btnNuevaLista.Dispose ();
+				btnNuevaLista = null;
+			}
+
 			if (cmpCantidad != null) {
 				cmpCantidad.Dispose ();
 				cmpCantidad = null;
+			}
+
+			if (cmpNewList != null) {
+				cmpNewList.Dispose ();
+				cmpNewList = null;
 			}
 
 			if (imgProducto != null) {
@@ -170,6 +205,11 @@ namespace ProductFinder
 			if (ListsView != null) {
 				ListsView.Dispose ();
 				ListsView = null;
+			}
+
+			if (NewListView != null) {
+				NewListView.Dispose ();
+				NewListView = null;
 			}
 
 			if (QuantityView != null) {

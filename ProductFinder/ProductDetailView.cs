@@ -23,6 +23,7 @@ namespace ProductFinder
 		private string _pathToDatabase;
 		NSData data;
 		string HelloId = null;
+		NewListService nls;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -51,6 +52,12 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 
 			try{
+				//Configuramos la vista popup de nueva lista
+				NewListView.Layer.BorderWidth = 1.0f;
+				NewListView.Layer.BorderColor = UIColor.Black.CGColor;
+				NewListView.Layer.CornerRadius = 8;
+				tblLists.Add(this.NewListView);
+				NewListView.Hidden = true;
 				//Configuramos la vista popup de cantidad
 				QuantityView.Layer.BorderWidth = 1.0f;
 				QuantityView.Layer.BorderColor = UIColor.Black.CGColor;
@@ -172,7 +179,6 @@ namespace ProductFinder
 						} else{
 							cmpCantidad.ResignFirstResponder();
 							QuantityView.Hidden = true;
-							ListsView.BackgroundColor = UIColor.GroupTableViewBackgroundColor;
 							ls = new ListsService();
 							Person persona = people.ElementAt(0);
 							ls.setUserId (persona.ID.ToString());
@@ -326,6 +332,67 @@ namespace ProductFinder
 					}
 				};
 
+				btnNuevaLista.TouchUpInside += (sender, e) => {
+					this.NewListView.Hidden = false;
+				};
+
+				btnAceptarNuevaLista.TouchUpInside += (sender, e) => {
+					try{
+						if(cmpNewList.Text == ""){
+							UIAlertView alert = new UIAlertView () { 
+								Title = "Espera!", Message = "Debes ingresar el nombre de la lista"
+							};
+							alert.AddButton("Aceptar");
+							alert.Show ();
+						}else{
+							nls = new NewListService();
+							String respuesta = nls.SetListData(cmpNewList.Text, MainView.userId.ToString());
+							if(respuesta.Equals("\"lista ya existe\"")){
+								UIAlertView alert = new UIAlertView () { 
+									Title = "Ups :S", Message = "Ese nombre de lista ya se encuentra registrado"
+								};
+								alert.AddButton("Aceptar");
+								alert.Show ();
+								//cmpNewList.Hidden = true;
+								cmpNewList.Text = "";
+								cmpNewList.ResignFirstResponder();
+							}else{
+								UIAlertView alert = new UIAlertView () { 
+									Title = "Lista creada", Message = "Tu nueva lista \""+cmpNewList.Text+"\" ha sido creada =D"
+								};
+								alert.AddButton("Aceptar");
+								alert.Show ();
+								ls = new ListsService();
+								ls.setUserId(MainView.userId.ToString());
+								List<ListsService> items = ls.All ();
+								this.tblLists.Source = new AddToListsTableSource(items,this,producto,1);
+								this.tblLists.ReloadData();
+								cmpNewList.Text = "";
+								NewListView.Hidden = true;
+								cmpNewList.ResignFirstResponder();
+							}
+						}
+					}catch(System.Net.WebException){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}catch(Exception exc){
+						Console.WriteLine(exc.ToString());
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show ();
+					}
+				};
+
+				btnCerrarNombreNL.TouchUpInside += (sender, e) => {
+					this.NewListView.Hidden = true;
+					this.cmpNewList.ResignFirstResponder();
+				};
+
 			}catch(Exception e){
 				Console.WriteLine (e.ToString());
 				UIAlertView alert = new UIAlertView () { 
@@ -335,6 +402,7 @@ namespace ProductFinder
 				alert.Show ();
 			}
 		}
+			
 	}
 
 	class AddToListsTableSource : UITableViewSource 

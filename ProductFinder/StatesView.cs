@@ -20,6 +20,8 @@ namespace ProductFinder
 		LocalityService localityService;
 		String stateId = "";
 		String localityId = "";
+		String state = "";
+		String locality="";
 		List<State> states;
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -60,8 +62,8 @@ namespace ProductFinder
 
 			if(states.Count > 0){
 				State estado = states.ElementAt(0);
-				lblEstado.Text = estado.state;
-				lblLocalidad.Text = estado.locality;
+				this.btnEstado.SetTitle (estado.state, UIControlState.Normal);
+				this.btnLocalidad.SetTitle (estado.locality, UIControlState.Normal);
 			}
 
 			this.btnEstado.TouchUpInside += (sender, e) => {
@@ -88,8 +90,9 @@ namespace ProductFinder
 
 
 			pickerDataModel.ValueChanged += (sender, e) => {
-				this.lblEstado.Text = pickerDataModel.SelectedItem.ToString();
+				this.btnEstado.SetTitle(pickerDataModel.SelectedItem.ToString(), UIControlState.Normal);
 				this.stateId = pickerDataModel.SelectedItem.id;
+				this.state = pickerDataModel.SelectedItem.ToString();
 			};
 
 			this.btnLocalidad.TouchUpInside += (sender, e) => {
@@ -118,14 +121,15 @@ namespace ProductFinder
 			};
 				
 			pickerDataModelLocality.ValueChanged += (sender, e) => {
-				this.lblLocalidad.Text = pickerDataModelLocality.SelectedItem.ToString();
+				this.btnLocalidad.SetTitle(pickerDataModelLocality.SelectedItem.ToString(),UIControlState.Normal);
 				this.localityId = pickerDataModelLocality.SelectedItem.id;
+				this.locality = pickerDataModelLocality.SelectedItem.ToString();
 			};
 
 			btnGuardar.TouchUpInside += (sender, e) => {
 				try{
 					if(this.stateId != "" && this.localityId != ""){
-						var state = new State {stateId = int.Parse( this.stateId), state = lblEstado.Text, localityId = int.Parse(this.localityId), locality = lblLocalidad.Text};
+						var state = new State {stateId = int.Parse( this.stateId), state = this.locality, localityId = int.Parse(this.localityId), locality = this.locality};
 						using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
 						{
 							db.DropTable<State>();

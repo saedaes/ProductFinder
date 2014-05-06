@@ -13,6 +13,7 @@ namespace ProductFinder
 	public partial class ProductStoresListView : UIViewController
 	{
 		String barcode;
+		public static string barcode2;
 		ProductSearchDetailService productSearchDetailService = new ProductSearchDetailService();
 		//Declaramos el manejador para calcular la localizacion del dispositivo.
 		CLLocationManager iPhoneLocationManager = null;
@@ -38,9 +39,10 @@ namespace ProductFinder
 		{
 		}
 
-		public void setProduct(String barcode, int previousView){
-			this.barcode = barcode;
+		public void setProduct(String bar_code, int previousView){
+			this.barcode = bar_code;
 			this.previousView = previousView;
+			ProductStoresListView.barcode2 = bar_code;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -73,6 +75,7 @@ namespace ProductFinder
 					newLocation = e.Locations [e.Locations.Length - 1];
 				};
 
+				Console.WriteLine("Este es el codigo de barras: " + this.barcode);
 				productSearchDetailService.setProductBarcode (this.barcode, MainView.localityId.ToString());
 				List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
 
@@ -148,10 +151,11 @@ namespace ProductFinder
 				alert.AddButton ("Registrar");
 				alert.AddButton ("Cancelar");
 				alert.Clicked += (s, o) => {
-					UploadProductView up = new UploadProductView ();
-					up.setBarcode (this.barcode);
+					//UploadProductView up = new UploadProductView ();
+					LoadNewProductView load = new LoadNewProductView();
+					load.setBarcode (this.barcode);
 					if (o.ButtonIndex == 0) {
-						this.NavigationController.PushViewController (up, true);
+						this.NavigationController.PushViewController (load, true);
 					} else {
 						this.NavigationController.PopViewControllerAnimated (true);
 					}

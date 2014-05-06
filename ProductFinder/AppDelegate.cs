@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.CoreGraphics;
 
 using MonoTouch.FacebookConnect;
 
@@ -19,7 +20,7 @@ namespace ProductFinder
 		UINavigationController rootNavigationController;
 		MainView mainView;
 
-		private const string AppId = "661258913936079";
+		private const string AppId = "864193300263405";
 		private const string DisplayName = "FixBuy";
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
@@ -37,6 +38,8 @@ namespace ProductFinder
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			rootNavigationController = new UINavigationController ();
 			rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 115, 0);
+			//UIImage image = UIImage.FromFile ("Images/TOOlBAR_completa2.jpg");
+			//rootNavigationController.NavigationBar.SetBackgroundImage (image, UIBarMetrics.Default);
 			rootNavigationController.NavigationBar.TintColor = UIColor.White;
 			UITextAttributes atributes = new UITextAttributes();
 			atributes.TextColor = UIColor.White;
@@ -44,6 +47,7 @@ namespace ProductFinder
 			// If you have defined a root view controller, set it here:
 			// window.RootViewController = myViewController;
 			mainView = new MainView ();
+			//LoadNewProductView l = new LoadNewProductView ();
 			rootNavigationController.PushViewController (mainView,false);
 
 			// make the window visible

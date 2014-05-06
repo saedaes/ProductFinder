@@ -198,6 +198,15 @@
     <Compile Include="ServiciosWeb\StatesService.cs" />
     <Compile Include="ServiciosWeb\LocalityService.cs" />
     <Compile Include="State.cs" />
+    <Compile Include="ProductsStorePricesView.cs" />
+    <Compile Include="ProductsStorePricesView.designer.cs">
+      <DependentUpon>ProductsStorePricesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiciosWeb\ProductsPriceInStoreService.cs" />
+    <Compile Include="LoadNewProductView.cs" />
+    <Compile Include="LoadNewProductView.designer.cs">
+      <DependentUpon>LoadNewProductView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -225,6 +234,10 @@
     <InterfaceDefinition Include="ProductsInListView_iPad.xib" />
     <InterfaceDefinition Include="StatesView_iPhone.xib" />
     <InterfaceDefinition Include="StatesView_iPad.xib" />
+    <InterfaceDefinition Include="ProductsStorePricesView_iPhone.xib" />
+    <InterfaceDefinition Include="ProductsStorePricesView_iPad.xib" />
+    <InterfaceDefinition Include="LoadNewProductView_iPhone.xib" />
+    <InterfaceDefinition Include="LoadNewProductView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\noImage.jpg" />
@@ -255,7 +268,6 @@
     <BundleResource Include="Resources\noImage.jpg" />
     <BundleResource Include="Resources\noticias.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\FIXBUY_LOGO-01.png" />
     <BundleResource Include="Resources\info24.png" />
     <BundleResource Include="Resources\info48.png" />
     <BundleResource Include="Resources\SesionV.png" />
@@ -266,6 +278,13 @@
     <BundleResource Include="Resources\Barcode.png" />
     <BundleResource Include="Resources\listIcon.png" />
     <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Images\TOOLBAR_completa.jpg" />
+    <BundleResource Include="Images\TOOLBAR_completa2.jpg" />
+    <BundleResource Include="Resources\FIXBUY100px.png" />
+    <BundleResource Include="Resources\FIXBUY300px.png" />
+    <BundleResource Include="Resources\list.png" />
+    <BundleResource Include="Resources\new_list128.png" />
+    <BundleResource Include="Resources\new_list64.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="facebookios">

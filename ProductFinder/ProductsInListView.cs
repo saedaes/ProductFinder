@@ -671,9 +671,12 @@ namespace ProductFinder
 	{
 		List<CompareListsService> tableItems;
 		string cellIdentifier = "TableCell";
+		ProductsStorePricesView pspv;
+		ProductsInListView controller;
 		public CompareTableSource (List<CompareListsService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
+			this.controller = controller;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -716,6 +719,9 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
+			pspv = new ProductsStorePricesView ();
+			pspv.setData (ProductsInListView.list_id, tableItems [indexPath.Row].id, tableItems[indexPath.Row].nombre);
+			controller.NavigationController.PushViewController (pspv, true);
 		}
 
 		//Metodo para redimensionar las imagenes de la lista.
@@ -797,9 +803,12 @@ namespace ProductFinder
 	{
 		List<CompareListsService> tableItems;
 		string cellIdentifier = "TableCell";
+		ProductsStorePricesView pspv;
+		ProductsInListView controller;
 		public CompareTableSourceIphone (List<CompareListsService> items, ProductsInListView controller) 
 		{
 			tableItems = items;
+			this.controller = controller;
 		}
 
 		public override int NumberOfSections (UITableView tableView)
@@ -845,6 +854,9 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
+			pspv = new ProductsStorePricesView ();
+			pspv.setData (ProductsInListView.list_id, tableItems [indexPath.Row].id, tableItems[indexPath.Row].nombre);
+			controller.NavigationController.PushViewController (pspv, true);
 		}
 
 		//Metodo para redimensionar las imagenes de la lista.
