@@ -387,6 +387,7 @@ namespace ProductFinder
 		private UIViewController presentingViewController;
 		ProductStoresListView pdView;
 		NameSearchResultView nsrView;
+		NewsListView newsListView;
 
 		public overlayControllerDelegate(SIBarcodePicker picker, UIViewController presentingViewController) {
 			this.picker = picker;
@@ -405,11 +406,9 @@ namespace ProductFinder
 			).ContinueWith ( 
 				t => {
 					if(barcode["symbology"].ToString().Equals("QR")){
-						UIAlertView alert = new UIAlertView () { 
-							Title = "Mensaje", Message = ""+barcode["barcode"].ToString()
-						};
-						alert.AddButton ("Aceptar");
-						alert.Show ();
+						newsListView = new NewsListView();
+						newsListView.setStoreId(barcode["barcode"].ToString());
+						presentingViewController.NavigationController.PushViewController(newsListView, true);
 						this._loadPop.Hide ();
 					}else{
 						pdView = new ProductStoresListView ();

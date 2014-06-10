@@ -13,6 +13,7 @@ namespace ProductFinder
 		public string nombre {get;set;}
 		public string imagen {get;set;}
 		public string precio {get;set;}
+		public string count  {get;set;}
 
 		string resultURL = "";
 
@@ -22,6 +23,10 @@ namespace ProductFinder
 
 		public void setListId(String id){
 			this.resultURL = "http://fixbuy.herokuapp.com/comparation_list.json?list_id="+id;
+		}
+
+		public void setUnoListId(String id){
+			this.resultURL = "http://fixbuy.herokuapp.com/comparation_list_second.json?list_id="+id;
 		}
 
 		public List<CompareListsService> All()
@@ -55,6 +60,7 @@ namespace ProductFinder
 			response.nombre = jObject["name"].ToString();
 			response.imagen = jObject["photo"].ToString();
 			response.precio = jObject ["tot"].ToString ();
+			response.count = jObject ["count"].ToString ();
 
 			return response;
 		}

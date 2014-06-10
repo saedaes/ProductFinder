@@ -1,13 +1,13 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Luis Parra" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/LoadNewProductView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/NewsDetailView.cs">
     <Files>
-      <File FileName="ProductFinder/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ProductDetailView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NameSearchResultView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/LoadNewProductView.cs" Line="37" Column="1" />
-      <File FileName="ProductFinder/ProductStoresListView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/MainView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ProductsInListView.cs" Line="57" Column="8" />
+      <File FileName="ProductFinder/ServiciosWeb/CompareListsService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ScanView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ServiciosWeb/ProductSearchDetailService.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/NewsListView.cs" Line="229" Column="52" />
+      <File FileName="ProductFinder/NewsDetailView.cs" Line="48" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

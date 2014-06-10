@@ -207,6 +207,15 @@
     <Compile Include="LoadNewProductView.designer.cs">
       <DependentUpon>LoadNewProductView.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewsListView.cs" />
+    <Compile Include="NewsListView.designer.cs">
+      <DependentUpon>NewsListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiciosWeb\NewsService.cs" />
+    <Compile Include="NewsDetailView.cs" />
+    <Compile Include="NewsDetailView.designer.cs">
+      <DependentUpon>NewsDetailView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -238,6 +247,10 @@
     <InterfaceDefinition Include="ProductsStorePricesView_iPad.xib" />
     <InterfaceDefinition Include="LoadNewProductView_iPhone.xib" />
     <InterfaceDefinition Include="LoadNewProductView_iPad.xib" />
+    <InterfaceDefinition Include="NewsListView_iPhone.xib" />
+    <InterfaceDefinition Include="NewsListView_iPad.xib" />
+    <InterfaceDefinition Include="NewsDetailView_iPhone.xib" />
+    <InterfaceDefinition Include="NewsDetailView_iPad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\noImage.jpg" />

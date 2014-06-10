@@ -126,6 +126,51 @@ namespace ProductFinder
 					}
 				};
 
+				this.btnCompararUno.TouchUpInside += (sender, e) => {
+					try{
+						if(tableItems.Count > 0){
+							compareListService = new CompareListsService();
+							compareListService.setUnoListId(ProductsInListView.list_id);
+							List<CompareListsService> tableItems2 = compareListService.All();
+							if(tableItems2.Count > 0){
+								if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+									this.tblCompare.Source = new CompareTableSourceIphone(tableItems2,this);
+								}else{
+									this.tblCompare.Source = new CompareTableSource(tableItems2,this);
+								}
+								tblCompare.TableHeaderView = this.headerView;
+								CompareView.Add(tblCompare);
+								this.tblCompare.ReloadData();
+								CompareView.Hidden = false;
+							}else{
+								UIAlertView alerta = new UIAlertView () { 
+									Title = "Lo sentimos =(", Message = "Los productos de tu lista no se encuentran en su totalidad en ninguna de nuestras tiendas."
+								};
+								alerta.AddButton ("Aceptar");
+								alerta.Show ();
+							}
+						}else{
+							UIAlertView alerta = new UIAlertView () { 
+								Title = "Espera!", Message = "No tienes productos en esta lista, agrega productos para que puedas comparar entre tiendas =)"
+							};
+							alerta.AddButton ("Aceptar");
+							alerta.Show ();
+						}
+					}catch(System.Net.WebException){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
+						};
+						alerta.AddButton ("Aceptar");
+						alerta.Show ();
+					}catch(Exception){
+						UIAlertView alerta = new UIAlertView () { 
+							Title = "Ups :S", Message = "Algo salio mal, por favor intentalo de nuevo."
+						};
+						alerta.AddButton ("Aceptar");
+						alerta.Show ();
+					}
+				};
+
 				this.btnCerrar.TouchUpInside += (sender, e) => {
 					CompareView.Hidden = true;
 				};
@@ -708,7 +753,8 @@ namespace ProductFinder
 			} else {
 				cell.ImageView.Image = ScaleImage (Images.sinImagen, 60);
 			}
-			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
+			cell.TextLabel.Lines = 2;
+			cell.TextLabel.Text = tableItems [indexPath.Row].nombre + "\n" + "(" + tableItems [indexPath.Row].count+ ")";
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 			cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
@@ -840,7 +886,9 @@ namespace ProductFinder
 			} else {
 				cell.ImageView.Image = ScaleImage(Images.sinImagen, 60);
 			}
-			cell.TextLabel.Text = tableItems[indexPath.Row].nombre;
+
+			cell.TextLabel.Lines = 2;
+			cell.TextLabel.Text = tableItems [indexPath.Row].nombre + "\n" + "("+tableItems [indexPath.Row].count +")";
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
 			cell.TextLabel.Lines = 3;
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);

@@ -38,8 +38,8 @@ namespace ProductFinder
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			rootNavigationController = new UINavigationController ();
 			rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 115, 0);
-			//UIImage image = UIImage.FromFile ("Images/TOOlBAR_completa2.jpg");
-			//rootNavigationController.NavigationBar.SetBackgroundImage (image, UIBarMetrics.Default);
+			UIImage image = UIImage.FromFile ("Images/TOOlBAR_completa2.jpg");
+			rootNavigationController.NavigationBar.SetBackgroundImage (image, UIBarMetrics.Default);
 			rootNavigationController.NavigationBar.TintColor = UIColor.White;
 			UITextAttributes atributes = new UITextAttributes();
 			atributes.TextColor = UIColor.White;
@@ -47,7 +47,6 @@ namespace ProductFinder
 			// If you have defined a root view controller, set it here:
 			// window.RootViewController = myViewController;
 			mainView = new MainView ();
-			//LoadNewProductView l = new LoadNewProductView ();
 			rootNavigationController.PushViewController (mainView,false);
 
 			// make the window visible
