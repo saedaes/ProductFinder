@@ -254,7 +254,7 @@ namespace ProductFinder
 
 			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
-				return 120f;
+				return 200f;
 			}
 
 			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
@@ -267,15 +267,15 @@ namespace ProductFinder
 				NSUrl nsUrl = new NSUrl (ps.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
 				if (data != null) {
-					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 80);
+					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 180);
 				} else {
-					cell.ImageView.Image = ScaleImage (Images.sinImagen, 80); 
+					cell.ImageView.Image = ScaleImage (Images.sinImagen, 180); 
 				}
 				cell.TextLabel.Text = ps.nombre;
-				cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
+				cell.TextLabel.Font = UIFont.SystemFontOfSize(20);
 				cell.TextLabel.Lines = 2 ;
 				cell.DetailTextLabel.Text = ps.descripcion;
-				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (15);
+				cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (17);
 				cell.DetailTextLabel.TextColor = UIColor.Gray;
 				cell.DetailTextLabel.Lines = 2;
 				UIButton addToList = new UIButton();

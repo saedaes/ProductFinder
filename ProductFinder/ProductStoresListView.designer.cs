@@ -13,6 +13,9 @@ namespace ProductFinder
 	partial class ProductStoresListView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnTiendaCercana { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView headerView { get; set; }
 
 		[Outlet]
@@ -35,6 +38,11 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnTiendaCercana != null) {
+				btnTiendaCercana.Dispose ();
+				btnTiendaCercana = null;
+			}
+
 			if (headerView != null) {
 				headerView.Dispose ();
 				headerView = null;
@@ -55,9 +63,9 @@ namespace ProductFinder
 				lblproduct = null;
 			}
 
-			if (tblStores != null) {
-				tblStores.Dispose ();
-				tblStores = null;
+			if (lblSectionTitle != null) {
+				lblSectionTitle.Dispose ();
+				lblSectionTitle = null;
 			}
 
 			if (sectionHeader != null) {
@@ -65,9 +73,9 @@ namespace ProductFinder
 				sectionHeader = null;
 			}
 
-			if (lblSectionTitle != null) {
-				lblSectionTitle.Dispose ();
-				lblSectionTitle = null;
+			if (tblStores != null) {
+				tblStores.Dispose ();
+				tblStores = null;
 			}
 		}
 	}

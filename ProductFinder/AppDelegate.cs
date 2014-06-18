@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.CoreGraphics;
+using MonoTouch.CoreAnimation;
 
 using MonoTouch.FacebookConnect;
 
@@ -37,13 +38,18 @@ namespace ProductFinder
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			rootNavigationController = new UINavigationController ();
-			rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 115, 0);
-			UIImage image = UIImage.FromFile ("Images/TOOlBAR_completa2.jpg");
-			rootNavigationController.NavigationBar.SetBackgroundImage (image, UIBarMetrics.Default);
+			//rootNavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 115, 0); 
+			CAGradientLayer degradado = new CAGradientLayer ();
+			degradado.Frame = rootNavigationController.NavigationBar.Layer.Bounds;
+			degradado.Colors = new CGColor[] { UIColor.FromRGB (62, 92, 41).CGColor, UIColor.FromRGB (132, 194, 71).CGColor };
+			rootNavigationController.NavigationBar.Layer.AddSublayer (degradado);
 			rootNavigationController.NavigationBar.TintColor = UIColor.White;
 			UITextAttributes atributes = new UITextAttributes();
 			atributes.TextColor = UIColor.White;
 			rootNavigationController.NavigationBar.SetTitleTextAttributes (atributes);
+			//UIImage image = UIImage.FromFile ("Images/TOOlBAR_completa2.png");
+			//rootNavigationController.NavigationBar.SetBackgroundImage (image, UIBarPosition.Top,UIBarMetrics.Default);
+
 			// If you have defined a root view controller, set it here:
 			// window.RootViewController = myViewController;
 			mainView = new MainView ();

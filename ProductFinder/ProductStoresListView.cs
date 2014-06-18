@@ -83,9 +83,9 @@ namespace ProductFinder
 				tiendaCercana.Style = UIBarButtonItemStyle.Plain;
 				tiendaCercana.Target = this;
 				tiendaCercana.Title = "Buscar tienda cercana";
-				this.NavigationItem.RightBarButtonItem = tiendaCercana;
+				//this.NavigationItem.RightBarButtonItem = tiendaCercana;
 
-				tiendaCercana.Clicked += (sender, e) => {
+				btnTiendaCercana.TouchUpInside += (sender, e) => {
 					if(this.newLocation == null){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "No podemos saber tu ubicacion =(", Message = "Para que FixBuy funcione correctamente necesitas permitirnos saber tu ubicacion, para hacer esto por favot dirigete a las ajustes > Privacidad > Localización para darle permiso a FixBuy"

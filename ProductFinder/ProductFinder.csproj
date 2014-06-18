@@ -298,6 +298,7 @@
     <BundleResource Include="Resources\list.png" />
     <BundleResource Include="Resources\new_list128.png" />
     <BundleResource Include="Resources\new_list64.png" />
+    <BundleResource Include="Images\TOOLBAR_completa2.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="facebookios">
