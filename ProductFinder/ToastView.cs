@@ -89,14 +89,14 @@ namespace ProductFinder
 			point = new PointF (point.X + offsetLeft, point.Y + offsetTop);
 			v.Center = point;
 			window.AddSubview (v);
-			v.AllTouchEvents += delegate { HideToast (null); };
+			v.AllTouchEvents += delegate { HideToast (); };
 
 			NSTimer.CreateScheduledTimer (theSettings.DurationSeconds, this, new Selector ("HideToast"), null, false);
 
 		}
 
 		[ExportAttribute("HideToast")]
-		void HideToast (NSTimer timer)
+		void HideToast ()
 		{
 			UIView.BeginAnimations ("");
 			view.Alpha = 0;

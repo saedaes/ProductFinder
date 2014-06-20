@@ -68,6 +68,8 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 
+			this.Title = "Menú";
+
 			//Ocultamos el boton de tiendas registradas temporalmente
 			this.btnTiendas.Hidden = true;
 			this.btnInfo2.Hidden = true;

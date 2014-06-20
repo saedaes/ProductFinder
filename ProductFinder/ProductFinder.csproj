@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{35C106D6-A10E-4DD4-B9CF-AAD658E66A9D}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -104,10 +104,10 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="Newtonsoft.Json.MonoTouch">
-      <HintPath>..\External\Newtonsoft.Json\Newtonsoft.Json\bin\Release\Newtonsoft.Json.MonoTouch.dll</HintPath>
+      <HintPath>..\External\Newtonsoft.Json.MonoTouch.dll</HintPath>
     </Reference>
     <Reference Include="MonoTouch.FacebookConnect">
-      <HintPath>..\Components\facebookios-3.11.1\lib\ios\MonoTouch.FacebookConnect.dll</HintPath>
+      <HintPath>..\MonoTouch.FacebookConnect.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -299,11 +299,11 @@
     <BundleResource Include="Resources\new_list128.png" />
     <BundleResource Include="Resources\new_list64.png" />
     <BundleResource Include="Images\TOOLBAR_completa2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="facebookios">
-      <Version>3.11.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
+    <BundleResource Include="Resources\INICIAR_SESION_ICON.png" />
+    <BundleResource Include="Resources\LISTAS_ICON.png" />
+    <BundleResource Include="Resources\SERVICIOS_ICON.png" />
+    <BundleResource Include="Resources\TIENDAS_ICON.png" />
+    <BundleResource Include="Resources\UBICACION_ICON.png" />
+    <BundleResource Include="Resources\buscar_icon.png" />
   </ItemGroup>
 </Project>

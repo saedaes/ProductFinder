@@ -1,16 +1,15 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/AppDelegate.cs">
-    <Files>
-      <File FileName="ProductFinder/ProductsInListView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/CompareListsService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ScanView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ServiciosWeb/ProductSearchDetailService.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NewsListView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/NewsDetailView.cs" Line="32" Column="3" />
-      <File FileName="ProductFinder/AppDelegate.cs" Line="51" Column="73" />
-      <File FileName="ProductFinder/LoadNewProductView.cs" Line="20" Column="4" />
-    </Files>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4_64.7.1" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" selected="True">
+          <Node name="ProductFinder" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
