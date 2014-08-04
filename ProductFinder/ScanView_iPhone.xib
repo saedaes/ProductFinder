@@ -20,6 +20,7 @@
                 <outlet property="btnServicios" destination="yGH-5t-9qJ" id="bnY-jB-gwy"/>
                 <outlet property="btnSesion" destination="pby-dP-l8m" id="dT1-v0-OfO"/>
                 <outlet property="btnTiendas" destination="AT2-2s-MAq" id="VwP-OC-G2V"/>
+                <outlet property="lblTitleText" destination="dbI-Pz-HWJ" id="gj8-0B-oW4"/>
                 <outlet property="lblusuario" destination="Jl3-ka-YHD" id="1is-SI-BZQ"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -51,42 +52,42 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dtj-gt-fNU">
                     <rect key="frame" x="131" y="279" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="buscarV.png">
+                    <state key="normal" image="buscar_icon.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AT2-2s-MAq">
                     <rect key="frame" x="131" y="371" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="mapa1.png">
+                    <state key="normal" image="TIENDAS_ICON.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vmO-cl-07T">
                     <rect key="frame" x="21" y="209" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="listaV.png">
+                    <state key="normal" image="LISTAS_ICON.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pby-dP-l8m">
                     <rect key="frame" x="21" y="350" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="SesionV.png">
+                    <state key="normal" image="INICIAR_SESION_ICON.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JvM-JW-IA1">
                     <rect key="frame" x="237" y="209" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="mapaV.png">
+                    <state key="normal" image="UBICACION_ICON.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yGH-5t-9qJ">
                     <rect key="frame" x="237" y="350" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="serviciosV.png">
+                    <state key="normal" image="SERVICIOS_ICON.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -184,15 +185,21 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menú" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbI-Pz-HWJ">
+            <rect key="frame" x="0.0" y="0.0" width="95" height="23"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
     <resources>
         <image name="FIXBUY100px.png" width="418" height="139"/>
-        <image name="SesionV.png" width="256" height="256"/>
-        <image name="buscarV.png" width="256" height="256"/>
+        <image name="INICIAR_SESION_ICON.png" width="77" height="80"/>
+        <image name="LISTAS_ICON.png" width="97" height="89"/>
+        <image name="SERVICIOS_ICON.png" width="62" height="61"/>
+        <image name="TIENDAS_ICON.png" width="69" height="60"/>
+        <image name="UBICACION_ICON.png" width="62" height="62"/>
+        <image name="buscar_icon.png" width="54" height="60"/>
         <image name="info24.png" width="24" height="24"/>
-        <image name="listaV.png" width="256" height="256"/>
-        <image name="mapa1.png" width="256" height="256"/>
-        <image name="mapaV.png" width="256" height="256"/>
-        <image name="serviciosV.png" width="256" height="256"/>
     </resources>
 </document>

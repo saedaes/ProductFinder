@@ -12,7 +12,7 @@ namespace ProductFinder
 		public string nombre {get;set;}
 		public string id {get;set;}
 
-		string resultURL = "http://fixbuy.herokuapp.com/states.json";
+		string resultURL = "http://fixbuy.mx/states.json";
 
 		public StatesService ()
 		{

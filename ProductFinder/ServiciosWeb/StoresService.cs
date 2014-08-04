@@ -15,7 +15,7 @@ namespace ProductFinder
 		public string longitud { get; set;}
 		public string imagen { get; set;}
 
-		string resultURL = "http://fixbuy.herokuapp.com/branches.json";
+		string resultURL = "http://fixbuy.mx/branches.json";
 
 		public StoresService ()
 		{

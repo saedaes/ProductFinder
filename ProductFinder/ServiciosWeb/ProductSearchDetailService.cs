@@ -29,7 +29,7 @@ namespace ProductFinder
 		}
 
 		public void setProductBarcode(String barcode, String locality){
-			this.resultURL = "http://fixbuy.herokuapp.com/products/find_by_bar_code.json?bar_code="+ barcode + "&locality_id=" + locality;
+			this.resultURL = "http://fixbuy.mx/products/find_by_bar_code.json?bar_code="+ barcode + "&locality_id=" + locality;
 
 		}
 
@@ -86,8 +86,8 @@ namespace ProductFinder
 			response.tienda_imagen = jObject ["branch_image_path"].ToString ();
 			response.tienda_latitud = jObject ["latitude"].ToString ();
 			response.tienda_longitud = jObject ["longitude"].ToString ();
-			response.inicio_validez = jObject ["validity_start"].ToString ();
-			response.final_validez = jObject ["validity_end"].ToString ();
+			response.inicio_validez = jObject ["CAST(price_histories.validity_start as date)"].ToString ();
+			response.final_validez = jObject ["CAST(price_histories.validity_end as date)"].ToString ();
 
 			return response;
 		}

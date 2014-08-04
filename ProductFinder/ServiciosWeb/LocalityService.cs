@@ -20,7 +20,7 @@ namespace ProductFinder
 		}
 
 		public void setState(String stateId){
-			this.resultURL = "http://fixbuy.herokuapp.com/municipalities.json?state_id="+stateId;
+			this.resultURL = "http://fixbuy.mx/municipalities.json?state_id="+stateId;
 		}
 
 		public List<LocalityService> All()

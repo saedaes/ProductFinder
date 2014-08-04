@@ -21,7 +21,7 @@ namespace ProductFinder
 		//Establecemos la variable que guardara la localizacion del dispositivo.
 		CLLocation newLocation;
 
-		UIBarButtonItem tiendaCercana;
+		UIBarButtonItem home;
 
 		private string _pathToDatabase;
 
@@ -74,16 +74,19 @@ namespace ProductFinder
 				iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
 					newLocation = e.Locations [e.Locations.Length - 1];
 				};
-
-				Console.WriteLine("Este es el codigo de barras: " + this.barcode);
+					
 				productSearchDetailService.setProductBarcode (this.barcode, MainView.localityId.ToString());
 				List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
 
-				tiendaCercana = new UIBarButtonItem();
-				tiendaCercana.Style = UIBarButtonItemStyle.Plain;
-				tiendaCercana.Target = this;
-				tiendaCercana.Title = "Buscar tienda cercana";
-				//this.NavigationItem.RightBarButtonItem = tiendaCercana;
+				UIBarButtonItem home = new UIBarButtonItem();
+				home.Style = UIBarButtonItemStyle.Plain;
+				home.Target = this;
+				home.Image = UIImage.FromFile("Images/home.png");
+				this.NavigationItem.RightBarButtonItem = home;
+				UIViewController[] vistas = NavigationController.ViewControllers;
+				home.Clicked += (sender, e) => {
+					this.NavigationController.PopToViewController(vistas[0], true);
+				};
 
 				btnTiendaCercana.TouchUpInside += (sender, e) => {
 					if(this.newLocation == null){

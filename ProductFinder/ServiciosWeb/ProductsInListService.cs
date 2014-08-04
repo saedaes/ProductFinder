@@ -24,7 +24,7 @@ namespace ProductFinder
 		}
 
 		public void setListId(String id){
-			this.resultURL = "http://fixbuy.herokuapp.com/view_products_list.json?list="+id;
+			this.resultURL = "http://fixbuy.mx/view_products_list.json?list="+id;
 		}
 
 		public List<ProductsInListService> All()

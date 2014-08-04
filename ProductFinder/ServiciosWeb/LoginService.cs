@@ -20,7 +20,7 @@ namespace ProductFinder
 		}
 
 		public void setUserData(String email,String password){
-			this.resultURL = "http://fixbuy.herokuapp.com/user_session/new.json?email="+email+"&password="+password;
+			this.resultURL = "http://fixbuy.mx/user_session/new.json?email="+email+"&password="+password;
 		}
 
 		public LoginService Find()

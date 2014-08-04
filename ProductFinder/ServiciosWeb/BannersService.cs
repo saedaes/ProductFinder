@@ -13,7 +13,7 @@ namespace ProductFinder
 		public string titulo {get;set;}
 		public string imagen {get;set;}
 
-		string resultURL = "http://fixbuy.herokuapp.com/get_banners.json";
+		string resultURL = "http://fixbuy.mx/get_banners.json";
 
 		public BannersService ()
 		{

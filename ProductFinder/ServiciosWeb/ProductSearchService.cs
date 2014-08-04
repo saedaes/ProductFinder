@@ -22,7 +22,7 @@ namespace ProductFinder
 		}
 
 		public void setProductSearchString(String text){
-			this.resultURL = "http://fixbuy.herokuapp.com/products/find_by_description/"+text+".json";
+			this.resultURL = "http://fixbuy.mx/products/find_by_description/"+text+".json";
 		}
 
 		public List<ProductSearchService> All()

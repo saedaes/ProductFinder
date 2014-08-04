@@ -22,7 +22,7 @@ namespace ProductFinder
 		}
 
 		public void setStoreId(String id){
-			this.resultURL = "http://fixbuy.herokuapp.com/get_qr_messages.json?branche_id="+id;
+			this.resultURL = "http://fixbuy.mx/get_qr_messages.json?branche_id="+id;
 		}
 
 		public List<NewsService> All()

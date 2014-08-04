@@ -55,6 +55,17 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 			try{
+
+				UIBarButtonItem home = new UIBarButtonItem();
+				home.Style = UIBarButtonItemStyle.Plain;
+				home.Target = this;
+				home.Image = UIImage.FromFile("Images/home.png");
+				this.NavigationItem.RightBarButtonItem = home;
+				UIViewController[] vistas = NavigationController.ViewControllers;
+				home.Clicked += (sender, e) => {
+					this.NavigationController.PopToViewController(vistas[0], true);
+				};
+
 				ProductsInListView.tableView = this.tblProducts;
 				//Configuramos la vista popup de cantidad
 				amountView.Layer.BorderWidth = 1.0f;

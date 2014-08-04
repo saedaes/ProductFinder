@@ -12,7 +12,7 @@ namespace ProductFinder
 		}
 
 		public String SetData (String user_id, String product_id, String branch_id,String price){
-			string loginURL = "http://fixbuy.herokuapp.com/reported_price.json?product=" + user_id + "&product_id=" + product_id + "&branch_id=" + branch_id + "&price=" + price;
+			string loginURL = "http://fixbuy.mx/reported_price.json?product=" + user_id + "&product_id=" + product_id + "&branch_id=" + branch_id + "&price=" + price;
 			WebRequest request = WebRequest.Create(loginURL);
 			request.Method = "POST";
 			System.Net.ServicePointManager.Expect100Continue = false;

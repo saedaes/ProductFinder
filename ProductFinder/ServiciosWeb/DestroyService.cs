@@ -12,12 +12,12 @@ namespace ProductFinder
 		}
 
 		public String destroyList(String list_id){
-			String url = "http://fixbuy.herokuapp.com/destroy_list.json?list_id="+list_id;
+			String url = "http://fixbuy.mx/destroy_list.json?list_id="+list_id;
 			return getResponse (url);
 		}
 
 		public String destroyProductInList(String product_id, String list_id){
-			String url = "http://fixbuy.herokuapp.com/destroy_product_list.json?product_id="+product_id+"&list_id="+list_id;
+			String url = "http://fixbuy.mx/destroy_product_list.json?product_id="+product_id+"&list_id="+list_id;
 			return getResponse (url);
 		}
 

@@ -49,7 +49,6 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>D48B5B8B-0728-4276-9109-0C167C37CE3A</CodesignProvision>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchI18n>cjk,mideast,other</MtouchI18n>
@@ -305,5 +304,11 @@
     <BundleResource Include="Resources\TIENDAS_ICON.png" />
     <BundleResource Include="Resources\UBICACION_ICON.png" />
     <BundleResource Include="Resources\buscar_icon.png" />
+    <BundleResource Include="Images\home.png" />
+    <BundleResource Include="Resources\Barra_LoginRemainder.png" />
+    <BundleResource Include="Resources\INICIAR_SESIONBig.png" />
+    <BundleResource Include="Resources\SERVICIOS_ICONBig.png" />
+    <BundleResource Include="Resources\UBICACION_ICONBig.png" />
+    <BundleResource Include="Resources\buscar_iconBig.png" />
   </ItemGroup>
 </Project>

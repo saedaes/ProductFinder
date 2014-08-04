@@ -90,6 +90,7 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			this.Add (faceBookView);
 			this.Add (facebookView2);
+
 			#region observadores del teclado
 			// Keyboard popup
 			NSNotificationCenter.DefaultCenter.AddObserver

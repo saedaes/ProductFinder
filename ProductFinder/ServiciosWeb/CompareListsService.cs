@@ -22,11 +22,11 @@ namespace ProductFinder
 		}
 
 		public void setListId(String id){
-			this.resultURL = "http://fixbuy.herokuapp.com/comparation_list.json?list_id="+id;
+			this.resultURL = "http://fixbuy.mx/comparation_list.json?list_id="+id;
 		}
 
 		public void setUnoListId(String id){
-			this.resultURL = "http://fixbuy.herokuapp.com/comparation_list_second.json?list_id="+id;
+			this.resultURL = "http://fixbuy.mx/comparation_list_second.json?list_id="+id;
 		}
 
 		public List<CompareListsService> All()

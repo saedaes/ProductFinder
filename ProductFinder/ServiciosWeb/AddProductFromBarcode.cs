@@ -11,7 +11,7 @@ namespace ProductFinder
 		{
 		}
 		public String SetData (String barcode, String list_id, String cantidad){
-			string URL = "http://fixbuy.herokuapp.com/add_product_list.json?bar_code="+barcode+"&list="+list_id+"&amount="+cantidad;
+			string URL = "http://fixbuy.mx/add_product_list.json?bar_code="+barcode+"&list="+list_id+"&amount="+cantidad;
 			WebRequest request = WebRequest.Create(URL);
 			request.Method = "POST";
 			System.Net.ServicePointManager.Expect100Continue = false;

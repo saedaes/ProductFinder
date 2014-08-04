@@ -20,7 +20,7 @@ namespace ProductFinder
 		}
 
 		public void setListAndStore(String list_id, String store_id){
-			this.resultURL = "http://fixbuy.herokuapp.com/comparation_list_detail.json?list_id="+list_id+"&branch_id="+store_id;
+			this.resultURL = "http://fixbuy.mx/comparation_list_detail.json?list_id="+list_id+"&branch_id="+store_id;
 		}
 
 		public List<ProductsPriceInStoreService> All()
