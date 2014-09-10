@@ -36,7 +36,7 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			webView = new UIWebView (View.Bounds);
 			View.AddSubview(webView);
-			string url = "http://fixbuy.herokuapp.com/products/new?bar_code="+ProductStoresListView.barcode2;
+			string url = "http://fixbuy.mx/products/new?bar_code="+ProductStoresListView.barcode2;
 			webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 		}
 	}

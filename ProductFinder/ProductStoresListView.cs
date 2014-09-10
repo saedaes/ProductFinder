@@ -75,7 +75,7 @@ namespace ProductFinder
 					newLocation = e.Locations [e.Locations.Length - 1];
 				};
 					
-				productSearchDetailService.setProductBarcode (this.barcode, MainView.localityId.ToString());
+				productSearchDetailService.setProductBarcode (this.barcode, MainView.localityId.ToString(), MainView.userId);
 				List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
 
 				UIBarButtonItem home = new UIBarButtonItem();

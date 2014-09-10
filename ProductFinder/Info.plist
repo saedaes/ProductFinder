@@ -16,7 +16,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>7.0</string>
+	<string>7.1</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>Spanish</string>
