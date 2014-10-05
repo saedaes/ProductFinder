@@ -33,7 +33,7 @@ namespace ProductFinder
 		//Lista donde se guardan los resultados de la consulta en la bd
 		List<State> states;
 
-		public static int userId;
+		public static int userId = 0;
 
 		public static int localityId;
 
@@ -107,19 +107,6 @@ namespace ProductFinder
 			loginView = new FBLoginView (ExtendedPermissions) {
 				Frame = new RectangleF (0,0,45, 45)
 			};
-			// Hook up to FetchedUserInfo event, so you know when
-			// you have the user information available
-			loginView.FetchedUserInfo += (sender, e) => {
-				user = e.User;
-				pictureView.ProfileID = user.GetId ();
-				MainView.isWithFacebook = true;
-			};
-			// Clean user Picture and label when Logged Out
-			loginView.ShowingLoggedOutUser += (sender, e) => {
-				pictureView.ProfileID = null;
-				lblUserName.Text = string.Empty;
-				MainView.isWithFacebook = false;
-			};
 
 			// Create view that will display user's profile picture
 			// https://developers.facebook.com/ios/profilepicture-ui-control/
@@ -127,9 +114,28 @@ namespace ProductFinder
 			pictureView = new FBProfilePictureView () {
 				Frame = new RectangleF (0, 0, 45, 45)
 			};
-					
-			this.facebookView2.Add(loginView);
+			pictureView.UserInteractionEnabled = true;
+			// Hook up to FetchedUserInfo event, so you know when
+			// you have the user information available
+			loginView.FetchedUserInfo += (sender, e) => {
+				user = e.User;
+				pictureView.ProfileID = user.GetId ();
+				MainView.isWithFacebook = true;
+				loginView.Alpha = 0.1f;
+				pictureView.Hidden = false;
+			};
+
+			// Clean user Picture and label when Logged Out
+			loginView.ShowingLoggedOutUser += (sender, e) => {
+				pictureView.ProfileID = null;
+				pictureView.Hidden = true;
+				lblUserName.Text = string.Empty;
+				loginView.Alpha = 1f;
+				MainView.isWithFacebook = false;
+			};
+		
 			this.faceBookView.Add(pictureView);
+			this.faceBookView.Add(loginView);
 			#endregion
 
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -159,7 +165,7 @@ namespace ProductFinder
 				MainView.localityId = estado.localityId;
 				Console.WriteLine ("El Id de localidad es: "+ estado.stateId);
 			}
-
+		
 			iPhoneLocationManager = new CLLocationManager ();
 			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
 			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {

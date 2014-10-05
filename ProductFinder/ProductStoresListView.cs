@@ -49,10 +49,12 @@ namespace ProductFinder
 		{
 			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
+			View = null;
+			imgProduct = null;
+			tblStores = null;
+			Console.WriteLine ("ALERTA DE MEMORIA");
 		}
-
+			
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -138,6 +140,12 @@ namespace ProductFinder
 					iPhoneLocationManager.StartUpdatingLocation ();
 			}catch(System.ArgumentOutOfRangeException){
 				didNotFidProduct();
+			}catch(Exception){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Ups =(", Message = "Lo sentimos algo salio mal, por favor intentalo de nuevo"
+				};
+				alert.AddButton ("Aceptar");
+				alert.Show ();
 			} 
 		}
 
@@ -236,6 +244,7 @@ namespace ProductFinder
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			if (data != null) {
+
 				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),80);
 			} else {
 				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 80);
@@ -407,6 +416,7 @@ namespace ProductFinder
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
 			ps = tableItems [indexPath.Row];
 
+
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			if (data != null) {
@@ -532,8 +542,6 @@ namespace ProductFinder
 				bitmap = null;
 
 			}
-
-
 			return res;
 		}
 	}

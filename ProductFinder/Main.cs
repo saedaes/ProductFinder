@@ -14,15 +14,11 @@ namespace ProductFinder
 			try{
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
-			NSUserDefaults.StandardUserDefaults.SetValueForKey(NSArray.FromStrings("es"), new NSString("AppleLanguages"));
-			NSUserDefaults.StandardUserDefaults.Synchronize();
+			//NSUserDefaults.StandardUserDefaults.SetValueForKey(NSArray.FromStrings("es"), new NSString("AppleLanguages"));
+			//NSUserDefaults.StandardUserDefaults.Synchronize();
 			UIApplication.Main (args, null, "AppDelegate");
-			}catch(Exception){
-				UIAlertView alert = new UIAlertView () { 
-					Title = "Ups =S", Message = "Ocurrio un error de ejecucion, por favor intentalo de nuevo."
-				};
-				alert.AddButton ("Aceptar");
-				alert.Show ();
+			}catch(Exception e){
+				Console.WriteLine ("ERROR: " + e.ToString ());
 			}
 		}
 	}

@@ -29,7 +29,7 @@ namespace ProductFinder
 		}
 
 		public void setProductBarcode(String barcode, String locality, int user){
-			this.resultURL = "http://fixbuy.mx/products/find_by_bar_code.json?bar_code="+ barcode + "&locality_id=" + locality + "&user="+user;
+			this.resultURL = "http://fixbuy.mx/products/find_by_bar_code.json?bar_code="+ barcode + "&locality_id=" + locality + "&user="+user.ToString();
 
 		}
 
