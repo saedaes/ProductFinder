@@ -13,7 +13,7 @@ namespace ProductFinder
 	public partial class StatesView : UIViewController
 	{
 		private string _pathToDatabase;
-		ActionSheetPicker actionSheetPicker;
+		//ActionSheetPicker actionSheetPicker;
 		PickerDataModel pickerDataModel;
 		PickerDataModelLocality pickerDataModelLocality;
 		StatesService statesService;
@@ -46,7 +46,9 @@ namespace ProductFinder
 			base.ViewDidLoad ();
 			
 			//Declaramos el actionsheet donde se mostrara el picker
-			actionSheetPicker = new ActionSheetPicker(this.View);
+			//actionSheetPicker = new ActionSheetPicker(this.View, null);
+			this.pickerStates.Hidden = true;
+			this.btnAceptar.Hidden = true;
 			//Declaramos el data model para el estado
 			pickerDataModel = new PickerDataModel ();
 			//Declaramos el data model para la localidad
@@ -71,23 +73,31 @@ namespace ProductFinder
 					statesService = new StatesService();
 					List<StatesService> estados = statesService.All();
 					pickerDataModel.Items = estados;
-					actionSheetPicker.Picker.Source = pickerDataModel;
-					actionSheetPicker.Show();
+					pickerStates.Source = pickerDataModel;
+					pickerStates.Hidden = false;
+					btnAceptar.Hidden = false;
+					//actionSheetPicker.Picker.Source = pickerDataModel;
+					//actionSheetPicker.Show();
 				}catch (System.Net.WebException){
 					UIAlertView alert = new UIAlertView () { 
 						Title = "Ups =S", Message = "No se puede mostrar la lista de estados, verifica tu conexión a internet e intentalo de nuevo."
 					};
 					alert.AddButton ("Aceptar");
 					alert.Show ();
-				}catch(Exception){
+				}catch(Exception excep){
+					Console.WriteLine("ESTE ES EL ERROR: " + excep.ToString());
 					UIAlertView alert = new UIAlertView () { 
-						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo."
+						Title = "Ups =S", Message = excep.ToString()
 					};
 					alert.AddButton("Aceptar");
 					alert.Show ();
 				}
 			};
 
+			btnAceptar.TouchUpInside += (sender, e) => {
+				this.pickerStates.Hidden = true;
+				this.btnAceptar.Hidden = true;
+			};
 
 			pickerDataModel.ValueChanged += (sender, e) => {
 				this.btnEstado.SetTitle(pickerDataModel.SelectedItem.ToString(), UIControlState.Normal);
@@ -102,8 +112,11 @@ namespace ProductFinder
 						localityService.setState(stateId);
 						List<LocalityService> localidades = localityService.All();
 						pickerDataModelLocality.Items = localidades;
-						actionSheetPicker.Picker.Source = pickerDataModelLocality;
-						actionSheetPicker.Show();
+						pickerStates.Source = pickerDataModelLocality;
+						pickerStates.Hidden = false;
+						btnAceptar.Hidden = false;
+						//actionSheetPicker.Picker.Source = pickerDataModelLocality;
+						//actionSheetPicker.Show();
 					}
 				}catch(System.Net.WebException){
 					UIAlertView alert = new UIAlertView () { 

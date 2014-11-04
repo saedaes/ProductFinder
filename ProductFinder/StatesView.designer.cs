@@ -13,6 +13,9 @@ namespace ProductFinder
 	partial class StatesView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnEstado { get; set; }
 
 		[Outlet]
@@ -26,12 +29,20 @@ namespace ProductFinder
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblLocalidad { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIPickerView pickerStates { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnEstado != null) {
 				btnEstado.Dispose ();
 				btnEstado = null;
+			}
+
+			if (btnGuardar != null) {
+				btnGuardar.Dispose ();
+				btnGuardar = null;
 			}
 
 			if (btnLocalidad != null) {
@@ -49,9 +60,14 @@ namespace ProductFinder
 				lblLocalidad = null;
 			}
 
-			if (btnGuardar != null) {
-				btnGuardar.Dispose ();
-				btnGuardar = null;
+			if (pickerStates != null) {
+				pickerStates.Dispose ();
+				pickerStates = null;
+			}
+
+			if (btnAceptar != null) {
+				btnAceptar.Dispose ();
+				btnAceptar = null;
 			}
 		}
 	}

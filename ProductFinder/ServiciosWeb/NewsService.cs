@@ -22,7 +22,7 @@ namespace ProductFinder
 		}
 
 		public void setStoreId(String id){
-			this.resultURL = "http://fixbuy.mx/get_qr_messages.json?branche_id="+id;
+			this.resultURL = "http://fixbuy.mx/get_qr_messages.json?branch_id=" +id;
 		}
 
 		public List<NewsService> All()
@@ -52,7 +52,7 @@ namespace ProductFinder
 		internal static NewsService FromJObject(JObject jObject)
 		{
 			NewsService response = new NewsService();
-			response.tienda_id = jObject ["branche_id"].ToString ();
+			response.tienda_id = jObject ["branch_id"].ToString ();
 			response.descripcion = jObject["description"].ToString();
 			response.id = jObject["id"].ToString();
 			response.titulo = jObject ["title"].ToString ();

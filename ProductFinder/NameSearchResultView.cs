@@ -267,7 +267,7 @@ namespace ProductFinder
 				NSUrl nsUrl = new NSUrl (ps.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
 				if (data != null) {
-					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 180);
+					cell.ImageView.Image = UIImage.LoadFromData (data);//ScaleImage (UIImage.LoadFromData (data), 180);
 				} else {
 					cell.ImageView.Image = ScaleImage (Images.sinImagen, 180); 
 				}

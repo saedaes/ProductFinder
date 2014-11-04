@@ -245,7 +245,7 @@ namespace ProductFinder
 			// boton fixBuy
 			UIBarButtonItem btnFixBuy = new UIBarButtonItem (UIBarButtonSystemItem.Search);
 			btnFixBuy.Clicked += (s, e) => { 
-				NSUrl url = new NSUrl (@"http://fixbuy.herokuapp.com");
+				NSUrl url = new NSUrl (@"http://fixbuy.mx");
 				UIApplication.SharedApplication.OpenUrl (url);
 			};
 
@@ -293,7 +293,7 @@ namespace ProductFinder
 			bannerImage.Add (button);
 			button.TouchUpInside += (sender, e) => {
 				try{
-					if(bannerError == false){
+						if(bannerError == false){
 						if(element.imagen != ""){
 							NSUrl url = new NSUrl (element.link);
 							UIApplication.SharedApplication.OpenUrl (url);

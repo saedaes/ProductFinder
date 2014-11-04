@@ -126,8 +126,10 @@ namespace ProductFinder {
 			};  
 
 			// Manejamos la actualizacion de la localizacion del dispositivo.
+			iPhoneLocationManager.RequestWhenInUseAuthorization ();
 			if (CLLocationManager.LocationServicesEnabled)
 				iPhoneLocationManager.StartUpdatingLocation ();
+
 			} catch(System.Net.WebException){
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Ups =(", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."

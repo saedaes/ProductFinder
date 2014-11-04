@@ -91,6 +91,16 @@ namespace ProductFinder
 			this.Add (faceBookView);
 			this.Add (facebookView2);
 
+			iPhoneLocationManager = new CLLocationManager ();
+			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
+			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
+
+			};
+				
+			iPhoneLocationManager.RequestWhenInUseAuthorization ();
+			if (CLLocationManager.LocationServicesEnabled) {
+				iPhoneLocationManager.StartUpdatingLocation ();
+			}
 			#region observadores del teclado
 			// Keyboard popup
 			NSNotificationCenter.DefaultCenter.AddObserver
@@ -166,13 +176,6 @@ namespace ProductFinder
 				Console.WriteLine ("El Id de localidad es: "+ estado.stateId);
 			}
 		
-			iPhoneLocationManager = new CLLocationManager ();
-			iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
-			iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
-			};
-			if (CLLocationManager.LocationServicesEnabled)
-				iPhoneLocationManager.StartUpdatingLocation ();
-
 			//Boton para entrar al menu de la aplicacion.
 			this.btnEntrar.TouchUpInside += (sender, e) => {
 				scanView = new ScanView();

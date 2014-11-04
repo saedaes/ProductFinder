@@ -117,9 +117,17 @@ namespace ProductFinder
 				};  
 
 				if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-					this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, iPhoneLocationManager,people.Count);
+					if (CLLocationManager.LocationServicesEnabled){
+						this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, iPhoneLocationManager,people.Count);
+					}else{
+						this.tblStores.Source = new StoresTableSourceIphone (tableItems, this, null,people.Count);
+					}
 				} else {
-					this.tblStores.Source = new StoresTableSource (tableItems, this, iPhoneLocationManager,people.Count);
+					if (CLLocationManager.LocationServicesEnabled){
+						this.tblStores.Source = new StoresTableSource (tableItems, this, iPhoneLocationManager,people.Count);
+					}else{
+						this.tblStores.Source = new StoresTableSource (tableItems, this, null,people.Count);
+					}
 				}
 
 				ProductSearchDetailService product = tableItems.ElementAt (0);
@@ -136,8 +144,11 @@ namespace ProductFinder
 				View.Add (this.tblStores);
 
 				// Manejamos la actualizacion de la localizacion del dispositivo.
+				iPhoneLocationManager.RequestWhenInUseAuthorization ();
 				if (CLLocationManager.LocationServicesEnabled)
 					iPhoneLocationManager.StartUpdatingLocation ();
+
+
 			}catch(System.ArgumentOutOfRangeException){
 				didNotFidProduct();
 			}catch(Exception){
@@ -433,16 +444,18 @@ namespace ProductFinder
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (20);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 3;
-			UIView vista = new UIView ();
-			vista.Tag = indexPath.Row;
-			vistas.Add (vista);
-			UIButton boton = new UIButton ();
-			boton.Tag = indexPath.Row;
-			botones.Add (boton);
-			UILabel distancia = new UILabel ();
-			distancia.Tag = indexPath.Row;
-			distancias.Add (distancia);
-			cell.AccessoryView = getDistanceView (indexPath.Row);
+			if (this.location != null) {
+				UIView vista = new UIView ();
+				vista.Tag = indexPath.Row;
+				vistas.Add (vista);
+				UIButton boton = new UIButton ();
+				boton.Tag = indexPath.Row;
+				botones.Add (boton);
+				UILabel distancia = new UILabel ();
+				distancia.Tag = indexPath.Row;
+				distancias.Add (distancia);
+				cell.AccessoryView = getDistanceView (indexPath.Row);
+			}
 			return cell;
 		}
 

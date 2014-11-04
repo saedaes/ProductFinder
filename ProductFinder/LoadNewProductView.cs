@@ -38,6 +38,7 @@ namespace ProductFinder
 			View.AddSubview(webView);
 			string url = "http://fixbuy.mx/products/new?bar_code="+ProductStoresListView.barcode2;
 			webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
+			webView.ScalesPageToFit = true;
 		}
 	}
 }

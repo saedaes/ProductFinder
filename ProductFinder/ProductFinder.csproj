@@ -54,6 +54,7 @@
     </IpaPackageName>
     <MtouchI18n>cjk,mideast,other</MtouchI18n>
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
+    <CodesignProvision>F5F8D1BD-3D16-4E1C-823A-4DE4C34EFAA0</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -312,5 +313,10 @@
     <BundleResource Include="Resources\SERVICIOS_ICONBig.png" />
     <BundleResource Include="Resources\UBICACION_ICONBig.png" />
     <BundleResource Include="Resources\buscar_iconBig.png" />
+    <BundleResource Include="Resources\new_list_new.png" />
+    <BundleResource Include="Resources\new_list_new128.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
   </ItemGroup>
 </Project>

@@ -2,21 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIDeviceFamily</key>
-	<array>
-		<integer>1</integer>
-		<integer>2</integer>
-	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
 	<key>MinimumOSVersion</key>
-	<string>7.1</string>
+	<string>8.1</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>Spanish</string>
@@ -40,5 +31,12 @@
 	<array>
 		<string>Icon-60@2x</string>
 	</array>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Para utilzar todas sus funciones FixBuy necesita obtener tu ubicación</string>
 </dict>
 </plist>
