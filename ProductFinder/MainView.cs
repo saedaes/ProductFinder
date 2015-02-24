@@ -97,7 +97,7 @@ namespace ProductFinder
 
 			};
 				
-			iPhoneLocationManager.RequestWhenInUseAuthorization ();
+			iPhoneLocationManager.RequestAlwaysAuthorization ();
 			if (CLLocationManager.LocationServicesEnabled) {
 				iPhoneLocationManager.StartUpdatingLocation ();
 			}

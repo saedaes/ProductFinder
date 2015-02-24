@@ -55,7 +55,7 @@ namespace ProductFinder
 			if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 				this.txtDescripcion.Font = UIFont.SystemFontOfSize(10);
 			}else{
-				this.txtDescripcion.Font = UIFont.SystemFontOfSize(25);
+				this.txtDescripcion.Font = UIFont.SystemFontOfSize(30);
 			}
 			this.txtDescripcion.Text = this.noticia.descripcion;
 		}

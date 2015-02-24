@@ -91,12 +91,7 @@ namespace ProductFinder
 				};
 
 				btnTiendaCercana.TouchUpInside += (sender, e) => {
-					if(this.newLocation == null){
-						UIAlertView alert = new UIAlertView () { 
-							Title = "No podemos saber tu ubicacion =(", Message = "Para que FixBuy funcione correctamente necesitas permitirnos saber tu ubicacion, para hacer esto por favot dirigete a las ajustes > Privacidad > Localización para darle permiso a FixBuy"
-						};
-						alert.AddButton("Aceptar");
-					}else{
+					try{
 						ProductSearchDetailService tiendac= nearestStore(newLocation,tableItems);
 						double distancia = newLocation.DistanceFrom(new CLLocation(Double.Parse(tiendac.tienda_latitud),Double.Parse(tiendac.tienda_longitud)))/1000;
 						distancia = Math.Round(distancia,2);
@@ -113,6 +108,12 @@ namespace ProductFinder
 							}
 						};
 						alert.Show ();
+					}catch(NullReferenceException){
+						UIAlertView alert = new UIAlertView () { 
+							Title = "Lo Sentimos =(", Message = "FixBuy no pudo obtener tu ubicación por favor ve a Ajustes/Privacidad/Localizacion y verifica que Fixbuy tenga permiso de saber tu ubicación"
+						};
+						alert.AddButton("Aceptar");
+						alert.Show();
 					}
 				};  
 
@@ -144,7 +145,7 @@ namespace ProductFinder
 				View.Add (this.tblStores);
 
 				// Manejamos la actualizacion de la localizacion del dispositivo.
-				iPhoneLocationManager.RequestWhenInUseAuthorization ();
+				iPhoneLocationManager.RequestAlwaysAuthorization ();
 				if (CLLocationManager.LocationServicesEnabled)
 					iPhoneLocationManager.StartUpdatingLocation ();
 
@@ -152,6 +153,11 @@ namespace ProductFinder
 			}catch(System.ArgumentOutOfRangeException){
 				didNotFidProduct();
 			}catch(Exception){
+				this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
+				this.lblproduct.Text = "Producto no encontrado =S";
+				this.lblDescription.Text = "";
+				this.btnTiendaCercana.Hidden = true;
+				this.tblStores.BackgroundColor = UIColor.Clear;
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Ups =(", Message = "Lo sentimos algo salio mal, por favor intentalo de nuevo"
 				};
@@ -164,6 +170,7 @@ namespace ProductFinder
 			this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
 			this.lblproduct.Text = "Producto no encontrado =S";
 			this.lblDescription.Text = "";
+			this.btnTiendaCercana.Hidden = true;
 			this.tblStores.BackgroundColor = UIColor.Clear;
 			//Si es 0 viene del escaner codigo, si es 1 viene de la vista de resultados de busqueda por nombre o de la vista de productos en lista
 			if (this.previousView == 0) {
@@ -255,7 +262,6 @@ namespace ProductFinder
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			if (data != null) {
-
 				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),80);
 			} else {
 				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 80);
@@ -278,7 +284,11 @@ namespace ProductFinder
 			UILabel distancia = new UILabel ();
 			distancia.Tag = indexPath.Row;
 			distancias.Add (distancia);
-			cell.AccessoryView = getDistanceView (indexPath.Row);
+			try{
+				cell.AccessoryView = getDistanceView (indexPath.Row);
+			}catch(NullReferenceException){
+				cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+			}
 			return cell;
 		}
 
@@ -303,10 +313,16 @@ namespace ProductFinder
 			
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			pdView = new ProductDetailView ();
-			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
-			pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
-			controller.NavigationController.PushViewController (pdView, true);
+			try{
+				pdView = new ProductDetailView ();
+				Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
+				pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
+				controller.NavigationController.PushViewController (pdView, true);
+			}catch(NullReferenceException){
+				pdView = new ProductDetailView ();
+				pdView.setProductAndDistance(tableItems [indexPath.Section],0);
+				controller.NavigationController.PushViewController (pdView, true);	
+			}
 		}
 
 		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.
@@ -444,18 +460,21 @@ namespace ProductFinder
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (20);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 3;
-			if (this.location != null) {
-				UIView vista = new UIView ();
-				vista.Tag = indexPath.Row;
-				vistas.Add (vista);
-				UIButton boton = new UIButton ();
-				boton.Tag = indexPath.Row;
-				botones.Add (boton);
-				UILabel distancia = new UILabel ();
-				distancia.Tag = indexPath.Row;
-				distancias.Add (distancia);
+			UIView vista = new UIView ();
+			vista.Tag = indexPath.Row;
+			vistas.Add (vista);
+			UIButton boton = new UIButton ();
+			boton.Tag = indexPath.Row;
+			botones.Add (boton);
+			UILabel distancia = new UILabel ();
+			distancia.Tag = indexPath.Row;
+			distancias.Add (distancia);
+			try{
 				cell.AccessoryView = getDistanceView (indexPath.Row);
+			}catch(NullReferenceException){
+				cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 			}
+
 			return cell;
 		}
 
@@ -480,10 +499,16 @@ namespace ProductFinder
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			pdView = new ProductDetailView ();
-			Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
-			pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
-			controller.NavigationController.PushViewController (pdView, true);
+			try{
+				pdView = new ProductDetailView ();
+				Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
+				pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
+				controller.NavigationController.PushViewController (pdView, true);
+			}catch(NullReferenceException){
+				pdView = new ProductDetailView ();
+				pdView.setProductAndDistance(tableItems [indexPath.Section],0);
+				controller.NavigationController.PushViewController (pdView, true);	
+			}
 		}
 			
 		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.

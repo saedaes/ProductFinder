@@ -13,6 +13,9 @@ namespace ProductFinder
 	partial class ProductDetailView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIImageView bannerImage { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnAceptarCantidad { get; set; }
 
 		[Outlet]
@@ -92,11 +95,6 @@ namespace ProductFinder
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnCerrarNombreNL != null) {
-				btnCerrarNombreNL.Dispose ();
-				btnCerrarNombreNL = null;
-			}
-
 			if (btnAceptarCantidad != null) {
 				btnAceptarCantidad.Dispose ();
 				btnAceptarCantidad = null;
@@ -115,6 +113,11 @@ namespace ProductFinder
 			if (btnCerrarLista != null) {
 				btnCerrarLista.Dispose ();
 				btnCerrarLista = null;
+			}
+
+			if (btnCerrarNombreNL != null) {
+				btnCerrarNombreNL.Dispose ();
+				btnCerrarNombreNL = null;
 			}
 
 			if (btnFacebook != null) {
@@ -215,6 +218,11 @@ namespace ProductFinder
 			if (QuantityView != null) {
 				QuantityView.Dispose ();
 				QuantityView = null;
+			}
+
+			if (bannerImage != null) {
+				bannerImage.Dispose ();
+				bannerImage = null;
 			}
 
 			if (tblLists != null) {

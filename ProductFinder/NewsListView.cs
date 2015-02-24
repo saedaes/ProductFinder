@@ -88,9 +88,9 @@ namespace ProductFinder
 			NSUrl nsUrl = new NSUrl (tableItems[indexPath.Row].imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			if (data != null) {
-				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),200);
+				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),150);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 200);
+				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 150);
 			}
 			cell.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			cell.TextLabel.Text = tableItems[indexPath.Row].titulo;

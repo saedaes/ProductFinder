@@ -9,6 +9,7 @@
                 <outlet property="ListsView" destination="Wb4-ad-vbJ" id="KkS-gl-xNY"/>
                 <outlet property="NewListView" destination="eoG-tM-dB8" id="4Bv-4m-E5u"/>
                 <outlet property="QuantityView" destination="0Sk-qh-lWP" id="2MM-GK-Es0"/>
+                <outlet property="bannerImage" destination="b2P-s9-mKc" id="EkU-H4-kkm"/>
                 <outlet property="btnAceptarCantidad" destination="ngb-go-cei" id="LTp-ej-b9c"/>
                 <outlet property="btnAceptarNuevaLista" destination="Ktd-l1-YHR" id="RRH-HX-ibb"/>
                 <outlet property="btnBadPrice" destination="bFB-1o-Vit" id="ulC-zp-i3D"/>
@@ -59,7 +60,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BJo-ys-Ylj">
-                    <rect key="frame" x="658" y="836" width="88" height="98"/>
+                    <rect key="frame" x="658" y="718" width="88" height="98"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="new_list_new128.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,7 +97,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia (km)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6rA-Al-bWo">
-                    <rect key="frame" x="90" y="740" width="643" height="64"/>
+                    <rect key="frame" x="90" y="677" width="643" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <nil key="highlightedColor"/>
@@ -223,7 +224,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FTw-vH-dJZ">
-                    <rect key="frame" x="25" y="750" width="49" height="43"/>
+                    <rect key="frame" x="25" y="687" width="49" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,12 +245,16 @@
                     </state>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vigencia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WvU-Aq-Tc1">
-                    <rect key="frame" x="23" y="896" width="632" height="21"/>
+                    <rect key="frame" x="23" y="778" width="632" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="b2P-s9-mKc">
+                    <rect key="frame" x="22" y="824" width="721" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>

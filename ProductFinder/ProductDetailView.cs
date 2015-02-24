@@ -26,6 +26,15 @@ namespace ProductFinder
 		NSData data;
 		string HelloId = null;
 		NewListService nls;
+
+		BannersService bannersService;
+		BannersService element;
+		int x;
+		NSTimer timer;
+		List<BannersService> banners;
+		UIButton button;
+		bool bannerError = false;
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -131,7 +140,11 @@ namespace ProductFinder
 				}
 				this.lblTiendaNombre.Text = producto.tienda_nombre;
 				this.lblTiendaDireccion.Text = producto.tienda_direccion;
-				this.lblTiendaDistancia.Text = "A "+ Math.Round(distancia,2)+"km de tu ubicación";
+				if(distancia != 0){
+					this.lblTiendaDistancia.Text = "A "+ Math.Round(distancia,2)+"km de tu ubicación";
+				}else{
+					this.lblTiendaDistancia.Text = "Distancia no disponible";
+				}
 				this.lblVigencia.Text = "Vigencia del "+ producto.inicio_validez+ " Al "+ producto.final_validez;
 			
 				this.btnLista.TouchUpInside += (sender, e) => {
@@ -421,6 +434,73 @@ namespace ProductFinder
 				/*Atrapamos la excepcion en caso de que el registro de la visita no pueda hacerse
 				sin mostrar ningun mensaje ni detener el flujo de la aplicacion*/
 			}
+
+			try{
+				//Leemos el servicio de los banners
+				this.bannersService = new BannersService ();
+				banners = bannersService.All ();
+			} catch (System.Net.WebException){
+				UIAlertView alert = new UIAlertView () { 
+					Title = "UPS :S", Message = "Hubo un error al conectarse a internet la seccion de banners no puede mostrarse, por favor verifica tu conexión a internet"
+				};
+				alert.AddButton("Aceptar");
+				alert.Show ();
+			}
+
+			button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
+			bannerImage.Add (button);
+			button.TouchUpInside += (sender, e) => {
+				try{
+					if(bannerError == false){
+						if(element.imagen != ""){
+							NSUrl url = new NSUrl (element.link);
+							UIApplication.SharedApplication.OpenUrl (url);
+						}
+					}
+				}catch(Exception){
+					//solo atrapamos la excepcion, no hacemos nada
+				}
+			};
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+
+			x = 0;
+
+			timer = NSTimer.CreateRepeatingScheduledTimer (TimeSpan.FromSeconds (5), delegate {
+				try{
+					if (banners.Count > 0){
+						element = banners.ElementAt (x);
+						NSUrl nsurl = new NSUrl(element.imagen);
+						NSData data1 = NSData.FromUrl(nsurl);
+						bannerImage.Image = UIImage.LoadFromData (data1);
+						if(x == banners.Count-1){
+							x= 0;
+						}else{
+							x++;
+						}
+					}else{
+						bannerImage.Hidden = true;
+					}
+				} catch (System.NullReferenceException){
+					timer.Invalidate ();
+					button.Dispose();
+					Console.WriteLine("primera excepcion");
+					bannerError = true;
+				} catch (System.ArgumentNullException){
+					timer.Invalidate();
+					button.Dispose();
+					Console.WriteLine("segunda excepcion");
+					bannerError = true;
+				} catch (Exception){
+					timer.Invalidate();
+					button.Dispose();
+					Console.WriteLine("tercera excepcion");
+					bannerError = true;
+				}
+			});
 		}
 
 		public String RegisterVisit (String tienda, int user){

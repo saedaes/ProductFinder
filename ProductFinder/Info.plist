@@ -15,7 +15,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>FixBuy</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fixbuy.fixbuy</string>
+	<string>mx.fixbuy</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -36,7 +36,7 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Para utilzar todas sus funciones FixBuy necesita obtener tu ubicación</string>
 </dict>
 </plist>

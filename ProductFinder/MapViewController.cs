@@ -126,7 +126,7 @@ namespace ProductFinder {
 			};  
 
 			// Manejamos la actualizacion de la localizacion del dispositivo.
-			iPhoneLocationManager.RequestWhenInUseAuthorization ();
+			iPhoneLocationManager.RequestAlwaysAuthorization ();
 			if (CLLocationManager.LocationServicesEnabled)
 				iPhoneLocationManager.StartUpdatingLocation ();
 
