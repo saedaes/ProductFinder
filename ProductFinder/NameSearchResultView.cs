@@ -267,9 +267,18 @@ namespace ProductFinder
 				NSUrl nsUrl = new NSUrl (ps.imagen);
 				NSData data = NSData.FromUrl (nsUrl);
 				if (data != null) {
-					cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 180);
+					/*UIImage imagen = UIImage.LoadFromData (data); //ScaleImage(UIImage.LoadFromData (data),100);
+					SizeF imageSize = new SizeF (80, 80);
+					UIGraphics.BeginImageContextWithOptions (imageSize, false, UIScreen.MainScreen.Scale);
+					RectangleF imageRec = new RectangleF (0, 0, imageSize.Width, imageSize.Height);
+					imagen.Draw (imageRec);
+					cell.ImageView.Frame = imageRec;
+					cell.ImageView.Image = UIGraphics.GetImageFromCurrentImageContext ();
+					UIGraphics.EndImageContext ();*/
+					cell.ImageView.Image = MaxResizeImage (UIImage.LoadFromData (data), 80, 80);
+					cell.ImageView.Frame = new RectangleF (0, 0, 60, 60);
 				} else {
-					cell.ImageView.Image = ScaleImage (Images.sinImagen, 180); 
+					cell.ImageView.Image = MaxResizeImage (Images.sinImagen, 80, 80); 
 				}
 				cell.TextLabel.Text = ps.nombre;
 				cell.TextLabel.Font = UIFont.SystemFontOfSize(20);
@@ -286,9 +295,23 @@ namespace ProductFinder
 				return cell;	
 			}
 
+			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			{
+				var sourceSize = sourceImage.Size;
+				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				var width = maxResizeFactor * sourceSize.Width;
+				var height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContext(new SizeF(width, height));
+				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirALista48.Size.Width, Images.añadirALista48.Size.Height);
-				botones.ElementAt(index).SetBackgroundImage(Images.añadirALista48,UIControlState.Normal);
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirAListaVerde48.Size.Width, Images.añadirAListaVerde48.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage(Images.añadirAListaVerde48,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					if(this.user == 0){
@@ -367,9 +390,19 @@ namespace ProductFinder
 				NSData data = NSData.FromUrl (nsUrl);
 				cell.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 				if (data != null) {
-					cell.ImageView.Image = UIImage.LoadFromData (data);// ScaleImage (UIImage.LoadFromData (data), 100);
+					/*UIImage imagen = UIImage.LoadFromData (data); //ScaleImage(UIImage.LoadFromData (data),100);
+					SizeF imageSize = new SizeF (80, 80);
+					UIGraphics.BeginImageContextWithOptions (imageSize, false, UIScreen.MainScreen.Scale);
+					RectangleF imageRec = new RectangleF (0, 0, imageSize.Width, imageSize.Height);
+					imagen.Draw (imageRec);
+					cell.ImageView.Frame = imageRec;
+					cell.ImageView.Image = UIGraphics.GetImageFromCurrentImageContext ();
+					UIGraphics.EndImageContext ();*/
+
+					cell.ImageView.Image = MaxResizeImage (UIImage.LoadFromData (data), 60, 60);
+					cell.ImageView.Frame = new RectangleF (0, 0, 60, 60);
 				} else {
-					cell.ImageView.Image = ScaleImage (Images.sinImagen, 100); 
+					cell.ImageView.Image = MaxResizeImage (Images.sinImagen, 60, 60); 
 				}
 				cell.TextLabel.Text = ps.nombre;
 				cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
@@ -386,9 +419,23 @@ namespace ProductFinder
 				return cell;
 			}
 
+			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			{
+				var sourceSize = sourceImage.Size;
+				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				var width = maxResizeFactor * sourceSize.Width;
+				var height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContext(new SizeF(width, height));
+				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirALista48.Size.Width, Images.añadirALista48.Size.Height);
-				botones.ElementAt(index).SetBackgroundImage(Images.añadirALista48,UIControlState.Normal);
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.añadirAListaVerde48.Size.Width, Images.añadirAListaVerde48.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage(Images.añadirAListaVerde48,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					if(this.user == 0){

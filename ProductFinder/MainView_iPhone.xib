@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView">
@@ -58,7 +58,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6lp-o2-2Jl">
                     <rect key="frame" x="222" y="20" width="36" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="listIcon.png">
+                    <state key="normal" image="LISTAS_ICON.png">
                         <color key="titleColor" red="0.31435406076151029" green="0.74898437500000004" blue="0.065927882966737988" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -88,7 +88,7 @@
     <resources>
         <image name="Barcode.png" width="256" height="256"/>
         <image name="FIXBUY100px.png" width="418" height="139"/>
-        <image name="listIcon.png" width="128" height="128"/>
+        <image name="LISTAS_ICON.png" width="97" height="89"/>
         <image name="menu.png" width="640" height="438"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -37,6 +37,18 @@ namespace ProductFinder
 			// Release any cached data, images, etc that aren't in use.
 		}
 
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			this.Title = "  ";
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			this.Title = "Iniciar Sesión";
+		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -56,7 +68,7 @@ namespace ProductFinder
 			} else {
 				this.cmpContraseña.SecureTextEntry = true;
 			}
-
+				
 			// Figure out where the SQLite database will be.
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");

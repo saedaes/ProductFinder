@@ -28,7 +28,7 @@ namespace ProductFinder
 		public RegistryView ()
 			: base (UserInterfaceIdiomIsPhone ? "RegistryView_iPhone" : "RegistryView_iPad", null)
 		{
-			this.Title = "Registrare Ahora!";
+			this.Title = "Regístrate Ahora!";
 		}
 
 		public override void DidReceiveMemoryWarning ()

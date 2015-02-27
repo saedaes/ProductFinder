@@ -262,9 +262,18 @@ namespace ProductFinder
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			if (data != null) {
-				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),80);
+				/*UIImage imagen = UIImage.LoadFromData (data); //ScaleImage(UIImage.LoadFromData (data),100);
+				SizeF imageSize = new SizeF (80, 80);
+				UIGraphics.BeginImageContextWithOptions (imageSize, false, UIScreen.MainScreen.Scale);
+				RectangleF imageRec = new RectangleF (0, 0, imageSize.Width, imageSize.Height);
+				imagen.Draw (imageRec);
+				cell.ImageView.Frame = imageRec;
+				cell.ImageView.Image = UIGraphics.GetImageFromCurrentImageContext ();
+				UIGraphics.EndImageContext ();*/
+				cell.ImageView.Image = MaxResizeImage (UIImage.LoadFromData (data), 80, 80);
+				cell.ImageView.Frame = new RectangleF (0, 0, 80, 80);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 80);
+				cell.ImageView.Image = MaxResizeImage (Images.sinImagen, 80, 80); 
 			}
 			cell.TextLabel.Text = ps.tienda_nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
@@ -292,6 +301,20 @@ namespace ProductFinder
 			return cell;
 		}
 
+		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		{
+			var sourceSize = sourceImage.Size;
+			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			if (maxResizeFactor > 1) return sourceImage;
+			var width = maxResizeFactor * sourceSize.Width;
+			var height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContext(new SizeF(width, height));
+			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+			UIGraphics.EndImageContext();
+			return resultImage;
+		}
+
 		public UIView getDistanceView(int index){
 			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
 			botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
@@ -316,11 +339,11 @@ namespace ProductFinder
 			try{
 				pdView = new ProductDetailView ();
 				Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
-				pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
+				pdView.setProductAndDistance(tableItems [indexPath.Row],distancia);
 				controller.NavigationController.PushViewController (pdView, true);
 			}catch(NullReferenceException){
 				pdView = new ProductDetailView ();
-				pdView.setProductAndDistance(tableItems [indexPath.Section],0);
+				pdView.setProductAndDistance(tableItems [indexPath.Row],0);
 				controller.NavigationController.PushViewController (pdView, true);	
 			}
 		}
@@ -447,16 +470,28 @@ namespace ProductFinder
 			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
 			NSData data = NSData.FromUrl (nsUrl);
 			if (data != null) {
-				cell.ImageView.Image = ScaleImage(UIImage.LoadFromData (data),100);
+				/*UIImage imagen = UIImage.LoadFromData (data); //ScaleImage(UIImage.LoadFromData (data),100);
+				SizeF imageSize = new SizeF (80, 80);
+				UIGraphics.BeginImageContextWithOptions (imageSize, false, UIScreen.MainScreen.Scale);
+				RectangleF imageRec = new RectangleF (0, 0, imageSize.Width, imageSize.Height);
+				imagen.Draw (imageRec);
+				cell.ImageView.Frame = imageRec;
+				cell.ImageView.Image = UIGraphics.GetImageFromCurrentImageContext ();
+				UIGraphics.EndImageContext ();*/
+				cell.ImageView.Image = MaxResizeImage (UIImage.LoadFromData (data), 60, 60);
+				cell.ImageView.Frame = new RectangleF (0, 0, 60, 60);
 			} else {
-				cell.ImageView.Image = ScaleImage (UIImage.FromFile ("Images/noImage.jpg"), 100);
+				cell.ImageView.Image = MaxResizeImage (Images.sinImagen, 60, 60); 
 			}
-			cell.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			cell.TextLabel.Text = ps.tienda_nombre;
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
 			cell.TextLabel.Lines = 2 ;
 			double precio = Double.Parse (ps.precio);
-			cell.DetailTextLabel.Text = precio.ToString("C2")+ " ";
+			if (ps.es_oferta == "2") {
+				cell.DetailTextLabel.Text = precio.ToString ("C2") + "\n" + "Oferta!";
+			} else {
+				cell.DetailTextLabel.Text = precio.ToString ("C2") + "";
+			}
 			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (20);
 			cell.DetailTextLabel.TextColor = UIColor.Red;
 			cell.DetailTextLabel.Lines = 3;
@@ -476,6 +511,20 @@ namespace ProductFinder
 			}
 
 			return cell;
+		}
+
+		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		{
+			var sourceSize = sourceImage.Size;
+			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			if (maxResizeFactor > 1) return sourceImage;
+			var width = maxResizeFactor * sourceSize.Width;
+			var height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContext(new SizeF(width, height));
+			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+			UIGraphics.EndImageContext();
+			return resultImage;
 		}
 
 		public UIView getDistanceView(int index){
@@ -502,11 +551,11 @@ namespace ProductFinder
 			try{
 				pdView = new ProductDetailView ();
 				Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
-				pdView.setProductAndDistance(tableItems [indexPath.Section],distancia);
+				pdView.setProductAndDistance(tableItems [indexPath.Row],distancia);
 				controller.NavigationController.PushViewController (pdView, true);
 			}catch(NullReferenceException){
 				pdView = new ProductDetailView ();
-				pdView.setProductAndDistance(tableItems [indexPath.Section],0);
+				pdView.setProductAndDistance(tableItems [indexPath.Row],0);
 				controller.NavigationController.PushViewController (pdView, true);	
 			}
 		}

@@ -28,6 +28,7 @@
     </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
     <MtouchUseSGen>true</MtouchUseSGen>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -54,7 +55,6 @@
     </IpaPackageName>
     <MtouchI18n>cjk,mideast,other</MtouchI18n>
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
-    <CodesignProvision>F5F8D1BD-3D16-4E1C-823A-4DE4C34EFAA0</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -71,6 +71,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
+    <CodesignProvision>64c62c6d-4990-4997-9643-3047572f4c10</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -318,5 +319,7 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Images\new_list_new24.png" />
+    <BundleResource Include="Images\new_list_new48.png" />
   </ItemGroup>
 </Project>

@@ -16,6 +16,8 @@ namespace ProductFinder
 		public static UIImage sinImagen = UIImage.FromFile("Images/noImage.jpg");
 		public static UIImage basura24 = UIImage.FromFile("Images/trash24.png");
 		public static UIImage basura48 = UIImage.FromFile ("Images/trash48.png");
+		public static UIImage añadirAListaVerde24 = UIImage.FromFile("Images/new_list_new24");
+		public static UIImage añadirAListaVerde48 = UIImage.FromFile("Images/new_list_new48");
 		public static UIImage imagenDetalle;
 		public static UIImage imagenDetalleTienda;
 		public static UIImage imagenTienda;
