@@ -1,0 +1,37 @@
+# Version: 8.6.1.20 (3b3ef43)
+# [first argument, ignore] # /Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhone/Debug/mtouch.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.1.20/bin/mtouch-64 \
+	-sdkroot \
+	/Applications/Xcode.app/Contents/Developer \
+	--cache \
+	/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache \
+	--executable \
+	ProductFinder \
+	--nomanifest \
+	--nosign \
+	-dev \
+	/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhone/Debug/ProductFinder.app \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/System.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/System.Xml.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/System.Core.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/monotouch.dll \
+	-r \
+	/Users/marco/Projects/ProductFinder/lib/ios/ScanditSDK.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/Mono.Data.Sqlite.dll \
+	-r \
+	/Users/marco/Projects/ProductFinder/External/Newtonsoft.Json.MonoTouch.dll \
+	-r \
+	/Users/marco/Projects/ProductFinder/MonoTouch.FacebookConnect.dll \
+	-linksdkonly \
+	-i18n=cjk,mideast,other \
+	-sdk \
+	8.1 \
+	-targetver \
+	8.1 \
+	--abi=armv7,armv7s \
+	/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhone/Debug/ProductFinder.exe \

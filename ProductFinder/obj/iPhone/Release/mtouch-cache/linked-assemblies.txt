@@ -1,0 +1,10 @@
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/System.Core.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/mscorlib.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/monotouch.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/Newtonsoft.Json.MonoTouch.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/MonoTouch.FacebookConnect.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/ScanditSDK.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/System.Xml.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/System.dll
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/ProductFinder.exe
+/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/Link/System.Runtime.Serialization.dll
