@@ -5,6 +5,12 @@ namespace ProductFinder
 {
 	public class Images
 	{
+
+		public UIImage productImage { get; set; }
+		public String imageUrl { get; set;}
+		public UIImage storeImage { get; set;}
+		public String storeImageUrl { get; set;}
+
 		public Images ()
 		{
 		}
@@ -18,6 +24,8 @@ namespace ProductFinder
 		public static UIImage basura48 = UIImage.FromFile ("Images/trash48.png");
 		public static UIImage añadirAListaVerde24 = UIImage.FromFile("Images/new_list_new24");
 		public static UIImage añadirAListaVerde48 = UIImage.FromFile("Images/new_list_new48");
+		public static UIImage añadirAListaVerde128 = UIImage.FromFile("Images/new_list_new128");
+		public static UIImage miLista = UIImage.FromFile("Images/ListaVerde");
 		public static UIImage imagenDetalle;
 		public static UIImage imagenDetalleTienda;
 		public static UIImage imagenTienda;

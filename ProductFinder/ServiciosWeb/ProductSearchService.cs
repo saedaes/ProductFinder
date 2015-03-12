@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using MonoTouch.Foundation;
+using MonoTouch.UIKit;
 
 namespace ProductFinder
 {
@@ -14,6 +16,7 @@ namespace ProductFinder
 		public string descripcion { get; set;}
 		public string codigo { get; set;}
 		public string id { get; set;}
+		//public UIImage imagenDibujada { get; set;}
 
 		string resultURL = "";
 
@@ -72,6 +75,14 @@ namespace ProductFinder
 			response.imagen = jObject["image_url"].ToString();
 			response.codigo = jObject ["bar_code"].ToString ();
 			response.id = jObject ["id"].ToString ();
+
+			/*NSUrl nsUrl = new NSUrl (response.imagen);
+			NSData data = NSData.FromUrl (nsUrl);
+			if (data != null) {
+				response.imagenDibujada = UIImage.LoadFromData (data);
+			}else{
+				response.imagenDibujada = Images.sinImagen;
+			}*/
 
 			return response;
 		}

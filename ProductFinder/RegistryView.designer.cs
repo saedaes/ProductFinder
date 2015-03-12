@@ -13,6 +13,9 @@ namespace ProductFinder
 	partial class RegistryView
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnEdad { get; set; }
 
 		[Outlet]
@@ -47,9 +50,22 @@ namespace ProductFinder
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblSexo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIPickerView pickerSexo { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (pickerSexo != null) {
+				pickerSexo.Dispose ();
+				pickerSexo = null;
+			}
+
+			if (btnAceptar != null) {
+				btnAceptar.Dispose ();
+				btnAceptar = null;
+			}
+
 			if (btnEdad != null) {
 				btnEdad.Dispose ();
 				btnEdad = null;
@@ -70,14 +86,14 @@ namespace ProductFinder
 				cmpConfirmar = null;
 			}
 
-			if (cmpContraseñaIphone != null) {
-				cmpContraseñaIphone.Dispose ();
-				cmpContraseñaIphone = null;
-			}
-
 			if (cmpContraseña != null) {
 				cmpContraseña.Dispose ();
 				cmpContraseña = null;
+			}
+
+			if (cmpContraseñaIphone != null) {
+				cmpContraseñaIphone.Dispose ();
+				cmpContraseñaIphone = null;
 			}
 
 			if (cmpEmail != null) {

@@ -51,11 +51,13 @@ namespace ProductFinder
 			NSNotificationCenter.DefaultCenter.AddObserver
 			(UIKeyboard.WillHideNotification,KeyBoardDownNotification);
 			#endregion
-
+			UITextField password;
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-				this.cmpContraseñaIphone.SecureTextEntry = true;
+				password = this.cmpContraseñaIphone;
+				password.SecureTextEntry = true;
 			} else {
-				this.cmpContraseña.SecureTextEntry = true;
+				password = this.cmpContraseña;
+				password.SecureTextEntry = true;
 			}
 			this.cmpConfirmar.SecureTextEntry = true;
 	
@@ -66,14 +68,19 @@ namespace ProductFinder
 			//Declaramos el data model para las edades
 			pickerDataModelAges = new PickerDataModelAges ();
 
+			pickerSexo.Hidden = true;
+			btnAceptar.Hidden = true;
+
 			this.btnSexo.TouchUpInside += (sender, e) => {
 				List<String> sexos = new List<String> ();
 				sexos.Add ("Seleccione");
 				sexos.Add ("Hombre");
 				sexos.Add ("Mujer");
 				pickerDataModel.Items = sexos;
-				actionSheetPicker.Picker.Source = pickerDataModel;
-				actionSheetPicker.Show();
+				pickerSexo.Model = pickerDataModel;
+				//actionSheetPicker.Show();
+				pickerSexo.Hidden = false;
+				btnAceptar.Hidden = false;
 			};
 
 			this.btnEdad.TouchUpInside += (sender, e) => {
@@ -81,8 +88,10 @@ namespace ProductFinder
 					agesService = new AgesService();
 					List<AgesService> edades = agesService.All();
 					pickerDataModelAges.Items = edades;
-					actionSheetPicker.Picker.Source = pickerDataModelAges;
-					actionSheetPicker.Show();
+					this.pickerSexo.Model = pickerDataModelAges;
+					//actionSheetPicker.Show();
+					pickerSexo.Hidden = false;
+					btnAceptar.Hidden = false;
 				}catch(System.Net.WebException){
 					UIAlertView alert = new UIAlertView(){
 						Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo"
@@ -98,6 +107,12 @@ namespace ProductFinder
 					alert.Show();
 				}
 			};
+
+			this.btnAceptar.TouchUpInside += (sender, e) => {
+				this.pickerSexo.Hidden = true;
+				this.btnAceptar.Hidden = true;
+			};
+
 			String sexo = "";
 			pickerDataModel.ValueChanged += (sender, e) => {
 				if(pickerDataModel.SelectedItem.ToString() != "Seleccione"){
@@ -124,7 +139,7 @@ namespace ProductFinder
 						contraseña = cmpContraseña;
 					}
 
-					if(this.cmpEmail.Text == "" || this.cmpNombre.Text == "" || this.cmpPaterno.Text =="" || this.cmpMaterno.Text == "" || this.cmpContraseña.Text == "" || this.cmpConfirmar.Text == ""){
+					if(this.cmpEmail.Text == "" || this.cmpNombre.Text == "" || this.cmpPaterno.Text =="" || this.cmpMaterno.Text == "" || password.Text == "" || this.cmpConfirmar.Text == ""){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Espera!", Message = "Debes ingresar todos los campos"
 						};
@@ -142,13 +157,13 @@ namespace ProductFinder
 						};
 						alert.AddButton("Aceptar");
 						alert.Show ();
-					} else if(this.cmpContraseña.Text.Length < 8){
+					} else if(password.Text.Length < 8){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Espera!", Message = "Tu contraseña debe tener minimo 8 caracteres"
 						};
 						alert.AddButton("Aceptar");
 						alert.Show ();
-					} else if(this.cmpContraseña.Text != this.cmpConfirmar.Text){
+					} else if(password.Text != this.cmpConfirmar.Text){
 						UIAlertView alert = new UIAlertView () { 
 							Title = "Espera!", Message = "La contraseña no coincide con la confirmacion"
 						};
@@ -188,7 +203,8 @@ namespace ProductFinder
 					};
 					alert.AddButton("Aceptar");
 					alert.Show();
-				}catch(Exception){
+				}catch(Exception ex){
+					Console.WriteLine("ESTA ES LA ECEPCION: " + ex.ToString());
 					UIAlertView alert = new UIAlertView(){
 						Title = "Ups =S", Message = "Algo salio mal, por favor intentalo de nuevo"
 					};

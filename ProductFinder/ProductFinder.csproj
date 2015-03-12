@@ -71,7 +71,6 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
-    <CodesignProvision>64c62c6d-4990-4997-9643-3047572f4c10</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -218,6 +217,7 @@
     <Compile Include="NewsDetailView.designer.cs">
       <DependentUpon>NewsDetailView.cs</DependentUpon>
     </Compile>
+    <Compile Include="GzipWebClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
@@ -321,5 +321,11 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Images\new_list_new24.png" />
     <BundleResource Include="Images\new_list_new48.png" />
+    <BundleResource Include="Images\new_list_new128.png" />
+    <BundleResource Include="Images\ListaVerde.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default-Landscape%402x.png" />
   </ItemGroup>
 </Project>

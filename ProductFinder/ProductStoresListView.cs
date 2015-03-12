@@ -8,6 +8,10 @@ using MonoTouch.CoreLocation;
 using System.Linq;
 using System.Globalization;
 using System.IO;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+
+
 namespace ProductFinder
 {
 	public partial class ProductStoresListView : UIViewController
@@ -30,6 +34,9 @@ namespace ProductFinder
 
 		//variable para saber desde que vista se esta llegando
 		int previousView = 0;
+
+		public ObservableCollection<Images> productImages { get; private set; }
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
@@ -37,6 +44,7 @@ namespace ProductFinder
 		public ProductStoresListView ()
 			: base (UserInterfaceIdiomIsPhone ? "ProductStoresListView_iPhone" : "ProductStoresListView_iPad", null)
 		{
+			productImages = new ObservableCollection<Images> ();
 		}
 
 		public void setProduct(String bar_code, int previousView){
@@ -47,12 +55,10 @@ namespace ProductFinder
 
 		public override void DidReceiveMemoryWarning ()
 		{
-			// Releases the view if it doesn't have a superview.
-			base.DidReceiveMemoryWarning ();
-			View = null;
-			imgProduct = null;
-			tblStores = null;
-			Console.WriteLine ("ALERTA DE MEMORIA");
+			// Release all cached images. This will cause them to be redownloaded
+			// later as they're displayed.
+			foreach (var v in productImages)
+				v.storeImage = null;
 		}
 			
 		public override void ViewDidLoad ()
@@ -79,6 +85,12 @@ namespace ProductFinder
 					
 				productSearchDetailService.setProductBarcode (this.barcode, MainView.localityId.ToString(), MainView.userId);
 				List<ProductSearchDetailService> tableItems = productSearchDetailService.All ();
+
+				this.productImages.Clear();
+				foreach (var v in tableItems){
+					Images image = new Images{ storeImageUrl = v.imagen};
+					this.productImages.Add(image);
+				}
 
 				UIBarButtonItem home = new UIBarButtonItem();
 				home.Style = UIBarButtonItemStyle.Plain;
@@ -142,7 +154,7 @@ namespace ProductFinder
 				this.lblproduct.Text = product.nombre;
 				this.lblDescription.Text = product.descripcion;
 				//this.tblStores.TableHeaderView = this.headerView;
-				View.Add (this.tblStores);
+				Add (this.tblStores);
 
 				// Manejamos la actualizacion de la localizacion del dispositivo.
 				iPhoneLocationManager.RequestAlwaysAuthorization ();
@@ -152,7 +164,8 @@ namespace ProductFinder
 
 			}catch(System.ArgumentOutOfRangeException){
 				didNotFidProduct();
-			}catch(Exception){
+			}catch(Exception ex){
+				Console.WriteLine (ex.ToString ());
 				this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
 				this.lblproduct.Text = "Producto no encontrado =S";
 				this.lblDescription.Text = "";
@@ -213,423 +226,373 @@ namespace ProductFinder
 			}
 			return nearStore;
 		}
-	}
 
-	class StoresTableSource : UITableViewSource 
-	{
-		List<ProductSearchDetailService> tableItems;
-		string cellIdentifier = "TableCell";
-		ProductStoresListView controller;
-		ProductSearchDetailService ps;
-		ProductDetailView pdView;
-		CLLocationManager location;
-		int conn;
-		List<UIView> vistas = new List<UIView> ();
-		List<UIButton> botones = new List<UIButton> ();
-		List<UILabel> distancias = new List<UILabel> ();
-		public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
+		class StoresTableSource : UITableViewSource 
 		{
-			tableItems = items;
-			this.controller=controller;
-			this.location = iPhoneLocationManager;
-			this.conn = conn;
-		}
-
-		public override int NumberOfSections (UITableView tableView)
-		{
-			return 1;
-		}
-
-		public override int RowsInSection (UITableView tableview, int section)
-		{
-			return tableItems.Count;	   
-		}
-
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
-		{
-			return 120f;
-		}
-
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
-		{
-			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
-
-			// if there are no cells to reuse, create a new one
-			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
-			ps = tableItems [indexPath.Row];
-
-			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
-			NSData data = NSData.FromUrl (nsUrl);
-			if (data != null) {
-				/*UIImage imagen = UIImage.LoadFromData (data); //ScaleImage(UIImage.LoadFromData (data),100);
-				SizeF imageSize = new SizeF (80, 80);
-				UIGraphics.BeginImageContextWithOptions (imageSize, false, UIScreen.MainScreen.Scale);
-				RectangleF imageRec = new RectangleF (0, 0, imageSize.Width, imageSize.Height);
-				imagen.Draw (imageRec);
-				cell.ImageView.Frame = imageRec;
-				cell.ImageView.Image = UIGraphics.GetImageFromCurrentImageContext ();
-				UIGraphics.EndImageContext ();*/
-				cell.ImageView.Image = MaxResizeImage (UIImage.LoadFromData (data), 80, 80);
-				cell.ImageView.Frame = new RectangleF (0, 0, 80, 80);
-			} else {
-				cell.ImageView.Image = MaxResizeImage (Images.sinImagen, 80, 80); 
-			}
-			cell.TextLabel.Text = ps.tienda_nombre;
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
-			cell.TextLabel.Lines = 2 ;
-			double precio = Double.Parse (ps.precio);
-			cell.DetailTextLabel.Text = precio.ToString("C2")+ " ";
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
-			cell.DetailTextLabel.TextColor = UIColor.Red;
-			cell.DetailTextLabel.Lines = 2;
-			cell.DetailTextLabel.TextAlignment = UITextAlignment.Left;
-			UIView vista = new UIView ();
-			vista.Tag = indexPath.Row;
-			vistas.Add (vista);
-			UIButton boton = new UIButton ();
-			boton.Tag = indexPath.Row;
-			botones.Add (boton);
-			UILabel distancia = new UILabel ();
-			distancia.Tag = indexPath.Row;
-			distancias.Add (distancia);
-			try{
-				cell.AccessoryView = getDistanceView (indexPath.Row);
-			}catch(NullReferenceException){
-				cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-			}
-			return cell;
-		}
-
-		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
-		{
-			var sourceSize = sourceImage.Size;
-			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
-			if (maxResizeFactor > 1) return sourceImage;
-			var width = maxResizeFactor * sourceSize.Width;
-			var height = maxResizeFactor * sourceSize.Height;
-			UIGraphics.BeginImageContext(new SizeF(width, height));
-			sourceImage.Draw(new RectangleF(0, 0, width, height));
-			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
-			UIGraphics.EndImageContext();
-			return resultImage;
-		}
-
-		public UIView getDistanceView(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
-			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
-			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
-			Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
-			distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
-			distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
-			vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
-			botones.ElementAt(index).TouchUpInside += (sender, e) => {
-				SecondMapViewController mapView = new SecondMapViewController();
-				mapView.setTienda(tableItems[index]);
-				this.controller.NavigationController.PushViewController(mapView, true);
-			};
-			vistas.ElementAt(index).AddSubview (botones.ElementAt(index));
-			vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
-			return vistas.ElementAt(index);
-		}
-			
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-		{
-			try{
-				pdView = new ProductDetailView ();
-				Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
-				pdView.setProductAndDistance(tableItems [indexPath.Row],distancia);
-				controller.NavigationController.PushViewController (pdView, true);
-			}catch(NullReferenceException){
-				pdView = new ProductDetailView ();
-				pdView.setProductAndDistance(tableItems [indexPath.Row],0);
-				controller.NavigationController.PushViewController (pdView, true);	
-			}
-		}
-
-		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.
-		public static UIImage ScaleImage(UIImage image, int maxSize)
-		{
-
-			UIImage res;
-
-			using (CGImage imageRef = image.CGImage)
+			List<ProductSearchDetailService> tableItems;
+			string cellIdentifier = "TableCell";
+			ProductStoresListView controller;
+			ProductSearchDetailService ps;
+			ProductDetailView pdView;
+			CLLocationManager location;
+			int conn;
+			List<UIView> vistas = new List<UIView> ();
+			List<UIButton> botones = new List<UIButton> ();
+			List<UILabel> distancias = new List<UILabel> ();
+			UIImage PlaceholderImage { get; set; }
+			public StoresTableSource (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
 			{
-				CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
-				CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
-				if (alphaInfo == CGImageAlphaInfo.None)
-				{
-					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
+				tableItems = items;
+				this.controller = controller;
+				this.location = iPhoneLocationManager;
+				this.conn = conn;
+
+				PlaceholderImage = MaxResizeImage (Images.sinImagen, 60, 60); 
+
+				foreach (ProductSearchDetailService product in tableItems){
+					UIView vista = new UIView ();
+					vistas.Add (vista);
+					UIButton boton = new UIButton ();
+					botones.Add (boton);
+					UILabel distancia = new UILabel ();
+					distancias.Add (distancia);
 				}
 
-				int width, height;
-
-				width = imageRef.Width;
-				height = imageRef.Height;
-
-
-				if (height >= width)
-				{
-					width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
-					height = maxSize;
-				}
-				else
-				{
-					height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
-					width = maxSize;
-				}
-
-
-				CGBitmapContext bitmap;
-
-				if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-				else
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-
-				switch (image.Orientation)
-				{
-				case UIImageOrientation.Left:
-					bitmap.RotateCTM((float)Math.PI / 2);
-					bitmap.TranslateCTM(0, -height);
-					break;
-				case UIImageOrientation.Right:
-					bitmap.RotateCTM(-((float)Math.PI / 2));
-					bitmap.TranslateCTM(-width, 0);
-					break;
-				case UIImageOrientation.Up:
-					break;
-				case UIImageOrientation.Down:
-					bitmap.TranslateCTM(width, height);
-					bitmap.RotateCTM(-(float)Math.PI);
-					break;
-				}
-
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
-
-
-				res = UIImage.FromImage(bitmap.ToImage());
-				bitmap = null;
-
+				controller.productImages.CollectionChanged += HandleCollectionChanged;
+				// If either a download fails or the image we download is corrupt, ignore the problem.
+				TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs e) {
+					e.SetObserved ();
+				};
 			}
 
-
-			return res;
-		}
-	}
-	class StoresTableSourceIphone : UITableViewSource 
-	{
-		List<ProductSearchDetailService> tableItems;
-		string cellIdentifier = "TableCell";
-		ProductStoresListView controller;
-		ProductSearchDetailService ps;
-		ProductDetailView pdView;
-		CLLocationManager location;
-		int conn;
-		List<UIView> vistas = new List<UIView> ();
-		List<UIButton> botones = new List<UIButton> ();
-		List<UILabel> distancias = new List<UILabel> ();
-		public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
-		{
-			tableItems = items;
-			this.controller=controller;
-			this.location = iPhoneLocationManager;
-			this.conn = conn;
-		}
-
-		public override int NumberOfSections (UITableView tableView)
-		{
-			return 1;
-		}
-
-		public override int RowsInSection (UITableView tableview, int section)
-		{
-			return tableItems.Count;   
-		}
-
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
-		{
-			return 130f;
-		}
-			
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
-		{
-			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
-
-			// if there are no cells to reuse, create a new one
-			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			ps = tableItems [indexPath.Row];
-
-
-			NSUrl nsUrl = new NSUrl (ps.tienda_imagen);
-			NSData data = NSData.FromUrl (nsUrl);
-			if (data != null) {
-				/*UIImage imagen = UIImage.LoadFromData (data); //ScaleImage(UIImage.LoadFromData (data),100);
-				SizeF imageSize = new SizeF (80, 80);
-				UIGraphics.BeginImageContextWithOptions (imageSize, false, UIScreen.MainScreen.Scale);
-				RectangleF imageRec = new RectangleF (0, 0, imageSize.Width, imageSize.Height);
-				imagen.Draw (imageRec);
-				cell.ImageView.Frame = imageRec;
-				cell.ImageView.Image = UIGraphics.GetImageFromCurrentImageContext ();
-				UIGraphics.EndImageContext ();*/
-				cell.ImageView.Image = MaxResizeImage (UIImage.LoadFromData (data), 60, 60);
-				cell.ImageView.Frame = new RectangleF (0, 0, 60, 60);
-			} else {
-				cell.ImageView.Image = MaxResizeImage (Images.sinImagen, 60, 60); 
-			}
-			cell.TextLabel.Text = ps.tienda_nombre;
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(15);
-			cell.TextLabel.Lines = 2 ;
-			double precio = Double.Parse (ps.precio);
-			if (ps.es_oferta == "2") {
-				cell.DetailTextLabel.Text = precio.ToString ("C2") + "\n" + "Oferta!";
-			} else {
-				cell.DetailTextLabel.Text = precio.ToString ("C2") + "";
-			}
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (20);
-			cell.DetailTextLabel.TextColor = UIColor.Red;
-			cell.DetailTextLabel.Lines = 3;
-			UIView vista = new UIView ();
-			vista.Tag = indexPath.Row;
-			vistas.Add (vista);
-			UIButton boton = new UIButton ();
-			boton.Tag = indexPath.Row;
-			botones.Add (boton);
-			UILabel distancia = new UILabel ();
-			distancia.Tag = indexPath.Row;
-			distancias.Add (distancia);
-			try{
-				cell.AccessoryView = getDistanceView (indexPath.Row);
-			}catch(NullReferenceException){
-				cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
-			}
-
-			return cell;
-		}
-
-		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
-		{
-			var sourceSize = sourceImage.Size;
-			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
-			if (maxResizeFactor > 1) return sourceImage;
-			var width = maxResizeFactor * sourceSize.Width;
-			var height = maxResizeFactor * sourceSize.Height;
-			UIGraphics.BeginImageContext(new SizeF(width, height));
-			sourceImage.Draw(new RectangleF(0, 0, width, height));
-			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
-			UIGraphics.EndImageContext();
-			return resultImage;
-		}
-
-		public UIView getDistanceView(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
-			botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
-			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
-			distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
-			Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
-			distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
-			distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
-			vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
-			botones.ElementAt(index).TouchUpInside += (sender, e) => {
-				SecondMapViewController mapView = new SecondMapViewController();
-				mapView.setTienda(tableItems[index]);
-				this.controller.NavigationController.PushViewController(mapView, true);
-			};
-			vistas.ElementAt(index).AddSubview (botones.ElementAt(index));
-			vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
-			return vistas.ElementAt(index);
-		}
-
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-		{
-			try{
-				pdView = new ProductDetailView ();
-				Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
-				pdView.setProductAndDistance(tableItems [indexPath.Row],distancia);
-				controller.NavigationController.PushViewController (pdView, true);
-			}catch(NullReferenceException){
-				pdView = new ProductDetailView ();
-				pdView.setProductAndDistance(tableItems [indexPath.Row],0);
-				controller.NavigationController.PushViewController (pdView, true);	
-			}
-		}
-			
-		//Metodo para reajustar el tamaño de las imagenes que se muestran en la tabla.
-		public static UIImage ScaleImage(UIImage image, int maxSize)
-		{
-
-			UIImage res;
-
-			using (CGImage imageRef = image.CGImage)
+			void HandleCollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 			{
-				CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
-				CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
-				if (alphaInfo == CGImageAlphaInfo.None)
-				{
-					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
-				}
-
-				int width, height;
-
-				width = imageRef.Width;
-				height = imageRef.Height;
-
-
-				if (height >= width)
-				{
-					width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
-					height = maxSize;
-				}
-				else
-				{
-					height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
-					width = maxSize;
-				}
-
-
-				CGBitmapContext bitmap;
-
-				if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-				else
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-
-				switch (image.Orientation)
-				{
-				case UIImageOrientation.Left:
-					bitmap.RotateCTM((float)Math.PI / 2);
-					bitmap.TranslateCTM(0, -height);
-					break;
-				case UIImageOrientation.Right:
-					bitmap.RotateCTM(-((float)Math.PI / 2));
-					bitmap.TranslateCTM(-width, 0);
-					break;
-				case UIImageOrientation.Up:
-					break;
-				case UIImageOrientation.Down:
-					bitmap.TranslateCTM(width, height);
-					bitmap.RotateCTM(-(float)Math.PI);
-					break;
-				}
-
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
-
-
-				res = UIImage.FromImage(bitmap.ToImage());
-				bitmap = null;
-
+				controller.tblStores.ReloadData ();
 			}
-			return res;
+
+			public override int NumberOfSections (UITableView tableView)
+			{
+				return 1;
+			}
+
+			public override int RowsInSection (UITableView tableview, int section)
+			{
+				return tableItems.Count;	   
+			}
+
+			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			{
+				return 120f;
+			}
+
+			private class MyCustomCell : UITableViewCell
+			{
+				public MyCustomCell(UITableViewCellStyle style, string identifier) : base(style, identifier)
+				{
+				}
+			}
+
+			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			{
+				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+				ps = tableItems [indexPath.Row];
+				var image = controller.productImages [indexPath.Row];
+				// if there are no cells to reuse, create a new one
+				if (cell == null) {
+					cell = new MyCustomCell (UITableViewCellStyle.Value1, cellIdentifier);
+					
+					cell.TextLabel.Font = UIFont.SystemFontOfSize (25);
+					cell.TextLabel.Lines = 2;
+					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (30);
+					cell.DetailTextLabel.TextColor = UIColor.Red;
+					cell.DetailTextLabel.Lines = 2;
+					cell.DetailTextLabel.TextAlignment = UITextAlignment.Left;
+
+					cell.AccessoryView = getDistanceView (indexPath.Row);
+				}
+				cell.TextLabel.Text = ps.tienda_nombre;
+				double precio = Double.Parse (ps.precio);
+				cell.DetailTextLabel.Text = precio.ToString ("C2") + " ";
+				cell.Tag = indexPath.Row;
+				if (image.storeImage == null) {
+					image.storeImage = PlaceholderImage;
+					BeginDownloadingImage (image, indexPath, ps.tienda_imagen);
+				}
+				cell.ImageView.Image = MaxResizeImage (image.storeImage, 60, 60);
+
+				return cell;
+			}
+
+			async void BeginDownloadingImage (Images image, NSIndexPath path, String imageUrl)
+			{
+				// Queue the image to be downloaded. This task will execute
+				// as soon as the existing ones have finished.
+				byte[] data = null;
+
+				data = await GetImageData (imageUrl);
+				if (data == null) {
+					image.storeImage = MaxResizeImage(Images.sinImagen,80,80);
+				} else {
+					image.storeImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 80,80);
+				}
+
+				InvokeOnMainThread (() => {
+					var cell = controller.tblStores.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
+					if (cell != null)
+						cell.ImageView.Image = MaxResizeImage(image.storeImage, 80, 80);
+				});
+			}
+
+			async Task<byte[]> GetImageData(String imageUrl)
+			{
+				byte[] data = null;
+				try {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+					using (var c = new GzipWebClient ())
+						data = await c.DownloadDataTaskAsync (imageUrl);
+				} 
+				catch(Exception){
+
+				}
+				finally {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
+				}
+
+				return data;
+			}
+
+			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			{
+				var sourceSize = sourceImage.Size;
+				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				var width = maxResizeFactor * sourceSize.Width;
+				var height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+
+			public UIView getDistanceView(int index){
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
+				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
+				distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
+				//PointF viewPosition = botones.ElementAt (index).ConvertPointToView (new PointF (), controller.tblStores);
+				//NSIndexPath indexPath = controller.tblStores.IndexPathForRowAtPoint (viewPosition);
+
+				Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
+				distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
+				distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
+				vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
+				botones.ElementAt(index).TouchUpInside += (sender, e) => {
+					SecondMapViewController mapView = new SecondMapViewController();
+					mapView.setTienda(tableItems[index]);
+					this.controller.NavigationController.PushViewController(mapView, true);
+				};
+				vistas.ElementAt(index).AddSubview (botones.ElementAt(index));
+				vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
+				return vistas.ElementAt(index);
+			}
+
+			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+			{
+				try{
+					pdView = new ProductDetailView ();
+					Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
+					pdView.setProductAndDistance(tableItems [indexPath.Row],distancia);
+					controller.NavigationController.PushViewController (pdView, true);
+				}catch(NullReferenceException){
+					pdView = new ProductDetailView ();
+					pdView.setProductAndDistance(tableItems [indexPath.Row],0);
+					controller.NavigationController.PushViewController (pdView, true);	
+				}
+			}
+		}
+		class StoresTableSourceIphone : UITableViewSource 
+		{
+			List<ProductSearchDetailService> tableItems;
+			string cellIdentifier = "TableCell";
+			ProductStoresListView controller;
+			ProductSearchDetailService ps;
+			ProductDetailView pdView;
+			CLLocationManager location;
+			int conn;
+			List<UIView> vistas = new List<UIView> ();
+			List<UIButton> botones = new List<UIButton> ();
+			List<UILabel> distancias = new List<UILabel> ();
+			UIImage PlaceholderImage { get; set; }
+			public StoresTableSourceIphone (List<ProductSearchDetailService> items,  ProductStoresListView controller, CLLocationManager iPhoneLocationManager, int conn ) 
+			{
+				tableItems = items;
+				this.controller=controller;
+				this.location = iPhoneLocationManager;
+				this.conn = conn;
+
+				PlaceholderImage = MaxResizeImage (Images.sinImagen, 60, 60); 
+
+				foreach (ProductSearchDetailService product in tableItems){
+					UIView vista = new UIView ();
+					vistas.Add (vista);
+					UIButton boton = new UIButton ();
+					botones.Add (boton);
+					UILabel distancia = new UILabel ();
+					distancias.Add (distancia);
+				}
+
+				controller.productImages.CollectionChanged += HandleCollectionChanged;
+				// If either a download fails or the image we download is corrupt, ignore the problem.
+				TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs e) {
+					e.SetObserved ();
+				};
+			}
+
+			void HandleCollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+			{
+				controller.tblStores.ReloadData ();
+			}
+
+			public override int NumberOfSections (UITableView tableView)
+			{
+				return 1;
+			}
+
+			public override int RowsInSection (UITableView tableview, int section)
+			{
+				return tableItems.Count;   
+			}
+
+			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			{
+				return 130f;
+			}
+
+			private class MyCustomCell : UITableViewCell
+			{
+				public MyCustomCell(UITableViewCellStyle style, string identifier) : base(style, identifier)
+				{
+				}
+			}
+
+			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			{
+				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+				ps = tableItems [indexPath.Row];
+				var image = controller.productImages [indexPath.Row];
+				// if there are no cells to reuse, create a new one
+				if (cell == null) {
+					cell = new MyCustomCell (UITableViewCellStyle.Value1, cellIdentifier);
+
+					cell.TextLabel.Font = UIFont.SystemFontOfSize (15);
+					cell.TextLabel.Lines = 2;
+					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (20);
+					cell.DetailTextLabel.TextColor = UIColor.Red;
+					cell.DetailTextLabel.Lines = 2;
+					cell.DetailTextLabel.TextAlignment = UITextAlignment.Left;
+				}
+				cell.AccessoryView = getDistanceView (indexPath.Row);
+				cell.TextLabel.Text = ps.tienda_nombre;
+				double precio = Double.Parse (ps.precio);
+				cell.DetailTextLabel.Text = precio.ToString ("C2") + " ";
+				cell.Tag = indexPath.Row;
+				if (image.storeImage == null) {
+					image.storeImage = PlaceholderImage;
+					BeginDownloadingImage (image, indexPath, ps.tienda_imagen);
+				}
+				cell.ImageView.Image = MaxResizeImage (image.storeImage, 60, 60);
+
+				return cell;
+			}
+
+			async void BeginDownloadingImage (Images image, NSIndexPath path, String imageUrl)
+			{
+				// Queue the image to be downloaded. This task will execute
+				// as soon as the existing ones have finished.
+				byte[] data = null;
+
+				data = await GetImageData (imageUrl);
+				if (data == null) {
+					image.storeImage = MaxResizeImage(Images.sinImagen,60,60);
+				} else {
+					image.storeImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 60,60);
+				}
+
+				InvokeOnMainThread (() => {
+					var cell = controller.tblStores.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
+					if (cell != null)
+						cell.ImageView.Image = MaxResizeImage(image.storeImage, 60, 60);
+				});
+			}
+
+			async Task<byte[]> GetImageData(String imageUrl)
+			{
+				byte[] data = null;
+				try {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+					using (var c = new GzipWebClient ())
+						data = await c.DownloadDataTaskAsync (imageUrl);
+				} 
+				catch(Exception){
+
+				}
+				finally {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
+				}
+
+				return data;
+			}
+
+			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			{
+				var sourceSize = sourceImage.Size;
+				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				var width = maxResizeFactor * sourceSize.Width;
+				var height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+
+			public UIView getDistanceView(int index){
+				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
+				botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
+				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
+				distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
+				//PointF viewPosition = botones.ElementAt (index).ConvertPointToView (new PointF (), controller.tblStores);
+				//NSIndexPath indexPath = controller.tblStores.IndexPathForRowAtPoint (viewPosition);
+
+				Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
+				distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
+				distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
+				vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
+				botones.ElementAt(index).TouchUpInside += (sender, e) => {
+					SecondMapViewController mapView = new SecondMapViewController();
+					mapView.setTienda(tableItems[index]);
+					this.controller.NavigationController.PushViewController(mapView, true);
+				};
+				vistas.ElementAt(index).AddSubview (botones.ElementAt(index));
+				vistas.ElementAt(index).AddSubview (distancias.ElementAt(index));
+				return vistas.ElementAt(index);
+			}
+
+			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+			{
+				try{
+					pdView = new ProductDetailView ();
+					Double distancia = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[indexPath.Section].tienda_latitud),Double.Parse(tableItems[indexPath.Section].tienda_longitud)))/1000;
+					pdView.setProductAndDistance(tableItems [indexPath.Row],distancia);
+					controller.NavigationController.PushViewController (pdView, true);
+				}catch(NullReferenceException){
+					pdView = new ProductDetailView ();
+					pdView.setProductAndDistance(tableItems [indexPath.Row],0);
+					controller.NavigationController.PushViewController (pdView, true);	
+				}
+			}
 		}
 	}
 }

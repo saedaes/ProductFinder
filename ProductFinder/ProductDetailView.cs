@@ -93,7 +93,11 @@ namespace ProductFinder
 				this.Add(this.ListsView);
 				ListsView.Hidden = true;
 
-				this.btnMapa.SetBackgroundImage(Images.mapa,UIControlState.Normal);
+				if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
+					this.btnMapa.SetBackgroundImage(Images.mapa,UIControlState.Normal);
+				}else{
+					this.btnMapa.SetBackgroundImage(Images.mapa,UIControlState.Normal);
+				}
 
 				this.btnMapa.TouchUpInside += (sender, e) => {
 					SecondMapViewController mapView = new SecondMapViewController();
@@ -578,12 +582,26 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (Images.lista, 50);
+			cell.ImageView.Image = MaxResizeImage (Images.miLista, 50,50);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
 			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
 
 			return cell;
+		}
+
+		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		{
+			var sourceSize = sourceImage.Size;
+			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			if (maxResizeFactor > 1) return sourceImage;
+			var width = maxResizeFactor * sourceSize.Width;
+			var height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
+			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+			UIGraphics.EndImageContext();
+			return resultImage;
 		}
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
@@ -628,79 +646,6 @@ namespace ProductFinder
 			};
 
 		}
-
-		//Metodo para redimensionar las imagenes de la lista.
-		public static UIImage ScaleImage(UIImage image, int maxSize)
-		{
-
-			UIImage res;
-
-			using (CGImage imageRef = image.CGImage)
-			{
-				CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
-				CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
-				if (alphaInfo == CGImageAlphaInfo.None)
-				{
-					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
-				}
-
-				int width, height;
-
-				width = imageRef.Width;
-				height = imageRef.Height;
-
-
-				if (height >= width)
-				{
-					width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
-					height = maxSize;
-				}
-				else
-				{
-					height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
-					width = maxSize;
-				}
-
-
-				CGBitmapContext bitmap;
-
-				if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-				else
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-
-				switch (image.Orientation)
-				{
-				case UIImageOrientation.Left:
-					bitmap.RotateCTM((float)Math.PI / 2);
-					bitmap.TranslateCTM(0, -height);
-					break;
-				case UIImageOrientation.Right:
-					bitmap.RotateCTM(-((float)Math.PI / 2));
-					bitmap.TranslateCTM(-width, 0);
-					break;
-				case UIImageOrientation.Up:
-					break;
-				case UIImageOrientation.Down:
-					bitmap.TranslateCTM(width, height);
-					bitmap.RotateCTM(-(float)Math.PI);
-					break;
-				}
-
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
-
-
-				res = UIImage.FromImage(bitmap.ToImage());
-				bitmap = null;
-
-			}
-
-			return res;
-		}	
 	}
 }
 

@@ -203,7 +203,7 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (Images.lista, 80);
+			cell.ImageView.Image = MaxResizeImage(Images.miLista, 90,80);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(25);
 			cell.DetailTextLabel.Lines = 2;
@@ -215,6 +215,20 @@ namespace ProductFinder
 			botones.Add (boton);
 			cell.AccessoryView = getButton (indexPath.Row);
 			return cell;
+		}
+
+		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		{
+			var sourceSize = sourceImage.Size;
+			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			if (maxResizeFactor > 1) return sourceImage;
+			var width = maxResizeFactor * sourceSize.Width;
+			var height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
+			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+			UIGraphics.EndImageContext();
+			return resultImage;
 		}
 
 		public UIButton getButton(int index){
@@ -372,7 +386,7 @@ namespace ProductFinder
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Subtitle, cellIdentifier);
-			cell.ImageView.Image = ScaleImage (Images.lista, 70);
+			cell.ImageView.Image = MaxResizeImage(Images.miLista, 70,60);
 			cell.TextLabel.Text = tableItems[indexPath.Row].ToString();
 			cell.TextLabel.Font = UIFont.SystemFontOfSize(16);
 			cell.DetailTextLabel.Lines = 2;
@@ -384,6 +398,20 @@ namespace ProductFinder
 			botones.Add (boton);
 			cell.AccessoryView = getButton (indexPath.Row);
 			return cell;
+		}
+
+		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		{
+			var sourceSize = sourceImage.Size;
+			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			if (maxResizeFactor > 1) return sourceImage;
+			var width = maxResizeFactor * sourceSize.Width;
+			var height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
+			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+			UIGraphics.EndImageContext();
+			return resultImage;
 		}
 
 		public UIButton getButton(int index){
