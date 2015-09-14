@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,76 +13,76 @@ namespace ProductFinder
 	partial class ScanView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIImageView bannerImage { get; set; }
+		UIKit.UIImageView bannerImage { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnBanner { get; set; }
+		UIKit.UIButton btnBanner { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCerrarSesion { get; set; }
+		UIKit.UIButton btnCerrarSesion { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnInfo1 { get; set; }
+		UIKit.UIButton btnInfo1 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnInfo2 { get; set; }
+		UIKit.UIButton btnInfo2 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnInfo3 { get; set; }
+		UIKit.UIButton btnInfo3 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnInfo4 { get; set; }
+		UIKit.UIButton btnInfo4 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnInfo5 { get; set; }
+		UIKit.UIButton btnInfo5 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnInfo6 { get; set; }
+		UIKit.UIButton btnInfo6 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnListas { get; set; }
+		UIKit.UIButton btnListas { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnNombre { get; set; }
+		UIKit.UIButton btnNombre { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnNovedades { get; set; }
+		UIKit.UIButton btnNovedades { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnNuevoProducto { get; set; }
+		UIKit.UIButton btnNuevoProducto { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnScan { get; set; }
+		UIKit.UIButton btnScan { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnServicios { get; set; }
+		UIKit.UIButton btnServicios { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnSesion { get; set; }
+		UIKit.UIButton btnSesion { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnTiendas { get; set; }
+		UIKit.UIButton btnTiendas { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIImageView headerImage { get; set; }
+		UIKit.UIImageView headerImage { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView headerView { get; set; }
+		UIKit.UIView headerView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTitleText { get; set; }
+		UIKit.UILabel lblTitleText { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTitulo { get; set; }
+		UIKit.UILabel lblTitulo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblusuario { get; set; }
+		UIKit.UILabel lblusuario { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton scanButton { get; set; }
+		UIKit.UIButton scanButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblOpciones { get; set; }
+		UIKit.UITableView tblOpciones { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

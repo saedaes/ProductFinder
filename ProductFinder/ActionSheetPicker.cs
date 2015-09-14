@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using CoreGraphics;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace ProductFinder{
 	public class ActionSheetPicker {
@@ -35,7 +35,7 @@ namespace ProductFinder{
 			get { return picker; }
 			set { picker = value; }
 		}
-		UIPickerView picker = new UIPickerView(RectangleF.Empty);
+		UIPickerView picker = new UIPickerView(CGRect.Empty);
 
 		/// <summary>
 		/// The title that shows up for the date picker
@@ -79,7 +79,7 @@ namespace ProductFinder{
 			//actionSheet.AddSubview (doneButton);
 
 			// Add the toolbar
-			_toolbar = new UIToolbar(new RectangleF(0, 0, _actionSheet.Frame.Width, 10));
+			_toolbar = new UIToolbar(new CGRect(0, 0, _actionSheet.Frame.Width, 10));
 			_toolbar.BarStyle = UIBarStyle.Default;
 			_toolbar.Translucent = true;
 
@@ -110,8 +110,8 @@ namespace ProductFinder{
 		{
 			// declare vars
 			float titleBarHeight = 40;
-			SizeF actionSheetSize = new SizeF (_owner.Frame.Width, picker.Frame.Height + titleBarHeight);
-			RectangleF actionSheetFrame = new RectangleF (0, (UIScreen.MainScreen.ApplicationFrame.Height - actionSheetSize.Height), actionSheetSize.Width, actionSheetSize.Height);
+			CGSize actionSheetSize = new CGSize (_owner.Frame.Width, picker.Frame.Height + titleBarHeight);
+			CGRect actionSheetFrame = new CGRect (0, (UIScreen.MainScreen.ApplicationFrame.Height - actionSheetSize.Height), actionSheetSize.Width, actionSheetSize.Height);
 
 			// show the action sheet and add the controls to it
 			if (_tabbar != null) {
@@ -124,10 +124,10 @@ namespace ProductFinder{
 			_actionSheet.Frame = actionSheetFrame;
 
 			// move our picker to be at the bottom of the actionsheet (view coords are relative to the action sheet)
-			picker.Frame = new RectangleF (picker.Frame.X, titleBarHeight, picker.Frame.Width, picker.Frame.Height);
+			picker.Frame = new CGRect (picker.Frame.X, titleBarHeight, picker.Frame.Width, picker.Frame.Height);
 			picker.ShowSelectionIndicator = true;
 			// move our label to the top of the action sheet
-			_titleLabel.Frame = new RectangleF (10, 4, _owner.Frame.Width - 100, 35);
+			_titleLabel.Frame = new CGRect (10, 4, _owner.Frame.Width - 100, 35);
 
 			// ipad
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
@@ -139,10 +139,10 @@ namespace ProductFinder{
 					var width = _actionSheet.Frame.Width - (MARGIN * 2);
 					var height = _actionSheet.Frame.Height;
 
-					popover.Frame = new RectangleF (x, y, width, height);
-					_actionSheet.Frame = new RectangleF (x, y, width - (CHROMEWIDTHLEFT + CHROMEWIDTHRIGHT), height - (CHROMEWIDTHLEFT + CHROMEWIDTHRIGHT));
+					popover.Frame = new CGRect (x, y, width, height);
+					_actionSheet.Frame = new CGRect (x, y, width - (CHROMEWIDTHLEFT + CHROMEWIDTHRIGHT), height - (CHROMEWIDTHLEFT + CHROMEWIDTHRIGHT));
 
-					picker.Frame = new RectangleF (picker.Frame.X, picker.Frame.Y, _actionSheet.Frame.Width, picker.Frame.Height);
+					picker.Frame = new CGRect (picker.Frame.X, picker.Frame.Y, _actionSheet.Frame.Width, picker.Frame.Height);
 
 					_toolbar.SizeToFit();
 				}

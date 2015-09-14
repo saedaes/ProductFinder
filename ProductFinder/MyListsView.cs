@@ -1,10 +1,10 @@
 using System;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 using System.Net;
 namespace ProductFinder
 {
@@ -19,7 +19,7 @@ namespace ProductFinder
 		public MyListsView ()
 			: base (UserInterfaceIdiomIsPhone ? "MyListsView_iPhone" : "MyListsView_iPad", null)
 		{
-			this.Title = "Mis listas";
+			Title = "Mis listas";
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -181,22 +181,22 @@ namespace ProductFinder
 			this.controller = controller;
 		}
 
-		public override int NumberOfSections (UITableView tableView)
+		public override nint NumberOfSections (UITableView tableView)
 		{
 			return 1;
 		}
 
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return tableItems.Count;		   
 		}
 
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 120f;
 		}
 
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
@@ -217,22 +217,22 @@ namespace ProductFinder
 			return cell;
 		}
 
-		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 		{
 			var sourceSize = sourceImage.Size;
-			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 			if (maxResizeFactor > 1) return sourceImage;
-			var width = maxResizeFactor * sourceSize.Width;
-			var height = maxResizeFactor * sourceSize.Height;
-			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			nfloat width = maxResizeFactor * sourceSize.Width;
+			nfloat height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+			sourceImage.Draw(new CGRect(0, 0, width, height));
 			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 			UIGraphics.EndImageContext();
 			return resultImage;
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+			botones.ElementAt(index).Frame = new CGRect (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
 			botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
@@ -292,7 +292,7 @@ namespace ProductFinder
 					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
 				}
 
-				int width, height;
+				nint width, height;
 
 				width = imageRef.Width;
 				height = imageRef.Height;
@@ -339,7 +339,7 @@ namespace ProductFinder
 					break;
 				}
 
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+				bitmap.DrawImage(new CGRect(0, 0, width, height), imageRef);
 
 
 				res = UIImage.FromImage(bitmap.ToImage());
@@ -364,22 +364,22 @@ namespace ProductFinder
 			this.controller = controller;
 		}
 
-		public override int NumberOfSections (UITableView tableView)
+		public override nint NumberOfSections (UITableView tableView)
 		{
 			return 1;
 		}
 
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return tableItems.Count;		   
 		}
 
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 100f;
 		}
 
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
@@ -400,22 +400,22 @@ namespace ProductFinder
 			return cell;
 		}
 
-		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 		{
 			var sourceSize = sourceImage.Size;
-			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 			if (maxResizeFactor > 1) return sourceImage;
-			var width = maxResizeFactor * sourceSize.Width;
-			var height = maxResizeFactor * sourceSize.Height;
-			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			nfloat width = maxResizeFactor * sourceSize.Width;
+			nfloat height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+			sourceImage.Draw(new CGRect(0, 0, width, height));
 			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 			UIGraphics.EndImageContext();
 			return resultImage;
 		}
 
 		public UIButton getButton(int index){
-			botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+			botones.ElementAt(index).Frame = new CGRect (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
 			botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 			botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 			botones.ElementAt(index).TouchUpInside += (sender, e) => {
@@ -475,7 +475,7 @@ namespace ProductFinder
 					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
 				}
 
-				int width, height;
+				nint width, height;
 
 				width = imageRef.Width;
 				height = imageRef.Height;
@@ -522,7 +522,7 @@ namespace ProductFinder
 					break;
 				}
 
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+				bitmap.DrawImage(new CGRect(0, 0, width, height), imageRef);
 
 
 				res = UIImage.FromImage(bitmap.ToImage());

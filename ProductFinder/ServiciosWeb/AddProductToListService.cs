@@ -40,11 +40,11 @@ namespace ProductFinder
 			// Display the content.
 			Console.WriteLine (responseFromServer);
 			// Clean up the streams.
-
-			return responseFromServer;
 			reader.Close ();
 			//dataStream.Close ();
 			response.Close ();
+			return responseFromServer;
+
 		}
 	}
 }

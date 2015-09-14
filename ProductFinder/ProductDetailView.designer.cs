@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,85 +13,85 @@ namespace ProductFinder
 	partial class ProductDetailView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIImageView bannerImage { get; set; }
+		UIKit.UIImageView bannerImage { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptarCantidad { get; set; }
+		UIKit.UIButton btnAceptarCantidad { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptarNuevaLista { get; set; }
+		UIKit.UIButton btnAceptarNuevaLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnBadPrice { get; set; }
+		UIKit.UIButton btnBadPrice { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCerrarLista { get; set; }
+		UIKit.UIButton btnCerrarLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCerrarNombreNL { get; set; }
+		UIKit.UIButton btnCerrarNombreNL { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnFacebook { get; set; }
+		UIKit.UIButton btnFacebook { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnLista { get; set; }
+		UIKit.UIButton btnLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMapa { get; set; }
+		UIKit.UIButton btnMapa { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMas { get; set; }
+		UIKit.UIButton btnMas { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMenos { get; set; }
+		UIKit.UIButton btnMenos { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnNuevaLista { get; set; }
+		UIKit.UIButton btnNuevaLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpCantidad { get; set; }
+		UIKit.UITextField cmpCantidad { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpNewList { get; set; }
+		UIKit.UITextField cmpNewList { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIImageView imgProducto { get; set; }
+		UIKit.UIImageView imgProducto { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIImageView imgTienda { get; set; }
+		UIKit.UIImageView imgTienda { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextView lblDescripcion { get; set; }
+		UIKit.UITextView lblDescripcion { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblNombre { get; set; }
+		UIKit.UILabel lblNombre { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblPrecio { get; set; }
+		UIKit.UILabel lblPrecio { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTiendaDireccion { get; set; }
+		UIKit.UILabel lblTiendaDireccion { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTiendaDistancia { get; set; }
+		UIKit.UILabel lblTiendaDistancia { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTiendaNombre { get; set; }
+		UIKit.UILabel lblTiendaNombre { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblVigencia { get; set; }
+		UIKit.UILabel lblVigencia { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView ListsView { get; set; }
+		UIKit.UIView ListsView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView NewListView { get; set; }
+		UIKit.UIView NewListView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView QuantityView { get; set; }
+		UIKit.UIView QuantityView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblLists { get; set; }
+		UIKit.UITableView tblLists { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

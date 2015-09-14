@@ -1,0 +1,2 @@
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/bin/Debug/XamarinScanditSDKDemoAndroid.dll
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/lib/android/ScanditSDK.dll

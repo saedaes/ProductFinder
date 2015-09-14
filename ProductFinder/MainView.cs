@@ -1,10 +1,10 @@
 using System;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using System.Threading.Tasks;
 using ScanditSDK;
-using MonoTouch.CoreLocation;
+using CoreLocation;
 using Mono.Data.Sqlite;
 using System.IO;
 using System.Collections.Generic;
@@ -42,9 +42,9 @@ namespace ProductFinder
 
 		#region declaracion de variables para mover la vista al aparecer el teclado
 		private UIView activeview;             // Controller that activated the keyboard
-		private float scroll_amount = 0.0f;    // amount to scroll 
-		private float bottom = 0.0f;           // bottom point
-		private float offset = 10.0f;          // extra offset
+		private nfloat scroll_amount = 0.0f;    // amount to scroll 
+		private nfloat bottom = 0.0f;           // bottom point
+		private nfloat offset = 10.0f;          // extra offset
 		private bool moveViewUp = false;           // which direction are we moving
 		#endregion
 
@@ -64,7 +64,7 @@ namespace ProductFinder
 		public MainView ()
 			: base (UserInterfaceIdiomIsPhone ? "MainView_iPhone" : "MainView_iPad", null)
 		{
-			this.Title = "FixBuy";
+			Title = "FixBuy";
 			if (appKey.Length != 43) {
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Llave de scanner invalida", Message = "Contacte al administrador de la aplicacion"
@@ -115,14 +115,14 @@ namespace ProductFinder
 			// Create the Facebook LogIn View with the needed Permissions
 			// https://developers.facebook.com/ios/login-ui-control/
 			loginView = new FBLoginView (ExtendedPermissions) {
-				Frame = new RectangleF (0,0,45, 45)
+				Frame = new CGRect (0,0,45, 45)
 			};
 
 			// Create view that will display user's profile picture
 			// https://developers.facebook.com/ios/profilepicture-ui-control/
 
 			pictureView = new FBProfilePictureView () {
-				Frame = new RectangleF (0, 0, 45, 45)
+				Frame = new CGRect (0, 0, 45, 45)
 			};
 			pictureView.UserInteractionEnabled = true;
 			// Hook up to FetchedUserInfo event, so you know when
@@ -341,8 +341,8 @@ namespace ProductFinder
 		private void KeyBoardUpNotification(NSNotification notification)
 		{
 			// get the keyboard size
-			var val = new NSValue(notification.UserInfo.ValueForKey(UIKeyboard.FrameBeginUserInfoKey).Handle);
-			RectangleF r = val.RectangleFValue;
+			CGRect r = UIKeyboard.BoundsFromNotification (notification);
+
 
 			// Find what opened the keyboard
 			foreach (UIView view in this.View.Subviews) {
@@ -377,7 +377,7 @@ namespace ProductFinder
 			UIView.BeginAnimations (string.Empty, System.IntPtr.Zero);
 			UIView.SetAnimationDuration (0.3);
 
-			RectangleF frame = View.Frame;
+			CGRect frame = View.Frame;
 
 			if (move) {
 				frame.Y -= scroll_amount;

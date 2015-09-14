@@ -1,16 +1,17 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupItem="ProductFinder/ProductFinder.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/NameSearchResultView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.4" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProductFinder/ProductsInListView.cs">
     <Files>
+      <File FileName="ProductFinder/ProductsInListView.cs" Line="212" Column="5" />
       <File FileName="ProductFinder/NameSearchResultView.cs" Line="1" Column="1" />
-      <File FileName="ProductFinder/ProductDetailView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ProductsStorePricesView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ProductStoresListView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/MainView.cs" Line="1" Column="1" />
+      <File FileName="ProductFinder/ServiciosWeb/ProductSearchService.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ProductFinder>
-    <MonoDevelop.MacDev.AppleDevelopmentTeam DeveloperId="8K6U75N4G3" TeamId="FNHVX5WLT3" />
-  </MonoDevelop.Ide.ItemProperties.ProductFinder>
 </Properties>

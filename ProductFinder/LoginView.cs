@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using System.Drawing;
+using CoreGraphics;
 using Mono.Data.Sqlite;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.Net;
 namespace ProductFinder
 {
@@ -14,9 +14,9 @@ namespace ProductFinder
 		UITextField contraseña;
 		#region declaracion de variables para mover la vista al aparecer el teclado
 		private UIView activeview;             // Controller that activated the keyboard
-		private float scroll_amount = 0.0f;    // amount to scroll 
-		private float bottom = 0.0f;           // bottom point
-		private float offset = 10.0f;          // extra offset
+		private nfloat scroll_amount = 0.0f;    // amount to scroll 
+		private nfloat bottom = 0.0f;           // bottom point
+		private nfloat offset = 10.0f;          // extra offset
 		private bool moveViewUp = false;           // which direction are we moving
 		#endregion
 		static bool UserInterfaceIdiomIsPhone {
@@ -118,7 +118,8 @@ namespace ProductFinder
 							};
 							alert.AddButton ("Aceptar");
 							alert.Show ();
-							this.NavigationController.PopViewControllerAnimated(true);
+							Console.WriteLine("Este el es ID de usuario: " + userData.Id);
+							this.NavigationController.PopViewController(true);
 						}
 					}
 				}catch(System.Net.WebException){
@@ -150,8 +151,7 @@ namespace ProductFinder
 		private void KeyBoardUpNotification(NSNotification notification)
 		{
 			// get the keyboard size
-			var val = new NSValue(notification.UserInfo.ValueForKey(UIKeyboard.FrameBeginUserInfoKey).Handle);
-			RectangleF r = val.RectangleFValue;
+			CGRect r = UIKeyboard.BoundsFromNotification (notification);
 
 			// Find what opened the keyboard
 			foreach (UIView view in this.View.Subviews) {
@@ -188,7 +188,7 @@ namespace ProductFinder
 			UIView.BeginAnimations (string.Empty, System.IntPtr.Zero);
 			UIView.SetAnimationDuration (0.3);
 
-			RectangleF frame = View.Frame;
+			CGRect frame = View.Frame;
 
 			if (move) {
 				frame.Y -= scroll_amount;

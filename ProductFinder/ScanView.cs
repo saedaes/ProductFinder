@@ -1,15 +1,15 @@
 using System;
 using System.IO;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using ScanditSDK;
 using System.Threading.Tasks;
-using MonoTouch.CoreLocation;
+using CoreLocation;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.CoreGraphics;
-using MonoTouch.MessageUI;
+using CoreGraphics;
+using MessageUI;
 using Mono.Data.Sqlite;
 using System.Threading;
 namespace ProductFinder
@@ -72,8 +72,8 @@ namespace ProductFinder
 
 
 			//Ocultamos el boton de tiendas registradas temporalmente
-			this.btnTiendas.Hidden = true;
-			this.btnInfo2.Hidden = true;
+			//btnTiendas.Hidden = true;
+			//btnInfo2.Hidden = true;
 
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
@@ -140,7 +140,7 @@ namespace ProductFinder
 							conn.DropTable<Person>();
 							conn.CreateTable<Person>();
 						}
-						this.NavigationController.PopViewControllerAnimated(true);
+						this.NavigationController.PopViewController(true);
 					}
 				};
 				alert.Show ();
@@ -222,7 +222,7 @@ namespace ProductFinder
 
 			// creacion de la barra de herramientas
 			float toolbarHeight = 44;
-			toolbar = new UIToolbar (new RectangleF (0
+			toolbar = new UIToolbar (new CGRect (0
 				, this.View.Frame.Height - this.NavigationController.NavigationBar.Frame.Height
 				, this.View.Frame.Width, toolbarHeight));
 			toolbar.AutoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth;
@@ -289,7 +289,7 @@ namespace ProductFinder
 				alert.Show ();
 			}
 
-			button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
+			button = new UIButton (new CGRect (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
 			bannerImage.Add (button);
 			button.TouchUpInside += (sender, e) => {
 				try{
@@ -355,7 +355,7 @@ namespace ProductFinder
 				this.lblusuario.Text = usuario.Name + " "+usuario.LastName;
 				this.btnCerrarSesion.Hidden = false;
 			} else {
-				this.lblusuario.Text = "No has iniciado sesión";
+				this.lblusuario.Text = "Inicia Sesión";
 				this.btnCerrarSesion.Hidden = true;
 			}
 		}

@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,52 +13,52 @@ namespace ProductFinder
 	partial class NameSearchResultView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIView AmountView { get; set; }
+		UIKit.UIView AmountView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+		UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptarLista { get; set; }
+		UIKit.UIButton btnAceptarLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCancelarLista { get; set; }
+		UIKit.UIButton btnCancelarLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCerrar { get; set; }
+		UIKit.UIButton btnCerrar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMas { get; set; }
+		UIKit.UIButton btnMas { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMenos { get; set; }
+		UIKit.UIButton btnMenos { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnNuevaLista { get; set; }
+		UIKit.UIButton btnNuevaLista { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpAmount { get; set; }
+		UIKit.UITextField cmpAmount { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpListName { get; set; }
+		UIKit.UITextField cmpListName { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView headerView { get; set; }
+		UIKit.UIView headerView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblSearch { get; set; }
+		UIKit.UILabel lblSearch { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView ListsView { get; set; }
+		UIKit.UIView ListsView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView newListView { get; set; }
+		UIKit.UIView newListView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblLists { get; set; }
+		UIKit.UITableView tblLists { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblProducts { get; set; }
+		UIKit.UITableView tblProducts { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

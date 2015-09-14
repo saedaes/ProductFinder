@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,49 +13,49 @@ namespace ProductFinder
 	partial class ProductsInListView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIView amountView { get; set; }
+		UIKit.UIView amountView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+		UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCancelar { get; set; }
+		UIKit.UIButton btnCancelar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCerrar { get; set; }
+		UIKit.UIButton btnCerrar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnComparar { get; set; }
+		UIKit.UIButton btnComparar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCompararUno { get; set; }
+		UIKit.UIButton btnCompararUno { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMas { get; set; }
+		UIKit.UIButton btnMas { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnMenos { get; set; }
+		UIKit.UIButton btnMenos { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnScan { get; set; }
+		UIKit.UIButton btnScan { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpAmount { get; set; }
+		UIKit.UITextField cmpAmount { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView CompareView { get; set; }
+		UIKit.UIView CompareView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView FooterView { get; set; }
+		UIKit.UIView FooterView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView headerView { get; set; }
+		UIKit.UIView headerView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblCompare { get; set; }
+		UIKit.UITableView tblCompare { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblProducts { get; set; }
+		UIKit.UITableView tblProducts { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

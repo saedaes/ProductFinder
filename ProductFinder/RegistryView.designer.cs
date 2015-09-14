@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,46 +13,46 @@ namespace ProductFinder
 	partial class RegistryView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+		UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnEdad { get; set; }
+		UIKit.UIButton btnEdad { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnRegistrar { get; set; }
+		UIKit.UIButton btnRegistrar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnSexo { get; set; }
+		UIKit.UIButton btnSexo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpConfirmar { get; set; }
+		UIKit.UITextField cmpConfirmar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpContraseña { get; set; }
+		UIKit.UITextField cmpContraseña { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpContraseñaIphone { get; set; }
+		UIKit.UITextField cmpContraseñaIphone { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpEmail { get; set; }
+		UIKit.UITextField cmpEmail { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpMaterno { get; set; }
+		UIKit.UITextField cmpMaterno { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpNombre { get; set; }
+		UIKit.UITextField cmpNombre { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpPaterno { get; set; }
+		UIKit.UITextField cmpPaterno { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblEdad { get; set; }
+		UIKit.UILabel lblEdad { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblSexo { get; set; }
+		UIKit.UILabel lblSexo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIPickerView pickerSexo { get; set; }
+		UIKit.UIPickerView pickerSexo { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

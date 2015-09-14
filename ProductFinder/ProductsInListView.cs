@@ -1,15 +1,14 @@
 using System;
 using System.IO;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using ScanditSDK;
 using System.Threading.Tasks;
-using MonoTouch.CoreLocation;
+using CoreLocation;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.CoreGraphics;
-using MonoTouch.MessageUI;
+using MessageUI;
 using Mono.Data.Sqlite;
 using System.Globalization;
 using System.Net;
@@ -28,6 +27,7 @@ namespace ProductFinder
 		public static UITableView tableView;
 		List<ProductsInListService> tableItems;
 		public ObservableCollection<Images> productImages { get; private set; }
+		public ObservableCollection<Images> storeImages { get; private set; }
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -38,6 +38,7 @@ namespace ProductFinder
 		{
 			Title = "Productos en la lista";
 			productImages = new ObservableCollection<Images> ();
+			storeImages = new ObservableCollection<Images> ();
 		}
 
 		public void setListId(String id){
@@ -54,6 +55,9 @@ namespace ProductFinder
 			// later as they're displayed.
 			foreach (var v in productImages)
 				v.productImage = null;
+
+			foreach (var v1 in storeImages)
+				v1.storeImage = null;
 		}
 
 		public override void ViewDidLoad ()
@@ -67,9 +71,7 @@ namespace ProductFinder
 				home.Image = UIImage.FromFile("Images/home.png");
 				this.NavigationItem.RightBarButtonItem = home;
 				UIViewController[] vistas = NavigationController.ViewControllers;
-				home.Clicked += (sender, e) => {
-					this.NavigationController.PopToViewController(vistas[0], true);
-				};
+				home.Clicked += (sender, e) => NavigationController.PopToViewController (vistas [0], true);
 
 				ProductsInListView.tableView = this.tblProducts;
 				//Configuramos la vista popup de cantidad
@@ -111,6 +113,11 @@ namespace ProductFinder
 							compareListService.setListId(ProductsInListView.list_id);
 							List<CompareListsService> tableItems2 = compareListService.All();
 							if(tableItems2.Count > 0){
+								storeImages.Clear();
+								foreach (var v in tableItems2){
+									Images image = new Images{ storeImageUrl = v.imagen};
+									this.storeImages.Add(image);
+								}
 								if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 									this.tblCompare.Source = new CompareTableSourceIphone(tableItems2,this);
 								}else{
@@ -134,7 +141,7 @@ namespace ProductFinder
 							alerta.AddButton ("Aceptar");
 							alerta.Show ();
 						}
-					}catch(System.Net.WebException){
+					}catch(WebException){
 						UIAlertView alerta = new UIAlertView () { 
 							Title = "Ups :S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
 						};
@@ -156,6 +163,11 @@ namespace ProductFinder
 							compareListService.setUnoListId(ProductsInListView.list_id);
 							List<CompareListsService> tableItems2 = compareListService.All();
 							if(tableItems2.Count > 0){
+								storeImages.Clear();
+								foreach (var v in tableItems2){
+									Images image = new Images{ storeImageUrl = v.imagen};
+									this.storeImages.Add(image);
+								}
 								if(UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone){
 									this.tblCompare.Source = new CompareTableSourceIphone(tableItems2,this);
 								}else{
@@ -349,17 +361,17 @@ namespace ProductFinder
 				controller.tblProducts.ReloadData ();
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;		   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 120f;
 			}
@@ -371,7 +383,7 @@ namespace ProductFinder
 				}
 			}
 
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 				var image = controller.productImages [indexPath.Row];
@@ -387,6 +399,7 @@ namespace ProductFinder
 
 					cell.AccessoryView = getButton (indexPath.Row);
 				}
+				botones.ElementAt (indexPath.Row).Tag = indexPath.Row;
 				cell.TextLabel.Text = tableItems [indexPath.Row].nombre;
 				cell.DetailTextLabel.Text = tableItems [indexPath.Row].cantidad + " pza(s)";
 				cell.Tag = indexPath.Row;
@@ -394,7 +407,7 @@ namespace ProductFinder
 					image.productImage = PlaceholderImage;
 					BeginDownloadingImage (image, indexPath, tableItems[indexPath.Row].imagen);
 				}
-				cell.ImageView.Image = MaxResizeImage (image.productImage, 80, 80);
+				cell.ImageView.Image = image.productImage;
 
 				return cell;
 			}
@@ -409,13 +422,13 @@ namespace ProductFinder
 				if (data == null) {
 					image.productImage = MaxResizeImage(Images.sinImagen,80,80);
 				} else {
-					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 80,80);
+					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)),80,80);
 				}
 
 				InvokeOnMainThread (() => {
 					var cell = controller.tblProducts.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
 					if (cell != null)
-						cell.ImageView.Image = MaxResizeImage(image.productImage, 80, 80);
+						cell.ImageView.Image = image.productImage;
 				});
 			}
 
@@ -427,8 +440,8 @@ namespace ProductFinder
 					using (var c = new GzipWebClient ())
 						data = await c.DownloadDataTaskAsync (imageUrl);
 				} 
-				catch(Exception){
-
+				catch(Exception ex){
+					Console.WriteLine (ex);
 				}
 				finally {
 					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
@@ -437,32 +450,32 @@ namespace ProductFinder
 				return data;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;
 			}
 				
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+				botones.ElementAt(index).Frame = new CGRect (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
 				botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
-					PointF buttonPosition = botones.ElementAt(index).ConvertPointToView(new PointF(),controller.tblProducts);
+					CGPoint buttonPosition = botones.ElementAt(index).ConvertPointToView(new CGPoint(),controller.tblProducts);
 					buttonEvent(buttonPosition);
 				};
 				return botones.ElementAt (index);
 			}
 
-			public void buttonEvent(PointF buttonPosition){
+			public void buttonEvent(CGPoint buttonPosition){
 				NSIndexPath indexPath = controller.tblProducts.IndexPathForRowAtPoint (buttonPosition);
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Borrar?", Message = "Deseas borrar este producto?"
@@ -498,7 +511,7 @@ namespace ProductFinder
 								alert2.Show ();
 							}
 						}
-					}catch(System.Net.WebException){
+					}catch(WebException){
 						UIAlertView alerta = new UIAlertView () { 
 							Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
 						};
@@ -556,17 +569,17 @@ namespace ProductFinder
 				controller.tblProducts.ReloadData ();
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;		   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 100f;
 			}
@@ -578,7 +591,7 @@ namespace ProductFinder
 				}
 			}
 
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 				var image = controller.productImages [indexPath.Row];
@@ -594,6 +607,7 @@ namespace ProductFinder
 					cell.DetailTextLabel.Lines = 2;
 					cell.AccessoryView = getButton (indexPath.Row);
 				}
+				botones.ElementAt (indexPath.Row).Tag = indexPath.Row;
 				cell.TextLabel.Text = tableItems [indexPath.Row].nombre;
 				cell.DetailTextLabel.Text = "\n" + tableItems [indexPath.Row].cantidad + " pza(s) ";
 				cell.Tag = indexPath.Row;
@@ -601,7 +615,7 @@ namespace ProductFinder
 					image.productImage = PlaceholderImage;
 					BeginDownloadingImage (image, indexPath, tableItems[indexPath.Row].imagen);
 				}
-				cell.ImageView.Image = MaxResizeImage (image.productImage, 60, 60);
+				cell.ImageView.Image =image.productImage;
 				return cell;
 			}
 
@@ -613,15 +627,15 @@ namespace ProductFinder
 
 				data = await GetImageData (imageUrl);
 				if (data == null) {
-					image.productImage = MaxResizeImage(Images.sinImagen,60,60);
+					image.productImage = MaxResizeImage(Images.sinImagen, 60,60);
 				} else {
-					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 60,60);
+					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)),60,60);
 				}
 
 				InvokeOnMainThread (() => {
 					var cell = controller.tblProducts.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
 					if (cell != null)
-						cell.ImageView.Image = MaxResizeImage(image.productImage, 60, 60);
+						cell.ImageView.Image = image.productImage;
 				});
 			}
 
@@ -643,26 +657,26 @@ namespace ProductFinder
 				return data;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;
 			}
 
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
+				botones.ElementAt(index).Frame = new CGRect (0, 0, Images.basura48.Size.Width, Images.basura48.Size.Height);
 				botones.ElementAt(index).SetBackgroundImage(Images.basura48,UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
-					PointF buttonPosition = botones.ElementAt(index).ConvertPointToView(new PointF(),controller.tblProducts);
+					CGPoint buttonPosition = botones.ElementAt(index).ConvertPointToView(new CGPoint(),controller.tblProducts);
 					buttonEvent(buttonPosition);
 				};
 				return botones.ElementAt (index);
@@ -676,7 +690,7 @@ namespace ProductFinder
 				controller.NavigationController.PushViewController (pdView, true);
 			}
 
-			public void buttonEvent(PointF buttonPosition){
+			public void buttonEvent(CGPoint buttonPosition){
 				NSIndexPath indexPath = controller.tblProducts.IndexPathForRowAtPoint (buttonPosition);
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Borrar?", Message = "Deseas borrar este producto?"
@@ -730,6 +744,275 @@ namespace ProductFinder
 				alert.Show ();
 			}
 		}
+
+		//Table source para comparacion de lista ipad
+		class CompareTableSource : UITableViewSource 
+		{
+			List<CompareListsService> tableItems;
+			string cellIdentifier = "TableCell";
+			ProductsStorePricesView pspv;
+			ProductsInListView controller;
+			UIImage PlaceholderImage { get; set; }
+			public CompareTableSource (List<CompareListsService> items, ProductsInListView controller) 
+			{
+				tableItems = items;
+				this.controller = controller;
+
+				PlaceholderImage = MaxResizeImage (Images.sinImagen, 60, 60); 
+				controller.storeImages.CollectionChanged += HandleCollectionChanged;
+				// If either a download fails or the image we download is corrupt, ignore the problem.
+				TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs e) {
+					e.SetObserved ();
+				};
+			}
+
+			void HandleCollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+			{
+				controller.tblCompare.ReloadData ();
+			}
+
+			public override nint NumberOfSections (UITableView tableView)
+			{
+				return 1;
+			}
+
+			public override nint RowsInSection (UITableView tableview, nint section)
+			{
+				return tableItems.Count;		   
+			}
+
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			{
+				return 80f;
+			}
+
+			class MyCustomCell : UITableViewCell
+			{
+				public MyCustomCell(UITableViewCellStyle style, string identifier) : base(style, identifier)
+				{
+				}
+			}
+
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
+			{
+				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+				var image = controller.storeImages [indexPath.Row];
+
+				// if there are no cells to reuse, create a new one
+				if (cell == null) {
+					cell = new MyCustomCell (UITableViewCellStyle.Value1, cellIdentifier);
+					cell.TextLabel.Lines = 2;
+					cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
+					cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
+					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
+					cell.DetailTextLabel.TextColor = UIColor.Red;
+				}
+
+				cell.Tag = indexPath.Row;
+				cell.TextLabel.Text = tableItems [indexPath.Row].nombre + "\n" + "(" + tableItems [indexPath.Row].count+ ")";
+				cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
+				if (image.storeImage == null) {
+					image.storeImage = PlaceholderImage;
+					BeginDownloadingImage (image, indexPath, tableItems [indexPath.Row].imagen);
+				}
+				cell.ImageView.Image = image.storeImage;
+
+				return cell;
+			}
+
+			async void BeginDownloadingImage (Images image, NSIndexPath path, String imageUrl)
+			{
+				// Queue the image to be downloaded. This task will execute
+				// as soon as the existing ones have finished.
+				byte[] data = null;
+
+				data = await GetImageData (imageUrl);
+				if (data == null) {
+					image.storeImage = MaxResizeImage(Images.sinImagen, 60,60);
+				} else {
+					image.storeImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 60,60);
+				}
+
+				InvokeOnMainThread (() => {
+					var cell = controller.tblCompare.VisibleCells.Where (c => c.Tag == controller.storeImages.IndexOf (image)).FirstOrDefault ();
+					if (cell != null)
+						cell.ImageView.Image = image.storeImage;
+				});
+			}
+
+			async Task<byte[]> GetImageData(String imageUrl)
+			{
+				byte[] data = null;
+				try {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+					using (var c = new GzipWebClient ())
+						data = await c.DownloadDataTaskAsync (imageUrl);
+				} 
+				catch(Exception){
+
+				}
+				finally {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
+				}
+
+				return data;
+			}
+
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
+			{
+				var sourceSize = sourceImage.Size;
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+
+			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+			{
+				pspv = new ProductsStorePricesView ();
+				pspv.setData (ProductsInListView.list_id, tableItems [indexPath.Row].id, tableItems[indexPath.Row].nombre);
+				controller.NavigationController.PushViewController (pspv, true);
+			}
+		}
+
+		//Table source para comparacion de lista iphone
+		class CompareTableSourceIphone : UITableViewSource 
+		{
+			List<CompareListsService> tableItems;
+			string cellIdentifier = "TableCell";
+			ProductsStorePricesView pspv;
+			ProductsInListView controller;
+			UIImage PlaceholderImage { get; set; }
+
+			public CompareTableSourceIphone (List<CompareListsService> items, ProductsInListView controller) 
+			{
+				tableItems = items;
+				this.controller = controller;
+
+				PlaceholderImage = MaxResizeImage (Images.sinImagen, 60, 60); 
+				controller.storeImages.CollectionChanged += HandleCollectionChanged;
+				// If either a download fails or the image we download is corrupt, ignore the problem.
+				TaskScheduler.UnobservedTaskException += (object sender, UnobservedTaskExceptionEventArgs e) => e.SetObserved ();
+			}
+
+			void HandleCollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+			{
+				controller.tblCompare.ReloadData ();
+			}
+
+			public override nint NumberOfSections (UITableView tableView)
+			{
+				return 1;
+			}
+
+			public override nint RowsInSection (UITableView tableview, nint section)
+			{
+				return tableItems.Count;		   
+			}
+
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			{
+				return 90f;
+			}
+
+			class MyCustomCell : UITableViewCell
+			{
+				public MyCustomCell(UITableViewCellStyle style, string identifier) : base(style, identifier)
+				{
+				}
+			}
+
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
+			{
+				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+				var image = controller.storeImages [indexPath.Row];
+
+				// if there are no cells to reuse, create a new one
+				if (cell == null) {
+					cell = new MyCustomCell (UITableViewCellStyle.Value1, cellIdentifier);
+					cell.TextLabel.Lines = 2;
+					cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
+					cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
+					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(24);
+					cell.DetailTextLabel.TextColor = UIColor.Red;
+				}
+
+				cell.Tag = indexPath.Row;
+				cell.TextLabel.Text = tableItems [indexPath.Row].nombre + "\n" + "(" + tableItems [indexPath.Row].count+ ")";
+				cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
+				if (image.storeImage == null) {
+					image.storeImage = PlaceholderImage;
+					BeginDownloadingImage (image, indexPath, tableItems [indexPath.Row].imagen);
+				}
+				cell.ImageView.Image = image.storeImage;
+
+				return cell;
+			}
+
+			async void BeginDownloadingImage (Images image, NSIndexPath path, String imageUrl)
+			{
+				// Queue the image to be downloaded. This task will execute
+				// as soon as the existing ones have finished.
+				byte[] data = null;
+
+				data = await GetImageData (imageUrl);
+				if (data == null) {
+					image.storeImage = MaxResizeImage(Images.sinImagen, 60,60);
+				} else {
+					image.storeImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 60,60);
+				}
+
+				InvokeOnMainThread (() => {
+					var cell = controller.tblCompare.VisibleCells.Where (c => c.Tag == controller.storeImages.IndexOf (image)).FirstOrDefault ();
+					if (cell != null)
+						cell.ImageView.Image = image.storeImage;
+				});
+			}
+
+			async Task<byte[]> GetImageData(String imageUrl)
+			{
+				byte[] data = null;
+				try {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+					using (var c = new GzipWebClient ())
+						data = await c.DownloadDataTaskAsync (imageUrl);
+				} 
+				catch(Exception){
+
+				}
+				finally {
+					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
+				}
+
+				return data;
+			}
+
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
+			{
+				var sourceSize = sourceImage.Size;
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+
+			public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+			{
+				pspv = new ProductsStorePricesView ();
+				pspv.setData (ProductsInListView.list_id, tableItems [indexPath.Row].id, tableItems[indexPath.Row].nombre);
+				controller.NavigationController.PushViewController (pspv, true);
+			}
+		}
 	}
 
 	public class pickerControllerDelegate : SIOverlayControllerDelegate
@@ -748,287 +1031,17 @@ namespace ProductFinder
 			pdl = new ProductsInListView();
 			pdl.setBarcode(barcode["barcode"].ToString());
 			pickerControllerDelegate.scanned = true;
-			presentingViewController.NavigationController.PopViewControllerAnimated (true);
+			presentingViewController.NavigationController.PopViewController (true);
 		}
 
 		public override void DidCancel (SIOverlayController overlayController, NSDictionary status) {
-			presentingViewController.NavigationController.PopViewControllerAnimated (true);
+			presentingViewController.NavigationController.PopViewController (true);
 		}
 
 		public override void DidManualSearch (SIOverlayController overlayController, string text)
 		{
 
 		}
-	}
-		
-	//Table source para comparacion de lista ipad
-	class CompareTableSource : UITableViewSource 
-	{
-		List<CompareListsService> tableItems;
-		string cellIdentifier = "TableCell";
-		ProductsStorePricesView pspv;
-		ProductsInListView controller;
-		public CompareTableSource (List<CompareListsService> items, ProductsInListView controller) 
-		{
-			tableItems = items;
-			this.controller = controller;
-		}
-
-		public override int NumberOfSections (UITableView tableView)
-		{
-			return 1;
-		}
-
-		public override int RowsInSection (UITableView tableview, int section)
-		{
-			return tableItems.Count;		   
-		}
-
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
-		{
-			return 80f;
-		}
-
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
-		{
-			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
-
-			// if there are no cells to reuse, create a new one
-			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Value1 , cellIdentifier);
-			NSUrl nsurl = new NSUrl(tableItems[indexPath.Row].imagen);
-			NSData data = NSData.FromUrl(nsurl);
-			if (data != null) {
-				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 60);
-			} else {
-				cell.ImageView.Image = ScaleImage (Images.sinImagen, 60);
-			}
-			cell.TextLabel.Lines = 2;
-			cell.TextLabel.Text = tableItems [indexPath.Row].nombre + "\n" + "(" + tableItems [indexPath.Row].count+ ")";
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(18);
-			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
-			cell.DetailTextLabel.Text = "$"+ tableItems[indexPath.Row].precio;
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(20);
-			cell.DetailTextLabel.TextColor = UIColor.Red;
-			return cell;
-		}
-
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-		{
-			pspv = new ProductsStorePricesView ();
-			pspv.setData (ProductsInListView.list_id, tableItems [indexPath.Row].id, tableItems[indexPath.Row].nombre);
-			controller.NavigationController.PushViewController (pspv, true);
-		}
-
-		//Metodo para redimensionar las imagenes de la lista.
-		public static UIImage ScaleImage(UIImage image, int maxSize)
-		{
-
-			UIImage res;
-
-			using (CGImage imageRef = image.CGImage)
-			{
-				CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
-				CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
-				if (alphaInfo == CGImageAlphaInfo.None)
-				{
-					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
-				}
-
-				int width, height;
-
-				width = imageRef.Width;
-				height = imageRef.Height;
-
-
-				if (height >= width)
-				{
-					width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
-					height = maxSize;
-				}
-				else
-				{
-					height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
-					width = maxSize;
-				}
-
-
-				CGBitmapContext bitmap;
-
-				if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-				else
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-
-				switch (image.Orientation)
-				{
-				case UIImageOrientation.Left:
-					bitmap.RotateCTM((float)Math.PI / 2);
-					bitmap.TranslateCTM(0, -height);
-					break;
-				case UIImageOrientation.Right:
-					bitmap.RotateCTM(-((float)Math.PI / 2));
-					bitmap.TranslateCTM(-width, 0);
-					break;
-				case UIImageOrientation.Up:
-					break;
-				case UIImageOrientation.Down:
-					bitmap.TranslateCTM(width, height);
-					bitmap.RotateCTM(-(float)Math.PI);
-					break;
-				}
-
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
-
-
-				res = UIImage.FromImage(bitmap.ToImage());
-				bitmap = null;
-
-			}
-
-			return res;
-		}	
-	}
-
-	//Table source para comparacion de lista iphone
-	class CompareTableSourceIphone : UITableViewSource 
-	{
-		List<CompareListsService> tableItems;
-		string cellIdentifier = "TableCell";
-		ProductsStorePricesView pspv;
-		ProductsInListView controller;
-		public CompareTableSourceIphone (List<CompareListsService> items, ProductsInListView controller) 
-		{
-			tableItems = items;
-			this.controller = controller;
-		}
-
-		public override int NumberOfSections (UITableView tableView)
-		{
-			return 1;
-		}
-
-		public override int RowsInSection (UITableView tableview, int section)
-		{
-			return tableItems.Count;		   
-		}
-
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
-		{
-			return 90f;
-		}
-
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
-		{
-			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
-
-			// if there are no cells to reuse, create a new one
-			if (cell == null)
-				cell = new UITableViewCell (UITableViewCellStyle.Subtitle , cellIdentifier);
-			NSUrl nsurl = new NSUrl(tableItems[indexPath.Row].imagen);
-			NSData data = NSData.FromUrl(nsurl);
-			if (data != null) {
-				cell.ImageView.Image = ScaleImage (UIImage.LoadFromData (data), 60);
-			} else {
-				cell.ImageView.Image = ScaleImage(Images.sinImagen, 60);
-			}
-
-			cell.TextLabel.Lines = 2;
-			cell.TextLabel.Text = tableItems [indexPath.Row].nombre + "\n" + "("+tableItems [indexPath.Row].count +")";
-			cell.TextLabel.Font = UIFont.SystemFontOfSize(14);
-			cell.TextLabel.Lines = 3;
-			cell.TextLabel.TextColor = UIColor.FromRGB (7, 129, 181);
-			Double precio = Double.Parse (tableItems [indexPath.Row].precio);
-			cell.DetailTextLabel.Text = "\n"+precio.ToString ("C2");
-			cell.DetailTextLabel.Font = UIFont.SystemFontOfSize(14);
-			cell.DetailTextLabel.Lines = 2;
-			cell.DetailTextLabel.TextColor = UIColor.Red;
-			return cell;
-		}
-
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-		{
-			pspv = new ProductsStorePricesView ();
-			pspv.setData (ProductsInListView.list_id, tableItems [indexPath.Row].id, tableItems[indexPath.Row].nombre);
-			controller.NavigationController.PushViewController (pspv, true);
-		}
-
-		//Metodo para redimensionar las imagenes de la lista.
-		public static UIImage ScaleImage(UIImage image, int maxSize)
-		{
-
-			UIImage res;
-
-			using (CGImage imageRef = image.CGImage)
-			{
-				CGImageAlphaInfo alphaInfo = imageRef.AlphaInfo;
-				CGColorSpace colorSpaceInfo = CGColorSpace.CreateDeviceRGB();
-				if (alphaInfo == CGImageAlphaInfo.None)
-				{
-					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
-				}
-
-				int width, height;
-
-				width = imageRef.Width;
-				height = imageRef.Height;
-
-
-				if (height >= width)
-				{
-					width = (int)Math.Floor((double)width * ((double)maxSize / (double)height));
-					height = maxSize;
-				}
-				else
-				{
-					height = (int)Math.Floor((double)height * ((double)maxSize / (double)width));
-					width = maxSize;
-				}
-
-
-				CGBitmapContext bitmap;
-
-				if (image.Orientation == UIImageOrientation.Up || image.Orientation == UIImageOrientation.Down)
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, width, height, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-				else
-				{
-					bitmap = new CGBitmapContext(IntPtr.Zero, height, width, imageRef.BitsPerComponent, imageRef.BytesPerRow, colorSpaceInfo, alphaInfo);
-				}
-
-				switch (image.Orientation)
-				{
-				case UIImageOrientation.Left:
-					bitmap.RotateCTM((float)Math.PI / 2);
-					bitmap.TranslateCTM(0, -height);
-					break;
-				case UIImageOrientation.Right:
-					bitmap.RotateCTM(-((float)Math.PI / 2));
-					bitmap.TranslateCTM(-width, 0);
-					break;
-				case UIImageOrientation.Up:
-					break;
-				case UIImageOrientation.Down:
-					bitmap.TranslateCTM(width, height);
-					bitmap.RotateCTM(-(float)Math.PI);
-					break;
-				}
-
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
-
-
-				res = UIImage.FromImage(bitmap.ToImage());
-				bitmap = null;
-
-			}
-
-			return res;
-		}	
 	}
 }
 

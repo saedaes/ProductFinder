@@ -8,7 +8,7 @@ void xamarin_register_modules ()
 
 void xamarin_register_assemblies ()
 {
-	xamarin_open_and_register ("monotouch.dll");
+	xamarin_open_and_register ("Xamarin.iOS.dll");
 	xamarin_open_and_register ("ScanditSDK.dll");
 	xamarin_open_and_register ("MonoTouch.FacebookConnect.dll");
 
@@ -18,12 +18,13 @@ void xamarin_setup ()
 {
 	xamarin_use_old_dynamic_registrar = FALSE;
 	xamarin_enable_debug_tracking = TRUE;
+	xamarin_init_mono_debug = TRUE;
 	xamarin_executable_name = "ProductFinder.exe";
-	xamarin_use_new_assemblies = 0;
+	xamarin_use_new_assemblies = 1;
 	mono_use_llvm = FALSE;
 	xamarin_log_level = 0;
 	xamarin_debug_mode = TRUE;
-	xamarin_new_refcount = FALSE;
+	xamarin_new_refcount = TRUE;
 	setenv ("MONO_GC_PARAMS", "nursery-size=512k", 1);
 }
 

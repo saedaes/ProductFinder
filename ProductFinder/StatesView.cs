@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Drawing;
+using CoreGraphics;
 using Mono.Data.Sqlite;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +73,7 @@ namespace ProductFinder
 					statesService = new StatesService();
 					List<StatesService> estados = statesService.All();
 					pickerDataModel.Items = estados;
-					pickerStates.Source = pickerDataModel;
+					pickerStates.Model = pickerDataModel;
 					pickerStates.Hidden = false;
 					btnAceptar.Hidden = false;
 					//actionSheetPicker.Picker.Source = pickerDataModel;
@@ -112,7 +112,7 @@ namespace ProductFinder
 						localityService.setState(stateId);
 						List<LocalityService> localidades = localityService.All();
 						pickerDataModelLocality.Items = localidades;
-						pickerStates.Source = pickerDataModelLocality;
+						pickerStates.Model = pickerDataModelLocality;
 						pickerStates.Hidden = false;
 						btnAceptar.Hidden = false;
 						//actionSheetPicker.Picker.Source = pickerDataModelLocality;
@@ -156,7 +156,7 @@ namespace ProductFinder
 						};
 						alert.AddButton ("Aceptar");
 						alert.Show ();
-						this.NavigationController.PopViewControllerAnimated(true);
+						this.NavigationController.PopViewController(true);
 					}
 				}catch(Exception){
 					UIAlertView alert = new UIAlertView () { 
@@ -167,6 +167,7 @@ namespace ProductFinder
 				}
 			};
 		}
+
 
 		protected class PickerDataModel : UIPickerViewModel 
 		{
@@ -201,7 +202,7 @@ namespace ProductFinder
 			/// <summary>
 			/// Called by the picker to determine how many rows are in a given spinner item
 			/// </summary>
-			public override int GetRowsInComponent (UIPickerView picker, int component)
+			public override nint GetRowsInComponent (UIPickerView picker, nint component)
 			{
 				return items.Count;
 			}
@@ -210,14 +211,15 @@ namespace ProductFinder
 			/// called by the picker to get the text for a particular row in a particular 
 			/// spinner item
 			/// </summary>
-			public override string GetTitle (UIPickerView picker, int row, int component){
-				return items[row].ToString();
+			public override string GetTitle (UIPickerView pickerView, nint row, nint component)
+			{
+				return items[(int)row].ToString();
 			}
 
 			/// <summary>
 			/// called by the picker to get the number of spinner items
 			/// </summary>
-			public override int GetComponentCount (UIPickerView picker)
+			public override nint GetComponentCount (UIPickerView picker)
 			{
 				return 1;
 			}
@@ -225,13 +227,13 @@ namespace ProductFinder
 			/// <summary>
 			/// called when a row is selected in the spinner
 			/// </summary>
-			public override void Selected (UIPickerView picker, int row, int component)
+			public override void Selected (UIPickerView pickerView, nint row, nint component)
 			{
-				selectedIndex = row;
+				selectedIndex = (int)row;
 				if (this.ValueChanged != null)
 				{
 					this.ValueChanged (this, new EventArgs ());
-				}        
+				}      
 			}
 		}
 
@@ -268,7 +270,7 @@ namespace ProductFinder
 			/// <summary>
 			/// Called by the picker to determine how many rows are in a given spinner item
 			/// </summary>
-			public override int GetRowsInComponent (UIPickerView picker, int component)
+			public override nint GetRowsInComponent (UIPickerView picker, nint component)
 			{
 				return items.Count;
 			}
@@ -277,14 +279,14 @@ namespace ProductFinder
 			/// called by the picker to get the text for a particular row in a particular 
 			/// spinner item
 			/// </summary>
-			public override string GetTitle (UIPickerView picker, int row, int component){
-				return items[row].ToString();
+			public override string GetTitle (UIPickerView picker, nint row, nint component){
+				return items[(int)row].ToString();
 			}
 
 			/// <summary>
 			/// called by the picker to get the number of spinner items
 			/// </summary>
-			public override int GetComponentCount (UIPickerView picker)
+			public override nint GetComponentCount (UIPickerView picker)
 			{
 				return 1;
 			}
@@ -292,9 +294,9 @@ namespace ProductFinder
 			/// <summary>
 			/// called when a row is selected in the spinner
 			/// </summary>
-			public override void Selected (UIPickerView picker, int row, int component)
+			public override void Selected (UIPickerView picker, nint row, nint component)
 			{
-				selectedIndex = row;
+				selectedIndex = (int)row;
 				if (this.ValueChanged != null)
 				{
 					this.ValueChanged (this, new EventArgs ());

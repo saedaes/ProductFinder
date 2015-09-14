@@ -1,9 +1,8 @@
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
+using Foundation;
+using UIKit;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -31,7 +30,7 @@ namespace ProductFinder
 			: base (UserInterfaceIdiomIsPhone ? "NameSearchResultView_iPhone" : "NameSearchResultView_iPad", null)
 		{
 			productImages = new ObservableCollection<Images> ();
-			this.Title = "Resultados";
+			Title = "Resultados";
 		}
 
 		public void setProductName(String nombre){
@@ -103,7 +102,7 @@ namespace ProductFinder
 					};
 					alert.AddButton("Aceptar");
 					alert.Clicked += (sender, e) => {
-						NavigationController.PopViewControllerAnimated(true);
+						NavigationController.PopViewController(true);
 					};
 					alert.Show ();
 				}
@@ -225,13 +224,13 @@ namespace ProductFinder
 					}
 				};
 
-			}catch(System.Net.WebException){
+			}catch(WebException){
 				UIAlertView alert = new UIAlertView () { 
 					Title = "Ups =S", Message = "Algo salio mal, verifica tu conexión a internet e intentalo de nuevo."
 				};
 				alert.AddButton("Aceptar");
 				alert.Clicked += (sender, e) => {
-					NavigationController.PopViewControllerAnimated(true);
+					NavigationController.PopViewController(true);
 				};
 				alert.Show ();
 			}catch(Exception){
@@ -240,7 +239,7 @@ namespace ProductFinder
 				};
 				alert.AddButton("Aceptar");
 				alert.Clicked += (sender, e) => {
-					NavigationController.PopViewControllerAnimated(true);
+					NavigationController.PopViewController(true);
 				};
 				alert.Show ();
 			}
@@ -282,29 +281,29 @@ namespace ProductFinder
 				controller.tblProducts.ReloadData ();
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;		   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 200f;
 			}
 
-			private class MyCustomCell : UITableViewCell
+			class MyCustomCell : UITableViewCell
 			{
 				public MyCustomCell(UITableViewCellStyle style, string identifier) : base(style, identifier)
 				{
 				}
 			}
 				
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 				ps = tableItems [indexPath.Row];
@@ -319,7 +318,7 @@ namespace ProductFinder
 					cell.DetailTextLabel.Font = UIFont.SystemFontOfSize (12);
 					cell.DetailTextLabel.TextColor = UIColor.Gray;
 					cell.DetailTextLabel.Lines = 5;
-					cell.Frame = new RectangleF (0, 0, 80, 80);
+					cell.Frame = new CGRect (0, 0, 80, 80);
 
 					cell.AccessoryView = getButton(indexPath.Row);
 				}
@@ -332,7 +331,7 @@ namespace ProductFinder
 					image.productImage = PlaceholderImage;
 					BeginDownloadingImage (image, indexPath, ps.imagen);
 				}
-				cell.ImageView.Image = MaxResizeImage (image.productImage, 80, 80);
+				cell.ImageView.Image = image.productImage;
 
 				return cell;		
 			}
@@ -347,13 +346,13 @@ namespace ProductFinder
 				if (data == null) {
 					image.productImage = MaxResizeImage(Images.sinImagen,80,80);
 				} else {
-					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 80,80);
+					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)),80,80);
 				}
 
 				InvokeOnMainThread (() => {
 					var cell = controller.tblProducts.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
 					if (cell != null)
-						cell.ImageView.Image = MaxResizeImage(image.productImage, 80, 80);
+						cell.ImageView.Image = image.productImage;
 				});
 			}
 
@@ -365,8 +364,8 @@ namespace ProductFinder
 					using (var c = new GzipWebClient ())
 						data = await c.DownloadDataTaskAsync (imageUrl);
 				} 
-				catch(Exception){
-
+				catch(Exception ex){
+					Console.WriteLine ("EXCEPCION: " + ex.ToString ());
 				}
 				finally {
 					UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
@@ -375,32 +374,32 @@ namespace ProductFinder
 				return data;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;
 			}
 
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, 80, 80);
+				botones.ElementAt(index).Frame = new CGRect (0, 0, 80, 80);
 				botones.ElementAt(index).SetBackgroundImage(MaxResizeImage(Images.añadirAListaVerde128, 80,80),UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
-					PointF buttonPosition = botones.ElementAt(index).ConvertPointToView(new PointF(),controller.tblProducts);
+					CGPoint buttonPosition = botones.ElementAt(index).ConvertPointToView(new CGPoint(),controller.tblProducts);
 					buttonEvent(buttonPosition);
 				};
 				return botones.ElementAt (index);
 			}
 
-			public void buttonEvent(PointF buttonPosition){
+			public void buttonEvent(CGPoint buttonPosition){
 				NSIndexPath indexPath = controller.tblProducts.IndexPathForRowAtPoint (buttonPosition);
 				if(this.user == 0){
 					UIAlertView alert = new UIAlertView () { 
@@ -416,7 +415,7 @@ namespace ProductFinder
 					alert.AddButton ("NO");
 					alert.Clicked += (s, o) => {
 						if(o.ButtonIndex == 0){
-							controller.tblProducts.ScrollRectToVisible(new RectangleF(0,0,1,1),true);
+							controller.tblProducts.ScrollRectToVisible(new CGRect(0,0,1,1),true);
 							NameSearchResultView.amount.Hidden = false;
 							NameSearchResultView.product_id = tableItems[indexPath.Row].id;
 						}
@@ -461,9 +460,7 @@ namespace ProductFinder
 
 				controller.productImages.CollectionChanged += HandleCollectionChanged;
 				// If either a download fails or the image we download is corrupt, ignore the problem.
-				TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs e) {
-					e.SetObserved ();
-				};
+				TaskScheduler.UnobservedTaskException += (object sender, UnobservedTaskExceptionEventArgs e) => e.SetObserved ();
 			}
 
 			void HandleCollectionChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -471,29 +468,29 @@ namespace ProductFinder
 				controller.tblProducts.ReloadData ();
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;		   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 130f;
 			}
 
-			private class MyCustomCell : UITableViewCell
+			class MyCustomCell : UITableViewCell
 			{
 				public MyCustomCell(UITableViewCellStyle style, string identifier) : base(style, identifier)
 				{
 				}
 			}
 
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 				ps = tableItems [indexPath.Row];
@@ -520,7 +517,7 @@ namespace ProductFinder
 					image.productImage = PlaceholderImage;
 					BeginDownloadingImage (image, indexPath, ps.imagen);
 				}
-				cell.ImageView.Image = MaxResizeImage (image.productImage, 60, 60);
+				cell.ImageView.Image = image.productImage;
 			
 				return cell;	
 			}
@@ -535,13 +532,13 @@ namespace ProductFinder
 				if (data == null) {
 					image.productImage = MaxResizeImage(Images.sinImagen,60,60);
 				} else {
-					image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)), 60,60);
+					image.productImage = image.productImage = MaxResizeImage(UIImage.LoadFromData (NSData.FromArray (data)),60,60);
 				}
 
 				InvokeOnMainThread (() => {
 					var cell = controller.tblProducts.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
 					if (cell != null)
-						cell.ImageView.Image = MaxResizeImage(image.productImage, 60, 60);
+						cell.ImageView.Image = image.productImage;
 				});
 			}
 
@@ -563,32 +560,32 @@ namespace ProductFinder
 				return data;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;
 			}
 
 			public UIButton getButton(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, 50, 50);
+				botones.ElementAt(index).Frame = new CGRect (0, 0, 50, 50);
 				botones.ElementAt(index).SetBackgroundImage(MaxResizeImage(Images.añadirAListaVerde128, 50,50),UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
-					PointF buttonPosition = botones.ElementAt(index).ConvertPointToView(new PointF(),controller.tblProducts);
+					CGPoint buttonPosition = botones.ElementAt(index).ConvertPointToView(new CGPoint(),controller.tblProducts);
 					buttonEvent(buttonPosition);
 				};
 				return botones.ElementAt (index);
 			}
 
-			public void buttonEvent(PointF buttonPosition){
+			public void buttonEvent(CGPoint buttonPosition){
 				NSIndexPath indexPath = controller.tblProducts.IndexPathForRowAtPoint (buttonPosition);
 				if(this.user == 0){
 					UIAlertView alert = new UIAlertView () { 
@@ -604,7 +601,7 @@ namespace ProductFinder
 					alert.AddButton ("NO");
 					alert.Clicked += (s, o) => {
 						if(o.ButtonIndex == 0){
-							controller.tblProducts.ScrollRectToVisible(new RectangleF(0,0,1,1),true);
+							controller.tblProducts.ScrollRectToVisible(new CGRect(0,0,1,1),true);
 							NameSearchResultView.amount.Hidden = false;
 							NameSearchResultView.product_id = tableItems[indexPath.Row].id;
 						}
@@ -634,22 +631,22 @@ namespace ProductFinder
 				this.cantidad = cantidad;
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;		   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 60f;
 			}
 
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
@@ -664,15 +661,15 @@ namespace ProductFinder
 				return cell;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;

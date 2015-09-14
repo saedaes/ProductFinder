@@ -1,9 +1,9 @@
-﻿using System;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using System;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using System.Collections.Generic;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 using System.Linq;
 
 namespace ProductFinder
@@ -62,22 +62,22 @@ namespace ProductFinder
 			this.controller=controller;
 		}
 
-		public override int NumberOfSections (UITableView tableView)
+		public override nint NumberOfSections (UITableView tableView)
 		{
 			return 1;
 		}
 
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return tableItems.Count;   
 		}
 
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 200f;
 		}
 
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
@@ -121,7 +121,7 @@ namespace ProductFinder
 					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
 				}
 
-				int width, height;
+				nint width, height;
 
 				width = imageRef.Width;
 				height = imageRef.Height;
@@ -168,7 +168,7 @@ namespace ProductFinder
 					break;
 				}
 
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+				bitmap.DrawImage(new CGRect(0, 0, width, height), imageRef);
 
 
 				res = UIImage.FromImage(bitmap.ToImage());
@@ -194,22 +194,22 @@ namespace ProductFinder
 			this.controller=controller;
 		}
 
-		public override int NumberOfSections (UITableView tableView)
+		public override nint NumberOfSections (UITableView tableView)
 		{
 			return 1;
 		}
 
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return tableItems.Count;   
 		}
 
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 300;
 		}
 
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
@@ -253,7 +253,7 @@ namespace ProductFinder
 					alphaInfo = CGImageAlphaInfo.NoneSkipLast;
 				}
 
-				int width, height;
+				nint width, height;
 
 				width = imageRef.Width;
 				height = imageRef.Height;
@@ -300,7 +300,7 @@ namespace ProductFinder
 					break;
 				}
 
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+				bitmap.DrawImage(new CGRect(0, 0, width, height), imageRef);
 
 
 				res = UIImage.FromImage(bitmap.ToImage());

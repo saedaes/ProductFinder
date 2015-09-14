@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,13 +13,13 @@ namespace ProductFinder
 	partial class NewsDetailView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIImageView imgNoticia { get; set; }
+		UIKit.UIImageView imgNoticia { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTitulo { get; set; }
+		UIKit.UILabel lblTitulo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextView txtDescripcion { get; set; }
+		UIKit.UITextView txtDescripcion { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

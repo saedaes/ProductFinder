@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
-using MonoTouch.CoreAnimation;
+using Foundation;
+using UIKit;
+using CoreGraphics;
+using CoreAnimation;
 
 using MonoTouch.FacebookConnect;
 
@@ -45,11 +45,11 @@ namespace ProductFinder
 			degradado.RenderInContext (UIGraphics.GetCurrentContext());
 			UIImage bgDegradado = UIGraphics.GetImageFromCurrentImageContext ();
 			UIGraphics.EndImageContext ();
-
 			rootNavigationController.NavigationBar.TintColor = UIColor.White;
-			UITextAttributes atributes = new UITextAttributes();
-			atributes.TextColor = UIColor.White;
-			rootNavigationController.NavigationBar.SetTitleTextAttributes (atributes);
+			UIStringAttributes atributes = new UIStringAttributes();
+			atributes.ForegroundColor = UIColor.White;
+			rootNavigationController.NavigationBar.TitleTextAttributes = atributes;
+
 			rootNavigationController.NavigationBar.SetBackgroundImage (bgDegradado, UIBarMetrics.Default);
 
 			// If you have defined a root view controller, set it here:

@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,25 +13,25 @@ namespace ProductFinder
 	partial class StatesView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnAceptar { get; set; }
+		UIKit.UIButton btnAceptar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnEstado { get; set; }
+		UIKit.UIButton btnEstado { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnGuardar { get; set; }
+		UIKit.UIButton btnGuardar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnLocalidad { get; set; }
+		UIKit.UIButton btnLocalidad { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblEstado { get; set; }
+		UIKit.UILabel lblEstado { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblLocalidad { get; set; }
+		UIKit.UILabel lblLocalidad { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIPickerView pickerStates { get; set; }
+		UIKit.UIPickerView pickerStates { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

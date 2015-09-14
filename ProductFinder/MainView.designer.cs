@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,28 +13,28 @@ namespace ProductFinder
 	partial class MainView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnBuscar { get; set; }
+		UIKit.UIButton btnBuscar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnCodigo { get; set; }
+		UIKit.UIButton btnCodigo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnEntrar { get; set; }
+		UIKit.UIButton btnEntrar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnListas { get; set; }
+		UIKit.UIButton btnListas { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpNombre { get; set; }
+		UIKit.UITextField cmpNombre { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView faceBookView { get; set; }
+		UIKit.UIView faceBookView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView facebookView2 { get; set; }
+		UIKit.UIView facebookView2 { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblUserName { get; set; }
+		UIKit.UILabel lblUserName { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

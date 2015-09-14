@@ -1,0 +1,14 @@
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/MonoAndroid,Version=v4.4.AssemblyAttribute.cs
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/bin/Debug/XamarinScanditSDKDemoAndroid.dll.mdb
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/bin/Debug/XamarinScanditSDKDemoAndroid.dll
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/bin/Debug/AndroidDemo.AndroidDemo.apk
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/android/bin/AndroidDemo.AndroidDemo.apk
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/res/layout/main.xml
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/res/values/strings.xml
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/res/drawable/icon.png
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/R.cs.flag
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/bin/Debug/AndroidDemo.AndroidDemo-Signed.apk
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/uploadflags.txt
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/XamarinScanditSDKDemoAndroid.dll
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/obj/Debug/XamarinScanditSDKDemoAndroid.dll.mdb
+/Users/Christian/svnreleases/scandit_sdk_xamarin_plugin/4.3.0/enterprise-premium/scandit-4.3.0/samples/AndroidDemo/AndroidDemo/bin/Debug/ScanditSDK.dll

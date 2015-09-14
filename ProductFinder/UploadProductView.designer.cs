@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,31 +13,31 @@ namespace ProductFinder
 	partial class UploadProductView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnFoto { get; set; }
+		UIKit.UIButton btnFoto { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnGaleria { get; set; }
+		UIKit.UIButton btnGaleria { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnRegistrar { get; set; }
+		UIKit.UIButton btnRegistrar { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpCodigo { get; set; }
+		UIKit.UITextField cmpCodigo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextView cmpDescripcion { get; set; }
+		UIKit.UITextView cmpDescripcion { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpNombre { get; set; }
+		UIKit.UITextField cmpNombre { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITextField cmpPrecio { get; set; }
+		UIKit.UITextField cmpPrecio { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIImageView imgProducto { get; set; }
+		UIKit.UIImageView imgProducto { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIScrollView scrollView { get; set; }
+		UIKit.UIScrollView scrollView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

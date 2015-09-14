@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace ProductFinder
@@ -13,13 +13,13 @@ namespace ProductFinder
 	partial class ProductsStorePricesView
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIView headerView { get; set; }
+		UIKit.UIView headerView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTienda { get; set; }
+		UIKit.UILabel lblTienda { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UITableView tblProductos { get; set; }
+		UIKit.UITableView tblProductos { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{

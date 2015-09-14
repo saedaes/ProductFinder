@@ -1,10 +1,9 @@
 using System;
-using System.Drawing;
+using CoreGraphics;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
-using MonoTouch.CoreLocation;
+using Foundation;
+using UIKit;
+using CoreLocation;
 using System.Linq;
 using System.Globalization;
 using System.IO;
@@ -24,8 +23,6 @@ namespace ProductFinder
 
 		//Establecemos la variable que guardara la localizacion del dispositivo.
 		CLLocation newLocation;
-
-		UIBarButtonItem home;
 
 		private string _pathToDatabase;
 
@@ -165,7 +162,7 @@ namespace ProductFinder
 			}catch(System.ArgumentOutOfRangeException){
 				didNotFidProduct();
 			}catch(Exception ex){
-				Console.WriteLine (ex.ToString ());
+				Console.WriteLine ("ESTA ES LA EXCEPCION: " + ex.ToString ());
 				this.imgProduct.Image = UIImage.FromFile("Images/noImage.jpg");
 				this.lblproduct.Text = "Producto no encontrado =S";
 				this.lblDescription.Text = "";
@@ -199,7 +196,7 @@ namespace ProductFinder
 					if (o.ButtonIndex == 0) {
 						this.NavigationController.PushViewController (load, true);
 					} else {
-						this.NavigationController.PopViewControllerAnimated (true);
+						this.NavigationController.PopViewController (true);
 					}
 				};
 				alert.Show ();
@@ -209,7 +206,7 @@ namespace ProductFinder
 				};
 				alert.AddButton ("Aceptar");
 				alert.Clicked += (s, o) => {
-					this.NavigationController.PopViewControllerAnimated (true);
+					this.NavigationController.PopViewController (true);
 				};
 				alert.Show ();
 			}
@@ -270,17 +267,17 @@ namespace ProductFinder
 				controller.tblStores.ReloadData ();
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;	   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 120f;
 			}
@@ -292,7 +289,7 @@ namespace ProductFinder
 				}
 			}
 
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 				ps = tableItems [indexPath.Row];
@@ -318,7 +315,7 @@ namespace ProductFinder
 					image.storeImage = PlaceholderImage;
 					BeginDownloadingImage (image, indexPath, ps.tienda_imagen);
 				}
-				cell.ImageView.Image = MaxResizeImage (image.storeImage, 60, 60);
+				cell.ImageView.Image = image.storeImage;
 
 				return cell;
 			}
@@ -339,7 +336,7 @@ namespace ProductFinder
 				InvokeOnMainThread (() => {
 					var cell = controller.tblStores.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
 					if (cell != null)
-						cell.ImageView.Image = MaxResizeImage(image.storeImage, 80, 80);
+						cell.ImageView.Image = image.storeImage;
 				});
 			}
 
@@ -361,32 +358,32 @@ namespace ProductFinder
 				return data;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;
 			}
 
 			public UIView getDistanceView(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
+				botones.ElementAt(index).Frame = new CGRect (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
 				botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
-				distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
+				distancias.ElementAt(index).Frame = new CGRect (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
 				//PointF viewPosition = botones.ElementAt (index).ConvertPointToView (new PointF (), controller.tblStores);
 				//NSIndexPath indexPath = controller.tblStores.IndexPathForRowAtPoint (viewPosition);
 
 				Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
 				distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
 				distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
-				vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
+				vistas.ElementAt(index).Frame = new CGRect (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					SecondMapViewController mapView = new SecondMapViewController();
 					mapView.setTienda(tableItems[index]);
@@ -454,17 +451,17 @@ namespace ProductFinder
 				controller.tblStores.ReloadData ();
 			}
 
-			public override int NumberOfSections (UITableView tableView)
+			public override nint NumberOfSections (UITableView tableView)
 			{
 				return 1;
 			}
 
-			public override int RowsInSection (UITableView tableview, int section)
+			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return tableItems.Count;   
 			}
 
-			public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+			public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 			{
 				return 130f;
 			}
@@ -476,7 +473,7 @@ namespace ProductFinder
 				}
 			}
 
-			public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 				ps = tableItems [indexPath.Row];
@@ -501,7 +498,7 @@ namespace ProductFinder
 					image.storeImage = PlaceholderImage;
 					BeginDownloadingImage (image, indexPath, ps.tienda_imagen);
 				}
-				cell.ImageView.Image = MaxResizeImage (image.storeImage, 60, 60);
+				cell.ImageView.Image = image.storeImage;
 
 				return cell;
 			}
@@ -522,7 +519,7 @@ namespace ProductFinder
 				InvokeOnMainThread (() => {
 					var cell = controller.tblStores.VisibleCells.Where (c => c.Tag == controller.productImages.IndexOf (image)).FirstOrDefault ();
 					if (cell != null)
-						cell.ImageView.Image = MaxResizeImage(image.storeImage, 60, 60);
+						cell.ImageView.Image = image.storeImage;
 				});
 			}
 
@@ -544,32 +541,32 @@ namespace ProductFinder
 				return data;
 			}
 
-			public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+			public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
-				var width = maxResizeFactor * sourceSize.Width;
-				var height = maxResizeFactor * sourceSize.Height;
-				UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-				sourceImage.Draw(new RectangleF(0, 0, width, height));
+				nfloat width = maxResizeFactor * sourceSize.Width;
+				nfloat height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+				sourceImage.Draw(new CGRect(0, 0, width, height));
 				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 				UIGraphics.EndImageContext();
 				return resultImage;
 			}
 
 			public UIView getDistanceView(int index){
-				botones.ElementAt(index).Frame = new RectangleF (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
+				botones.ElementAt(index).Frame = new CGRect (0, 0, Images.mapa.Size.Width, Images.mapa.Size.Height);
 				botones.ElementAt(index).SetBackgroundImage (Images.mapa, UIControlState.Normal);
 				botones.ElementAt(index).BackgroundColor = UIColor.Clear;
-				distancias.ElementAt(index).Frame = new RectangleF (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
+				distancias.ElementAt(index).Frame = new CGRect (0, botones.ElementAt(index).Bounds.Height, 60f, 25f);
 				//PointF viewPosition = botones.ElementAt (index).ConvertPointToView (new PointF (), controller.tblStores);
 				//NSIndexPath indexPath = controller.tblStores.IndexPathForRowAtPoint (viewPosition);
 
 				Double distance = location.Location.DistanceFrom (new CLLocation(Double.Parse(tableItems[index].tienda_latitud),Double.Parse(tableItems[index].tienda_longitud)))/1000;
 				distancias.ElementAt(index).Text =  " "+ Math.Round(distance,2)+ "km";
 				distancias.ElementAt(index).Font = UIFont.SystemFontOfSize (12);
-				vistas.ElementAt(index).Frame = new RectangleF (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
+				vistas.ElementAt(index).Frame = new CGRect (0, 0, distancias.ElementAt(index).Bounds.Width, botones.ElementAt(index).Bounds.Height + distancias.ElementAt(index).Bounds.Height);
 				botones.ElementAt(index).TouchUpInside += (sender, e) => {
 					SecondMapViewController mapView = new SecondMapViewController();
 					mapView.setTienda(tableItems[index]);

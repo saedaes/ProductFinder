@@ -17,7 +17,7 @@ Ldebug_info_begin:
 	.short 2
 	.long 0
 	.byte 4,1
-	.asciz "Mono AOT Compiler 3.12.0 (monotouch-8.6.0-branch/1f46d47 Sat Jan 24 09:36:20 EST 2015)"
+	.asciz "Mono AOT Compiler 3.12.0 (monotouch-8.6.0-branch/041d473 Tue Mar 10 02:15:10 EDT 2015)"
 	.asciz "System.Runtime.Serialization.dll"
 	.asciz ""
 
@@ -251,14 +251,14 @@ image_table:
 
 	.long 2
 	.asciz "System.Runtime.Serialization"
-	.asciz "FF01A86F-AAE8-41B5-9AB6-6EBD05E50013"
+	.asciz "E510F5FF-7FF0-43EA-8980-BCF3D673E488"
 	.asciz ""
 	.asciz "7cec85d7bea7798e"
 	.align 3
 
 	.long 1,2,0,5,0
 	.asciz "mscorlib"
-	.asciz "90D88DB1-4F76-47B2-B76A-F1CDB752B2D4"
+	.asciz "AC57A9C7-2CC4-47D9-9505-DD281A89869B"
 	.asciz ""
 	.asciz "7cec85d7bea7798e"
 	.align 3
@@ -272,7 +272,7 @@ got_end:
 .section __TEXT, __const
 	.align 2
 assembly_guid:
-	.asciz "FF01A86F-AAE8-41B5-9AB6-6EBD05E50013"
+	.asciz "E510F5FF-7FF0-43EA-8980-BCF3D673E488"
 .section __TEXT, __const
 	.align 2
 runtime_version:
@@ -361,9 +361,9 @@ _mono_aot_module_System_Runtime_Serialization_info:
 blob:
 
 	.byte 0,0,0,0,0,0,0,0,0,0,0,12,0,39,42,47,2,0,0,2,0,0,2,0,0,2,0,0,2,0,0,0
-	.byte 128,144,8,0,0,1,4,128,128,9,0,0,1,193,0,20,165,193,0,15,200,193,0,20,161,193,0,15,205,4,128,160
-	.byte 20,0,0,4,193,0,20,165,193,0,15,200,193,0,20,161,193,0,15,205,4,128,160,12,0,0,4,193,0,20,165,193
-	.byte 0,15,200,193,0,20,161,193,0,15,205,98,111,101,104,109,0
+	.byte 128,144,8,0,0,1,4,128,128,9,0,0,1,193,0,20,153,193,0,15,189,193,0,20,149,193,0,15,194,4,128,160
+	.byte 20,0,0,4,193,0,20,153,193,0,15,189,193,0,20,149,193,0,15,194,4,128,160,12,0,0,4,193,0,20,153,193
+	.byte 0,15,189,193,0,20,149,193,0,15,194,115,103,101,110,0
 .section __TEXT, __const
 	.align 3
 Lglobals_hash:
@@ -754,7 +754,7 @@ Ldebug_line_start:
 	.long Ldebug_line_header_end - . -4
 	.byte 1,1,251,14,13,0,1,1,1,1,0,0,0,1,0,0,1
 .section __DWARF, __debug_line,regular,debug
-	.asciz "///Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.1.20/src/mono/mcs/class/System.Runtime.Serialization/System.Runtime.Serialization"
+	.asciz "///Library/Frameworks/Xamarin.iOS.framework/Versions/8.8.0.2/src/mono/mcs/class/System.Runtime.Serialization/System.Runtime.Serialization"
 
 	.byte 0
 	.asciz "<unknown>"

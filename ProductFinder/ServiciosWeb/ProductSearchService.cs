@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace ProductFinder
 {

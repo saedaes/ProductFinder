@@ -1,9 +1,9 @@
 using System;
-using System.Drawing;
-using MonoTouch.CoreLocation;
-using MonoTouch.MapKit;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using CoreGraphics;
+using CoreLocation;
+using MapKit;
+using UIKit;
+using Foundation;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -45,7 +45,7 @@ namespace ProductFinder
 
 				//Mostrar los diferentes tipos de mapas
 				int typesWidth=260, typesHeight=30, distanceFromBottom=60;
-				mapTypes = new UISegmentedControl(new RectangleF((View.Bounds.Width-typesWidth)/2, View.Bounds.Height-distanceFromBottom, typesWidth, typesHeight));
+				mapTypes = new UISegmentedControl(new CGRect((View.Bounds.Width-typesWidth)/2, View.Bounds.Height-distanceFromBottom, typesWidth, typesHeight));
 				mapTypes.InsertSegment("Mapa", 0, false);
 				mapTypes.InsertSegment("Satelite", 1, false);
 				mapTypes.InsertSegment("Ambos", 2, false);
@@ -95,9 +95,13 @@ namespace ProductFinder
 		protected class BasicMapAnnotation : MKAnnotation
 		{
 
-			public override CLLocationCoordinate2D Coordinate { get; set; }
+			protected CLLocationCoordinate2D coordinate;
 			protected string title;
 			protected string subtitle;
+
+			public override CLLocationCoordinate2D Coordinate {
+				get { return coordinate;}
+			}
 
 			public override string Title
 			{ get { return title; } }
@@ -108,7 +112,7 @@ namespace ProductFinder
 			public BasicMapAnnotation (CLLocationCoordinate2D coordinate, string title, string subTitle)
 				: base()
 			{
-				this.Coordinate = coordinate;
+				this.coordinate = coordinate;
 				this.title = title;
 				this.subtitle = subTitle;
 			}

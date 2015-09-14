@@ -1,10 +1,10 @@
 using System;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 using Mono.Data.Sqlite;
 using System.IO;
 using System.Net;
@@ -358,6 +358,7 @@ namespace ProductFinder
 					}catch(Exception exc){
 						Console.WriteLine("UPS: " + exc.ToString());
 					}
+					//Console.WriteLine(HelloId.ToString());
 				};
 
 				btnNuevaLista.TouchUpInside += (sender, e) => {
@@ -434,7 +435,7 @@ namespace ProductFinder
 				//Registramos la visita al producto en la aplicacion web
 				RegisterVisit(producto.tienda_id,MainView.userId);
 			}
-			catch(Exception ex){
+			catch(Exception){
 				/*Atrapamos la excepcion en caso de que el registro de la visita no pueda hacerse
 				sin mostrar ningun mensaje ni detener el flujo de la aplicacion*/
 			}
@@ -451,7 +452,7 @@ namespace ProductFinder
 				alert.Show ();
 			}
 
-			button = new UIButton (new RectangleF (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
+			button = new UIButton (new CGRect (0, 0, bannerImage.Bounds.Width, bannerImage.Bounds.Height));
 			bannerImage.Add (button);
 			button.TouchUpInside += (sender, e) => {
 				try{
@@ -537,11 +538,11 @@ namespace ProductFinder
 			// Display the content.
 			Console.WriteLine (responseFromServer);
 			// Clean up the streams.
-
-			return responseFromServer;
 			reader.Close ();
 			//dataStream.Close ();
 			response.Close ();
+			return responseFromServer;
+
 		}
 			
 	}
@@ -560,22 +561,22 @@ namespace ProductFinder
 			this.cantidad = cantidad;
 		}
 
-		public override int NumberOfSections (UITableView tableView)
+		public override nint NumberOfSections (UITableView tableView)
 		{
 			return 1;
 		}
 
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
 			return tableItems.Count;		   
 		}
 
-		public override float GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
+		public override nfloat GetHeightForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return 60f;
 		}
 
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
 
@@ -590,15 +591,15 @@ namespace ProductFinder
 			return cell;
 		}
 
-		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth, float maxHeight)
+		public UIImage MaxResizeImage(UIImage sourceImage, nfloat maxWidth, nfloat maxHeight)
 		{
 			var sourceSize = sourceImage.Size;
-			var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+			nfloat maxResizeFactor = (nfloat)Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
 			if (maxResizeFactor > 1) return sourceImage;
-			var width = maxResizeFactor * sourceSize.Width;
-			var height = maxResizeFactor * sourceSize.Height;
-			UIGraphics.BeginImageContextWithOptions(new SizeF(width, height),false, UIScreen.MainScreen.Scale);
-			sourceImage.Draw(new RectangleF(0, 0, width, height));
+			nfloat width = maxResizeFactor * sourceSize.Width;
+			nfloat height = maxResizeFactor * sourceSize.Height;
+			UIGraphics.BeginImageContextWithOptions(new CGSize(width, height),false, UIScreen.MainScreen.Scale);
+			sourceImage.Draw(new CGRect(0, 0, width, height));
 			var resultImage = UIGraphics.GetImageFromCurrentImageContext();
 			UIGraphics.EndImageContext();
 			return resultImage;

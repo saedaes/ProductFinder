@@ -1,14 +1,14 @@
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.Core.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/mscorlib.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/monotouch.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/Newtonsoft.Json.MonoTouch.dll
-/Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.1.20/lib/mono/2.1/I18N.dll
-/Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.1.20/lib/mono/2.1/I18N.MidEast.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/MonoTouch.FacebookConnect.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/ScanditSDK.dll
-/Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.1.20/lib/mono/2.1/I18N.CJK.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.Xml.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/ProductFinder.exe
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.Runtime.Serialization.dll
-/Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.1.20/lib/mono/2.1/I18N.Other.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/mscorlib.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.Core.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/Xamarin.iOS.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/Newtonsoft.Json.MonoTouch.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.8.0.2/lib/mono/2.1/I18N.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.8.0.2/lib/mono/2.1/I18N.MidEast.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/MonoTouch.FacebookConnect.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/ScanditSDK.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.8.0.2/lib/mono/2.1/I18N.CJK.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.Xml.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/ProductFinder.exe
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Debug/mtouch-cache/Link/System.Runtime.Serialization.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.8.0.2/lib/mono/2.1/I18N.Other.dll
