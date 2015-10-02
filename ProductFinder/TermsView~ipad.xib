@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TermsView">
+            <connections>
+                <outlet property="btnAceptar" destination="n2N-sN-gau" id="f4i-PX-vjw"/>
+                <outlet property="btnCancelar" destination="5FH-HL-7rK" id="QcE-6u-B9q"/>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TÉRMINOS Y CONDICIONES DE USO PARA PÁGINA WEB Y/O APLICACIÓN MÓVIL DE FIXBUY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oz2-iH-KsP">
+                    <rect key="frame" x="84" y="8" width="600" height="81"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vigente desde 1 de julio de 2015 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2w8-qy-4jx">
+                    <rect key="frame" x="8" y="98" width="260" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YcM-uq-fpu">
+                    <rect key="frame" x="18" y="120" width="742" height="779"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <mutableString key="text">Este contrato describe los términos y condiciones generales aplicables al uso de los servicios que FixBuy ofrece a sus usuarios a través de la página web y/o aplicación móvil. Cualquier persona que desee acceder y/o hacer uso de nuestros servicios podrá hacerlo sujetándose a lo aquí establecido con el fin de que estos sean seguros y brinden una certeza jurídica de cuáles son las obligaciones y responsabilidades tanto de FixBuy como del usuario. 
+
+LE INFORMAMOS QUE LOS TÉRMINOS Y CONDICIONES GENERALES TIENEN UN CARÁCTER OBLIGATORIO Y VINCULANTE, POR LO QUE CUALQUIER PERSONA QUE DECIDA NO ACEPTARLOS, DEBERÁ DE ABSTENERSE DE HACER USO DE NUESTROS SERVICIOS YA SEA EN LA PÁGINA WEB Y/O APLICACIÓN MÓVIL.
+
+Al seleccionar “no acepto términos y condiciones” dejara de tener acceso a los servicios que FixBuy ofrece a sus usuarios. 
+
+Todo usuario deberá leer cuidadosamente y entender las condiciones que FixBuy establece en este documento así como en el Aviso de Privacidad, previo a su inscripción como nuestro usuario. 
+A. DEFINICIONES
+
+i. Sitio web: La página web y/o a la aplicación móvil de FixBuy;
+
+ii. Canal interno de comunicación: Es un chat que FixBuy pone a disposición del usuario solicitante y del usuario proveedor, para lograr una comunicación rápida y efectiva. El usuario proveedor puede enviar cotizaciones, realizar operaciones o descripciones del producto al usuario solicitante. El uso exclusivo y manejo del chat es directamente responsabilidad de los usuarios anteriores;
+
+iii. Catálogo: Es un listado de los productos que el usuario proveedor ofrece e incluye la siguiente información del producto: unidad o pieza, código de barras, precio, nombre y descripción. Es responsabilidad de FixBuy subir el catálogo al sitio web, sin embargo el responsable de proveer la información, y asegurarse que sea veraz y fidedigna y que cumpla con estas políticas y términos y condiciones, es del usuario proveedor;
+
+iv. Fotografías: Las fotografías que aparecen en el sitio web de FixBuy, incluyendo en los catálogos, no necesariamente representan una reproducción real del producto que ofrece el usuario proveedor. Deberán servir únicamente como referencia y/o aproximación al producto que se exhibe. Su publicación no constituye una condición de oferta en términos legales. Las fotografías podrán ser indistintamente proporcionadas por Fixbuy o por los usuarios proveedores;
+
+v. Escanear: Herramienta de uso exclusivo para la aplicación móvil. Permite al usuario escanear el código de barras de un producto para que le despliegue una lista para observar los precios de cada usuario proveedor;
+
+vi. Servicios básicos: Consistentes en la obtención de la ubicación y de la distancia de los establecimientos que tengan los productos solicitados por el usuario. Se refiere también a la posibilidad de escanear productos para conocer sus precios, crear listas de productos para comparar precios, y visualizar la publicidad que se encuentra en el sitio web de FixBuy;
+
+vii. Servicios para usuario solicitante: Adicional a acceder a los servicios básicos, el usuario solicitante tiene la opción de cotizar a mayoreo directamente con el usuario proveedor, y accediendo al canal interno de comunicación que proporciona FixBuy;
+
+viii. Servicios para usuario proveedor: Adicional a acceder a los servicios básicos, el usuario proveedor tendrá acceso a subir catálogos de sus productos al sitio web para que puedan ser consultados y comparados con otros de su misma categoría por los usuarios solicitantes. Tendrá también la opción de contratar publicidad dentro del sitio web, realizar cotizaciones a mayoreo, realizar bajo su responsabilidad ofertas de sus productos, y tendrá acceso al canal interno de comunicación de FixBuy;
+
+ix. Los servicios: Los tres servicios descritos en los numerales vi., vii., viii.;
+
+x. Usuario sin cuenta: Aquél que no tiene una cuenta registrada en FixBuy y sólo tiene acceso a escanear y comparar precios sobre los productos que solicite así como a obtener la ubicación y la distancia de los establecimientos que tengan los productos solicitados;
+
+xi. Usuario estándar: Aquél que navegue de manera gratuita y que tenga derecho a los servicios básicos de FixBuy;
+
+xii. Usuario solicitante: Aquél que podrá hacer uso de los servicios para usuario solicitante de forma gratuita cuando así señale al momento de registrarse;
+
+xiii. Usuario proveedor: Aquél que cuenta además de los servicios básicos, con los servicios para usuario proveedor;
+
+xiv. Usuario: Se referirá a los tres tipos de usuarios que ya han quedado descritos. Contará con nombre de acceso y una clave para accesar a la cuenta que FixBuy le proporcione para usar los servicios a través del sitio web;
+
+** Cuando se refiera a “Usuario” se entenderá de forma indistinta al usuario solicitante, al usuario proveedor, al usuario estándar o a los tres** 
+
+xv. Sistema de calificación: Es un herramienta que se habilita exclusivamente para los usuarios solicitantes, con el fin de calificar el servicio proporcionado por el usuario proveedor y propiciar la evaluación y ponderación en los servicios de estos;
+
+xvi. Datos Personales: Cualquier información relacionada con el usuario, por ejemplo, su nombre, su dirección, correo electrónico, y cualquier otro dato que pueda servir para identificarle;
+
+xvii. Datos financieros: Son aquellos datos que identifiquen la capacidad económica del usuario, incluyendo la identificación de sus cuentas bancarias, estados financieros, etc.
+
+
+
+B. CAPACIDAD DEL USUARIO:
+
+
+Los servicios únicamente están disponibles para personas que tengan capacidad legal para contratar, esto es, que sean mayores de 18 (dieciocho) años y no hayan sido inhabilitados para ejercerla. En caso de ser una empresa quién realiza la inscripción, deberá tener capacidad para contratar a nombre de ella y de obligar a la misma en los términos de este contrato. 
+
+Por tanto el usuario al dar aceptar a estos términos y condiciones protesta ser mayor de 18 años y contar con capacidad legal y en el caso de ser empresa acepta tener la capacidad para obligarla en los mismos términos aquí descritos. 
+
+Cuando un menor de edad ingrese como usuario al sistema, proporcionando información falsa sobre su identidad, será responsable de las consecuencias que deriven de su actuar y eximen de cualquier responsabilidad a FixBuy. 
+
+C. INSCRIPCIÓN:
+
+
+Es responsabilidad del usuario llenar los campos obligatorios que se indican en el sitio web para inscribirse como usuario y brindarle así los servicios. El futuro usuario es responsable de la veracidad, exactitud y autenticidad de los datos personales que ingresa a nuestro sistema y asume el compromiso de actualizarlos cuando estos cambien. 
+
+El usuario tendrá acceso a su cuenta personal, la cual contará con un seudónimo y clave de seguridad personal elegida por él mismo, la cual es responsabilidad exclusiva suya, para evitar el mal uso de la misma. 
+
+Al momento de realizar su inscripción como usuario y elegir un seudónimo, éste deberá ser claro y que pueda asociarse a su cuenta. FixBuy no le permitirá registrar un seudónimo cuando considere que pueda crear confusión respecto de los seudónimos de otros usuarios ya registrados. Además no podrá contener palabras ofensivas, o que puedan inducir a caer en un error al usuario al pensar éste que los productos pertenecen a una marca o empresa de la cual el usuario que pretende registrarse no sea el titular, de ser así FixBuy se reserva el derecho de eliminar o suspender del sistema al usuario que actualice el supuesto anterior. 
+
+La cuenta será única e intransferible y solamente el usuario proveedor o usuario solicitante podrá contar con varias cuentas cuándo: 
+
+i. El giro de la empresa o negocio sea completamente distinto al de la cuenta ya registrada;
+
+ii. Los productos a ofrecer difieran en su totalidad a los de la cuenta ya registrada;
+
+iii. Existen distintas sucursales de la misma empresa. Podrá haber sólo una cuenta por sucursal, y dentro de la misma se podrán tener varios usuarios.
+
+Si el usuario proveedor o usuario solicitante no se encuentran en los supuestos anteriores, está prohibido que tengan dos cuentas o más, pudiendo FixBuy cancelar, suspender o inhabilitar las cuentas para que el usuario sólo tenga una. 
+
+D. OBLIGACIONES DEL USUARIO
+
+
+Cuándo el usuario proveedor o el usuario solicitante realicen alguna operación utilizando el canal interno de comunicación de FixBuy, serán responsables directos de cumplir y responder en caso de incumplimiento. Por lo que en este momento reconocen que FixBuy sólo pone a su disposición una plataforma virtual que les permite hacer uso de los servicios ya descritos y lo eximen de cualquier responsabilidad legal que pudiera generar el utilizar su plataforma. 
+
+El usuario se compromete a notificar a FixBuy de forma inmediata y por medio del siguiente correo electrónico atencion@fixbuy.com, cualquier actividad anormal en su cuenta personal o la pérdida de la misma, de forma que FixBuy pueda bloquearla en caso de ser utilizada por persona no autorizada por el usuario o tercero extraño. En el supuesto en que el usuario no realice la notificación correspondiente, FixBuy no será responsable bajo ningún supuesto de aquella información que pierda o de las actividades que realice la persona no autorizada dentro de su cuenta. 
+
+Usuario sin cuenta: 
+
+i. Acepta que las fotografías que aparecen en el sitio web de FixBuy de los productos que el usuario proveedor ofrece, sólo son un ejemplo por lo que la descripción sólo se asemeja al producto real pudiendo variar éste. En caso de querer conocer el producto real que el usuario proveedor ofrece deberá solicitársela a éste directamente.
+
+Usuario estándar: 
+
+i. Acepta que sólo tendrá acceso a los servicios básicos que ofrece FixBuy al obtener una cuenta gratuita y que su única relación jurídica con FixBuy, es la de poner a su disposición los servicios para usuario estándar, sin que pueda realizar ningún tipo de operaciones;
+
+ii. Acepta que las fotografías que aparecen en el sitio web de FixBuy de los productos que el usuario proveedor ofrece, sólo son un ejemplo por lo que la descripción sólo se asemeja al producto real pudiendo variar éste. En caso de querer conocer el producto real que el usuario proveedor ofrece deberá solicitársela a éste directamente.
+
+Usuario Solicitante: 
+
+i. Acepta que es el responsable directo de cumplir con las ofertas que haga sobre los productos solicitados al usuario proveedor, respetando en todo momento los términos publicados. Cualquier relación que se dé a través de los canales internos de FixBuy, será exclusivamente responsabilidad de éste y promete sacar a paz y a salvo a FixBuy en caso de alguna reclamación o problema;
+
+ii. Acepta que en caso de cualquier reclamación o devolución sobre los artículos que haya cotizado al usuario proveedor en el sitio web, deberá realizarla directamente con él. Por lo que FixBuy no es parte obligada en esta operación por lo tanto sólo es un medio a través del cual pueden contactar distintos usuarios proveedores para solicitar cotizaciones, así como realizar listas de productos para comparar precios. Reconoce que cualquier compra que realice se hará de forma directa con el usuario proveedor, y por ello todo lo relativo a pago y a facturación de los productos que compre deberá tratarla con éste;
+
+iii. Acepta que las fotografías que aparecen en el sitio web de FixBuy de los productos que el usuario proveedor ofrece, sólo son un ejemplo por lo que la descripción sólo se asemeja al producto real pudiendo variar éste. En caso de querer conocer el producto real que el usuario proveedor ofrece deberá solicitársela a éste directamente.
+
+Usuario Proveedor: 
+
+i. Reconoce tener además del vínculo de términos y condiciones que los une jurídicamente, un contrato de prestación de servicios que le obliga mientras esté vigente;
+
+ii. Acepta y se da por enterado de saber que FixBuy únicamente proporciona un espacio virtual en el cual le permite cargar catálogos sobre cualquier clase de productos para que estos puedan ser consultados y comparados con otros de su misma categoría en precio y calidad. Así mismo asume cualquier responsabilidad de aquellas negociaciones que llegue a realizar a través del canal interno de comunicación que FixBuy proporciona, reconociendo que él es el responsable directo de darles cumplimiento y que FixBuy no tiene participación alguna en la negociación y perfeccionamiento de los mismos;
+
+iii. Acepta y reconoce haber dado su consentimiento a FixBuy para tratar datos financieros a través del canal interno de comunicación del sitio web cuándo envíe a través de éste cotizaciones a usuarios solicitantes;
+
+iv. Acepta que FixBuy será el encargado de proporcionar la fotografía que se asemeje al producto que el usuario proveedor pretende ofrecer en el sitio web, salvo cuándo FixBuy solicite la fotografía del producto por resultar imposible para éste de obtenerla;
+
+v. Acepta estar obligado a respetar los términos y condiciones de las ofertas que realice a través del sitio web y que éstas cuenten con las condiciones y plazos claros y precisos, debiendo respetarlas durante el plazo fijado o hasta que se cumplan dichas condiciones;
+
+vi. Acepta hacerse responsable de publicar todos sus productos agregando el Impuesto al Valor Agregado cuándo así corresponda la aplicación del impuesto. En caso de no respetar lo anterior, asumirá cualquier responsabilidad derivada.
+
+E. SISTEMA DE CALIFICACIÓN
+
+
+Es una herramienta que le permite al usuario solicitante calificar el servicio que el usuario proveedor le proporcionó, así como crear una lista preferente de los usuarios proveedores con los que más trata. Al igual que permite que se conozca la confiabilidad, reputación y la identidad que tiene cada usuario proveedor. FixBuy no tiene la obligación de verificar la veracidad o exactitud de las calificaciones que realicen los usuarios solicitantes, ni es responsable de la certeza de las mismas. 
+
+F. TARIFAS Y FACTURACIÓN POR EL SERVICIO
+
+
+El registro como usuario estándar es gratuito y por tanto no se le solicitarán ningún dato financiero. 
+
+En el caso del usuario proveedor, acepta pagar una tarifa para tener acceso a los servicios de usuario proveedor que FixBuy ofrece en su sitio web. Las tarifas varían dependiendo del tiempo que decida contratar los servicios y de los mismos servicios a contratar. Acepta que una vez creada su cuenta como “usuario proveedor” FixBuy procederá a solicitar sus datos bancarios y su forma de pago. Acepta que los servicios quedarán habilitados una vez que FixBuy compruebe que el pago de la tarifa se realizó, y de conformidad con el Aviso de Privacidad que ya aceptó. 
+
+Lo anterior se aplicará también cuando el usuario proveedor y usuario solicitante requieran habilitar otra cuenta por tener distintas sucursales o bien si dentro de la misma cuenta ya habilitada necesita dar de alta a distintos usuarios para que tengan acceso a ésta. En esos casos el usuario deberá pagar el servicio adicional para que FixBuy una vez que compruebe que el pago se ha realizado, pueda habilitarlos. 
+
+Acepta que en caso que desee contratar publicidad a través de banners publicados en el sitio web generarán un cargo adicional al pago de la tarifa como usuario proveedor. El cargo depende del tamaño, la forma y el tiempo que desee que se encuentre la publicidad en el sitio web. La publicidad se subirá al sitio web o se modificará hasta que el pago se confirme. Únicamente se subirá la versión final que envíe el usuario proveedor. 
+
+El usuario proveedor acepta que el tiempo mínimo para contratar los servicios de FixBuy es de un mes y el máximo de un año. NO se realizarán devoluciones por el pago de tarifas y/o cargos adicionales en caso de querer cancelar el servicio, por lo que una vez que realice el pago para contratar los servicios de FixBuy admite tener conocimiento de la política de NO devoluciones de FixBuy. Si fuera el caso que FixBuy incumpliera con los servicios prometidos al usuario proveedor, tendrá hasta un año contados a partir de realizar el pago para realizar cualquier reclamación. 
+
+El usuario proveedor se compromete a realizar los pagos a través del medio que FixBuy indique para ello, pudiendo ser por transferencia electrónica, cheque o depósito en efectivo. FixBuy facturará sus servicios enviando factura al correo electrónico que haya registrado en su cuenta como usuario. 
+
+FixBuy se reserva el derecho de modificar, cambiar, agregar o eliminar las tarifas vigentes de sus servicios en cualquier momento, bastando una notificación al usuario proveedor y al usuario solicitante conforme a lo señalado en la sección de “modificaciones a los términos y condiciones”. Sin embargo FixBuy podrá modificar temporalmente las tarifas de sus servicios cuándo ponga a disposición del público promociones, la cual se hará efectiva una vez que sea publicada o se coloque el anuncio. 
+
+En caso de ser necesario FixBuy se reserva el derecho a tomar medidas judiciales o extrajudiciales para obtener el pago de lo debido por cualquier usuario que incumpla con lo señalado en esta sección. 
+
+G. POLÍTICA DE DERECHOS DE PROPIEDAD INTELECTUAL
+
+
+La totalidad del contenido en este sitio web, texto, imágenes, marcas, logotipos, archivos de audio, video, archivos de software, combinación de colores, así como la estructura, selección, ordenación y presentación de sus contenidos se encuentran protegidos por la Ley de la Propiedad Industrial, sin perjuicio de otras posibles protecciones. El usuario reconoce que los derechos de propiedad intelectual sobre estos contenidos corresponden exclusivamente a FixBuy. No está permitido publicar, manipular, distribuir ni reproducir de manera alguna, ni en ningún formato, los contenidos ni copias de los contenidos que se ofrezcan a través del sitio web. Asimismo, no está autorizado el uso de dichos contenidos en relación con ningún negocio o empresa comercial. 
+
+Este sitio web incluye y presenta logos, logotipos y otras marcas comerciales y marcas de servicio que son propiedad del usuario que los proporcionó. El sitio web también puede incluir marcas comerciales o marcas de servicio de terceros. Todas esas marcas son propiedad de sus respectivos titulares y el usuario acuerda no usar o mostrar las mismas de cualquier forma sin la autorización previa por escrito del propietario de la marca comercial en cuestión. www.fixbuy.com.mx y/o www.fixbuy.mx son dominios registrados por FixBuy que no pueden ser utilizados, salvo autorización expresa previa, para fines personales o de cualquier tipo que puedan causar confusión entre nuestros usuarios o llegue a causar un descrédito a FixBuy. 
+
+H. RESPONSABILIDADES DE FIXBUY
+
+
+FixBuy únicamente es responsable de permitir a los usuarios realizar un escaneo de productos para conocer los precios, que el usuario pueda elaborar listados de productos en donde puedan comparar el precio y la calidad con el de otras marcas, así como también el que contraten publicidad para que aparezca en el sitio web de FixBuy. Será responsable 
+
+también de proporcionar la ubicación y la distancia de los establecimientos de aquellos productos que el usuario solicite. Por tanto el usuario reconoce que FixBuy es un sitio web en el cual sólo puede realizar comparaciones y cotizaciones y que toda operación y/o acuerdo de compra que realice a través del canal interno de comunicación de FixBuy, será responsabilidad del usuario proveedor y usuario solicitante el ejecutarlos y cumplirlos. Por tanto el trato de compra o venta de productos será tratado directamente con el usuario proveedor y el usuario solicitante. 
+
+FixBuy no será responsable respecto de las ofertas, existencia, calidad, cantidad o condición de los productos ofrecidos o adquiridos por el usuario solicitante o usuario estándar, así como tampoco es responsable sobre la capacidad legal para contratar del usuario o de la veracidad de los datos personales que son ingresados al sistema. Cada usuario conoce y acepta ser el responsable directo por los productos, ofertas y actividades que realice en su cuenta de FixBuy. Por tanto el cumplimiento efectivo sobre la compra y venta de productos está a cargo del usuario y en ningún caso FixBuy será responsable por daños y/o perjuicios que puedan llegar a sufrir. 
+
+Se le recomienda al usuario solicitante y al usuario proveedor actuar con sentido común y prudencia al momento de realizar una operación, ya que debe tener en cuenta el riesgo de contar con una identidad falsa, pues FixBuy bajo ninguna circunstancia es responsable por las operaciones y/u ofertas que sean incumplidas por el usuario proveedor o el usuario solicitante. 
+
+En el supuesto donde un usuario o varios inicien cualquier tipo de reclamo o acción legal contra otro (s) usuario (s), por incumplimiento u otro motivo, éste o éstos eximen a FixBuy de cualquier responsabilidad. 
+
+I. ALCANCE DE LOS SERVICIOS DE FIXBUY
+
+
+El presente contrato no genera ningún tipo de relación laboral o de mandato entre FixBuy y el usuario, éste reconoce y acepta que FixBuy no es parte de ninguna operación, ni negociación, así como tampoco tiene control sobre la calidad, seguridad o legalidad de los productos ofrecidos, ni de la veracidad sobre la capacidad legal de los usuarios para ofertar, vender o comprar los productos. FixBuy no es el encargado de realizar las ofertas sobre los productos del usuario proveedor pues es a éste a quien le corresponde realizarlas cuándo así lo desee. 
+
+FixBuy no puede garantizar que un usuario completará una operación ni podrá verificar la identidad o los datos personales ingresados por ellos mismos en el sistema, así como tampoco puede asegurar el cumplimiento efectivo respecto de aquellos contratos o acuerdos que los usuarios realicen con otros usuarios a través de FixBuy. 
+
+J. PROHIBICIONES
+
+
+Se prohíbe la publicación o catálogos a través del sitio web de FixBuy que contengan productos o material que: 
+
+i. Tenga contenido o permita o realice cualquier actividad contraria a las disposiciones legales y administrativas, así como a la moral y a las buenas costumbres; 
+
+ii. Promueva o tenga cualquier tipo de contenido de sexo, ya sea pedofilia, pornografía, desnudos de menores, independientemente que éstos sean reales o simulados. Así como de cualquier modo involucre menores de 18 años y se trate de películas, fotografías o cualquier tipo de material que hayan sido tomados de forma ilegal o sin el consentimiento de las personas que aparecen en éste; 
+
+iii. Promueva cualquier tipo de violencia, discriminación, prostitución, lavado de dinero, tráfico de armas, de personas o de animales, u otras actividades ilegales; 
+
+iv. Tenga un contenido que viole cualquier legislación vigente, en especial aquellas referidas a la protección de derechos de propiedad intelectual, piratería de software, etc. 
+
+FixBuy podrá dar por terminado este contrato y/o suspender, cancelar, temporal o definitivamente una cuenta, sin notificación previa, en caso que determine que se actualiza cualquiera de los puntos anteriores, en parte o en todo. Así como también cuándo se descubra o exista sospecha de un comportamiento fraudulento o que atente contra la imagen de FixBuy o de cualquiera de sus integrantes. Reservándose la facultad de iniciar cualquier acción judicial o extrajudicial que se estime pertinente. 
+
+K. FALLAS EN EL SISTEMA
+
+
+FixBuy no se hace responsable por los daños, perjuicios o pérdida de información del usuario, causados por fallas en el sistema, en el servidor o en los servicios de proveeduría de internet. Así mismo tampoco asume la responsabilidad por cualquier virus que pudiera ingresar al equipo del usuario, causado por el acceso o uso del sitio web o por la transferencia de datos, archivos, imágenes, audios o textos que se realicen a través de la página web y/o aplicación móvil. 
+
+FixBuy no puede garantizar el acceso y el uso ininterrumpido de su sitio web, pues el sistema en alguna eventualidad puede estar no disponible debido a fallas de internet, dificultades técnicas o por causas de mantenimiento al sistema. Sin embargo, en los anteriores supuestos FixBuy tratará de restablecerlo con la mayor prontitud posible sin que por esto pueda generársele algún tipo de responsabilidad.</mutableString>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FH-HL-7rK">
+                    <rect key="frame" x="670" y="902" width="90" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Cancelar">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2N-sN-gau">
+                    <rect key="frame" x="583" y="902" width="79" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Aceptar">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

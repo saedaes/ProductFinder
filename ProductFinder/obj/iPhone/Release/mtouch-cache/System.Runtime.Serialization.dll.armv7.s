@@ -1,12 +1,13 @@
 .subsections_via_symbols
 .section __DWARF, __debug_abbrev,regular,debug
 
-	.byte 1,17,1,37,8,3,8,27,8,19,11,17,1,18,1,16,6,0,0,2,46,1,3,8,17,1,18,1,64,10,0,0
-	.byte 3,5,0,3,8,73,19,2,10,0,0,15,5,0,3,8,73,19,2,6,0,0,4,36,0,11,11,62,11,3,8,0
-	.byte 0,5,2,1,3,8,11,15,0,0,17,2,0,3,8,11,15,0,0,6,13,0,3,8,73,19,56,10,0,0,7,22
-	.byte 0,3,8,73,19,0,0,8,4,1,3,8,11,15,73,19,0,0,9,40,0,3,8,28,13,0,0,10,57,1,3,8
-	.byte 0,0,11,52,0,3,8,73,19,2,10,0,0,12,52,0,3,8,73,19,2,6,0,0,13,15,0,73,19,0,0,14
-	.byte 16,0,73,19,0,0,16,28,0,73,19,56,10,0,0,18,46,0,3,8,17,1,18,1,0,0,0
+	.byte 1,17,1,37,8,3,8,27,8,19,11,17,1,18,1,16,6,0,0,2,46,1,3,8,135,64,8,58,15,59,15,17
+	.byte 1,18,1,64,10,0,0,3,5,0,3,8,73,19,2,10,0,0,15,5,0,3,8,73,19,2,6,0,0,4,36,0
+	.byte 11,11,62,11,3,8,0,0,5,2,1,3,8,11,15,0,0,17,2,0,3,8,11,15,0,0,6,13,0,3,8,73
+	.byte 19,56,10,0,0,7,22,0,3,8,73,19,0,0,8,4,1,3,8,11,15,73,19,0,0,9,40,0,3,8,28,13
+	.byte 0,0,10,57,1,3,8,0,0,11,52,0,3,8,73,19,2,10,0,0,12,52,0,3,8,73,19,2,6,0,0,13
+	.byte 15,0,73,19,0,0,14,16,0,73,19,0,0,16,28,0,73,19,56,10,0,0,18,46,0,3,8,17,1,18,1,0
+	.byte 0,0
 .section __DWARF, __debug_info,regular,debug
 Ldebug_info_start:
 
@@ -17,7 +18,7 @@ Ldebug_info_begin:
 	.short 2
 	.long 0
 	.byte 4,1
-	.asciz "Mono AOT Compiler 3.12.0 (monotouch-8.6.0-branch/041d473 Tue Mar 10 02:15:10 EDT 2015)"
+	.asciz "Mono AOT Compiler 4.0.3 (mono-4.0.0-branch-c5sr3/d6946b4 Tue Aug  4 13:46:43 EDT 2015)"
 	.asciz "System.Runtime.Serialization.dll"
 	.asciz ""
 
@@ -111,11 +112,13 @@ Lcie0_end:
 .text
 	.align 3
 methods:
-	.space 16
+jit_code_start:
+
+	.byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 .text
 	.align 2
-	.no_dead_strip _System_Runtime_Serialization_DataContractAttribute_get_IsReference
-_System_Runtime_Serialization_DataContractAttribute_get_IsReference:
+	.no_dead_strip System_Runtime_Serialization_DataContractAttribute_get_IsReference
+System_Runtime_Serialization_DataContractAttribute_get_IsReference:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,8,0,208,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -123,8 +126,8 @@ _System_Runtime_Serialization_DataContractAttribute_get_IsReference:
 Lme_0:
 .text
 	.align 2
-	.no_dead_strip _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
-_System_Runtime_Serialization_DataMemberAttribute_get_IsRequired:
+	.no_dead_strip System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
+System_Runtime_Serialization_DataMemberAttribute_get_IsRequired:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,12,0,208,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -132,8 +135,8 @@ _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired:
 Lme_1:
 .text
 	.align 2
-	.no_dead_strip _System_Runtime_Serialization_DataMemberAttribute_get_Name
-_System_Runtime_Serialization_DataMemberAttribute_get_Name:
+	.no_dead_strip System_Runtime_Serialization_DataMemberAttribute_get_Name
+System_Runtime_Serialization_DataMemberAttribute_get_Name:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,8,0,144,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -141,8 +144,8 @@ _System_Runtime_Serialization_DataMemberAttribute_get_Name:
 Lme_2:
 .text
 	.align 2
-	.no_dead_strip _System_Runtime_Serialization_DataMemberAttribute_get_Order
-_System_Runtime_Serialization_DataMemberAttribute_get_Order:
+	.no_dead_strip System_Runtime_Serialization_DataMemberAttribute_get_Order
+System_Runtime_Serialization_DataMemberAttribute_get_Order:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,16,0,144,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -150,8 +153,8 @@ _System_Runtime_Serialization_DataMemberAttribute_get_Order:
 Lme_3:
 .text
 	.align 2
-	.no_dead_strip _System_Runtime_Serialization_EnumMemberAttribute_get_Value
-_System_Runtime_Serialization_EnumMemberAttribute_get_Value:
+	.no_dead_strip System_Runtime_Serialization_EnumMemberAttribute_get_Value
+System_Runtime_Serialization_EnumMemberAttribute_get_Value:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,8,0,144,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -159,30 +162,30 @@ _System_Runtime_Serialization_EnumMemberAttribute_get_Value:
 Lme_4:
 .text
 	.align 3
-methods_end:
+jit_code_end:
 
-	.long 0
+	.byte 0,0,0,0
 .text
 	.align 3
 method_addresses:
 	.no_dead_strip method_addresses
-bl _System_Runtime_Serialization_DataContractAttribute_get_IsReference
-bl _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
-bl _System_Runtime_Serialization_DataMemberAttribute_get_Name
-bl _System_Runtime_Serialization_DataMemberAttribute_get_Order
-bl _System_Runtime_Serialization_EnumMemberAttribute_get_Value
+bl System_Runtime_Serialization_DataContractAttribute_get_IsReference
+bl System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
+bl System_Runtime_Serialization_DataMemberAttribute_get_Name
+bl System_Runtime_Serialization_DataMemberAttribute_get_Order
+bl System_Runtime_Serialization_EnumMemberAttribute_get_Value
 bl method_addresses
 method_addresses_end:
+
 .section __TEXT, __const
-	.align 3
-code_offsets:
-
-	.long 0
-
-.text
 	.align 3
 unbox_trampolines:
 unbox_trampolines_end:
+
+	.long 0
+.text
+	.align 3
+unbox_trampoline_addresses:
 
 	.long 0
 .section __TEXT, __const
@@ -251,14 +254,14 @@ image_table:
 
 	.long 2
 	.asciz "System.Runtime.Serialization"
-	.asciz "E510F5FF-7FF0-43EA-8980-BCF3D673E488"
+	.asciz "096275AF-2342-42F9-A6F4-CB22394BDBA7"
 	.asciz ""
 	.asciz "7cec85d7bea7798e"
 	.align 3
 
 	.long 1,2,0,5,0
 	.asciz "mscorlib"
-	.asciz "AC57A9C7-2CC4-47D9-9505-DD281A89869B"
+	.asciz "7262E3B8-0D95-411F-B565-7BA468C57FB2"
 	.asciz ""
 	.asciz "7cec85d7bea7798e"
 	.align 3
@@ -272,7 +275,7 @@ got_end:
 .section __TEXT, __const
 	.align 2
 assembly_guid:
-	.asciz "E510F5FF-7FF0-43EA-8980-BCF3D673E488"
+	.asciz "096275AF-2342-42F9-A6F4-CB22394BDBA7"
 .section __TEXT, __const
 	.align 2
 runtime_version:
@@ -285,11 +288,17 @@ assembly_name:
 	.align 3
 _mono_aot_file_info:
 
-	.long 104,0
+	.long 111,0
 	.align 2
 	.long _mono_aot_System_Runtime_Serialization_got
 	.align 2
+	.long 0
+	.align 2
 	.long methods
+	.align 2
+	.long jit_code_start
+	.align 2
+	.long jit_code_end
 	.align 2
 	.long 0
 	.align 2
@@ -303,8 +312,6 @@ _mono_aot_file_info:
 	.align 2
 	.long ex_info_offsets
 	.align 2
-	.long code_offsets
-	.align 2
 	.long method_addresses
 	.align 2
 	.long extra_method_info_offsets
@@ -313,7 +320,7 @@ _mono_aot_file_info:
 	.align 2
 	.long got_info_offsets
 	.align 2
-	.long methods_end
+	.long 0
 	.align 2
 	.long unwind_info
 	.align 2
@@ -346,10 +353,12 @@ _mono_aot_file_info:
 	.long unbox_trampolines
 	.align 2
 	.long unbox_trampolines_end
+	.align 2
+	.long unbox_trampoline_addresses
 
-	.long 4,20,1,6,10,387000831,0,107
+	.long 4,20,1,6,2,387000831,0,107
 	.long 0,0,0,0,0,0,0,0
-	.long 0,0,0,0,128,4,4,14
+	.long 0,0,0,0,128,4,4,15
 	.long 0,0,0,0,0
 	.globl _mono_aot_module_System_Runtime_Serialization_info
 	.align 2
@@ -360,10 +369,10 @@ _mono_aot_module_System_Runtime_Serialization_info:
 	.align 3
 blob:
 
-	.byte 0,0,0,0,0,0,0,0,0,0,0,12,0,39,42,47,2,0,0,2,0,0,2,0,0,2,0,0,2,0,0,0
-	.byte 128,144,8,0,0,1,4,128,128,9,0,0,1,193,0,19,153,193,0,14,192,193,0,19,149,193,0,14,197,4,128,160
-	.byte 20,0,0,4,193,0,19,153,193,0,14,192,193,0,19,149,193,0,14,197,4,128,160,12,0,0,4,193,0,19,153,193
-	.byte 0,14,192,193,0,19,149,193,0,14,197,115,103,101,110,0
+	.byte 0,0,0,0,0,0,0,0,0,0,0,12,0,40,43,48,2,0,0,2,0,0,2,0,0,2,0,0,2,0,0,0
+	.byte 128,144,8,0,0,1,4,128,128,9,0,0,1,193,0,22,236,193,0,20,236,193,0,22,232,193,0,20,241,4,128,160
+	.byte 20,0,0,4,193,0,22,236,193,0,20,236,193,0,22,232,193,0,20,241,4,128,160,12,0,0,4,193,0,22,236,193
+	.byte 0,20,236,193,0,22,232,193,0,20,241,115,103,101,110,0
 .section __TEXT, __const
 	.align 3
 Lglobals_hash:
@@ -482,7 +491,7 @@ LTDIE_0:
 LDIFF_SYM19=LTDIE_1 - Ldebug_info_start
 	.long LDIFF_SYM19
 	.byte 2,35,0,6
-	.asciz "<IsReference>k__BackingField"
+	.asciz "isReference"
 
 LDIFF_SYM20=LDIE_BOOLEAN - Ldebug_info_start
 	.long LDIFF_SYM20
@@ -503,7 +512,10 @@ LDIFF_SYM23=LTDIE_0 - Ldebug_info_start
 	.long LDIFF_SYM23
 	.byte 2
 	.asciz "System.Runtime.Serialization.DataContractAttribute:get_IsReference"
-	.long _System_Runtime_Serialization_DataContractAttribute_get_IsReference
+	.asciz "System_Runtime_Serialization_DataContractAttribute_get_IsReference"
+
+	.byte 0,0
+	.long System_Runtime_Serialization_DataContractAttribute_get_IsReference
 	.long Lme_0
 
 	.byte 2,118,16,3
@@ -521,9 +533,9 @@ Lfde0_start:
 
 	.long 0
 	.align 2
-	.long _System_Runtime_Serialization_DataContractAttribute_get_IsReference
+	.long System_Runtime_Serialization_DataContractAttribute_get_IsReference
 
-LDIFF_SYM26=Lme_0 - _System_Runtime_Serialization_DataContractAttribute_get_IsReference
+LDIFF_SYM26=Lme_0 - System_Runtime_Serialization_DataContractAttribute_get_IsReference
 	.long LDIFF_SYM26
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -598,7 +610,10 @@ LDIFF_SYM38=LTDIE_5 - Ldebug_info_start
 	.long LDIFF_SYM38
 	.byte 2
 	.asciz "System.Runtime.Serialization.DataMemberAttribute:get_IsRequired"
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
+	.asciz "System_Runtime_Serialization_DataMemberAttribute_get_IsRequired"
+
+	.byte 0,0
+	.long System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
 	.long Lme_1
 
 	.byte 2,118,16,3
@@ -616,9 +631,9 @@ Lfde1_start:
 
 	.long 0
 	.align 2
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
+	.long System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
 
-LDIFF_SYM41=Lme_1 - _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
+LDIFF_SYM41=Lme_1 - System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
 	.long LDIFF_SYM41
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -628,7 +643,10 @@ Lfde1_end:
 
 	.byte 2
 	.asciz "System.Runtime.Serialization.DataMemberAttribute:get_Name"
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_Name
+	.asciz "System_Runtime_Serialization_DataMemberAttribute_get_Name"
+
+	.byte 0,0
+	.long System_Runtime_Serialization_DataMemberAttribute_get_Name
 	.long Lme_2
 
 	.byte 2,118,16,3
@@ -646,9 +664,9 @@ Lfde2_start:
 
 	.long 0
 	.align 2
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_Name
+	.long System_Runtime_Serialization_DataMemberAttribute_get_Name
 
-LDIFF_SYM44=Lme_2 - _System_Runtime_Serialization_DataMemberAttribute_get_Name
+LDIFF_SYM44=Lme_2 - System_Runtime_Serialization_DataMemberAttribute_get_Name
 	.long LDIFF_SYM44
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -658,7 +676,10 @@ Lfde2_end:
 
 	.byte 2
 	.asciz "System.Runtime.Serialization.DataMemberAttribute:get_Order"
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_Order
+	.asciz "System_Runtime_Serialization_DataMemberAttribute_get_Order"
+
+	.byte 0,0
+	.long System_Runtime_Serialization_DataMemberAttribute_get_Order
 	.long Lme_3
 
 	.byte 2,118,16,3
@@ -676,9 +697,9 @@ Lfde3_start:
 
 	.long 0
 	.align 2
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_Order
+	.long System_Runtime_Serialization_DataMemberAttribute_get_Order
 
-LDIFF_SYM47=Lme_3 - _System_Runtime_Serialization_DataMemberAttribute_get_Order
+LDIFF_SYM47=Lme_3 - System_Runtime_Serialization_DataMemberAttribute_get_Order
 	.long LDIFF_SYM47
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -715,7 +736,10 @@ LDIFF_SYM52=LTDIE_7 - Ldebug_info_start
 	.long LDIFF_SYM52
 	.byte 2
 	.asciz "System.Runtime.Serialization.EnumMemberAttribute:get_Value"
-	.long _System_Runtime_Serialization_EnumMemberAttribute_get_Value
+	.asciz "System_Runtime_Serialization_EnumMemberAttribute_get_Value"
+
+	.byte 0,0
+	.long System_Runtime_Serialization_EnumMemberAttribute_get_Value
 	.long Lme_4
 
 	.byte 2,118,16,3
@@ -733,9 +757,9 @@ Lfde4_start:
 
 	.long 0
 	.align 2
-	.long _System_Runtime_Serialization_EnumMemberAttribute_get_Value
+	.long System_Runtime_Serialization_EnumMemberAttribute_get_Value
 
-LDIFF_SYM55=Lme_4 - _System_Runtime_Serialization_EnumMemberAttribute_get_Value
+LDIFF_SYM55=Lme_4 - System_Runtime_Serialization_EnumMemberAttribute_get_Value
 	.long LDIFF_SYM55
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -754,52 +778,14 @@ Ldebug_line_start:
 	.long Ldebug_line_header_end - . -4
 	.byte 1,1,251,14,13,0,1,1,1,1,0,0,0,1,0,0,1
 .section __DWARF, __debug_line,regular,debug
-	.asciz "///Library/Frameworks/Xamarin.iOS.framework/Versions/8.8.0.2/src/mono/mcs/class/System.Runtime.Serialization/System.Runtime.Serialization"
 
 	.byte 0
 	.asciz "<unknown>"
 
-	.byte 0,0,0
-	.asciz "DataContractAttribute.cs"
-
-	.byte 1,0,0
-	.asciz "DataMemberAttribute.cs"
-
-	.byte 1,0,0
-	.asciz "EnumMemberAttribute.cs"
-
-	.byte 1,0,0,0
+	.byte 0,0,0,0
 Ldebug_line_header_end:
-.section __DWARF, __debug_line,regular,debug
 
-	.byte 0,5,2
-	.long _System_Runtime_Serialization_DataContractAttribute_get_IsReference
-
-	.byte 3,55,4,2,1,3,55,2,24,1,2,16,1,0,1,1
-.section __DWARF, __debug_line,regular,debug
-
-	.byte 0,5,2
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_IsRequired
-
-	.byte 3,51,4,3,1,3,51,2,24,1,2,16,1,0,1,1
-.section __DWARF, __debug_line,regular,debug
-
-	.byte 0,5,2
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_Name
-
-	.byte 3,56,4,3,1,3,56,2,24,1,2,16,1,0,1,1
-.section __DWARF, __debug_line,regular,debug
-
-	.byte 0,5,2
-	.long _System_Runtime_Serialization_DataMemberAttribute_get_Order
-
-	.byte 3,61,4,3,1,3,61,2,24,1,2,16,1,0,1,1
-.section __DWARF, __debug_line,regular,debug
-
-	.byte 0,5,2
-	.long _System_Runtime_Serialization_EnumMemberAttribute_get_Value
-
-	.byte 3,43,4,4,1,3,43,2,24,1,2,16,1,0,1,1,0,1,1
+	.byte 0,1,1
 Ldebug_line_end:
 .text
 	.align 3

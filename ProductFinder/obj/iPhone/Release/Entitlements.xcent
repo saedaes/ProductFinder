@@ -8,9 +8,5 @@
 	<string>642CC25L4P.mx.fixbuy</string>
 	<key>com.apple.developer.team-identifier</key>
 	<string>642CC25L4P</string>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>642CC25L4P.mx.fixbuy</string>
-	</array>
 </dict>
 </plist>

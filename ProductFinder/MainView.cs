@@ -33,6 +33,12 @@ namespace ProductFinder
 		//Lista donde se guardan los resultados de la consulta en la bd
 		List<State> states;
 
+		//Lista donde se guarda si el usuario a aceptado los terminos y condiciones
+		List<Terms> terms;
+
+		//Lista donde se guarda si el usuario a aceptado el aviso de privacidad
+		List<PrivacyNotice> privacyNotices;
+
 		public static int userId = 0;
 
 		public static int localityId;
@@ -156,12 +162,16 @@ namespace ProductFinder
 			{
 				conn.CreateTable<Person>();
 				conn.CreateTable<State> ();
+				conn.CreateTable<Terms> ();
+				conn.CreateTable<PrivacyNotice> ();
 			}
 
 			using (var db = new SQLite.SQLiteConnection(_pathToDatabase ))
 			{
 				people = new List<Person> (from p in db.Table<Person> () select p);
 				states = new List<State> (from s in db.Table<State> () select s);
+				terms = new List<Terms> (from t in db.Table<Terms> ()select t);
+				privacyNotices = new List<PrivacyNotice> (from pr in db.Table<PrivacyNotice> () select pr);
 			}
 
 			if(people.Count > 0){
@@ -175,7 +185,7 @@ namespace ProductFinder
 				MainView.localityId = estado.localityId;
 				Console.WriteLine ("El Id de localidad es: "+ estado.stateId);
 			}
-		
+				
 			//Boton para entrar al menu de la aplicacion.
 			this.btnEntrar.TouchUpInside += (sender, e) => {
 				scanView = new ScanView();
@@ -323,6 +333,8 @@ namespace ProductFinder
 			{
 				people = new List<Person> (from p in db.Table<Person> () select p);
 				states = new List<State> (from s in db.Table<State> () select s);
+				terms = new List<Terms> (from t in db.Table<Terms> () select t);
+				privacyNotices = new List<PrivacyNotice> (from pr in db.Table<PrivacyNotice> () select pr);
 			}
 
 			if(people.Count > 0){
@@ -335,6 +347,33 @@ namespace ProductFinder
 				State estado = states.ElementAt(0);
 				MainView.localityId = estado.localityId;
 				Console.WriteLine ("El Id de localidad es: "+ estado.localityId);
+			}
+
+
+			if (terms.Count < 1) {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Espera!", Message = "Para poder utilizar FixBuy primero debes aceptar los terminos y condiciones"
+				};
+				alert.AddButton("Aceptar");
+				alert.Clicked += (s, o) => {
+					TermsView termsView = new TermsView();
+					NavigationController.PushViewController(termsView, true);
+				};
+				alert.Show ();
+				return;
+			}
+
+			if (privacyNotices.Count < 1) {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Espera!", Message = "Para poder utilizar FixBuy primero debes aceptar el aviso de privacidad"
+				};
+				alert.AddButton("Aceptar");
+				alert.Clicked += (s, o) => {
+					PrivacyNoticeView privacyNoticeView = new PrivacyNoticeView();
+					NavigationController.PushViewController(privacyNoticeView, true);
+				};
+				alert.Show ();
+				return;
 			}
 		}
 

@@ -1,10 +1,10 @@
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/mscorlib.dll
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/System.Core.dll
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/Xamarin.iOS.dll
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/Newtonsoft.Json.MonoTouch.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/System.Runtime.Serialization.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/System.Core.dll
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/MonoTouch.FacebookConnect.dll
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/ScanditSDK.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/Newtonsoft.Json.MonoTouch.dll
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/System.Xml.dll
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/System.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/mscorlib.dll
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/ProductFinder.exe
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/System.Runtime.Serialization.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhone/Release/mtouch-cache/32/Link/ScanditSDK.dll

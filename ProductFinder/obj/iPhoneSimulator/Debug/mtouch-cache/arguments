@@ -1,6 +1,6 @@
-# Version: 8.10.4.46 (2c66d2f)
+# Version: 9.0.1.20 (xcode7-c5: d8e9592)
 # [first argument, ignore] # /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/mtouch.exe
-/Library/Frameworks/Xamarin.iOS.framework/Versions/8.10.4.46/bin/mtouch \
+/Library/Frameworks/Xamarin.iOS.framework/Versions/9.0.1.20/bin/mtouch \
 	--cache \
 	"/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Debug/mtouch-cache" \
 	--sim \
@@ -12,9 +12,10 @@
 	--sdkroot \
 	/Applications/Xcode.app/Contents/Developer \
 	--sdk \
-	8.4 \
+	9.0 \
 	--targetver \
-	8.1 \
+	9.0 \
+	--new-refcount \
 	--abi=i386 \
 	--symbollist \
 	"/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Debug/mtouch-symbols.list" \
@@ -43,4 +44,6 @@
 	"/Users/marco/Xamarin Projects/ProductFinder/External/Newtonsoft.Json.MonoTouch.dll" \
 	-r \
 	"/Users/marco/Xamarin Projects/ProductFinder/Components/facebookios-3.23.0/lib/ios-unified/MonoTouch.FacebookConnect.dll" \
+	--target-framework \
+	"Xamarin.iOS,v1.0" \
 	"/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Debug//ProductFinder.exe" \

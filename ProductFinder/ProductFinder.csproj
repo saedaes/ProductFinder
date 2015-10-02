@@ -31,6 +31,7 @@
     <MtouchArch>i386</MtouchArch>
     <MtouchUseSGen>true</MtouchUseSGen>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -41,6 +42,11 @@
     <MtouchLink>None</MtouchLink>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Developer: Fixbuy Fix (3427N344UU)</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>i386</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,6 +79,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -119,6 +126,7 @@
     <Folder Include="ServiciosWeb\" />
     <Folder Include="Images\" />
     <Folder Include="FacebookSDKResources.bundle\" />
+    <Folder Include="documents\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -222,6 +230,16 @@
       <DependentUpon>NewsDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="GzipWebClient.cs" />
+    <Compile Include="TermsView.cs" />
+    <Compile Include="TermsView.designer.cs">
+      <DependentUpon>TermsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Terms.cs" />
+    <Compile Include="PrivacyNoticeView.cs" />
+    <Compile Include="PrivacyNoticeView.designer.cs">
+      <DependentUpon>PrivacyNoticeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrivacyNotice.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainView_iPhone.xib" />
@@ -256,6 +274,10 @@
     <InterfaceDefinition Include="NewsListView_iPad.xib" />
     <InterfaceDefinition Include="NewsDetailView_iPhone.xib" />
     <InterfaceDefinition Include="NewsDetailView_iPad.xib" />
+    <InterfaceDefinition Include="TermsView~iphone.xib" />
+    <InterfaceDefinition Include="TermsView~ipad.xib" />
+    <InterfaceDefinition Include="PrivacyNoticeView~iphone.xib" />
+    <InterfaceDefinition Include="PrivacyNoticeView~ipad.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Images\noImage.jpg" />
@@ -320,7 +342,6 @@
     <BundleResource Include="Resources\new_list_new128.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Images\new_list_new24.png" />
     <BundleResource Include="Images\new_list_new48.png" />
     <BundleResource Include="Images\new_list_new128.png" />
@@ -344,6 +365,8 @@
     <BundleResource Include="Resources\servicios_ver.png" />
     <BundleResource Include="Resources\tiendasregistradas_ver.png" />
     <BundleResource Include="Resources\top10_ver.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="documents\AvisoDePrivacidad.pdf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -355,5 +378,9 @@
       <Version>3.23.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

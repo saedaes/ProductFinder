@@ -230,11 +230,24 @@ namespace ProductFinder
 
 			// boton acerca de
 			UIBarButtonItem btnacercaDe = new UIBarButtonItem (UIBarButtonSystemItem.Bookmarks);
-			btnacercaDe.Clicked += (s, e) => { new UIAlertView ("Términos y Condiciones", "Este sitio web ofrece servicios para sus usuarios y clientes. Tales servicios corresponden al almacenamiento de listas y comparación de precios de productos como a su vez la localización de tiendas, entre otros." +"\n"+
-				"Al momento de registrarse y utilizar este sitio web usted acepta atenerse a nuestros términos y condiciones, por lo que es necesario que se lea atentamente los mismos a continuación:" + "\n"+
-				"Fixbuy se compromete a realizar un cuidadoso manejo de la información del cliente, velando por la confidencialidad de todos los datos suministrados."+"\n"+
-				"Se espera que el usuario haga un uso responsable del sitio web y no altere de ninguna manera el contenido de esta para un uso indebido." + "\n"+
-				"A su vez la empresa (Tienda Comercial) se comprometa a proporcionar datos correctos y actualizados acerca de sus precios y ofertas. Y a su vez respetar dicha información por el periodo de tiempo que esta establezca.", null, "Aceptar", null).Show (); };
+			btnacercaDe.Clicked += (s, e) => {
+				UIAlertView alert = new UIAlertView () { 
+					Title = "Que deseas consultar? "
+				};
+				alert.AddButton("Terminos y Condiciones");
+				alert.AddButton("Aviso de Privacidad");
+				alert.Clicked+= (sen, o) =>{
+					if(o.ButtonIndex == 0)
+					{
+						TermsView termsView = new TermsView();
+						NavigationController.PushViewController(termsView, true);
+					}else{
+						PrivacyNoticeView privacyNoticeView = new PrivacyNoticeView();
+						NavigationController.PushViewController(privacyNoticeView, true);
+					}
+				};
+				alert.Show ();
+			};
 			// fixed width
 			//UIBarButtonItem fixedWidth = new UIBarButtonItem (UIBarButtonSystemItem.FixedSpace);
 			//fixedWidth.Width = 35;
@@ -257,7 +270,7 @@ namespace ProductFinder
 			btnEmail.Clicked += (s, e) => {  
 				//Añadimos las configuraciones para la vista de email
 				mailController = new MFMailComposeViewController ();
-				mailController.SetToRecipients (new string[]{"atencion@fixbuy.com"});
+				mailController.SetToRecipients (new string[]{"info.fixbuy@gmail.com"});
 				mailController.SetSubject ("Contacto");
 				mailController.SetMessageBody ("", false);
 				mailController.Finished += ( object o, MFComposeResultEventArgs args) => {

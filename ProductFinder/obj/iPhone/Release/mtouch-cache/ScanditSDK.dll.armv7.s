@@ -1,12 +1,13 @@
 .subsections_via_symbols
 .section __DWARF, __debug_abbrev,regular,debug
 
-	.byte 1,17,1,37,8,3,8,27,8,19,11,17,1,18,1,16,6,0,0,2,46,1,3,8,17,1,18,1,64,10,0,0
-	.byte 3,5,0,3,8,73,19,2,10,0,0,15,5,0,3,8,73,19,2,6,0,0,4,36,0,11,11,62,11,3,8,0
-	.byte 0,5,2,1,3,8,11,15,0,0,17,2,0,3,8,11,15,0,0,6,13,0,3,8,73,19,56,10,0,0,7,22
-	.byte 0,3,8,73,19,0,0,8,4,1,3,8,11,15,73,19,0,0,9,40,0,3,8,28,13,0,0,10,57,1,3,8
-	.byte 0,0,11,52,0,3,8,73,19,2,10,0,0,12,52,0,3,8,73,19,2,6,0,0,13,15,0,73,19,0,0,14
-	.byte 16,0,73,19,0,0,16,28,0,73,19,56,10,0,0,18,46,0,3,8,17,1,18,1,0,0,0
+	.byte 1,17,1,37,8,3,8,27,8,19,11,17,1,18,1,16,6,0,0,2,46,1,3,8,135,64,8,58,15,59,15,17
+	.byte 1,18,1,64,10,0,0,3,5,0,3,8,73,19,2,10,0,0,15,5,0,3,8,73,19,2,6,0,0,4,36,0
+	.byte 11,11,62,11,3,8,0,0,5,2,1,3,8,11,15,0,0,17,2,0,3,8,11,15,0,0,6,13,0,3,8,73
+	.byte 19,56,10,0,0,7,22,0,3,8,73,19,0,0,8,4,1,3,8,11,15,73,19,0,0,9,40,0,3,8,28,13
+	.byte 0,0,10,57,1,3,8,0,0,11,52,0,3,8,73,19,2,10,0,0,12,52,0,3,8,73,19,2,6,0,0,13
+	.byte 15,0,73,19,0,0,14,16,0,73,19,0,0,16,28,0,73,19,56,10,0,0,18,46,0,3,8,17,1,18,1,0
+	.byte 0,0
 .section __DWARF, __debug_info,regular,debug
 Ldebug_info_start:
 
@@ -17,7 +18,7 @@ Ldebug_info_begin:
 	.short 2
 	.long 0
 	.byte 4,1
-	.asciz "Mono AOT Compiler 3.12.0 (monotouch-8.6.0-branch/041d473 Tue Mar 10 02:15:10 EDT 2015)"
+	.asciz "Mono AOT Compiler 4.0.3 (mono-4.0.0-branch-c5sr3/d6946b4 Tue Aug  4 13:46:43 EDT 2015)"
 	.asciz "ScanditSDK.dll"
 	.asciz ""
 
@@ -111,19 +112,21 @@ Lcie0_end:
 .text
 	.align 3
 methods:
-	.space 16
+jit_code_start:
+
+	.byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 .text
 	.align 2
-	.no_dead_strip _ApiDefinition_Messaging__ctor
-_ApiDefinition_Messaging__ctor:
+	.no_dead_strip ApiDefinition_Messaging__ctor
+ApiDefinition_Messaging__ctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,12,208,141,226,0,1,189,232,128,128,189,232
 
 Lme_0:
 .text
 	.align 2
-	.no_dead_strip _ApiDefinition_Messaging__cctor
-_ApiDefinition_Messaging__cctor:
+	.no_dead_strip ApiDefinition_Messaging__cctor
+ApiDefinition_Messaging__cctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,4,208,77,226,0,16,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 4
@@ -134,8 +137,8 @@ _ApiDefinition_Messaging__cctor:
 Lme_33:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
-_ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr:
+	.no_dead_strip ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
+ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,0,0,157,229,4,16,157,229
 	.byte 0,32,160,227
@@ -146,8 +149,8 @@ bl _p_1
 Lme_35:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
-_ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool:
+	.no_dead_strip ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
+ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,20,208,77,226,0,0,141,229,4,16,141,229,8,32,205,229,0,0,157,229
 	.byte 4,16,157,229,8,32,221,229
@@ -158,8 +161,8 @@ bl _p_1
 Lme_36:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
-_ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int:
+	.no_dead_strip ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
+ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int:
 
 	.byte 128,64,45,233,13,112,160,225,48,9,45,233,32,208,77,226,13,176,160,225,8,0,139,229,1,64,160,225,2,80,160,225
 	.byte 12,48,139,229,56,224,157,229,16,224,139,229,0,0,84,227,23,0,0,10,0,0,85,227,32,0,0,10,8,0,155,229
@@ -177,7 +180,7 @@ bl _p_3
 	.byte 0,0,159,231,1,16,160,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -186,15 +189,15 @@ bl _p_5
 	.byte 0,0,159,231,29,16,160,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_37:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SINextFrameDelegate__ctor
-_ScanditSDK_SINextFrameDelegate__ctor:
+	.no_dead_strip ScanditSDK_SINextFrameDelegate__ctor
+ScanditSDK_SINextFrameDelegate__ctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -244,8 +247,8 @@ bl _p_10
 Lme_38:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
-_ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag:
+	.no_dead_strip ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
+ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_6
@@ -263,8 +266,8 @@ bl _p_8
 Lme_39:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SINextFrameDelegate__ctor_intptr
-_ScanditSDK_SINextFrameDelegate__ctor_intptr:
+	.no_dead_strip ScanditSDK_SINextFrameDelegate__ctor_intptr
+ScanditSDK_SINextFrameDelegate__ctor_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_13
@@ -282,8 +285,8 @@ bl _p_8
 Lme_3a:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__ctor
-_ScanditSDK_SIBarcodePicker__ctor:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__ctor
+ScanditSDK_SIBarcodePicker__ctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -333,8 +336,8 @@ bl _p_10
 Lme_3c:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
-_ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
+ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,96,160,225,1,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -384,8 +387,8 @@ bl _p_10
 Lme_3d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
-_ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
+ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_14
@@ -403,8 +406,8 @@ bl _p_8
 Lme_3e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__ctor_intptr
-_ScanditSDK_SIBarcodePicker__ctor_intptr:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__ctor_intptr
+ScanditSDK_SIBarcodePicker__ctor_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_17
@@ -422,8 +425,8 @@ bl _p_8
 Lme_3f:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__ctor_string
-_ScanditSDK_SIBarcodePicker__ctor_string:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__ctor_string
+ScanditSDK_SIBarcodePicker__ctor_string:
 
 	.byte 128,64,45,233,13,112,160,225,96,1,45,233,20,208,77,226,0,96,160,225,0,16,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -480,15 +483,15 @@ bl _p_19
 	.byte 0,0,159,231,205,16,160,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_40:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
-_ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
+ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection:
 
 	.byte 128,64,45,233,13,112,160,225,48,1,45,233,20,208,77,226,0,80,160,225,0,16,141,229,4,32,141,229,0,0,159,229
 	.byte 0,0,0,234
@@ -546,15 +549,15 @@ bl _p_19
 	.byte 0,0,159,231,205,16,160,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_41:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_get_ClassHandle
-_ScanditSDK_SIBarcodePicker_get_ClassHandle:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_get_ClassHandle
+ScanditSDK_SIBarcodePicker_get_ClassHandle:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 36
@@ -563,8 +566,8 @@ _ScanditSDK_SIBarcodePicker_get_ClassHandle:
 Lme_42:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
-_ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
+ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,96,160,225,0,16,141,229,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10,8,0,150,229,8,0,141,229
@@ -592,8 +595,8 @@ bl _p_23
 Lme_43:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_DisableStandbyState
-_ScanditSDK_SIBarcodePicker_DisableStandbyState:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_DisableStandbyState
+ScanditSDK_SIBarcodePicker_DisableStandbyState:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,10,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -621,8 +624,8 @@ bl _p_25
 Lme_44:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
-_ScanditSDK_SIBarcodePicker_Force2dRecognition_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
+ScanditSDK_SIBarcodePicker_Force2dRecognition_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -650,8 +653,8 @@ bl _p_27
 Lme_45:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_Prepare_string
-_ScanditSDK_SIBarcodePicker_Prepare_string:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_Prepare_string
+ScanditSDK_SIBarcodePicker_Prepare_string:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,0,141,229,0,0,157,229,0,0,80,227,22,0,0,10
 	.byte 0,0,157,229
@@ -675,15 +678,15 @@ bl _p_19
 	.byte 0,0,159,231,205,16,160,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_46:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
-_ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
+ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection:
 
 	.byte 128,64,45,233,13,112,160,225,32,1,45,233,16,208,77,226,0,0,141,229,4,16,141,229,0,0,157,229,0,0,80,227
 	.byte 23,0,0,10,0,0,157,229
@@ -707,15 +710,15 @@ bl _p_19
 	.byte 0,0,159,231,205,16,160,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_47:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
-_ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
+ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -743,8 +746,8 @@ bl _p_27
 Lme_48:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
-_ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
+ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,96,160,225,1,160,160,225,0,0,90,227,36,0,0,10
 	.byte 16,0,214,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10
@@ -772,15 +775,15 @@ bl _p_30
 	.byte 0,0,159,231,119,18,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_49:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
-_ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
+ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -808,8 +811,8 @@ bl _p_27
 Lme_4a:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
-_ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
+ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -837,8 +840,8 @@ bl _p_27
 Lme_4b:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
+ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -866,8 +869,8 @@ bl _p_27
 Lme_4c:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
-_ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
+ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -895,8 +898,8 @@ bl _p_27
 Lme_4d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
-_ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
+ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -924,8 +927,8 @@ bl _p_27
 Lme_4e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
-_ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
+ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -953,8 +956,8 @@ bl _p_27
 Lme_4f:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
+ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -982,8 +985,8 @@ bl _p_27
 Lme_50:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
-_ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
+ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1011,8 +1014,8 @@ bl _p_27
 Lme_51:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
-_ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
+ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1040,8 +1043,8 @@ bl _p_27
 Lme_52:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
+ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1069,8 +1072,8 @@ bl _p_27
 Lme_53:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
+ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1098,8 +1101,8 @@ bl _p_27
 Lme_54:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
+ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1127,8 +1130,8 @@ bl _p_27
 Lme_55:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetItfEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
+ScanditSDK_SIBarcodePicker_SetItfEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1156,8 +1159,8 @@ bl _p_27
 Lme_56:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
+ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1185,8 +1188,8 @@ bl _p_27
 Lme_57:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
-_ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
+ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,96,160,225,0,16,141,229,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,150,229,8,0,141,229
@@ -1214,8 +1217,8 @@ bl _p_32
 Lme_58:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
+ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1243,8 +1246,8 @@ bl _p_27
 Lme_59:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
-_ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
+ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1272,8 +1275,8 @@ bl _p_27
 Lme_5a:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetQrEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
+ScanditSDK_SIBarcodePicker_SetQrEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1301,8 +1304,8 @@ bl _p_27
 Lme_5b:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
-_ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
+ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,24,208,77,226,0,160,160,225,8,16,141,229,12,32,141,229,16,0,218,229
 	.byte 4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,20,0,0,10,8,0,154,229
@@ -1332,8 +1335,8 @@ bl _p_34
 Lme_5c:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
-_ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
+ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,24,208,77,226,0,160,160,225,8,16,141,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,15,0,0,10,8,0,154,229,16,0,141,229
@@ -1361,8 +1364,8 @@ bl _p_36
 Lme_5d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
-_ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
+ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1390,8 +1393,8 @@ bl _p_27
 Lme_5e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_StartScanning
-_ScanditSDK_SIBarcodePicker_StartScanning:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_StartScanning
+ScanditSDK_SIBarcodePicker_StartScanning:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,10,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1419,8 +1422,8 @@ bl _p_25
 Lme_5f:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_StopScanning
-_ScanditSDK_SIBarcodePicker_StopScanning:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_StopScanning
+ScanditSDK_SIBarcodePicker_StopScanning:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,10,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1448,8 +1451,8 @@ bl _p_25
 Lme_60:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
-_ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
+ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,10,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1477,8 +1480,8 @@ bl _p_25
 Lme_61:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
-_ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
+ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,96,160,225,0,16,141,229,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10,8,0,150,229,8,0,141,229
@@ -1506,8 +1509,8 @@ bl _p_23
 Lme_62:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SwitchCameraFacing
-_ScanditSDK_SIBarcodePicker_SwitchCameraFacing:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SwitchCameraFacing
+ScanditSDK_SIBarcodePicker_SwitchCameraFacing:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1535,8 +1538,8 @@ bl _p_38
 Lme_63:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
-_ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
+ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -1564,8 +1567,8 @@ bl _p_27
 Lme_64:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
-_ScanditSDK_SIBarcodePicker_get_CameraFacingDirection:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
+ScanditSDK_SIBarcodePicker_get_CameraFacingDirection:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,10,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1593,12 +1596,12 @@ bl _p_40
 Lme_65:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
-_ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
+ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
-	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,20,0,0,10,4,0,160,227,8,0,80,227,8,0,154,229
-	.byte 8,0,141,229,0,0,159,229,0,0,0,234
+	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,18,0,0,10,8,0,154,229,8,0,141,229,0,0,159,229
+	.byte 0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 180
 	.byte 0,0,159,231
 bl _p_2
@@ -1607,7 +1610,7 @@ bl _p_2
 bl _p_39
 
 	.byte 0,16,160,225,0,0,224,227,0,0,81,225,0,0,160,227,1,0,160,195,1,0,64,226,0,16,141,229,4,0,141,229
-	.byte 20,0,0,234,4,0,160,227,8,0,80,227,10,0,160,225
+	.byte 18,0,0,234,10,0,160,225
 bl _p_11
 
 	.byte 8,0,141,229,0,0,159,229,0,0,0,234
@@ -1624,12 +1627,12 @@ bl _p_40
 Lme_66:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
-_ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
+ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,141,229,4,32,141,229,16,0,218,229
-	.byte 4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,13,0,0,10,4,0,160,227
-	.byte 8,0,80,227,8,0,154,229,8,0,141,229,0,0,159,229,0,0,0,234
+	.byte 4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229
+	.byte 8,0,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 184
 	.byte 0,0,159,231
 bl _p_2
@@ -1637,7 +1640,7 @@ bl _p_2
 	.byte 0,16,160,225,8,0,157,229,0,32,157,229
 bl _p_31
 
-	.byte 13,0,0,234,4,0,160,227,8,0,80,227,10,0,160,225
+	.byte 11,0,0,234,10,0,160,225
 bl _p_11
 
 	.byte 8,0,141,229,0,0,159,229,0,0,0,234
@@ -1653,8 +1656,8 @@ bl _p_32
 Lme_67:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_get_IsScanning
-_ScanditSDK_SIBarcodePicker_get_IsScanning:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_get_IsScanning
+ScanditSDK_SIBarcodePicker_get_IsScanning:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1682,8 +1685,8 @@ bl _p_38
 Lme_68:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_get_OverlayController
-_ScanditSDK_SIBarcodePicker_get_OverlayController:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_get_OverlayController
+ScanditSDK_SIBarcodePicker_get_OverlayController:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,16,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -1729,8 +1732,8 @@ bl _p_42
 Lme_69:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
-_ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
+ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,96,160,225,1,160,160,225,0,0,90,227,54,0,0,10
 	.byte 16,0,214,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10
@@ -1765,19 +1768,19 @@ bl _p_42
 	.byte 0,0,159,231,13,24,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_6a:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_get_Size
-_ScanditSDK_SIBarcodePicker_get_Size:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_get_Size
+ScanditSDK_SIBarcodePicker_get_Size:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,32,208,77,226,0,16,141,229,0,96,160,225,0,0,160,227,4,0,141,229
 	.byte 0,0,160,227,8,0,141,229,16,0,214,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3
-	.byte 0,0,80,227,36,0,0,10,0,0,159,229,0,0,0,234
+	.byte 0,0,80,227,34,0,0,10,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 208
 	.byte 0,0,159,231,0,0,144,229,0,0,80,227,15,0,0,26,4,0,160,227,8,0,80,227,4,0,141,226,24,0,141,229
 	.byte 8,0,150,229,28,0,141,229,0,0,159,229,0,0,0,234
@@ -1788,7 +1791,7 @@ bl _p_2
 	.byte 0,32,160,225,24,0,157,229,28,16,157,229
 bl _p_43
 
-	.byte 51,0,0,234,4,0,160,227,8,0,80,227,8,0,150,229,24,0,141,229,0,0,159,229,0,0,0,234
+	.byte 47,0,0,234,8,0,150,229,24,0,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 212
 	.byte 0,0,159,231
 bl _p_2
@@ -1796,7 +1799,7 @@ bl _p_2
 	.byte 0,32,160,225,24,16,157,229,4,0,141,226
 bl _p_44
 
-	.byte 37,0,0,234,0,0,159,229,0,0,0,234
+	.byte 35,0,0,234,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 208
 	.byte 0,0,159,231,0,0,144,229,0,0,80,227,16,0,0,26,4,0,160,227,8,0,80,227,4,0,141,226,24,0,141,229
 	.byte 6,0,160,225
@@ -1810,7 +1813,7 @@ bl _p_2
 	.byte 0,32,160,225,24,0,157,229,28,16,157,229
 bl _p_45
 
-	.byte 13,0,0,234,4,0,160,227,8,0,80,227,6,0,160,225
+	.byte 11,0,0,234,6,0,160,225
 bl _p_11
 
 	.byte 24,0,141,229,0,0,159,229,0,0,0,234
@@ -1827,8 +1830,8 @@ bl _p_46
 Lme_6b:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
-_ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
+ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,20,208,77,226,13,176,160,225,0,160,160,225,0,16,139,229,4,32,139,229
 	.byte 16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10
@@ -1856,8 +1859,8 @@ bl _p_48
 Lme_6c:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker_Dispose_bool
-_ScanditSDK_SIBarcodePicker_Dispose_bool:
+	.no_dead_strip ScanditSDK_SIBarcodePicker_Dispose_bool
+ScanditSDK_SIBarcodePicker_Dispose_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,0,16,205,229,10,0,160,225,0,16,221,229
 bl _p_49
@@ -1870,8 +1873,8 @@ bl _p_49
 Lme_6d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIBarcodePicker__cctor
-_ScanditSDK_SIBarcodePicker__cctor:
+	.no_dead_strip ScanditSDK_SIBarcodePicker__cctor
+ScanditSDK_SIBarcodePicker__cctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,4,208,77,226,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 224
@@ -1885,8 +1888,8 @@ bl _p_50
 Lme_6e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
-_ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
+ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,0,0,157,229,4,16,157,229
 	.byte 0,32,160,227
@@ -1897,8 +1900,8 @@ bl _p_1
 Lme_72:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
-_ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
+ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,20,208,77,226,0,0,141,229,4,16,141,229,8,32,205,229,0,0,157,229
 	.byte 4,16,157,229,8,32,221,229
@@ -1909,8 +1912,8 @@ bl _p_1
 Lme_73:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-_ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,20,208,77,226,0,0,141,229,1,96,160,225,2,160,160,225,0,0,86,227
 	.byte 19,0,0,10,0,0,90,227,28,0,0,10,0,0,157,229,8,0,144,229,8,0,141,229,0,0,159,229,0,0,0,234
@@ -1926,7 +1929,7 @@ bl _p_51
 	.byte 0,0,159,231,233,23,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -1935,15 +1938,15 @@ bl _p_5
 	.byte 0,0,159,231,145,24,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_74:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-_ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,20,208,77,226,0,0,141,229,1,96,160,225,2,160,160,225,0,0,86,227
 	.byte 19,0,0,10,0,0,90,227,28,0,0,10,0,0,157,229,8,0,144,229,8,0,141,229,0,0,159,229,0,0,0,234
@@ -1959,7 +1962,7 @@ bl _p_51
 	.byte 0,0,159,231,233,23,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -1968,15 +1971,15 @@ bl _p_5
 	.byte 0,0,159,231,249,24,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_75:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
-_ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
+ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string:
 
 	.byte 128,64,45,233,13,112,160,225,80,1,45,233,20,208,77,226,0,0,141,229,1,96,160,225,4,32,141,229,0,0,86,227
 	.byte 35,0,0,10,4,0,157,229,0,0,80,227,21,0,0,10,4,0,157,229
@@ -1998,7 +2001,7 @@ bl _p_19
 	.byte 0,0,159,231,105,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -2007,15 +2010,15 @@ bl _p_5
 	.byte 0,0,159,231,233,23,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_76:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegate__ctor
-_ScanditSDK_SIOverlayControllerDelegate__ctor:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegate__ctor
+ScanditSDK_SIOverlayControllerDelegate__ctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -2065,8 +2068,8 @@ bl _p_10
 Lme_77:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
-_ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
+ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_6
@@ -2084,8 +2087,8 @@ bl _p_8
 Lme_78:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
-_ScanditSDK_SIOverlayControllerDelegate__ctor_intptr:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
+ScanditSDK_SIOverlayControllerDelegate__ctor_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_13
@@ -2103,8 +2106,8 @@ bl _p_8
 Lme_79:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__ctor
-_ScanditSDK_SIOverlayController__ctor:
+	.no_dead_strip ScanditSDK_SIOverlayController__ctor
+ScanditSDK_SIOverlayController__ctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -2154,8 +2157,8 @@ bl _p_10
 Lme_7d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
-_ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder:
+	.no_dead_strip ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
+ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,96,160,225,1,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 16
@@ -2205,8 +2208,8 @@ bl _p_10
 Lme_7e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
-_ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag:
+	.no_dead_strip ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
+ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_14
@@ -2224,8 +2227,8 @@ bl _p_8
 Lme_7f:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__ctor_intptr
-_ScanditSDK_SIOverlayController__ctor_intptr:
+	.no_dead_strip ScanditSDK_SIOverlayController__ctor_intptr
+ScanditSDK_SIOverlayController__ctor_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,8,208,77,226,0,96,160,225,0,16,141,229,6,0,160,225,0,16,157,229
 bl _p_17
@@ -2243,8 +2246,8 @@ bl _p_8
 Lme_80:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_get_ClassHandle
-_ScanditSDK_SIOverlayController_get_ClassHandle:
+	.no_dead_strip ScanditSDK_SIOverlayController_get_ClassHandle
+ScanditSDK_SIOverlayController_get_ClassHandle:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 240
@@ -2253,8 +2256,8 @@ _ScanditSDK_SIOverlayController_get_ClassHandle:
 Lme_81:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_DrawViewfinder_bool
-_ScanditSDK_SIOverlayController_DrawViewfinder_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_DrawViewfinder_bool
+ScanditSDK_SIOverlayController_DrawViewfinder_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -2282,8 +2285,8 @@ bl _p_27
 Lme_82:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_ResetUI
-_ScanditSDK_SIOverlayController_ResetUI:
+	.no_dead_strip ScanditSDK_SIOverlayController_ResetUI
+ScanditSDK_SIOverlayController_ResetUI:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,10,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -2311,8 +2314,8 @@ bl _p_25
 Lme_83:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetBannerImage_string_string
-_ScanditSDK_SIOverlayController_SetBannerImage_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetBannerImage_string_string
+ScanditSDK_SIOverlayController_SetBannerImage_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,48,9,45,233,24,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,4,0,157,229
 	.byte 0,0,80,227,63,0,0,10,8,0,157,229,0,0,80,227,49,0,0,10,4,0,157,229
@@ -2352,7 +2355,7 @@ bl _p_19
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -2361,15 +2364,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_84:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetBeepEnabled_bool
-_ScanditSDK_SIOverlayController_SetBeepEnabled_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetBeepEnabled_bool
+ScanditSDK_SIOverlayController_SetBeepEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -2397,8 +2400,8 @@ bl _p_27
 Lme_85:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
-_ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
+ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,44,208,77,226,13,176,160,225,0,160,160,225,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,64,224,157,229,28,224,139,229,16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19
@@ -2430,8 +2433,8 @@ bl _p_55
 Lme_86:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
-_ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
+ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,48,9,45,233,24,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,4,0,157,229
 	.byte 0,0,80,227,63,0,0,10,8,0,157,229,0,0,80,227,49,0,0,10,4,0,157,229
@@ -2471,7 +2474,7 @@ bl _p_19
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -2480,15 +2483,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_87:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
-_ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
+ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,80,13,45,233,44,208,77,226,13,176,160,225,12,0,139,229,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,16,0,155,229,0,0,80,227,86,0,0,10,20,0,155,229,0,0,80,227,61,0,0,10,24,0,155,229
@@ -2535,7 +2538,7 @@ bl _p_19
 	.byte 0,0,159,231,79,27,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -2544,7 +2547,7 @@ bl _p_5
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -2553,15 +2556,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_88:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
-_ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
+ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,96,160,225,0,16,141,229,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,150,229,8,0,141,229
@@ -2589,8 +2592,8 @@ bl _p_32
 Lme_89:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
-_ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
+ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,36,208,77,226,13,176,160,225,0,160,160,225,8,16,139,229,12,32,139,229
 	.byte 16,48,139,229,56,224,157,229,20,224,139,229,16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19
@@ -2618,8 +2621,8 @@ bl _p_59
 Lme_8a:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
-_ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
+ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,96,160,225,0,16,141,229,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,150,229,8,0,141,229
@@ -2647,8 +2650,8 @@ bl _p_32
 Lme_8b:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
-_ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
+ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int:
 
 	.byte 128,64,45,233,13,112,160,225,64,1,45,233,16,208,77,226,0,96,160,225,0,16,141,229,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,150,229,8,0,141,229
@@ -2676,8 +2679,8 @@ bl _p_32
 Lme_8c:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
-_ScanditSDK_SIOverlayController_SetScanSoundResource_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
+ScanditSDK_SIOverlayController_SetScanSoundResource_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,48,9,45,233,24,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,4,0,157,229
 	.byte 0,0,80,227,63,0,0,10,8,0,157,229,0,0,80,227,49,0,0,10,4,0,157,229
@@ -2717,7 +2720,7 @@ bl _p_19
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -2726,15 +2729,15 @@ bl _p_5
 	.byte 0,0,159,231,251,28,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_8d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
-_ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
+ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string:
 
 	.byte 128,64,45,233,13,112,160,225,96,1,45,233,20,208,77,226,0,96,160,225,0,16,141,229,0,0,157,229,0,0,80,227
 	.byte 39,0,0,10,0,0,157,229
@@ -2768,15 +2771,15 @@ bl _p_19
 	.byte 0,0,159,231,63,29,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_8e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
-_ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
+ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string:
 
 	.byte 128,64,45,233,13,112,160,225,96,1,45,233,20,208,77,226,0,96,160,225,0,16,141,229,0,0,157,229,0,0,80,227
 	.byte 39,0,0,10,0,0,157,229
@@ -2810,19 +2813,19 @@ bl _p_19
 	.byte 0,0,159,231,63,29,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_8f:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
-_ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
+ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,141,229,4,32,141,229,16,0,218,229
-	.byte 4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,13,0,0,10,4,0,160,227
-	.byte 8,0,80,227,8,0,154,229,8,0,141,229,0,0,159,229,0,0,0,234
+	.byte 4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229
+	.byte 8,0,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 300
 	.byte 0,0,159,231
 bl _p_2
@@ -2830,7 +2833,7 @@ bl _p_2
 	.byte 0,16,160,225,8,0,157,229,0,32,157,229
 bl _p_31
 
-	.byte 13,0,0,234,4,0,160,227,8,0,80,227,10,0,160,225
+	.byte 11,0,0,234,10,0,160,225
 bl _p_11
 
 	.byte 8,0,141,229,0,0,159,229,0,0,0,234
@@ -2846,8 +2849,8 @@ bl _p_32
 Lme_90:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
-_ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
+ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string:
 
 	.byte 128,64,45,233,13,112,160,225,96,1,45,233,20,208,77,226,0,96,160,225,0,16,141,229,0,0,157,229,0,0,80,227
 	.byte 39,0,0,10,0,0,157,229
@@ -2881,15 +2884,15 @@ bl _p_19
 	.byte 0,0,159,231,63,29,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_91:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
-_ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
+ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string:
 
 	.byte 128,64,45,233,13,112,160,225,96,1,45,233,20,208,77,226,0,96,160,225,0,16,141,229,0,0,157,229,0,0,80,227
 	.byte 39,0,0,10,0,0,157,229
@@ -2923,15 +2926,15 @@ bl _p_19
 	.byte 0,0,159,231,105,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_92:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
-_ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
+ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string:
 
 	.byte 128,64,45,233,13,112,160,225,96,1,45,233,20,208,77,226,0,96,160,225,0,16,141,229,0,0,157,229,0,0,80,227
 	.byte 39,0,0,10,0,0,157,229
@@ -2965,15 +2968,15 @@ bl _p_19
 	.byte 0,0,159,231,63,29,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_93:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
-_ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
+ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,44,208,77,226,13,176,160,225,0,160,160,225,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,64,224,157,229,28,224,139,229,16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19
@@ -3005,8 +3008,8 @@ bl _p_55
 Lme_94:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTorchEnabled_bool
-_ScanditSDK_SIOverlayController_SetTorchEnabled_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTorchEnabled_bool
+ScanditSDK_SIOverlayController_SetTorchEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -3034,8 +3037,8 @@ bl _p_27
 Lme_95:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
-_ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
+ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,48,9,45,233,24,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,4,0,157,229
 	.byte 0,0,80,227,63,0,0,10,8,0,157,229,0,0,80,227,49,0,0,10,4,0,157,229
@@ -3075,7 +3078,7 @@ bl _p_19
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -3084,15 +3087,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_96:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
-_ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
+ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,80,13,45,233,44,208,77,226,13,176,160,225,12,0,139,229,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,16,0,155,229,0,0,80,227,86,0,0,10,20,0,155,229,0,0,80,227,61,0,0,10,24,0,155,229
@@ -3139,7 +3142,7 @@ bl _p_19
 	.byte 0,0,159,231,79,27,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -3148,7 +3151,7 @@ bl _p_5
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -3157,15 +3160,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_97:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
-_ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
+ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,48,9,45,233,24,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,4,0,157,229
 	.byte 0,0,80,227,63,0,0,10,8,0,157,229,0,0,80,227,49,0,0,10,4,0,157,229
@@ -3205,7 +3208,7 @@ bl _p_19
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -3214,15 +3217,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_98:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
-_ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
+ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string:
 
 	.byte 128,64,45,233,13,112,160,225,80,13,45,233,44,208,77,226,13,176,160,225,12,0,139,229,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,16,0,155,229,0,0,80,227,86,0,0,10,20,0,155,229,0,0,80,227,61,0,0,10,24,0,155,229
@@ -3269,7 +3272,7 @@ bl _p_19
 	.byte 0,0,159,231,79,27,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -3278,7 +3281,7 @@ bl _p_5
 	.byte 0,0,159,231,15,26,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
@@ -3287,15 +3290,15 @@ bl _p_5
 	.byte 0,0,159,231,253,25,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_99:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
-_ScanditSDK_SIOverlayController_SetVibrateEnabled_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
+ScanditSDK_SIOverlayController_SetVibrateEnabled_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -3323,8 +3326,8 @@ bl _p_27
 Lme_9a:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
-_ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
+ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,44,208,77,226,13,176,160,225,0,160,160,225,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227
@@ -3354,8 +3357,8 @@ bl _p_61
 Lme_9b:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
-_ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
+ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,44,208,77,226,13,176,160,225,0,160,160,225,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227
@@ -3385,8 +3388,8 @@ bl _p_61
 Lme_9c:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
-_ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single:
+	.no_dead_strip ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
+ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single:
 
 	.byte 128,64,45,233,13,112,160,225,0,13,45,233,44,208,77,226,13,176,160,225,0,160,160,225,16,16,139,229,20,32,139,229
 	.byte 24,48,139,229,64,224,157,229,28,224,139,229,16,0,218,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19
@@ -3418,8 +3421,8 @@ bl _p_55
 Lme_9d:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_ShowSearchBar_bool
-_ScanditSDK_SIOverlayController_ShowSearchBar_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_ShowSearchBar_bool
+ScanditSDK_SIOverlayController_ShowSearchBar_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -3447,8 +3450,8 @@ bl _p_27
 Lme_9e:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_ShowToolBar_bool
-_ScanditSDK_SIOverlayController_ShowToolBar_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_ShowToolBar_bool
+ScanditSDK_SIOverlayController_ShowToolBar_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,16,208,77,226,0,160,160,225,0,16,205,229,16,0,218,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,11,0,0,10,8,0,154,229,8,0,141,229
@@ -3476,8 +3479,8 @@ bl _p_27
 Lme_9f:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_get_Delegate
-_ScanditSDK_SIOverlayController_get_Delegate:
+	.no_dead_strip ScanditSDK_SIOverlayController_get_Delegate
+ScanditSDK_SIOverlayController_get_Delegate:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,160,160,225,10,0,160,225,0,16,154,229,15,224,160,225
 	.byte 100,241,145,229,0,160,160,225,10,96,160,225,0,0,90,227,10,0,0,10,0,0,154,229,0,0,144,229,8,0,144,229
@@ -3488,8 +3491,8 @@ _ScanditSDK_SIOverlayController_get_Delegate:
 Lme_a0:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
-_ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate:
+	.no_dead_strip ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
+ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,0,0,157,229,4,16,157,229
 	.byte 0,32,157,229,0,32,146,229,15,224,160,225,96,241,146,229,12,208,141,226,0,1,189,232,128,128,189,232
@@ -3497,8 +3500,8 @@ _ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDeleg
 Lme_a1:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_get_ManualSearchBar
-_ScanditSDK_SIOverlayController_get_ManualSearchBar:
+	.no_dead_strip ScanditSDK_SIOverlayController_get_ManualSearchBar
+ScanditSDK_SIOverlayController_get_ManualSearchBar:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,16,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -3544,8 +3547,8 @@ bl _p_42
 Lme_a2:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
-_ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar:
+	.no_dead_strip ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
+ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,96,160,225,1,160,160,225,0,0,90,227,54,0,0,10
 	.byte 16,0,214,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10
@@ -3580,15 +3583,15 @@ bl _p_42
 	.byte 0,0,159,231,13,24,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_a3:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_get_ToolBar
-_ScanditSDK_SIOverlayController_get_ToolBar:
+	.no_dead_strip ScanditSDK_SIOverlayController_get_ToolBar
+ScanditSDK_SIOverlayController_get_ToolBar:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,16,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -3634,8 +3637,8 @@ bl _p_42
 Lme_a4:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
-_ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar:
+	.no_dead_strip ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
+ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,96,160,225,1,160,160,225,0,0,90,227,54,0,0,10
 	.byte 16,0,214,229,4,0,0,226,255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10
@@ -3670,15 +3673,15 @@ bl _p_42
 	.byte 0,0,159,231,13,24,0,227
 bl _p_4
 
-	.byte 0,16,160,225,73,2,0,227,0,2,64,227
+	.byte 0,16,160,225,185,2,0,227,0,2,64,227
 bl _mono_create_corlib_exception_1
 bl _p_5
 
 Lme_a5:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_get_WeakDelegate
-_ScanditSDK_SIOverlayController_get_WeakDelegate:
+	.no_dead_strip ScanditSDK_SIOverlayController_get_WeakDelegate
+ScanditSDK_SIOverlayController_get_WeakDelegate:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,12,208,77,226,0,160,160,225,16,0,218,229,4,0,0,226,255,0,0,226
 	.byte 4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,12,0,0,10,8,0,154,229,0,0,141,229,0,0,159,229
@@ -3713,8 +3716,8 @@ bl _p_65
 Lme_a6:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
-_ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject:
+	.no_dead_strip ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
+ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject:
 
 	.byte 128,64,45,233,13,112,160,225,112,13,45,233,8,208,77,226,0,96,160,225,1,160,160,225,16,0,214,229,4,0,0,226
 	.byte 255,0,0,226,4,0,80,227,0,0,160,19,1,0,160,3,0,0,80,227,24,0,0,10,8,0,150,229,0,0,141,229
@@ -3751,8 +3754,8 @@ bl _p_65
 Lme_a7:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
-_ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate:
+	.no_dead_strip ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
+ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate:
 
 	.byte 128,64,45,233,13,112,160,225,112,5,45,233,12,208,77,226,0,160,160,225,10,0,160,225,0,16,154,229,15,224,160,225
 	.byte 100,241,145,229,0,96,160,225,0,0,80,227,16,0,0,10,6,80,160,225,6,64,160,225,0,0,86,227,10,0,0,10
@@ -3764,7 +3767,7 @@ _ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate:
 bl _p_66
 
 	.byte 0,0,141,229
-bl _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
+bl ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
 
 	.byte 0,0,157,229,0,96,160,225,10,0,160,225,6,16,160,225,0,32,154,229,15,224,160,225,96,241,146,229,6,80,160,225
 	.byte 0,0,86,227,9,0,0,10,0,0,149,229,0,0,144,229,8,0,144,229,12,0,144,229,0,16,159,229,0,0,0,234
@@ -3773,13 +3776,13 @@ bl _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_a8:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
-_ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs:
+	.no_dead_strip ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,96,160,225,1,160,160,225,6,0,160,225
 bl _p_68
@@ -3796,13 +3799,13 @@ bl _p_69
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_a9:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
-_ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs:
+	.no_dead_strip ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,96,160,225,1,160,160,225,6,0,160,225
 bl _p_68
@@ -3819,13 +3822,13 @@ bl _p_70
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_aa:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
-_ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs:
+	.no_dead_strip ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,96,160,225,1,160,160,225,6,0,160,225
 bl _p_68
@@ -3842,13 +3845,13 @@ bl _p_69
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_ab:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
-_ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs:
+	.no_dead_strip ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,96,160,225,1,160,160,225,6,0,160,225
 bl _p_68
@@ -3865,13 +3868,13 @@ bl _p_70
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_ac:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
-_ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs:
+	.no_dead_strip ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,96,160,225,1,160,160,225,6,0,160,225
 bl _p_68
@@ -3888,13 +3891,13 @@ bl _p_69
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_ad:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
-_ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs:
+	.no_dead_strip ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,64,5,45,233,4,208,77,226,0,96,160,225,1,160,160,225,6,0,160,225
 bl _p_68
@@ -3911,13 +3914,13 @@ bl _p_70
 	.byte 0,0,159,229
 bl _p_67
 
-	.byte 159,2,0,2
+	.byte 249,2,0,2
 
 Lme_ae:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController_Dispose_bool
-_ScanditSDK_SIOverlayController_Dispose_bool:
+	.no_dead_strip ScanditSDK_SIOverlayController_Dispose_bool
+ScanditSDK_SIOverlayController_Dispose_bool:
 
 	.byte 128,64,45,233,13,112,160,225,0,5,45,233,8,208,77,226,0,160,160,225,0,16,205,229,10,0,160,225,0,16,221,229
 bl _p_49
@@ -3930,8 +3933,8 @@ bl _p_49
 Lme_af:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__cctor
-_ScanditSDK_SIOverlayController__cctor:
+	.no_dead_strip ScanditSDK_SIOverlayController__cctor
+ScanditSDK_SIOverlayController__cctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,4,208,77,226,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 420
@@ -3945,8 +3948,8 @@ bl _p_50
 Lme_b0:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
-_ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor:
+	.no_dead_strip ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
+ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229
 bl _p_71
@@ -3959,8 +3962,8 @@ bl _p_8
 Lme_b1:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-_ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,32,1,45,233,16,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,20,80,149,229
 	.byte 5,0,160,225,0,0,80,227,21,0,0,10,0,0,159,229,0,0,0,234
@@ -3976,8 +3979,8 @@ bl _p_72
 Lme_b2:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
-_ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string:
+	.no_dead_strip ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
+ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string:
 
 	.byte 128,64,45,233,13,112,160,225,32,1,45,233,16,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,24,80,149,229
 	.byte 5,0,160,225,0,0,80,227,21,0,0,10,0,0,159,229,0,0,0,234
@@ -3993,8 +3996,8 @@ bl _p_72
 Lme_b3:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-_ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,32,1,45,233,16,208,77,226,0,80,160,225,4,16,141,229,8,32,141,229,28,80,149,229
 	.byte 5,0,160,225,0,0,80,227,21,0,0,10,0,0,159,229,0,0,0,234
@@ -4010,8 +4013,8 @@ bl _p_72
 Lme_b4:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
-_ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
+ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,4,0,157,229,0,16,157,229
 	.byte 8,0,129,229,8,16,129,226,161,20,160,225,0,32,159,229,0,0,0,234
@@ -4021,8 +4024,8 @@ _ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary:
 Lme_b5:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
-_ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
+ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,8,0,144,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -4030,8 +4033,8 @@ _ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status:
 Lme_b6:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
-_ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
+ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,4,0,157,229,0,16,157,229
 	.byte 8,0,129,229,8,16,129,226,161,20,160,225,0,32,159,229,0,0,0,234
@@ -4041,8 +4044,8 @@ _ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictio
 Lme_b7:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
-_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
+ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,4,0,157,229,0,16,157,229
 	.byte 8,0,129,229,8,16,129,226,161,20,160,225,0,32,159,229,0,0,0,234
@@ -4052,8 +4055,8 @@ _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string:
 Lme_b8:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
-_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
+ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,8,0,144,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -4061,8 +4064,8 @@ _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text:
 Lme_b9:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
-_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
+ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,4,0,157,229,0,16,157,229
 	.byte 8,0,129,229,8,16,129,226,161,20,160,225,0,32,159,229,0,0,0,234
@@ -4072,8 +4075,8 @@ _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string:
 Lme_ba:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
-_ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
+ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,4,0,157,229,0,16,157,229
 	.byte 8,0,129,229,8,16,129,226,161,20,160,225,0,32,159,229,0,0,0,234
@@ -4083,8 +4086,8 @@ _ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary:
 Lme_bb:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
-_ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
+ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,0,0,157,229,8,0,144,229,12,208,141,226
 	.byte 0,1,189,232,128,128,189,232
@@ -4092,8 +4095,8 @@ _ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode:
 Lme_bc:
 .text
 	.align 2
-	.no_dead_strip _ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
-_ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary:
+	.no_dead_strip ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
+ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary:
 
 	.byte 128,64,45,233,13,112,160,225,0,1,45,233,12,208,77,226,0,0,141,229,4,16,141,229,4,0,157,229,0,16,157,229
 	.byte 8,0,129,229,8,16,129,226,161,20,160,225,0,32,159,229,0,0,0,234
@@ -4103,131 +4106,217 @@ _ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDiction
 Lme_bd:
 .text
 	.align 2
-	.no_dead_strip _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
-_wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs:
+	.no_dead_strip wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,112,13,45,233,0,80,160,225,1,96,160,225,2,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,30,0,0,26,44,0,133,226,0,176,144,229,11,0,160,225,0,0,80,227
-	.byte 19,0,0,26,16,0,133,226,0,64,144,229,4,0,160,225,0,0,80,227,6,0,0,10,8,0,133,226,0,48,144,229
-	.byte 4,0,160,225,6,16,160,225,10,32,160,225,51,255,47,225,4,0,0,234,8,0,133,226,0,32,144,229,6,0,160,225
-	.byte 10,16,160,225,50,255,47,225,0,208,141,226,112,13,189,232,128,128,189,232,11,0,160,225,6,16,160,225,10,32,160,225
-	.byte 15,224,160,225,12,240,155,229,229,255,255,234
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,33,0,0,26,255,255,255,234,44,0,133,226,0,176,144,229,11,0,160,225
+	.byte 0,0,80,227,21,0,0,26,16,0,133,226,0,64,144,229,4,0,160,225,0,0,80,227,6,0,0,10,8,0,133,226
+	.byte 0,48,144,229,4,0,160,225,6,16,160,225,10,32,160,225,51,255,47,225,4,0,0,234,8,0,133,226,0,32,144,229
+	.byte 6,0,160,225,10,16,160,225,50,255,47,225,0,208,141,226,112,13,189,232,128,128,189,232,11,0,160,225
+bl _p_5
+
+	.byte 11,0,160,225,6,16,160,225,10,32,160,225,15,224,160,225,12,240,155,229,227,255,255,234
 bl _p_73
 
-	.byte 222,255,255,234
+	.byte 0,176,160,225,0,0,80,227,243,255,255,26,217,255,255,234
 
 Lme_bf:
 .text
 	.align 2
-	.no_dead_strip _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
-_wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs:
+	.no_dead_strip wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,112,13,45,233,0,80,160,225,1,96,160,225,2,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,30,0,0,26,44,0,133,226,0,176,144,229,11,0,160,225,0,0,80,227
-	.byte 19,0,0,26,16,0,133,226,0,64,144,229,4,0,160,225,0,0,80,227,6,0,0,10,8,0,133,226,0,48,144,229
-	.byte 4,0,160,225,6,16,160,225,10,32,160,225,51,255,47,225,4,0,0,234,8,0,133,226,0,32,144,229,6,0,160,225
-	.byte 10,16,160,225,50,255,47,225,0,208,141,226,112,13,189,232,128,128,189,232,11,0,160,225,6,16,160,225,10,32,160,225
-	.byte 15,224,160,225,12,240,155,229,229,255,255,234
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,33,0,0,26,255,255,255,234,44,0,133,226,0,176,144,229,11,0,160,225
+	.byte 0,0,80,227,21,0,0,26,16,0,133,226,0,64,144,229,4,0,160,225,0,0,80,227,6,0,0,10,8,0,133,226
+	.byte 0,48,144,229,4,0,160,225,6,16,160,225,10,32,160,225,51,255,47,225,4,0,0,234,8,0,133,226,0,32,144,229
+	.byte 6,0,160,225,10,16,160,225,50,255,47,225,0,208,141,226,112,13,189,232,128,128,189,232,11,0,160,225
+bl _p_5
+
+	.byte 11,0,160,225,6,16,160,225,10,32,160,225,15,224,160,225,12,240,155,229,227,255,255,234
 bl _p_73
 
-	.byte 222,255,255,234
+	.byte 0,176,160,225,0,0,80,227,243,255,255,26,217,255,255,234
 
 Lme_c0:
 .text
 	.align 2
-	.no_dead_strip _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
-_wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs:
+	.no_dead_strip wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
+wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs:
 
 	.byte 128,64,45,233,13,112,160,225,112,13,45,233,0,80,160,225,1,96,160,225,2,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,30,0,0,26,44,0,133,226,0,176,144,229,11,0,160,225,0,0,80,227
-	.byte 19,0,0,26,16,0,133,226,0,64,144,229,4,0,160,225,0,0,80,227,6,0,0,10,8,0,133,226,0,48,144,229
-	.byte 4,0,160,225,6,16,160,225,10,32,160,225,51,255,47,225,4,0,0,234,8,0,133,226,0,32,144,229,6,0,160,225
-	.byte 10,16,160,225,50,255,47,225,0,208,141,226,112,13,189,232,128,128,189,232,11,0,160,225,6,16,160,225,10,32,160,225
-	.byte 15,224,160,225,12,240,155,229,229,255,255,234
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,33,0,0,26,255,255,255,234,44,0,133,226,0,176,144,229,11,0,160,225
+	.byte 0,0,80,227,21,0,0,26,16,0,133,226,0,64,144,229,4,0,160,225,0,0,80,227,6,0,0,10,8,0,133,226
+	.byte 0,48,144,229,4,0,160,225,6,16,160,225,10,32,160,225,51,255,47,225,4,0,0,234,8,0,133,226,0,32,144,229
+	.byte 6,0,160,225,10,16,160,225,50,255,47,225,0,208,141,226,112,13,189,232,128,128,189,232,11,0,160,225
+bl _p_5
+
+	.byte 11,0,160,225,6,16,160,225,10,32,160,225,15,224,160,225,12,240,155,229,227,255,255,234
 bl _p_73
 
-	.byte 222,255,255,234
+	.byte 0,176,160,225,0,0,80,227,243,255,255,26,217,255,255,234
 
 Lme_c1:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,160,160,225,0,0,159,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,168,208,77,226,0,96,160,225,1,160,160,225,0,0,159,229
 	.byte 0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225
+	.byte 8,0,128,226,0,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,6,0,160,225,10,16,160,225
 bl _p_74
 
 	.byte 0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,8,192,157,229,12,224,157,229,0,192,142,229
-	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,0,192,157,229,4,224,157,229
+	.byte 0,192,142,229,176,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_c2:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,160,160,225,0,0,159,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,168,208,77,226,0,96,160,225,1,160,160,225,0,0,159,229
 	.byte 0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225
+	.byte 8,0,128,226,0,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,6,0,160,225,10,16,160,225
 bl _p_75
 
 	.byte 0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,8,192,157,229,12,224,157,229,0,192,142,229
-	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,0,192,157,229,4,224,157,229
+	.byte 0,192,142,229,176,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_c3:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,96,160,225,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,6,16,160,225,10,32,160,225
 bl _p_76
 
 	.byte 0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,8,192,157,229,12,224,157,229,0,192,142,229
-	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,8,192,157,229,12,224,157,229
+	.byte 0,192,142,229,184,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_c4:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,96,160,225,2,160,160,225
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,6,16,160,225,10,32,160,225
+bl _p_77
+
+	.byte 0,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,8,192,157,229,12,224,157,229
+	.byte 0,192,142,229,184,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_c5:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,8,0,139,229,12,16,139,229
+	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,160,157,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,8,0,155,229,12,16,155,229,16,32,155,229,20,48,155,229,24,192,155,229,0,192,141,229
+	.byte 4,160,141,229
+bl _p_78
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,32,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_c6:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,8,0,139,229,12,16,139,229
+	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,160,157,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,8,0,155,229,12,16,155,229,16,32,155,229,20,48,155,229,24,192,155,229,0,192,141,229
+	.byte 4,160,141,229
+bl _p_79
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,32,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_c7:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
@@ -4237,287 +4326,549 @@ bl _pthread_getspecific
 
 	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
 	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
-bl _p_77
-
-	.byte 0,160,160,225,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,8,192,157,229,12,224,157,229,0,192,142,229
-	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_c5:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,8,0,139,229,12,16,139,229
-	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,8,0,155,229,12,16,155,229,16,32,155,229,20,48,155,229,24,192,155,229,0,192,141,229
-	.byte 28,192,155,229,4,192,141,229
-bl _p_78
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,32,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_c6:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,8,0,139,229,12,16,139,229
-	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,8,0,155,229,12,16,155,229,16,32,155,229,20,48,155,229,24,192,155,229,0,192,141,229
-	.byte 28,192,155,229,4,192,141,229
-bl _p_79
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,32,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_c7:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229
 bl _p_80
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_c8:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
 bl _p_81
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_c9:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,0,0,141,229,12,16,141,229,16,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,12,16,141,229,2,96,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,141,226,12,16,157,229,16,32,157,229
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,4,0,141,226,12,16,157,229,6,32,160,225
 bl _p_82
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,11,0,0,26,0,0,157,229,4,16,157,229,0,16,128,229,8,16,157,229
-	.byte 4,16,128,229,24,192,157,229,28,224,157,229,0,192,142,229,208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,14,0,0,26,255,255,255,234,0,0,157,229,4,16,157,229,0,16,128,229
+	.byte 8,16,157,229,4,16,128,229,16,192,157,229,20,224,157,229,0,192,142,229,192,208,141,226,192,31,189,232,4,208,141,226
+	.byte 128,128,189,232,6,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 241,255,255,234
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,236,255,255,234
 
 Lme_ca:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,0,0,141,229,12,16,141,229,16,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,12,16,141,229,2,96,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,141,226,12,16,157,229,16,32,157,229
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,4,0,141,226,12,16,157,229,6,32,160,225
 bl _p_83
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,11,0,0,26,0,0,157,229,4,16,157,229,0,16,128,229,8,16,157,229
-	.byte 4,16,128,229,24,192,157,229,28,224,157,229,0,192,142,229,208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,14,0,0,26,255,255,255,234,0,0,157,229,4,16,157,229,0,16,128,229
+	.byte 8,16,157,229,4,16,128,229,16,192,157,229,20,224,157,229,0,192,142,229,192,208,141,226,192,31,189,232,4,208,141,226
+	.byte 128,128,189,232,6,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 241,255,255,234
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,236,255,255,234
 
 Lme_cb:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
 bl _p_84
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_cc:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
 bl _p_85
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_cd:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,13,176,160,225,0,0,139,229,4,16,139,229
-	.byte 8,32,139,229,12,48,139,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,13,176,160,225,0,0,139,229,1,160,160,225
+	.byte 4,32,139,229,8,48,139,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,155,229,4,16,155,229,8,32,155,229,12,48,155,229
+	.byte 15,192,160,225,16,192,129,229,0,0,155,229,10,16,160,225,4,32,155,229,8,48,155,229
 bl _p_86
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,155,229,20,224,155,229,0,192,142,229,200,208,139,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,155,229,20,224,155,229,0,192,142,229
+	.byte 200,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_ce:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,13,176,160,225,0,0,139,229,4,16,139,229
-	.byte 8,32,139,229,12,48,139,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,13,176,160,225,0,0,139,229,1,160,160,225
+	.byte 4,32,139,229,8,48,139,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,155,229,4,16,155,229,8,32,155,229,12,48,155,229
+	.byte 15,192,160,225,16,192,129,229,0,0,155,229,10,16,160,225,4,32,155,229,8,48,155,229
 bl _p_87
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,155,229,20,224,155,229,0,192,142,229,200,208,139,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,155,229,20,224,155,229,0,192,142,229
+	.byte 200,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_cf:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,160,160,225,0,0,159,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,168,208,77,226,0,96,160,225,1,160,160,225,0,0,159,229
 	.byte 0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225
+	.byte 8,0,128,226,0,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,6,0,160,225,10,16,160,225
 bl _p_88
 
 	.byte 0,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,8,192,157,229,12,224,157,229,0,192,142,229
-	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,0,192,157,229,4,224,157,229
+	.byte 0,192,142,229,176,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_d0:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,168,208,77,226,0,96,160,225,1,160,160,225,0,0,159,229
+	.byte 0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,0,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,6,0,160,225,10,16,160,225
+bl _p_89
+
+	.byte 0,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,0,192,157,229,4,224,157,229
+	.byte 0,192,142,229,176,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_d1:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,16,0,141,229,1,160,160,225,0,0,159,229
+	.byte 0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,16,0,157,229,10,16,160,225
+bl _p_90
+
+	.byte 12,16,141,229,8,0,141,229,0,0,141,229,12,0,157,229,4,0,141,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,11,0,0,26,255,255,255,234,0,0,157,229,4,16,157,229,24,192,157,229
+	.byte 28,224,157,229,0,192,142,229,208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,239,255,255,234
+
+Lme_d2:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,16,0,141,229,1,160,160,225,0,0,159,229
+	.byte 0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,16,0,157,229,10,16,160,225
+bl _p_91
+
+	.byte 12,16,141,229,8,0,141,229,0,0,141,229,12,0,157,229,4,0,141,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,11,0,0,26,255,255,255,234,0,0,157,229,4,16,157,229,24,192,157,229
+	.byte 28,224,157,229,0,192,142,229,208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,239,255,255,234
+
+Lme_d3:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
+bl _p_92
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
+
+Lme_d4:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,160,160,225
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,10,32,160,225
+bl _p_93
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
+
+Lme_d5:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,1,160,160,225,4,32,141,229
+	.byte 8,48,141,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225,4,32,157,229,8,48,157,229
+bl _p_94
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
+
+Lme_d6:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,1,160,160,225,4,32,141,229
+	.byte 8,48,141,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225,4,32,157,229,8,48,157,229
+bl _p_95
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
+
+Lme_d7:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,4,0,141,229,1,160,160,225,0,0,159,229
+	.byte 0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,4,0,157,229,10,16,160,225
+bl _p_96
+
+	.byte 0,0,205,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,0,0,221,229,8,192,157,229,12,224,157,229
+	.byte 0,192,142,229,192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_d8:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,4,0,141,229,1,160,160,225,0,0,159,229
+	.byte 0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,4,0,157,229,10,16,160,225
+bl _p_97
+
+	.byte 0,0,205,229,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,0,0,221,229,8,192,157,229,12,224,157,229
+	.byte 0,192,142,229,192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_d9:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,10,48,160,225
+bl _p_98
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
+
+Lme_da:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,10,48,160,225
+bl _p_99
+
+	.byte 0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
+
+Lme_db:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,96,160,225
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,6,32,160,225,10,48,160,225
+bl _p_100
+
+	.byte 0,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,8,192,157,229,12,224,157,229
+	.byte 0,192,142,229,184,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_dc:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
+
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,2,96,160,225
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - .
+	.byte 0,0,159,231
+bl _pthread_getspecific
+
+	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,6,32,160,225,10,48,160,225
+bl _p_101
+
+	.byte 0,160,160,225,0,0,159,229,0,0,0,234
+	.long _mono_aot_ScanditSDK_got - . + 436
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,10,0,160,225,8,192,157,229,12,224,157,229
+	.byte 0,192,142,229,184,208,141,226,192,31,189,232,4,208,141,226,128,128,189,232,6,0,160,225
+bl _p_5
+bl _p_73
+
+	.byte 0,96,160,225,0,0,80,227,249,255,255,26,240,255,255,234
+
+Lme_dd:
+.text
+	.align 2
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,160,160,225,0,0,159,229
 	.byte 0,0,0,234
@@ -4527,859 +4878,569 @@ bl _pthread_getspecific
 
 	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
 	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225
-bl _p_89
-
-	.byte 0,160,160,225,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,8,192,157,229,12,224,157,229,0,192,142,229
-	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_d1:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,16,0,141,229,20,16,141,229,0,0,159,229
-	.byte 0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,16,0,157,229,20,16,157,229
-bl _p_90
-
-	.byte 12,16,141,229,8,0,141,229,0,0,141,229,12,0,157,229,4,0,141,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,8,0,0,26,0,0,157,229,4,16,157,229,24,192,157,229,28,224,157,229
-	.byte 0,192,142,229,208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 244,255,255,234
-
-Lme_d2:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,16,0,141,229,20,16,141,229,0,0,159,229
-	.byte 0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,16,0,157,229,20,16,157,229
-bl _p_91
-
-	.byte 12,16,141,229,8,0,141,229,0,0,141,229,12,0,157,229,4,0,141,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,8,0,0,26,0,0,157,229,4,16,157,229,24,192,157,229,28,224,157,229
-	.byte 0,192,142,229,208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 244,255,255,234
-
-Lme_d3:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229
-bl _p_92
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 246,255,255,234
-
-Lme_d4:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229
-bl _p_93
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 246,255,255,234
-
-Lme_d5:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 12,48,141,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,12,48,157,229
-bl _p_94
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 246,255,255,234
-
-Lme_d6:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 12,48,141,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,12,48,157,229
-bl _p_95
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 246,255,255,234
-
-Lme_d7:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,0,0,159,229
-	.byte 0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229
-bl _p_96
-
-	.byte 0,0,205,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,0,0,221,229,16,192,157,229,20,224,157,229,0,192,142,229
-	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_d8:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,0,0,159,229
-	.byte 0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229
-bl _p_97
-
-	.byte 0,0,205,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,0,0,221,229,16,192,157,229,20,224,157,229,0,192,142,229
-	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_d9:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 12,48,141,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,12,48,157,229
-bl _p_98
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 246,255,255,234
-
-Lme_da:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 12,48,141,229,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,12,48,157,229
-bl _p_99
-
-	.byte 0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 246,255,255,234
-
-Lme_db:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 3,160,160,225,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,10,48,160,225
-bl _p_100
-
-	.byte 0,160,160,225,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,16,192,157,229,20,224,157,229,0,192,142,229
-	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_dc:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 3,160,160,225,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,10,48,160,225
-bl _p_101
-
-	.byte 0,160,160,225,0,0,159,229,0,0,0,234
-	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,10,0,160,225,16,192,157,229,20,224,157,229,0,192,142,229
-	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
-bl _p_73
-
-	.byte 245,255,255,234
-
-Lme_dd:
-.text
-	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr:
-
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,0,0,159,229
-	.byte 0,0,0,234
-	.long _mono_aot_ScanditSDK_got - .
-	.byte 0,0,159,231
-bl _pthread_getspecific
-
-	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229
 bl _p_102
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,8,192,157,229,12,224,157,229,0,192,142,229,192,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_de:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,4,16,141,229,0,0,159,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,176,208,77,226,0,0,141,229,1,160,160,225,0,0,159,229
 	.byte 0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,8,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,10,16,160,225
 bl _p_103
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,8,192,157,229,12,224,157,229,0,192,142,229,192,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,8,192,157,229,12,224,157,229,0,192,142,229
+	.byte 192,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_df:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,12,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,12,32,157,229
+	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,10,32,160,225
 bl _p_104
 
 	.byte 0,0,205,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,0,0,221,229,16,192,157,229,20,224,157,229,0,192,142,229
-	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,0,0,221,229,16,192,157,229,20,224,157,229
+	.byte 0,192,142,229,200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_e0:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,12,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,2,160,160,225
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,12,32,157,229
+	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,10,32,160,225
 bl _p_105
 
 	.byte 0,0,205,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,0,0,221,229,16,192,157,229,20,224,157,229,0,192,142,229
-	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,0,0,221,229,16,192,157,229,20,224,157,229
+	.byte 0,192,142,229,200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_e1:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,205,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,12,32,205,229
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,80,160,227,8,0,221,229,0,0,80,227,0,0,0,10,1,80,160,227,0,0,157,229
-	.byte 4,16,157,229,5,32,160,225
+	.byte 15,192,160,225,16,192,129,229,0,80,160,227,12,0,221,229,0,0,80,227,0,0,0,10,1,80,160,227,4,0,157,229
+	.byte 8,16,157,229,5,32,160,225
 bl _p_106
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,188,208,141,226
-	.byte 224,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 188,208,141,226,224,31,189,232,4,208,141,226,128,128,189,232,0,0,157,229
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,16,160,225,0,16,141,229,0,0,80,227,248,255,255,26,240,255,255,234
 
 Lme_e2:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,205,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,12,32,205,229
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,80,160,227,8,0,221,229,0,0,80,227,0,0,0,10,1,80,160,227,0,0,157,229
-	.byte 4,16,157,229,5,32,160,225
+	.byte 15,192,160,225,16,192,129,229,0,80,160,227,12,0,221,229,0,0,80,227,0,0,0,10,1,80,160,227,4,0,157,229
+	.byte 8,16,157,229,5,32,160,225
 bl _p_107
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,188,208,141,226
-	.byte 224,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 188,208,141,226,224,31,189,232,4,208,141,226,128,128,189,232,0,0,157,229
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,16,160,225,0,16,141,229,0,0,80,227,248,255,255,26,240,255,255,234
 
 Lme_e3:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,8,0,141,229,12,16,141,229,16,32,141,229
-	.byte 20,48,141,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,8,0,141,229,1,160,160,225,12,32,141,229
+	.byte 16,48,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,10,157,237,192,58,183,238,5,10,157,237,192,42,183,238,8,0,157,229,12,16,157,229
+	.byte 15,192,160,225,16,192,129,229,3,10,157,237,192,58,183,238,4,10,157,237,192,42,183,238,8,0,157,229,10,16,160,225
 	.byte 195,11,183,238,2,10,13,237,8,32,29,229,194,11,183,238,2,10,13,237,8,48,29,229
 bl _p_108
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,24,192,157,229,28,224,157,229,0,192,142,229,208,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,24,192,157,229,28,224,157,229,0,192,142,229
+	.byte 208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_e4:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,8,0,141,229,12,16,141,229,16,32,141,229
-	.byte 20,48,141,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,8,0,141,229,1,160,160,225,12,32,141,229
+	.byte 16,48,141,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,10,157,237,192,58,183,238,5,10,157,237,192,42,183,238,8,0,157,229,12,16,157,229
+	.byte 15,192,160,225,16,192,129,229,3,10,157,237,192,58,183,238,4,10,157,237,192,42,183,238,8,0,157,229,10,16,160,225
 	.byte 195,11,183,238,2,10,13,237,8,32,29,229,194,11,183,238,2,10,13,237,8,48,29,229
 bl _p_109
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,24,192,157,229,28,224,157,229,0,192,142,229,208,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,24,192,157,229,28,224,157,229,0,192,142,229
+	.byte 208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_e5:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,8,0,141,229,12,16,141,229,16,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,8,0,141,229,1,160,160,225,12,32,141,229
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,10,157,237,192,42,183,238,8,0,157,229,12,16,157,229,194,11,183,238,2,10,13,237
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,3,10,157,237,192,42,183,238,8,0,157,229,10,16,160,225,194,11,183,238,2,10,13,237
 	.byte 8,32,29,229
 bl _p_110
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,24,192,157,229,28,224,157,229,0,192,142,229,208,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_e6:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,8,0,141,229,12,16,141,229,16,32,141,229
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,8,0,141,229,1,160,160,225,12,32,141,229
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,10,157,237,192,42,183,238,8,0,157,229,12,16,157,229,194,11,183,238,2,10,13,237
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,3,10,157,237,192,42,183,238,8,0,157,229,10,16,160,225,194,11,183,238,2,10,13,237
 	.byte 8,32,29,229
 bl _p_111
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,24,192,157,229,28,224,157,229,0,192,142,229,208,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_e7:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 12,48,141,229,0,0,159,229,0,0,0,234
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,12,48,157,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,10,48,160,225
 bl _p_112
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_e8:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,0,0,141,229,4,16,141,229,8,32,141,229
-	.byte 12,48,141,229,0,0,159,229,0,0,0,234
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,12,48,157,229
+	.byte 15,192,160,225,16,192,129,229,0,0,157,229,4,16,157,229,8,32,157,229,10,48,160,225
 bl _p_113
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,6,0,0,26,16,192,157,229,20,224,157,229,0,192,142,229,200,208,141,226
-	.byte 0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,9,0,0,26,255,255,255,234,16,192,157,229,20,224,157,229,0,192,142,229
+	.byte 200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 246,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,241,255,255,234
 
 Lme_e9:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,4,0,141,229,8,16,141,229,12,32,141,229
-	.byte 16,48,141,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,12,32,141,229
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,12,32,157,229,16,48,157,229
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,12,32,157,229,10,48,160,225
 bl _p_114
 
 	.byte 0,0,205,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,0,0,221,229,24,192,157,229,28,224,157,229,0,192,142,229
-	.byte 208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,0,0,221,229,16,192,157,229,20,224,157,229
+	.byte 0,192,142,229,200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_ea:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,192,208,77,226,4,0,141,229,8,16,141,229,12,32,141,229
-	.byte 16,48,141,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,184,208,77,226,4,0,141,229,8,16,141,229,12,32,141,229
+	.byte 3,160,160,225,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,24,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,12,32,157,229,16,48,157,229
+	.byte 8,0,128,226,16,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,4,0,157,229,8,16,157,229,12,32,157,229,10,48,160,225
 bl _p_115
 
 	.byte 0,0,205,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,0,0,221,229,24,192,157,229,28,224,157,229,0,192,142,229
-	.byte 208,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,0,0,221,229,16,192,157,229,20,224,157,229
+	.byte 0,192,142,229,200,208,141,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_eb:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,12,0,139,229,16,16,139,229
-	.byte 20,32,139,229,24,48,139,229,248,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
+	.byte 20,32,139,229,24,48,139,229,248,160,157,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,12,0,155,229,16,16,155,229,20,32,155,229,24,48,155,229,28,192,155,229,0,192,141,229
+	.byte 15,192,160,225,16,192,129,229,12,0,155,229,16,16,155,229,20,32,155,229,24,48,155,229,0,160,141,229
 bl _p_116
 
 	.byte 8,0,203,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,8,0,0,26,8,0,219,229,32,32,139,226,0,192,146,229,4,224,146,229
-	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,11,0,0,26,255,255,255,234,8,0,219,229,32,32,139,226,0,192,146,229
+	.byte 4,224,146,229,0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 244,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,239,255,255,234
 
 Lme_ec:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
-_wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,12,0,139,229,16,16,139,229
-	.byte 20,32,139,229,24,48,139,229,248,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
+	.byte 20,32,139,229,24,48,139,229,248,160,157,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,12,0,155,229,16,16,155,229,20,32,155,229,24,48,155,229,28,192,155,229,0,192,141,229
+	.byte 15,192,160,225,16,192,129,229,12,0,155,229,16,16,155,229,20,32,155,229,24,48,155,229,0,160,141,229
 bl _p_117
 
 	.byte 8,0,203,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,8,0,0,26,8,0,219,229,32,32,139,226,0,192,146,229,4,224,146,229
-	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,11,0,0,26,255,255,255,234,8,0,219,229,32,32,139,226,0,192,146,229
+	.byte 4,224,146,229,0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 244,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,239,255,255,234
 
 Lme_ed:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,208,208,77,226,13,176,160,225,16,0,139,229,20,16,139,229
-	.byte 24,32,139,229,28,48,139,229,0,225,157,229,32,224,139,229,4,225,157,229,36,224,139,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,208,208,77,226,13,176,160,225,16,0,139,229,1,160,160,225
+	.byte 20,32,139,229,24,48,139,229,0,225,157,229,28,224,139,229,4,225,157,229,32,224,139,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,40,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,6,10,155,237,192,90,183,238,7,10,155,237,192,74,183,238,8,10,155,237,192,58,183,238
-	.byte 9,10,155,237,192,42,183,238,16,0,155,229,20,16,155,229,197,11,183,238,2,10,13,237,8,32,29,229,196,11,183,238
+	.byte 15,192,160,225,16,192,129,229,5,10,155,237,192,90,183,238,6,10,155,237,192,74,183,238,7,10,155,237,192,58,183,238
+	.byte 8,10,155,237,192,42,183,238,16,0,155,229,10,16,160,225,197,11,183,238,2,10,13,237,8,32,29,229,196,11,183,238
 	.byte 2,10,13,237,8,48,29,229,195,11,183,238,0,10,141,237,194,11,183,238,1,10,141,237
 bl _p_118
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,40,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 224,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,40,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,224,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_ee:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,208,208,77,226,13,176,160,225,16,0,139,229,20,16,139,229
-	.byte 24,32,139,229,28,48,139,229,0,225,157,229,32,224,139,229,4,225,157,229,36,224,139,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,208,208,77,226,13,176,160,225,16,0,139,229,1,160,160,225
+	.byte 20,32,139,229,24,48,139,229,0,225,157,229,28,224,139,229,4,225,157,229,32,224,139,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,40,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,6,10,155,237,192,90,183,238,7,10,155,237,192,74,183,238,8,10,155,237,192,58,183,238
-	.byte 9,10,155,237,192,42,183,238,16,0,155,229,20,16,155,229,197,11,183,238,2,10,13,237,8,32,29,229,196,11,183,238
+	.byte 15,192,160,225,16,192,129,229,5,10,155,237,192,90,183,238,6,10,155,237,192,74,183,238,7,10,155,237,192,58,183,238
+	.byte 8,10,155,237,192,42,183,238,16,0,155,229,10,16,160,225,197,11,183,238,2,10,13,237,8,32,29,229,196,11,183,238
 	.byte 2,10,13,237,8,48,29,229,195,11,183,238,0,10,141,237,194,11,183,238,1,10,141,237
 bl _p_119
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,40,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 224,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,40,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,224,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_ef:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,208,208,77,226,13,176,160,225,16,0,139,229,20,16,139,229
-	.byte 24,32,139,229,28,48,139,229,0,225,157,229,32,224,139,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,16,0,139,229,1,160,160,225
+	.byte 20,32,139,229,24,48,139,229,248,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,40,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,6,10,155,237,192,74,183,238,7,10,155,237,192,58,183,238,8,10,155,237,192,42,183,238
-	.byte 16,0,155,229,20,16,155,229,196,11,183,238,2,10,13,237,8,32,29,229,195,11,183,238,2,10,13,237,8,48,29,229
+	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,5,10,155,237,192,74,183,238,6,10,155,237,192,58,183,238,7,10,155,237,192,42,183,238
+	.byte 16,0,155,229,10,16,160,225,196,11,183,238,2,10,13,237,8,32,29,229,195,11,183,238,2,10,13,237,8,48,29,229
 	.byte 194,11,183,238,0,10,141,237
 bl _p_120
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,40,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 224,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,32,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_f0:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single:
 
-	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,208,208,77,226,13,176,160,225,16,0,139,229,20,16,139,229
-	.byte 24,32,139,229,28,48,139,229,0,225,157,229,32,224,139,229,0,0,159,229,0,0,0,234
+	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,16,0,139,229,1,160,160,225
+	.byte 20,32,139,229,24,48,139,229,248,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
-	.byte 8,0,128,226,40,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
-	.byte 15,192,160,225,16,192,129,229,6,10,155,237,192,74,183,238,7,10,155,237,192,58,183,238,8,10,155,237,192,42,183,238
-	.byte 16,0,155,229,20,16,155,229,196,11,183,238,2,10,13,237,8,32,29,229,195,11,183,238,2,10,13,237,8,48,29,229
+	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
+	.byte 15,192,160,225,16,192,129,229,5,10,155,237,192,74,183,238,6,10,155,237,192,58,183,238,7,10,155,237,192,42,183,238
+	.byte 16,0,155,229,10,16,160,225,196,11,183,238,2,10,13,237,8,32,29,229,195,11,183,238,2,10,13,237,8,48,29,229
 	.byte 194,11,183,238,0,10,141,237
 bl _p_121
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,40,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 224,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,32,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_f1:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,8,0,139,229,12,16,139,229
-	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
+	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,160,157,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
 	.byte 15,192,160,225,16,192,129,229,8,0,155,229,12,16,155,229,16,32,155,229,20,48,155,229,24,192,155,229,0,192,141,229
-	.byte 28,192,155,229,4,192,141,229
+	.byte 4,160,141,229
 bl _p_122
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,32,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,32,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_f2:
 .text
 	.align 2
-	.no_dead_strip _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
-_wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int:
+	.no_dead_strip wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
+wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int:
 
 	.byte 128,64,45,233,13,112,160,225,13,192,160,225,240,95,45,233,200,208,77,226,13,176,160,225,8,0,139,229,12,16,139,229
-	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,224,157,229,28,224,139,229,0,0,159,229,0,0,0,234
+	.byte 16,32,139,229,20,48,139,229,248,224,157,229,24,224,139,229,252,160,157,229,0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - .
 	.byte 0,0,159,231
 bl _pthread_getspecific
 
 	.byte 8,0,128,226,32,16,141,226,4,0,129,229,0,192,144,229,0,192,129,229,0,16,128,229,12,208,129,229,20,176,129,229
 	.byte 15,192,160,225,16,192,129,229,8,0,155,229,12,16,155,229,16,32,155,229,20,48,155,229,24,192,155,229,0,192,141,229
-	.byte 28,192,155,229,4,192,141,229
+	.byte 4,160,141,229
 bl _p_123
 
 	.byte 0,0,159,229,0,0,0,234
 	.long _mono_aot_ScanditSDK_got - . + 436
-	.byte 0,0,159,231,0,0,144,229,0,0,80,227,7,0,0,26,32,32,139,226,0,192,146,229,4,224,146,229,0,192,142,229
-	.byte 216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232
+	.byte 0,0,159,231,0,0,144,229,0,0,80,227,10,0,0,26,255,255,255,234,32,32,139,226,0,192,146,229,4,224,146,229
+	.byte 0,192,142,229,216,208,139,226,0,31,189,232,4,208,141,226,128,128,189,232,10,0,160,225
+bl _p_5
 bl _p_73
 
-	.byte 245,255,255,234
+	.byte 0,160,160,225,0,0,80,227,249,255,255,26,240,255,255,234
 
 Lme_f3:
 .text
 	.align 3
-methods_end:
+jit_code_end:
 
-	.long 0
+	.byte 0,0,0,0
 .text
 	.align 3
 method_addresses:
 	.no_dead_strip method_addresses
-bl _ApiDefinition_Messaging__ctor
+bl ApiDefinition_Messaging__ctor
 bl method_addresses
 bl method_addresses
 bl method_addresses
@@ -5430,210 +5491,210 @@ bl method_addresses
 bl method_addresses
 bl method_addresses
 bl method_addresses
-bl _ApiDefinition_Messaging__cctor
+bl ApiDefinition_Messaging__cctor
 bl method_addresses
-bl _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
-bl _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
-bl _ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
-bl _ScanditSDK_SINextFrameDelegate__ctor
-bl _ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
-bl _ScanditSDK_SINextFrameDelegate__ctor_intptr
+bl ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
+bl ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
+bl ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
+bl ScanditSDK_SINextFrameDelegate__ctor
+bl ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
+bl ScanditSDK_SINextFrameDelegate__ctor_intptr
 bl method_addresses
-bl _ScanditSDK_SIBarcodePicker__ctor
-bl _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
-bl _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
-bl _ScanditSDK_SIBarcodePicker__ctor_intptr
-bl _ScanditSDK_SIBarcodePicker__ctor_string
-bl _ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
-bl _ScanditSDK_SIBarcodePicker_get_ClassHandle
-bl _ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
-bl _ScanditSDK_SIBarcodePicker_DisableStandbyState
-bl _ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
-bl _ScanditSDK_SIBarcodePicker_Prepare_string
-bl _ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
-bl _ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
-bl _ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
-bl _ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
-bl _ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
-bl _ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
-bl _ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
-bl _ScanditSDK_SIBarcodePicker_StartScanning
-bl _ScanditSDK_SIBarcodePicker_StopScanning
-bl _ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
-bl _ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
-bl _ScanditSDK_SIBarcodePicker_SwitchCameraFacing
-bl _ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
-bl _ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
-bl _ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
-bl _ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
-bl _ScanditSDK_SIBarcodePicker_get_IsScanning
-bl _ScanditSDK_SIBarcodePicker_get_OverlayController
-bl _ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
-bl _ScanditSDK_SIBarcodePicker_get_Size
-bl _ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
-bl _ScanditSDK_SIBarcodePicker_Dispose_bool
-bl _ScanditSDK_SIBarcodePicker__cctor
-bl method_addresses
-bl method_addresses
-bl method_addresses
-bl _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
-bl _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
-bl _ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
-bl _ScanditSDK_SIOverlayControllerDelegate__ctor
-bl _ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
-bl _ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
+bl ScanditSDK_SIBarcodePicker__ctor
+bl ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
+bl ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
+bl ScanditSDK_SIBarcodePicker__ctor_intptr
+bl ScanditSDK_SIBarcodePicker__ctor_string
+bl ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
+bl ScanditSDK_SIBarcodePicker_get_ClassHandle
+bl ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
+bl ScanditSDK_SIBarcodePicker_DisableStandbyState
+bl ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
+bl ScanditSDK_SIBarcodePicker_Prepare_string
+bl ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
+bl ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
+bl ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
+bl ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
+bl ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
+bl ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
+bl ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
+bl ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
+bl ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
+bl ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
+bl ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
+bl ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
+bl ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
+bl ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
+bl ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
+bl ScanditSDK_SIBarcodePicker_StartScanning
+bl ScanditSDK_SIBarcodePicker_StopScanning
+bl ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
+bl ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
+bl ScanditSDK_SIBarcodePicker_SwitchCameraFacing
+bl ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
+bl ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
+bl ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
+bl ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
+bl ScanditSDK_SIBarcodePicker_get_IsScanning
+bl ScanditSDK_SIBarcodePicker_get_OverlayController
+bl ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
+bl ScanditSDK_SIBarcodePicker_get_Size
+bl ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
+bl ScanditSDK_SIBarcodePicker_Dispose_bool
+bl ScanditSDK_SIBarcodePicker__cctor
 bl method_addresses
 bl method_addresses
 bl method_addresses
-bl _ScanditSDK_SIOverlayController__ctor
-bl _ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
-bl _ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
-bl _ScanditSDK_SIOverlayController__ctor_intptr
-bl _ScanditSDK_SIOverlayController_get_ClassHandle
-bl _ScanditSDK_SIOverlayController_DrawViewfinder_bool
-bl _ScanditSDK_SIOverlayController_ResetUI
-bl _ScanditSDK_SIOverlayController_SetBannerImage_string_string
-bl _ScanditSDK_SIOverlayController_SetBeepEnabled_bool
-bl _ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
-bl _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
-bl _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
-bl _ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
-bl _ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
-bl _ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
-bl _ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
-bl _ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
-bl _ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
-bl _ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
-bl _ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
-bl _ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
-bl _ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
-bl _ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
-bl _ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
-bl _ScanditSDK_SIOverlayController_SetTorchEnabled_bool
-bl _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
-bl _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
-bl _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
-bl _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
-bl _ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
-bl _ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
-bl _ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
-bl _ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
-bl _ScanditSDK_SIOverlayController_ShowSearchBar_bool
-bl _ScanditSDK_SIOverlayController_ShowToolBar_bool
-bl _ScanditSDK_SIOverlayController_get_Delegate
-bl _ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
-bl _ScanditSDK_SIOverlayController_get_ManualSearchBar
-bl _ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
-bl _ScanditSDK_SIOverlayController_get_ToolBar
-bl _ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
-bl _ScanditSDK_SIOverlayController_get_WeakDelegate
-bl _ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
-bl _ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
-bl _ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
-bl _ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
-bl _ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
-bl _ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
-bl _ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
-bl _ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
-bl _ScanditSDK_SIOverlayController_Dispose_bool
-bl _ScanditSDK_SIOverlayController__cctor
-bl _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
-bl _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
-bl _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
-bl _ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
-bl _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
-bl _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
-bl _ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
-bl _ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
-bl _ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
+bl ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
+bl ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
+bl ScanditSDK_SIOverlayControllerDelegate__ctor
+bl ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
+bl ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
 bl method_addresses
-bl _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
-bl _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
-bl _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
-bl _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
+bl method_addresses
+bl method_addresses
+bl ScanditSDK_SIOverlayController__ctor
+bl ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
+bl ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
+bl ScanditSDK_SIOverlayController__ctor_intptr
+bl ScanditSDK_SIOverlayController_get_ClassHandle
+bl ScanditSDK_SIOverlayController_DrawViewfinder_bool
+bl ScanditSDK_SIOverlayController_ResetUI
+bl ScanditSDK_SIOverlayController_SetBannerImage_string_string
+bl ScanditSDK_SIOverlayController_SetBeepEnabled_bool
+bl ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
+bl ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
+bl ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
+bl ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
+bl ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
+bl ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
+bl ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
+bl ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
+bl ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
+bl ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
+bl ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
+bl ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
+bl ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
+bl ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
+bl ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
+bl ScanditSDK_SIOverlayController_SetTorchEnabled_bool
+bl ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
+bl ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
+bl ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
+bl ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
+bl ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
+bl ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
+bl ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
+bl ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
+bl ScanditSDK_SIOverlayController_ShowSearchBar_bool
+bl ScanditSDK_SIOverlayController_ShowToolBar_bool
+bl ScanditSDK_SIOverlayController_get_Delegate
+bl ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
+bl ScanditSDK_SIOverlayController_get_ManualSearchBar
+bl ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
+bl ScanditSDK_SIOverlayController_get_ToolBar
+bl ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
+bl ScanditSDK_SIOverlayController_get_WeakDelegate
+bl ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
+bl ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
+bl ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+bl ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+bl ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+bl ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+bl ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+bl ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+bl ScanditSDK_SIOverlayController_Dispose_bool
+bl ScanditSDK_SIOverlayController__cctor
+bl ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
+bl ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
+bl ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
+bl ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
+bl ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
+bl ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
+bl ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
+bl ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
+bl ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
+bl method_addresses
+bl wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+bl wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+bl wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
+bl wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
+bl wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
+bl wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
 method_addresses_end:
+
 .section __TEXT, __const
-	.align 3
-code_offsets:
-
-	.long 0
-
-.text
 	.align 3
 unbox_trampolines:
 unbox_trampolines_end:
+
+	.long 0
+.text
+	.align 3
+unbox_trampoline_addresses:
 
 	.long 0
 .section __TEXT, __const
@@ -5790,12 +5851,13 @@ unwind_info:
 	.byte 68,14,32,132,8,133,7,134,6,136,5,138,4,139,3,142,1,68,14,40,26,12,13,0,72,14,8,135,2,68,14,28
 	.byte 132,7,133,6,134,5,136,4,138,3,142,1,68,14,40,25,12,13,0,72,14,8,135,2,68,14,32,132,8,133,7,134
 	.byte 6,136,5,138,4,139,3,142,1,33,12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138
-	.byte 6,139,5,140,4,142,3,68,14,224,1,36,12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137
-	.byte 7,138,6,139,5,140,4,142,3,68,14,248,1,68,13,11,33,12,13,0,72,14,8,135,2,72,14,48,132,12,133,11
-	.byte 134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232,1,33,12,13,0,72,14,8,135,2,72,14,48,132,12
-	.byte 133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240,1,36,12,13,0,72,14,8,135,2,72,14,48
-	.byte 132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232,1,68,13,11,36,12,13,0,72,14,8
-	.byte 135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,128,2,68,13,11
+	.byte 6,139,5,140,4,142,3,68,14,216,1,33,12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137
+	.byte 7,138,6,139,5,140,4,142,3,68,14,224,1,36,12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136
+	.byte 8,137,7,138,6,139,5,140,4,142,3,68,14,248,1,68,13,11,33,12,13,0,72,14,8,135,2,72,14,48,132,12
+	.byte 133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232,1,36,12,13,0,72,14,8,135,2,72,14,48
+	.byte 132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232,1,68,13,11,33,12,13,0,72,14,8
+	.byte 135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240,1,36,12,13,0,72
+	.byte 14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,128,2,68,13,11
 .section __TEXT, __const
 	.align 3
 class_info_offsets:
@@ -6054,8 +6116,8 @@ _p_41:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 612,1954
-	.no_dead_strip plt__class_init_Foundation_NSObject
-plt__class_init_Foundation_NSObject:
+	.no_dead_strip plt___class_init_Foundation_NSObject
+plt___class_init_Foundation_NSObject:
 _p_42:
 
 	.byte 0,192,159,229,12,240,159,231
@@ -6246,302 +6308,302 @@ _p_73:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 740,2148
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr:
 _p_74:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 744,2186
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr:
 _p_75:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 748,2188
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr:
 _p_76:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 752,2190
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
 _p_77:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 756,2192
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
 _p_78:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 760,2194
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int:
 _p_79:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 764,2196
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr:
 _p_80:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 768,2198
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr:
 _p_81:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 772,2200
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr:
 _p_82:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 776,2202
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr:
 _p_83:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 780,2204
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr:
 _p_84:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 784,2206
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr:
 _p_85:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 788,2208
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF:
 _p_86:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 792,2210
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF:
 _p_87:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 796,2212
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr:
 _p_88:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 800,2214
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr:
 _p_89:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 804,2216
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr:
 _p_90:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 808,2218
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr:
 _p_91:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 812,2220
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int:
 _p_92:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 816,2222
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int:
 _p_93:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 820,2224
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long:
 _p_94:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 824,2226
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long:
 _p_95:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 828,2228
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr:
 _p_96:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 832,2230
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr:
 _p_97:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 836,2232
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
 _p_98:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 840,2234
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
 _p_99:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 844,2236
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int:
 _p_100:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 848,2238
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int:
 _p_101:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 852,2240
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr:
 _p_102:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 856,2242
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr:
 _p_103:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 860,2244
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int:
 _p_104:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 864,2246
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int:
 _p_105:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 868,2248
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool:
 _p_106:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 872,2250
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool:
 _p_107:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 876,2252
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single:
 _p_108:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 880,2254
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single:
 _p_109:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 884,2256
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single:
 _p_110:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 888,2258
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single:
 _p_111:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 892,2260
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 _p_112:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 896,2262
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 _p_113:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 900,2264
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 _p_114:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 904,2266
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr:
 _p_115:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 908,2268
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
 _p_116:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 912,2270
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
-plt__icall_native__ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+plt__icall_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr:
 _p_117:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 916,2272
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single:
 _p_118:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 920,2274
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single:
 _p_119:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 924,2276
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single:
 _p_120:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 928,2278
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single:
 _p_121:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 932,2280
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int:
 _p_122:
 
 	.byte 0,192,159,229,12,240,159,231
 	.long _mono_aot_ScanditSDK_got - . + 936,2282
-	.no_dead_strip plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
-plt__icall_native__ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int:
+	.no_dead_strip plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
+plt__icall_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int:
 _p_123:
 
 	.byte 0,192,159,229,12,240,159,231
@@ -6560,14 +6622,14 @@ image_table:
 
 	.long 0,4,3,0,0
 	.asciz "mscorlib"
-	.asciz "AC57A9C7-2CC4-47D9-9505-DD281A89869B"
+	.asciz "7262E3B8-0D95-411F-B565-7BA468C57FB2"
 	.asciz ""
 	.asciz "7cec85d7bea7798e"
 	.align 3
 
 	.long 1,2,0,5,0
 	.asciz "Xamarin.iOS"
-	.asciz "25994C8C-71E8-43E6-9008-75F8AB7E447A"
+	.asciz "907682E5-5B29-4B2F-BC4D-6ADEA7A18FF3"
 	.asciz ""
 	.asciz "84e04ff9cfb79065"
 	.align 3
@@ -6594,11 +6656,17 @@ assembly_name:
 	.align 3
 _mono_aot_file_info:
 
-	.long 104,0
+	.long 111,0
 	.align 2
 	.long _mono_aot_ScanditSDK_got
 	.align 2
+	.long 0
+	.align 2
 	.long methods
+	.align 2
+	.long jit_code_start
+	.align 2
+	.long jit_code_end
 	.align 2
 	.long 0
 	.align 2
@@ -6612,8 +6680,6 @@ _mono_aot_file_info:
 	.align 2
 	.long ex_info_offsets
 	.align 2
-	.long code_offsets
-	.align 2
 	.long method_addresses
 	.align 2
 	.long extra_method_info_offsets
@@ -6622,7 +6688,7 @@ _mono_aot_file_info:
 	.align 2
 	.long got_info_offsets
 	.align 2
-	.long methods_end
+	.long 0
 	.align 2
 	.long unwind_info
 	.align 2
@@ -6655,10 +6721,12 @@ _mono_aot_file_info:
 	.long unbox_trampolines
 	.align 2
 	.long unbox_trampolines_end
+	.align 2
+	.long unbox_trampoline_addresses
 
-	.long 113,948,124,244,10,387000831,0,4825
+	.long 113,948,124,244,2,387000831,0,4825
 	.long 0,0,0,0,0,0,0,0
-	.long 0,0,0,0,128,4,4,14
+	.long 0,0,0,0,128,4,4,15
 	.long 0,0,0,0,0
 	.globl _mono_aot_module_ScanditSDK_info
 	.align 2
@@ -6710,14 +6778,14 @@ blob:
 	.byte 17,38,255,252,0,0,0,6,17,39,255,252,0,0,0,6,17,40,255,252,0,0,0,6,17,41,255,252,0,0,0,6
 	.byte 17,42,255,252,0,0,0,6,17,43,255,252,0,0,0,6,17,44,255,252,0,0,0,6,17,45,255,252,0,0,0,6
 	.byte 17,46,255,252,0,0,0,6,17,47,255,252,0,0,0,6,17,48,255,252,0,0,0,6,17,49,255,252,0,0,0,6
-	.byte 17,50,255,252,0,0,0,6,17,51,12,0,39,42,47,19,0,194,0,0,5,0,16,1,5,14,17,0,41,16,2,98
-	.byte 2,128,230,17,0,128,165,17,0,128,175,17,0,128,219,17,0,128,251,16,1,9,16,17,0,129,73,17,0,129,117,17
+	.byte 17,50,255,252,0,0,0,6,17,51,12,0,40,43,48,19,0,194,0,0,5,0,16,1,5,14,17,0,41,16,2,98
+	.byte 2,128,233,17,0,128,165,17,0,128,175,17,0,128,219,17,0,128,251,16,1,9,16,17,0,129,73,17,0,129,117,17
 	.byte 0,129,157,17,0,129,197,17,0,129,235,17,0,130,63,17,0,130,155,17,0,130,205,17,0,130,249,17,0,131,37,17
 	.byte 0,131,75,17,0,131,113,17,0,131,149,17,0,131,185,17,0,131,229,17,0,132,23,17,0,132,55,17,0,132,99,17
 	.byte 0,132,159,17,0,132,215,17,0,132,245,17,0,133,43,17,0,133,97,17,0,133,141,17,0,133,177,17,0,133,205,17
 	.byte 0,134,5,17,0,134,57,17,0,134,89,17,0,134,117,17,0,134,143,17,0,134,203,17,0,134,247,17,0,135,29,17
 	.byte 0,135,59,17,0,135,103,17,0,135,153,17,0,135,211,17,0,135,233,34,255,254,0,0,0,0,255,43,0,0,1,16
-	.byte 2,99,2,128,234,17,0,136,25,16,2,36,2,103,17,0,136,69,17,0,136,79,16,2,130,158,1,136,244,17,0,136
+	.byte 2,99,2,128,237,17,0,136,25,16,2,36,2,103,17,0,136,69,17,0,136,79,16,2,130,248,1,139,229,17,0,136
 	.byte 97,17,0,136,161,17,0,137,7,17,0,137,115,16,1,13,18,17,0,137,205,17,0,137,237,17,0,138,35,17,0,138
 	.byte 105,17,0,138,137,17,0,139,5,17,0,139,111,17,0,139,217,17,0,140,15,17,0,140,131,17,0,140,191,17,0,141
 	.byte 5,17,0,141,79,17,0,141,145,17,0,141,211,17,0,142,7,17,0,142,65,17,0,142,125,17,0,142,175,17,0,143
@@ -6725,17 +6793,17 @@ blob:
 	.byte 37,17,0,145,153,17,0,145,183,11,1,12,17,0,145,209,34,255,254,0,0,0,0,255,43,0,0,2,17,0,145,241
 	.byte 17,0,146,25,34,255,254,0,0,0,0,255,43,0,0,3,17,0,146,41,17,0,146,65,17,0,146,83,11,1,14,14
 	.byte 1,14,11,3,219,0,0,1,11,3,219,0,0,2,11,3,219,0,0,3,17,0,146,109,14,1,15,14,1,16,14,1
-	.byte 17,33,3,194,0,3,9,3,194,0,4,86,3,6,7,17,109,111,110,111,95,104,101,108,112,101,114,95,108,100,115,116
+	.byte 17,33,3,194,0,3,17,3,194,0,4,130,3,6,7,17,109,111,110,111,95,104,101,108,112,101,114,95,108,100,115,116
 	.byte 114,0,7,25,109,111,110,111,95,97,114,99,104,95,116,104,114,111,119,95,101,120,99,101,112,116,105,111,110,0,3,194
-	.byte 0,2,174,3,193,0,8,88,3,194,0,2,182,3,2,3,194,0,2,204,3,194,0,2,201,3,3,3,194,0,2,175
-	.byte 3,194,0,7,161,3,4,3,5,3,194,0,7,162,3,194,0,1,76,3,194,0,1,79,3,28,3,29,3,32,3,33
+	.byte 0,2,182,3,193,0,16,185,3,194,0,2,190,3,2,3,194,0,2,212,3,194,0,2,209,3,3,3,194,0,2,183
+	.byte 3,194,0,7,245,3,4,3,5,3,194,0,7,246,3,194,0,1,80,3,194,0,1,83,3,28,3,29,3,32,3,33
 	.byte 3,30,3,31,3,34,3,35,3,8,3,26,3,9,3,20,3,21,3,36,3,37,3,38,3,39,3,24,3,25,3,16
 	.byte 3,17,3,255,254,0,0,0,0,255,43,0,0,1,15,2,99,2,3,12,3,10,3,13,3,11,3,14,3,15,3,194
-	.byte 0,2,213,3,194,0,3,29,3,40,3,42,3,43,3,46,3,47,3,44,3,45,3,50,3,51,3,48,3,49,3,255
-	.byte 254,0,0,0,0,255,43,0,0,2,3,255,254,0,0,0,0,255,43,0,0,3,3,194,0,1,185,3,194,0,2,189
+	.byte 0,2,221,3,194,0,3,39,3,40,3,42,3,43,3,46,3,47,3,44,3,45,3,50,3,51,3,48,3,49,3,255
+	.byte 254,0,0,0,0,255,43,0,0,2,3,255,254,0,0,0,0,255,43,0,0,3,3,194,0,1,191,3,194,0,2,197
 	.byte 7,24,109,111,110,111,95,111,98,106,101,99,116,95,110,101,119,95,115,112,101,99,105,102,105,99,0,7,32,109,111,110
 	.byte 111,95,97,114,99,104,95,116,104,114,111,119,95,99,111,114,108,105,98,95,101,120,99,101,112,116,105,111,110,0,3,128
-	.byte 169,3,193,0,17,54,3,193,0,17,56,3,120,7,20,109,111,110,111,95,111,98,106,101,99,116,95,110,101,119,95,102
+	.byte 169,3,193,0,21,42,3,193,0,21,44,3,120,7,20,109,111,110,111,95,111,98,106,101,99,116,95,110,101,119,95,102
 	.byte 97,115,116,0,7,35,109,111,110,111,95,116,104,114,101,97,100,95,105,110,116,101,114,114,117,112,116,105,111,110,95,99
 	.byte 104,101,99,107,112,111,105,110,116,0,31,2,31,3,31,4,31,5,31,6,31,7,31,8,31,9,31,10,31,11,31,12
 	.byte 31,13,31,14,31,15,31,16,31,17,31,18,31,19,31,20,31,21,31,22,31,23,31,24,31,25,31,26,31,27,31,28
@@ -6755,71 +6823,71 @@ blob:
 	.byte 217,0,2,129,224,0,2,0,0,2,127,0,2,127,0,2,127,0,2,127,0,2,127,0,2,129,247,0,2,130,20,0
 	.byte 2,129,224,0,2,129,224,0,2,129,224,0,2,129,224,0,2,129,224,0,2,129,224,0,2,85,0,2,19,0,2,0
 	.byte 0,2,128,238,0,2,128,238,0,2,128,238,0,2,0,0,2,0,0,2,0,0,2,0,0,2,0,0,2,0,0,2
-	.byte 0,0,2,0,0,2,0,0,2,130,47,0,2,130,47,0,2,130,47,0,2,130,73,0,2,130,73,0,2,130,73,0
-	.byte 2,130,73,0,2,130,107,0,2,130,107,0,2,130,144,0,2,130,144,0,2,130,178,0,2,130,178,0,2,130,144,0
-	.byte 2,130,144,0,2,130,212,0,2,130,212,0,2,130,73,0,2,130,73,0,2,130,178,0,2,130,178,0,2,130,144,0
-	.byte 2,130,144,0,2,130,144,0,2,130,144,0,2,130,144,0,2,130,144,0,2,130,144,0,2,130,144,0,2,130,144,0
-	.byte 2,130,144,0,2,130,73,0,2,130,73,0,2,130,144,0,2,130,144,0,2,130,144,0,2,130,144,0,2,130,178,0
-	.byte 2,130,178,0,2,130,178,0,2,130,178,0,2,130,144,0,2,130,144,0,2,130,178,0,2,130,178,0,2,130,107,0
-	.byte 2,130,107,0,2,130,249,0,2,130,249,0,2,130,249,0,2,130,249,0,2,130,107,0,2,130,107,0,0,128,144,8
-	.byte 0,0,1,23,128,144,12,0,0,4,193,0,17,149,193,0,17,164,193,0,19,149,193,0,17,162,193,0,17,148,193,0
-	.byte 17,120,193,0,17,121,193,0,17,122,193,0,17,123,193,0,17,124,193,0,17,125,193,0,17,126,193,0,17,127,193,0
-	.byte 17,128,193,0,17,129,193,0,17,130,193,0,17,131,193,0,17,150,193,0,17,132,193,0,17,133,193,0,17,134,193,0
-	.byte 17,135,193,0,17,152,23,128,144,12,0,0,4,193,0,17,149,193,0,17,164,193,0,19,149,193,0,17,162,193,0,17
-	.byte 148,193,0,17,120,193,0,17,121,193,0,17,122,193,0,17,123,193,0,17,124,193,0,17,125,193,0,17,126,193,0,17
-	.byte 127,193,0,17,128,193,0,17,129,193,0,17,130,193,0,17,131,193,0,17,150,193,0,17,132,193,0,17,133,193,0,17
-	.byte 134,193,0,17,135,193,0,17,152,23,128,144,12,0,0,4,193,0,17,149,193,0,17,164,193,0,19,149,193,0,17,162
-	.byte 193,0,17,148,193,0,17,120,193,0,17,121,193,0,17,122,193,0,17,123,193,0,17,124,193,0,17,125,193,0,17,126
-	.byte 193,0,17,127,193,0,17,128,193,0,17,129,193,0,17,130,193,0,17,131,193,0,17,150,193,0,17,132,193,0,17,133
-	.byte 193,0,17,134,193,0,17,135,193,0,17,152,4,128,196,52,8,4,0,1,193,0,19,153,193,0,19,150,193,0,19,149
-	.byte 193,0,19,147,0,128,144,8,0,0,1,8,128,130,194,0,3,10,12,0,0,4,193,0,19,153,193,0,19,150,194,0
-	.byte 3,10,193,0,19,147,194,0,3,11,194,0,3,13,194,0,3,14,56,47,128,130,194,0,2,184,20,0,0,4,194,0
-	.byte 2,211,194,0,2,208,194,0,2,184,194,0,2,209,194,0,2,210,194,0,2,202,194,0,2,185,194,0,2,217,194,0
-	.byte 2,218,194,0,2,221,194,0,2,222,194,0,2,223,194,0,2,219,194,0,2,220,194,0,2,195,194,0,2,224,194,0
-	.byte 2,199,194,0,2,196,194,0,2,200,194,0,2,227,194,0,2,231,194,0,2,226,194,0,2,230,194,0,2,228,194,0
-	.byte 2,229,194,0,2,232,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227,194,0
-	.byte 2,226,194,0,2,225,194,0,2,224,194,0,2,223,194,0,2,222,194,0,2,221,194,0,2,220,194,0,2,219,194,0
-	.byte 2,218,194,0,2,217,194,0,2,216,194,0,2,213,194,0,2,195,60,0,120,128,166,111,194,0,2,184,24,4,0,4
-	.byte 194,0,2,211,194,0,2,208,194,0,2,184,194,0,2,209,194,0,2,210,194,0,2,202,194,0,2,185,194,0,2,217
-	.byte 194,0,2,218,194,0,2,221,194,0,2,222,194,0,2,223,194,0,2,219,194,0,2,220,194,0,2,195,194,0,2,224
-	.byte 194,0,2,199,194,0,2,196,194,0,2,200,194,0,2,227,194,0,2,231,194,0,2,226,194,0,2,230,194,0,2,228
-	.byte 194,0,2,229,194,0,2,232,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227
-	.byte 194,0,2,226,194,0,2,225,194,0,2,224,194,0,2,223,194,0,2,222,194,0,2,221,194,0,2,220,194,0,2,219
-	.byte 194,0,2,218,194,0,2,217,67,110,194,0,2,195,194,0,6,165,194,0,6,164,194,0,6,163,194,0,7,165,194,0
-	.byte 7,169,194,0,7,172,194,0,7,175,194,0,7,170,194,0,7,181,194,0,7,182,194,0,7,185,194,0,7,176,194,0
-	.byte 7,187,194,0,7,188,194,0,7,187,194,0,7,186,194,0,7,185,194,0,7,184,194,0,7,183,194,0,7,182,194,0
-	.byte 7,181,194,0,7,180,194,0,7,179,194,0,7,178,194,0,7,177,194,0,7,176,194,0,7,175,194,0,7,174,194,0
-	.byte 7,173,194,0,7,172,194,0,7,171,194,0,7,170,194,0,7,169,194,0,7,168,194,0,7,167,109,108,107,106,105,104
+	.byte 0,0,2,0,0,2,0,0,2,130,47,0,2,130,47,0,2,130,47,0,2,130,73,0,2,130,73,0,2,130,107,0
+	.byte 2,130,107,0,2,130,141,0,2,130,141,0,2,130,107,0,2,130,107,0,2,130,178,0,2,130,178,0,2,130,107,0
+	.byte 2,130,107,0,2,130,212,0,2,130,212,0,2,130,73,0,2,130,73,0,2,130,249,0,2,130,249,0,2,130,107,0
+	.byte 2,130,107,0,2,130,178,0,2,130,178,0,2,130,107,0,2,130,107,0,2,130,178,0,2,130,178,0,2,130,107,0
+	.byte 2,130,107,0,2,130,107,0,2,130,107,0,2,130,178,0,2,130,178,0,2,130,178,0,2,130,178,0,2,130,249,0
+	.byte 2,130,249,0,2,130,178,0,2,130,178,0,2,130,178,0,2,130,178,0,2,130,178,0,2,130,178,0,2,130,141,0
+	.byte 2,130,141,0,2,131,27,0,2,131,27,0,2,130,141,0,2,130,141,0,2,130,141,0,2,130,141,0,0,128,144,8
+	.byte 0,0,1,23,128,144,12,0,0,4,193,0,21,141,193,0,21,156,193,0,22,232,193,0,21,154,193,0,21,140,193,0
+	.byte 21,111,193,0,21,112,193,0,21,113,193,0,21,114,193,0,21,115,193,0,21,116,193,0,21,117,193,0,21,118,193,0
+	.byte 21,119,193,0,21,120,193,0,21,121,193,0,21,122,193,0,21,142,193,0,21,123,193,0,21,124,193,0,21,125,193,0
+	.byte 21,126,193,0,21,144,23,128,144,12,0,0,4,193,0,21,141,193,0,21,156,193,0,22,232,193,0,21,154,193,0,21
+	.byte 140,193,0,21,111,193,0,21,112,193,0,21,113,193,0,21,114,193,0,21,115,193,0,21,116,193,0,21,117,193,0,21
+	.byte 118,193,0,21,119,193,0,21,120,193,0,21,121,193,0,21,122,193,0,21,142,193,0,21,123,193,0,21,124,193,0,21
+	.byte 125,193,0,21,126,193,0,21,144,23,128,144,12,0,0,4,193,0,21,141,193,0,21,156,193,0,22,232,193,0,21,154
+	.byte 193,0,21,140,193,0,21,111,193,0,21,112,193,0,21,113,193,0,21,114,193,0,21,115,193,0,21,116,193,0,21,117
+	.byte 193,0,21,118,193,0,21,119,193,0,21,120,193,0,21,121,193,0,21,122,193,0,21,142,193,0,21,123,193,0,21,124
+	.byte 193,0,21,125,193,0,21,126,193,0,21,144,4,128,196,52,8,4,0,1,193,0,22,236,193,0,22,233,193,0,22,232
+	.byte 193,0,22,230,0,128,144,8,0,0,1,8,128,130,194,0,3,18,12,0,0,4,193,0,22,236,193,0,22,233,194,0
+	.byte 3,18,193,0,22,230,194,0,3,19,194,0,3,21,194,0,3,22,56,47,128,130,194,0,2,192,20,0,0,4,194,0
+	.byte 2,219,194,0,2,216,194,0,2,192,194,0,2,217,194,0,2,218,194,0,2,210,194,0,2,193,194,0,2,225,194,0
+	.byte 2,226,194,0,2,229,194,0,2,230,194,0,2,231,194,0,2,227,194,0,2,228,194,0,2,203,194,0,2,232,194,0
+	.byte 2,207,194,0,2,204,194,0,2,208,194,0,2,235,194,0,2,239,194,0,2,234,194,0,2,238,194,0,2,236,194,0
+	.byte 2,237,194,0,2,240,194,0,2,240,194,0,2,239,194,0,2,238,194,0,2,237,194,0,2,236,194,0,2,235,194,0
+	.byte 2,234,194,0,2,233,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227,194,0
+	.byte 2,226,194,0,2,225,194,0,2,224,194,0,2,221,194,0,2,203,60,0,120,128,166,111,194,0,2,192,24,4,0,4
+	.byte 194,0,2,219,194,0,2,216,194,0,2,192,194,0,2,217,194,0,2,218,194,0,2,210,194,0,2,193,194,0,2,225
+	.byte 194,0,2,226,194,0,2,229,194,0,2,230,194,0,2,231,194,0,2,227,194,0,2,228,194,0,2,203,194,0,2,232
+	.byte 194,0,2,207,194,0,2,204,194,0,2,208,194,0,2,235,194,0,2,239,194,0,2,234,194,0,2,238,194,0,2,236
+	.byte 194,0,2,237,194,0,2,240,194,0,2,240,194,0,2,239,194,0,2,238,194,0,2,237,194,0,2,236,194,0,2,235
+	.byte 194,0,2,234,194,0,2,233,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227
+	.byte 194,0,2,226,194,0,2,225,67,110,194,0,2,203,194,0,6,232,194,0,6,231,194,0,6,230,194,0,7,249,194,0
+	.byte 7,253,194,0,8,0,194,0,8,3,194,0,7,254,194,0,8,9,194,0,8,10,194,0,8,13,194,0,8,4,194,0
+	.byte 8,15,194,0,8,16,194,0,8,15,194,0,8,14,194,0,8,13,194,0,8,12,194,0,8,11,194,0,8,10,194,0
+	.byte 8,9,194,0,8,8,194,0,8,7,194,0,8,6,194,0,8,5,194,0,8,4,194,0,8,3,194,0,8,2,194,0
+	.byte 8,1,194,0,8,0,194,0,7,255,194,0,7,254,194,0,7,253,194,0,7,252,194,0,7,251,109,108,107,106,105,104
 	.byte 103,102,101,100,99,98,97,96,95,94,93,92,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73,70
-	.byte 69,68,0,128,144,8,0,0,1,10,128,130,194,0,3,10,12,0,0,4,193,0,19,153,193,0,19,150,194,0,3,10
-	.byte 193,0,19,147,194,0,3,11,194,0,3,13,194,0,3,14,117,118,119,51,128,130,194,0,2,184,20,0,0,4,194,0
-	.byte 2,211,194,0,2,208,194,0,2,184,194,0,2,209,194,0,2,210,194,0,2,202,194,0,2,185,194,0,2,217,194,0
-	.byte 2,218,194,0,2,221,194,0,2,222,194,0,2,223,194,0,2,219,194,0,2,220,194,0,2,195,194,0,2,224,194,0
-	.byte 2,199,194,0,2,196,194,0,2,200,194,0,2,227,194,0,2,231,194,0,2,226,194,0,2,230,194,0,2,228,194,0
-	.byte 2,229,194,0,2,232,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227,194,0
-	.byte 2,226,194,0,2,225,194,0,2,224,194,0,2,223,194,0,2,222,194,0,2,221,194,0,2,220,194,0,2,219,194,0
-	.byte 2,218,194,0,2,217,194,0,2,216,194,0,2,213,194,0,2,195,125,123,124,0,0,0,116,128,174,128,177,194,0,2
-	.byte 184,32,4,0,4,194,0,2,211,194,0,2,208,194,0,2,184,194,0,2,209,194,0,2,210,194,0,2,202,194,0,2
-	.byte 185,194,0,2,217,194,0,2,218,194,0,2,221,194,0,2,222,194,0,2,223,194,0,2,219,194,0,2,220,194,0,2
-	.byte 195,194,0,2,224,194,0,2,199,194,0,2,196,194,0,2,200,194,0,2,227,194,0,2,231,194,0,2,226,194,0,2
-	.byte 230,194,0,2,228,194,0,2,229,194,0,2,232,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2
-	.byte 228,194,0,2,227,194,0,2,226,194,0,2,225,194,0,2,224,194,0,2,223,194,0,2,222,194,0,2,221,194,0,2
-	.byte 220,194,0,2,219,194,0,2,218,194,0,2,217,128,130,128,176,194,0,2,195,194,0,6,165,194,0,6,164,194,0,6
-	.byte 163,194,0,7,165,194,0,7,169,194,0,7,172,194,0,7,175,194,0,7,170,194,0,7,181,194,0,7,182,194,0,7
-	.byte 185,194,0,7,176,194,0,7,187,194,0,7,188,194,0,7,187,194,0,7,186,194,0,7,185,194,0,7,184,194,0,7
-	.byte 183,194,0,7,182,194,0,7,181,194,0,7,180,194,0,7,179,194,0,7,178,194,0,7,177,194,0,7,176,194,0,7
-	.byte 175,194,0,7,174,194,0,7,173,194,0,7,172,194,0,7,171,194,0,7,170,194,0,7,169,194,0,7,168,194,0,7
-	.byte 167,128,168,128,167,128,166,128,165,128,164,128,163,128,160,128,159,128,158,128,157,128,156,128,155,128,154,128,153,128,152,128
+	.byte 69,68,0,128,144,8,0,0,1,10,128,130,194,0,3,18,12,0,0,4,193,0,22,236,193,0,22,233,194,0,3,18
+	.byte 193,0,22,230,194,0,3,19,194,0,3,21,194,0,3,22,117,118,119,51,128,130,194,0,2,192,20,0,0,4,194,0
+	.byte 2,219,194,0,2,216,194,0,2,192,194,0,2,217,194,0,2,218,194,0,2,210,194,0,2,193,194,0,2,225,194,0
+	.byte 2,226,194,0,2,229,194,0,2,230,194,0,2,231,194,0,2,227,194,0,2,228,194,0,2,203,194,0,2,232,194,0
+	.byte 2,207,194,0,2,204,194,0,2,208,194,0,2,235,194,0,2,239,194,0,2,234,194,0,2,238,194,0,2,236,194,0
+	.byte 2,237,194,0,2,240,194,0,2,240,194,0,2,239,194,0,2,238,194,0,2,237,194,0,2,236,194,0,2,235,194,0
+	.byte 2,234,194,0,2,233,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227,194,0
+	.byte 2,226,194,0,2,225,194,0,2,224,194,0,2,221,194,0,2,203,125,123,124,0,0,0,116,128,174,128,177,194,0,2
+	.byte 192,32,4,0,4,194,0,2,219,194,0,2,216,194,0,2,192,194,0,2,217,194,0,2,218,194,0,2,210,194,0,2
+	.byte 193,194,0,2,225,194,0,2,226,194,0,2,229,194,0,2,230,194,0,2,231,194,0,2,227,194,0,2,228,194,0,2
+	.byte 203,194,0,2,232,194,0,2,207,194,0,2,204,194,0,2,208,194,0,2,235,194,0,2,239,194,0,2,234,194,0,2
+	.byte 238,194,0,2,236,194,0,2,237,194,0,2,240,194,0,2,240,194,0,2,239,194,0,2,238,194,0,2,237,194,0,2
+	.byte 236,194,0,2,235,194,0,2,234,194,0,2,233,194,0,2,232,194,0,2,231,194,0,2,230,194,0,2,229,194,0,2
+	.byte 228,194,0,2,227,194,0,2,226,194,0,2,225,128,130,128,176,194,0,2,203,194,0,6,232,194,0,6,231,194,0,6
+	.byte 230,194,0,7,249,194,0,7,253,194,0,8,0,194,0,8,3,194,0,7,254,194,0,8,9,194,0,8,10,194,0,8
+	.byte 13,194,0,8,4,194,0,8,15,194,0,8,16,194,0,8,15,194,0,8,14,194,0,8,13,194,0,8,12,194,0,8
+	.byte 11,194,0,8,10,194,0,8,9,194,0,8,8,194,0,8,7,194,0,8,6,194,0,8,5,194,0,8,4,194,0,8
+	.byte 3,194,0,8,2,194,0,8,1,194,0,8,0,194,0,7,255,194,0,7,254,194,0,7,253,194,0,7,252,194,0,7
+	.byte 251,128,168,128,167,128,166,128,165,128,164,128,163,128,160,128,159,128,158,128,157,128,156,128,155,128,154,128,153,128,152,128
 	.byte 151,128,150,128,149,128,148,128,147,128,146,128,145,128,144,128,143,128,142,128,141,128,140,128,139,128,138,128,137,128,136,128
-	.byte 135,128,134,128,133,128,132,128,131,51,128,162,194,0,2,184,32,0,0,4,194,0,2,211,194,0,2,208,194,0,2,184
-	.byte 194,0,2,209,194,0,2,210,194,0,2,202,194,0,2,185,194,0,2,217,194,0,2,218,194,0,2,221,194,0,2,222
-	.byte 194,0,2,223,194,0,2,219,194,0,2,220,194,0,2,195,194,0,2,224,194,0,2,199,194,0,2,196,194,0,2,200
-	.byte 194,0,2,227,194,0,2,231,194,0,2,226,194,0,2,230,194,0,2,228,194,0,2,229,194,0,2,232,194,0,2,232
+	.byte 135,128,134,128,133,128,132,128,131,51,128,162,194,0,2,192,32,0,0,4,194,0,2,219,194,0,2,216,194,0,2,192
+	.byte 194,0,2,217,194,0,2,218,194,0,2,210,194,0,2,193,194,0,2,225,194,0,2,226,194,0,2,229,194,0,2,230
+	.byte 194,0,2,231,194,0,2,227,194,0,2,228,194,0,2,203,194,0,2,232,194,0,2,207,194,0,2,204,194,0,2,208
+	.byte 194,0,2,235,194,0,2,239,194,0,2,234,194,0,2,238,194,0,2,236,194,0,2,237,194,0,2,240,194,0,2,240
+	.byte 194,0,2,239,194,0,2,238,194,0,2,237,194,0,2,236,194,0,2,235,194,0,2,234,194,0,2,233,194,0,2,232
 	.byte 194,0,2,231,194,0,2,230,194,0,2,229,194,0,2,228,194,0,2,227,194,0,2,226,194,0,2,225,194,0,2,224
-	.byte 194,0,2,223,194,0,2,222,194,0,2,221,194,0,2,220,194,0,2,219,194,0,2,218,194,0,2,217,194,0,2,216
-	.byte 194,0,2,213,194,0,2,195,128,181,128,179,128,180,128,181,128,180,128,179,4,128,160,12,0,0,4,193,0,19,153,193
-	.byte 0,19,150,193,0,19,149,193,0,19,147,4,128,160,12,0,0,4,193,0,19,153,193,0,19,150,193,0,19,149,193,0
-	.byte 19,147,4,128,160,12,0,0,4,193,0,19,153,193,0,19,150,193,0,19,149,193,0,19,147,115,103,101,110,0
+	.byte 194,0,2,221,194,0,2,203,128,181,128,179,128,180,128,181,128,180,128,179,4,128,160,12,0,0,4,193,0,22,236,193
+	.byte 0,22,233,193,0,22,232,193,0,22,230,4,128,160,12,0,0,4,193,0,22,236,193,0,22,233,193,0,22,232,193,0
+	.byte 22,230,4,128,160,12,0,0,4,193,0,22,236,193,0,22,233,193,0,22,232,193,0,22,230,115,103,101,110,0
 .section __TEXT, __const
 	.align 3
 Lglobals_hash:
@@ -6880,7 +6948,10 @@ LDIFF_SYM9=LTDIE_0 - Ldebug_info_start
 	.long LDIFF_SYM9
 	.byte 2
 	.asciz "ApiDefinition.Messaging:.ctor"
-	.long _ApiDefinition_Messaging__ctor
+	.asciz "ApiDefinition_Messaging__ctor"
+
+	.byte 0,0
+	.long ApiDefinition_Messaging__ctor
 	.long Lme_0
 
 	.byte 2,118,16,3
@@ -6898,9 +6969,9 @@ Lfde0_start:
 
 	.long 0
 	.align 2
-	.long _ApiDefinition_Messaging__ctor
+	.long ApiDefinition_Messaging__ctor
 
-LDIFF_SYM12=Lme_0 - _ApiDefinition_Messaging__ctor
+LDIFF_SYM12=Lme_0 - ApiDefinition_Messaging__ctor
 	.long LDIFF_SYM12
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -6910,7 +6981,10 @@ Lfde0_end:
 
 	.byte 2
 	.asciz "ApiDefinition.Messaging:.cctor"
-	.long _ApiDefinition_Messaging__cctor
+	.asciz "ApiDefinition_Messaging__cctor"
+
+	.byte 0,0
+	.long ApiDefinition_Messaging__cctor
 	.long Lme_33
 
 	.byte 2,118,16,0
@@ -6923,9 +6997,9 @@ Lfde1_start:
 
 	.long 0
 	.align 2
-	.long _ApiDefinition_Messaging__cctor
+	.long ApiDefinition_Messaging__cctor
 
-LDIFF_SYM14=Lme_33 - _ApiDefinition_Messaging__cctor
+LDIFF_SYM14=Lme_33 - ApiDefinition_Messaging__cctor
 	.long LDIFF_SYM14
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,16
 	.align 2
@@ -6985,7 +7059,10 @@ LDIFF_SYM23=LTDIE_2 - Ldebug_info_start
 	.long LDIFF_SYM23
 	.byte 2
 	.asciz "ScanditSDK.SINextFrameDelegateWrapper:.ctor"
-	.long _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
+	.asciz "ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr"
+
+	.byte 0,0
+	.long ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
 	.long Lme_35
 
 	.byte 2,118,16,3
@@ -7008,9 +7085,9 @@ Lfde2_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
+	.long ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
 
-LDIFF_SYM27=Lme_35 - _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
+LDIFF_SYM27=Lme_35 - ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr
 	.long LDIFF_SYM27
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -7070,7 +7147,10 @@ LDIFF_SYM36=LTDIE_4 - Ldebug_info_start
 	.long LDIFF_SYM36
 	.byte 2
 	.asciz "ScanditSDK.SINextFrameDelegateWrapper:.ctor"
-	.long _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
+	.asciz "ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
 	.long Lme_36
 
 	.byte 2,118,16,3
@@ -7098,9 +7178,9 @@ Lfde3_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
+	.long ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
 
-LDIFF_SYM41=Lme_36 - _ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
+LDIFF_SYM41=Lme_36 - ScanditSDK_SINextFrameDelegateWrapper__ctor_intptr_bool
 	.long LDIFF_SYM41
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,32
 	.align 2
@@ -7310,7 +7390,10 @@ LDIFF_SYM74=LTDIE_12 - Ldebug_info_start
 	.long LDIFF_SYM74
 	.byte 2
 	.asciz "ScanditSDK.SINextFrameDelegateWrapper:DidCaptureImage"
-	.long _ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
+	.asciz "ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int"
+
+	.byte 0,0
+	.long ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
 	.long Lme_37
 
 	.byte 2,118,16,3
@@ -7348,9 +7431,9 @@ Lfde4_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
+	.long ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
 
-LDIFF_SYM81=Lme_37 - _ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
+LDIFF_SYM81=Lme_37 - ScanditSDK_SINextFrameDelegateWrapper_DidCaptureImage_ScanditSDK_SIBarcodePicker_Foundation_NSData_int_int
 	.long LDIFF_SYM81
 	.byte 12,13,0,72,14,8,135,2,68,14,24,132,6,133,5,136,4,139,3,142,1,68,14,56,68,13,11
 	.align 2
@@ -7382,7 +7465,10 @@ LDIFF_SYM85=LTDIE_13 - Ldebug_info_start
 	.long LDIFF_SYM85
 	.byte 2
 	.asciz "ScanditSDK.SINextFrameDelegate:.ctor"
-	.long _ScanditSDK_SINextFrameDelegate__ctor
+	.asciz "ScanditSDK_SINextFrameDelegate__ctor"
+
+	.byte 0,0
+	.long ScanditSDK_SINextFrameDelegate__ctor
 	.long Lme_38
 
 	.byte 2,118,16,3
@@ -7400,9 +7486,9 @@ Lfde5_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SINextFrameDelegate__ctor
+	.long ScanditSDK_SINextFrameDelegate__ctor
 
-LDIFF_SYM88=Lme_38 - _ScanditSDK_SINextFrameDelegate__ctor
+LDIFF_SYM88=Lme_38 - ScanditSDK_SINextFrameDelegate__ctor
 	.long LDIFF_SYM88
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -7434,7 +7520,10 @@ LDIFF_SYM92=LTDIE_14 - Ldebug_info_start
 	.long LDIFF_SYM92
 	.byte 2
 	.asciz "ScanditSDK.SINextFrameDelegate:.ctor"
-	.long _ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
+	.asciz "ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag"
+
+	.byte 0,0
+	.long ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
 	.long Lme_39
 
 	.byte 2,118,16,3
@@ -7457,9 +7546,9 @@ Lfde6_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
+	.long ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
 
-LDIFF_SYM96=Lme_39 - _ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
+LDIFF_SYM96=Lme_39 - ScanditSDK_SINextFrameDelegate__ctor_Foundation_NSObjectFlag
 	.long LDIFF_SYM96
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -7469,7 +7558,10 @@ Lfde6_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SINextFrameDelegate:.ctor"
-	.long _ScanditSDK_SINextFrameDelegate__ctor_intptr
+	.asciz "ScanditSDK_SINextFrameDelegate__ctor_intptr"
+
+	.byte 0,0
+	.long ScanditSDK_SINextFrameDelegate__ctor_intptr
 	.long Lme_3a
 
 	.byte 2,118,16,3
@@ -7492,9 +7584,9 @@ Lfde7_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SINextFrameDelegate__ctor_intptr
+	.long ScanditSDK_SINextFrameDelegate__ctor_intptr
 
-LDIFF_SYM100=Lme_3a - _ScanditSDK_SINextFrameDelegate__ctor_intptr
+LDIFF_SYM100=Lme_3a - ScanditSDK_SINextFrameDelegate__ctor_intptr
 	.long LDIFF_SYM100
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -7504,7 +7596,10 @@ Lfde7_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.ctor"
-	.long _ScanditSDK_SIBarcodePicker__ctor
+	.asciz "ScanditSDK_SIBarcodePicker__ctor"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__ctor
 	.long Lme_3c
 
 	.byte 2,118,16,3
@@ -7522,9 +7617,9 @@ Lfde8_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__ctor
+	.long ScanditSDK_SIBarcodePicker__ctor
 
-LDIFF_SYM103=Lme_3c - _ScanditSDK_SIBarcodePicker__ctor
+LDIFF_SYM103=Lme_3c - ScanditSDK_SIBarcodePicker__ctor
 	.long LDIFF_SYM103
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -7556,7 +7651,10 @@ LDIFF_SYM107=LTDIE_15 - Ldebug_info_start
 	.long LDIFF_SYM107
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.ctor"
-	.long _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
+	.asciz "ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
 	.long Lme_3d
 
 	.byte 2,118,16,3
@@ -7579,9 +7677,9 @@ Lfde9_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
+	.long ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
 
-LDIFF_SYM111=Lme_3d - _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
+LDIFF_SYM111=Lme_3d - ScanditSDK_SIBarcodePicker__ctor_Foundation_NSCoder
 	.long LDIFF_SYM111
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -7591,7 +7689,10 @@ Lfde9_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.ctor"
-	.long _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
+	.asciz "ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
 	.long Lme_3e
 
 	.byte 2,118,16,3
@@ -7614,9 +7715,9 @@ Lfde10_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
+	.long ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
 
-LDIFF_SYM115=Lme_3e - _ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
+LDIFF_SYM115=Lme_3e - ScanditSDK_SIBarcodePicker__ctor_Foundation_NSObjectFlag
 	.long LDIFF_SYM115
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -7626,7 +7727,10 @@ Lfde10_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.ctor"
-	.long _ScanditSDK_SIBarcodePicker__ctor_intptr
+	.asciz "ScanditSDK_SIBarcodePicker__ctor_intptr"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__ctor_intptr
 	.long Lme_3f
 
 	.byte 2,118,16,3
@@ -7649,9 +7753,9 @@ Lfde11_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__ctor_intptr
+	.long ScanditSDK_SIBarcodePicker__ctor_intptr
 
-LDIFF_SYM119=Lme_3f - _ScanditSDK_SIBarcodePicker__ctor_intptr
+LDIFF_SYM119=Lme_3f - ScanditSDK_SIBarcodePicker__ctor_intptr
 	.long LDIFF_SYM119
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -7661,7 +7765,10 @@ Lfde11_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.ctor"
-	.long _ScanditSDK_SIBarcodePicker__ctor_string
+	.asciz "ScanditSDK_SIBarcodePicker__ctor_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__ctor_string
 	.long Lme_40
 
 	.byte 2,118,16,3
@@ -7689,9 +7796,9 @@ Lfde12_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__ctor_string
+	.long ScanditSDK_SIBarcodePicker__ctor_string
 
-LDIFF_SYM124=Lme_40 - _ScanditSDK_SIBarcodePicker__ctor_string
+LDIFF_SYM124=Lme_40 - ScanditSDK_SIBarcodePicker__ctor_string
 	.long LDIFF_SYM124
 	.byte 12,13,0,72,14,8,135,2,68,14,20,133,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -7729,7 +7836,10 @@ LDIFF_SYM128=LTDIE_16 - Ldebug_info_start
 	.long LDIFF_SYM128
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.ctor"
-	.long _ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
+	.asciz "ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
 	.long Lme_41
 
 	.byte 2,118,16,3
@@ -7762,9 +7872,9 @@ Lfde13_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
+	.long ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
 
-LDIFF_SYM134=Lme_41 - _ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
+LDIFF_SYM134=Lme_41 - ScanditSDK_SIBarcodePicker__ctor_string_ScanditSDK_SICameraFacingDirection
 	.long LDIFF_SYM134
 	.byte 12,13,0,72,14,8,135,2,68,14,20,132,5,133,4,136,3,142,1,68,14,40
 	.align 2
@@ -7774,7 +7884,10 @@ Lfde13_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:get_ClassHandle"
-	.long _ScanditSDK_SIBarcodePicker_get_ClassHandle
+	.asciz "ScanditSDK_SIBarcodePicker_get_ClassHandle"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_get_ClassHandle
 	.long Lme_42
 
 	.byte 2,118,16,3
@@ -7792,9 +7905,9 @@ Lfde14_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_get_ClassHandle
+	.long ScanditSDK_SIBarcodePicker_get_ClassHandle
 
-LDIFF_SYM137=Lme_42 - _ScanditSDK_SIBarcodePicker_get_ClassHandle
+LDIFF_SYM137=Lme_42 - ScanditSDK_SIBarcodePicker_get_ClassHandle
 	.long LDIFF_SYM137
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -7804,7 +7917,10 @@ Lfde14_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:ChangeToCameraFacing"
-	.long _ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
+	.asciz "ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
 	.long Lme_43
 
 	.byte 2,118,16,3
@@ -7827,9 +7943,9 @@ Lfde15_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
+	.long ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
 
-LDIFF_SYM141=Lme_43 - _ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
+LDIFF_SYM141=Lme_43 - ScanditSDK_SIBarcodePicker_ChangeToCameraFacing_ScanditSDK_SICameraFacingDirection
 	.long LDIFF_SYM141
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -7839,7 +7955,10 @@ Lfde15_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:DisableStandbyState"
-	.long _ScanditSDK_SIBarcodePicker_DisableStandbyState
+	.asciz "ScanditSDK_SIBarcodePicker_DisableStandbyState"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_DisableStandbyState
 	.long Lme_44
 
 	.byte 2,118,16,3
@@ -7857,9 +7976,9 @@ Lfde16_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_DisableStandbyState
+	.long ScanditSDK_SIBarcodePicker_DisableStandbyState
 
-LDIFF_SYM144=Lme_44 - _ScanditSDK_SIBarcodePicker_DisableStandbyState
+LDIFF_SYM144=Lme_44 - ScanditSDK_SIBarcodePicker_DisableStandbyState
 	.long LDIFF_SYM144
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -7869,7 +7988,10 @@ Lfde16_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:Force2dRecognition"
-	.long _ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
+	.asciz "ScanditSDK_SIBarcodePicker_Force2dRecognition_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
 	.long Lme_45
 
 	.byte 2,118,16,3
@@ -7892,9 +8014,9 @@ Lfde17_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
+	.long ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
 
-LDIFF_SYM148=Lme_45 - _ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
+LDIFF_SYM148=Lme_45 - ScanditSDK_SIBarcodePicker_Force2dRecognition_bool
 	.long LDIFF_SYM148
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -7904,7 +8026,10 @@ Lfde17_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:Prepare"
-	.long _ScanditSDK_SIBarcodePicker_Prepare_string
+	.asciz "ScanditSDK_SIBarcodePicker_Prepare_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_Prepare_string
 	.long Lme_46
 
 	.byte 2,118,16,3
@@ -7927,9 +8052,9 @@ Lfde18_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_Prepare_string
+	.long ScanditSDK_SIBarcodePicker_Prepare_string
 
-LDIFF_SYM152=Lme_46 - _ScanditSDK_SIBarcodePicker_Prepare_string
+LDIFF_SYM152=Lme_46 - ScanditSDK_SIBarcodePicker_Prepare_string
 	.long LDIFF_SYM152
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -7939,7 +8064,10 @@ Lfde18_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:Prepare"
-	.long _ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
+	.asciz "ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
 	.long Lme_47
 
 	.byte 2,118,16,3
@@ -7967,9 +8095,9 @@ Lfde19_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
+	.long ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
 
-LDIFF_SYM157=Lme_47 - _ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
+LDIFF_SYM157=Lme_47 - ScanditSDK_SIBarcodePicker_Prepare_string_ScanditSDK_SICameraFacingDirection
 	.long LDIFF_SYM157
 	.byte 12,13,0,72,14,8,135,2,68,14,16,133,4,136,3,142,1,68,14,32
 	.align 2
@@ -7979,7 +8107,10 @@ Lfde19_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:RestrictActiveScanningArea"
-	.long _ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
+	.asciz "ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
 	.long Lme_48
 
 	.byte 2,118,16,3
@@ -8002,9 +8133,9 @@ Lfde20_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
+	.long ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
 
-LDIFF_SYM161=Lme_48 - _ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
+LDIFF_SYM161=Lme_48 - ScanditSDK_SIBarcodePicker_RestrictActiveScanningArea_bool
 	.long LDIFF_SYM161
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8014,7 +8145,10 @@ Lfde20_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SendNextFrameToDelegate"
-	.long _ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
+	.asciz "ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
 	.long Lme_49
 
 	.byte 2,118,16,3
@@ -8037,9 +8171,9 @@ Lfde21_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
+	.long ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
 
-LDIFF_SYM165=Lme_49 - _ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
+LDIFF_SYM165=Lme_49 - ScanditSDK_SIBarcodePicker_SendNextFrameToDelegate_ScanditSDK_SINextFrameDelegate
 	.long LDIFF_SYM165
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8049,7 +8183,10 @@ Lfde21_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:Set1DScanningEnabled"
-	.long _ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
 	.long Lme_4a
 
 	.byte 2,118,16,3
@@ -8072,9 +8209,9 @@ Lfde22_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
 
-LDIFF_SYM169=Lme_4a - _ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
+LDIFF_SYM169=Lme_4a - ScanditSDK_SIBarcodePicker_Set1DScanningEnabled_bool
 	.long LDIFF_SYM169
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8084,7 +8221,10 @@ Lfde22_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:Set2DScanningEnabled"
-	.long _ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
 	.long Lme_4b
 
 	.byte 2,118,16,3
@@ -8107,9 +8247,9 @@ Lfde23_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
 
-LDIFF_SYM173=Lme_4b - _ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
+LDIFF_SYM173=Lme_4b - ScanditSDK_SIBarcodePicker_Set2DScanningEnabled_bool
 	.long LDIFF_SYM173
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8119,7 +8259,10 @@ Lfde23_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetCodabarEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
 	.long Lme_4c
 
 	.byte 2,118,16,3
@@ -8142,9 +8285,9 @@ Lfde24_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
 
-LDIFF_SYM177=Lme_4c - _ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
+LDIFF_SYM177=Lme_4c - ScanditSDK_SIBarcodePicker_SetCodabarEnabled_bool
 	.long LDIFF_SYM177
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8154,7 +8297,10 @@ Lfde24_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetCode128Enabled"
-	.long _ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
 	.long Lme_4d
 
 	.byte 2,118,16,3
@@ -8177,9 +8323,9 @@ Lfde25_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
 
-LDIFF_SYM181=Lme_4d - _ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
+LDIFF_SYM181=Lme_4d - ScanditSDK_SIBarcodePicker_SetCode128Enabled_bool
 	.long LDIFF_SYM181
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8189,7 +8335,10 @@ Lfde25_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetCode39Enabled"
-	.long _ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
 	.long Lme_4e
 
 	.byte 2,118,16,3
@@ -8212,9 +8361,9 @@ Lfde26_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
 
-LDIFF_SYM185=Lme_4e - _ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
+LDIFF_SYM185=Lme_4e - ScanditSDK_SIBarcodePicker_SetCode39Enabled_bool
 	.long LDIFF_SYM185
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8224,7 +8373,10 @@ Lfde26_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetCode93Enabled"
-	.long _ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
 	.long Lme_4f
 
 	.byte 2,118,16,3
@@ -8247,9 +8399,9 @@ Lfde27_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
 
-LDIFF_SYM189=Lme_4f - _ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
+LDIFF_SYM189=Lme_4f - ScanditSDK_SIBarcodePicker_SetCode93Enabled_bool
 	.long LDIFF_SYM189
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8259,7 +8411,10 @@ Lfde27_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetDataMatrixEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
 	.long Lme_50
 
 	.byte 2,118,16,3
@@ -8282,9 +8437,9 @@ Lfde28_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
 
-LDIFF_SYM193=Lme_50 - _ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
+LDIFF_SYM193=Lme_50 - ScanditSDK_SIBarcodePicker_SetDataMatrixEnabled_bool
 	.long LDIFF_SYM193
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8294,7 +8449,10 @@ Lfde28_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetEan13AndUpc12Enabled"
-	.long _ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
 	.long Lme_51
 
 	.byte 2,118,16,3
@@ -8317,9 +8475,9 @@ Lfde29_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
 
-LDIFF_SYM197=Lme_51 - _ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
+LDIFF_SYM197=Lme_51 - ScanditSDK_SIBarcodePicker_SetEan13AndUpc12Enabled_bool
 	.long LDIFF_SYM197
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8329,7 +8487,10 @@ Lfde29_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetEan8Enabled"
-	.long _ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
 	.long Lme_52
 
 	.byte 2,118,16,3
@@ -8352,9 +8513,9 @@ Lfde30_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
 
-LDIFF_SYM201=Lme_52 - _ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
+LDIFF_SYM201=Lme_52 - ScanditSDK_SIBarcodePicker_SetEan8Enabled_bool
 	.long LDIFF_SYM201
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8364,7 +8525,10 @@ Lfde30_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetGS1DataBarEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
 	.long Lme_53
 
 	.byte 2,118,16,3
@@ -8387,9 +8551,9 @@ Lfde31_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
 
-LDIFF_SYM205=Lme_53 - _ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
+LDIFF_SYM205=Lme_53 - ScanditSDK_SIBarcodePicker_SetGS1DataBarEnabled_bool
 	.long LDIFF_SYM205
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8399,7 +8563,10 @@ Lfde31_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetGS1DataBarExpandedEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
 	.long Lme_54
 
 	.byte 2,118,16,3
@@ -8422,9 +8589,9 @@ Lfde32_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
 
-LDIFF_SYM209=Lme_54 - _ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
+LDIFF_SYM209=Lme_54 - ScanditSDK_SIBarcodePicker_SetGS1DataBarExpandedEnabled_bool
 	.long LDIFF_SYM209
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8434,7 +8601,10 @@ Lfde32_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetInverseDetectionEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
 	.long Lme_55
 
 	.byte 2,118,16,3
@@ -8457,9 +8627,9 @@ Lfde33_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
 
-LDIFF_SYM213=Lme_55 - _ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
+LDIFF_SYM213=Lme_55 - ScanditSDK_SIBarcodePicker_SetInverseDetectionEnabled_bool
 	.long LDIFF_SYM213
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8469,7 +8639,10 @@ Lfde33_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetItfEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetItfEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
 	.long Lme_56
 
 	.byte 2,118,16,3
@@ -8492,9 +8665,9 @@ Lfde34_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
 
-LDIFF_SYM217=Lme_56 - _ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
+LDIFF_SYM217=Lme_56 - ScanditSDK_SIBarcodePicker_SetItfEnabled_bool
 	.long LDIFF_SYM217
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8504,7 +8677,10 @@ Lfde34_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetMicroDataMatrixEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
 	.long Lme_57
 
 	.byte 2,118,16,3
@@ -8527,9 +8703,9 @@ Lfde35_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
 
-LDIFF_SYM221=Lme_57 - _ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
+LDIFF_SYM221=Lme_57 - ScanditSDK_SIBarcodePicker_SetMicroDataMatrixEnabled_bool
 	.long LDIFF_SYM221
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8576,7 +8752,10 @@ LDIFF_SYM225=LTDIE_17 - Ldebug_info_start
 	.long LDIFF_SYM225
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetMsiPlesseyChecksumType"
-	.long _ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
+	.asciz "ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
 	.long Lme_58
 
 	.byte 2,118,16,3
@@ -8599,9 +8778,9 @@ Lfde36_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
+	.long ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
 
-LDIFF_SYM229=Lme_58 - _ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
+LDIFF_SYM229=Lme_58 - ScanditSDK_SIBarcodePicker_SetMsiPlesseyChecksumType_ScanditSDK_SIMsiPlesseyChecksumType
 	.long LDIFF_SYM229
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -8611,7 +8790,10 @@ Lfde36_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetMsiPlesseyEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
 	.long Lme_59
 
 	.byte 2,118,16,3
@@ -8634,9 +8816,9 @@ Lfde37_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
 
-LDIFF_SYM233=Lme_59 - _ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
+LDIFF_SYM233=Lme_59 - ScanditSDK_SIBarcodePicker_SetMsiPlesseyEnabled_bool
 	.long LDIFF_SYM233
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8646,7 +8828,10 @@ Lfde37_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetPdf417Enabled"
-	.long _ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
 	.long Lme_5a
 
 	.byte 2,118,16,3
@@ -8669,9 +8854,9 @@ Lfde38_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
 
-LDIFF_SYM237=Lme_5a - _ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
+LDIFF_SYM237=Lme_5a - ScanditSDK_SIBarcodePicker_SetPdf417Enabled_bool
 	.long LDIFF_SYM237
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8681,7 +8866,10 @@ Lfde38_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetQrEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetQrEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
 	.long Lme_5b
 
 	.byte 2,118,16,3
@@ -8704,9 +8892,9 @@ Lfde39_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
 
-LDIFF_SYM241=Lme_5b - _ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
+LDIFF_SYM241=Lme_5b - ScanditSDK_SIBarcodePicker_SetQrEnabled_bool
 	.long LDIFF_SYM241
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8743,7 +8931,10 @@ LDIFF_SYM246=LTDIE_18 - Ldebug_info_start
 	.long LDIFF_SYM246
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetScanningHotSpot"
-	.long _ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
+	.asciz "ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
 	.long Lme_5c
 
 	.byte 2,118,16,3
@@ -8771,9 +8962,9 @@ Lfde40_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
+	.long ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
 
-LDIFF_SYM251=Lme_5c - _ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
+LDIFF_SYM251=Lme_5c - ScanditSDK_SIBarcodePicker_SetScanningHotSpot_single_single
 	.long LDIFF_SYM251
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,40
 	.align 2
@@ -8783,7 +8974,10 @@ Lfde40_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetScanningHotSpotHeight"
-	.long _ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
+	.asciz "ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
 	.long Lme_5d
 
 	.byte 2,118,16,3
@@ -8806,9 +9000,9 @@ Lfde41_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
+	.long ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
 
-LDIFF_SYM255=Lme_5d - _ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
+LDIFF_SYM255=Lme_5d - ScanditSDK_SIBarcodePicker_SetScanningHotSpotHeight_single
 	.long LDIFF_SYM255
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,40
 	.align 2
@@ -8818,7 +9012,10 @@ Lfde41_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SetUpceEnabled"
-	.long _ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
 	.long Lme_5e
 
 	.byte 2,118,16,3
@@ -8841,9 +9038,9 @@ Lfde42_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
+	.long ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
 
-LDIFF_SYM259=Lme_5e - _ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
+LDIFF_SYM259=Lme_5e - ScanditSDK_SIBarcodePicker_SetUpceEnabled_bool
 	.long LDIFF_SYM259
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -8853,7 +9050,10 @@ Lfde42_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:StartScanning"
-	.long _ScanditSDK_SIBarcodePicker_StartScanning
+	.asciz "ScanditSDK_SIBarcodePicker_StartScanning"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_StartScanning
 	.long Lme_5f
 
 	.byte 2,118,16,3
@@ -8871,9 +9071,9 @@ Lfde43_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_StartScanning
+	.long ScanditSDK_SIBarcodePicker_StartScanning
 
-LDIFF_SYM262=Lme_5f - _ScanditSDK_SIBarcodePicker_StartScanning
+LDIFF_SYM262=Lme_5f - ScanditSDK_SIBarcodePicker_StartScanning
 	.long LDIFF_SYM262
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -8883,7 +9083,10 @@ Lfde43_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:StopScanning"
-	.long _ScanditSDK_SIBarcodePicker_StopScanning
+	.asciz "ScanditSDK_SIBarcodePicker_StopScanning"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_StopScanning
 	.long Lme_60
 
 	.byte 2,118,16,3
@@ -8901,9 +9104,9 @@ Lfde44_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_StopScanning
+	.long ScanditSDK_SIBarcodePicker_StopScanning
 
-LDIFF_SYM265=Lme_60 - _ScanditSDK_SIBarcodePicker_StopScanning
+LDIFF_SYM265=Lme_60 - ScanditSDK_SIBarcodePicker_StopScanning
 	.long LDIFF_SYM265
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -8913,7 +9116,10 @@ Lfde44_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:StopScanningAndKeepTorchState"
-	.long _ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
+	.asciz "ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
 	.long Lme_61
 
 	.byte 2,118,16,3
@@ -8931,9 +9137,9 @@ Lfde45_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
+	.long ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
 
-LDIFF_SYM268=Lme_61 - _ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
+LDIFF_SYM268=Lme_61 - ScanditSDK_SIBarcodePicker_StopScanningAndKeepTorchState
 	.long LDIFF_SYM268
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -8943,7 +9149,10 @@ Lfde45_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SupportsCameraFacing"
-	.long _ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
+	.asciz "ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
 	.long Lme_62
 
 	.byte 2,118,16,3
@@ -8966,9 +9175,9 @@ Lfde46_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
+	.long ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
 
-LDIFF_SYM272=Lme_62 - _ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
+LDIFF_SYM272=Lme_62 - ScanditSDK_SIBarcodePicker_SupportsCameraFacing_ScanditSDK_SICameraFacingDirection
 	.long LDIFF_SYM272
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -8978,7 +9187,10 @@ Lfde46_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SwitchCameraFacing"
-	.long _ScanditSDK_SIBarcodePicker_SwitchCameraFacing
+	.asciz "ScanditSDK_SIBarcodePicker_SwitchCameraFacing"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SwitchCameraFacing
 	.long Lme_63
 
 	.byte 2,118,16,3
@@ -8996,9 +9208,9 @@ Lfde47_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SwitchCameraFacing
+	.long ScanditSDK_SIBarcodePicker_SwitchCameraFacing
 
-LDIFF_SYM275=Lme_63 - _ScanditSDK_SIBarcodePicker_SwitchCameraFacing
+LDIFF_SYM275=Lme_63 - ScanditSDK_SIBarcodePicker_SwitchCameraFacing
 	.long LDIFF_SYM275
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -9008,7 +9220,10 @@ Lfde47_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:SwitchTorchOn"
-	.long _ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
+	.asciz "ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
 	.long Lme_64
 
 	.byte 2,118,16,3
@@ -9031,9 +9246,9 @@ Lfde48_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
+	.long ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
 
-LDIFF_SYM279=Lme_64 - _ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
+LDIFF_SYM279=Lme_64 - ScanditSDK_SIBarcodePicker_SwitchTorchOn_bool
 	.long LDIFF_SYM279
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -9043,7 +9258,10 @@ Lfde48_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:get_CameraFacingDirection"
-	.long _ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
+	.asciz "ScanditSDK_SIBarcodePicker_get_CameraFacingDirection"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
 	.long Lme_65
 
 	.byte 2,118,16,3
@@ -9061,9 +9279,9 @@ Lfde49_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
+	.long ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
 
-LDIFF_SYM282=Lme_65 - _ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
+LDIFF_SYM282=Lme_65 - ScanditSDK_SIBarcodePicker_get_CameraFacingDirection
 	.long LDIFF_SYM282
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -9107,7 +9325,10 @@ LDIFF_SYM286=LTDIE_19 - Ldebug_info_start
 	.long LDIFF_SYM286
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:get_CameraPreviewOrientation"
-	.long _ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
+	.asciz "ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
 	.long Lme_66
 
 	.byte 2,118,16,3
@@ -9130,9 +9351,9 @@ Lfde50_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
+	.long ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
 
-LDIFF_SYM290=Lme_66 - _ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
+LDIFF_SYM290=Lme_66 - ScanditSDK_SIBarcodePicker_get_CameraPreviewOrientation
 	.long LDIFF_SYM290
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -9142,7 +9363,10 @@ Lfde50_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:set_CameraPreviewOrientation"
-	.long _ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
+	.asciz "ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
 	.long Lme_67
 
 	.byte 2,118,16,3
@@ -9165,9 +9389,9 @@ Lfde51_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
+	.long ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
 
-LDIFF_SYM294=Lme_67 - _ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
+LDIFF_SYM294=Lme_67 - ScanditSDK_SIBarcodePicker_set_CameraPreviewOrientation_AVFoundation_AVCaptureVideoOrientation
 	.long LDIFF_SYM294
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -9177,7 +9401,10 @@ Lfde51_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:get_IsScanning"
-	.long _ScanditSDK_SIBarcodePicker_get_IsScanning
+	.asciz "ScanditSDK_SIBarcodePicker_get_IsScanning"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_get_IsScanning
 	.long Lme_68
 
 	.byte 2,118,16,3
@@ -9195,9 +9422,9 @@ Lfde52_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_get_IsScanning
+	.long ScanditSDK_SIBarcodePicker_get_IsScanning
 
-LDIFF_SYM297=Lme_68 - _ScanditSDK_SIBarcodePicker_get_IsScanning
+LDIFF_SYM297=Lme_68 - ScanditSDK_SIBarcodePicker_get_IsScanning
 	.long LDIFF_SYM297
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -9244,7 +9471,10 @@ LDIFF_SYM304=LTDIE_20 - Ldebug_info_start
 	.long LDIFF_SYM304
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:get_OverlayController"
-	.long _ScanditSDK_SIBarcodePicker_get_OverlayController
+	.asciz "ScanditSDK_SIBarcodePicker_get_OverlayController"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_get_OverlayController
 	.long Lme_69
 
 	.byte 2,118,16,3
@@ -9267,9 +9497,9 @@ Lfde53_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_get_OverlayController
+	.long ScanditSDK_SIBarcodePicker_get_OverlayController
 
-LDIFF_SYM308=Lme_69 - _ScanditSDK_SIBarcodePicker_get_OverlayController
+LDIFF_SYM308=Lme_69 - ScanditSDK_SIBarcodePicker_get_OverlayController
 	.long LDIFF_SYM308
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -9279,7 +9509,10 @@ Lfde53_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:set_OverlayController"
-	.long _ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
+	.asciz "ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
 	.long Lme_6a
 
 	.byte 2,118,16,3
@@ -9302,9 +9535,9 @@ Lfde54_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
+	.long ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
 
-LDIFF_SYM312=Lme_6a - _ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
+LDIFF_SYM312=Lme_6a - ScanditSDK_SIBarcodePicker_set_OverlayController_ScanditSDK_SIOverlayController
 	.long LDIFF_SYM312
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -9314,7 +9547,10 @@ Lfde54_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:get_Size"
-	.long _ScanditSDK_SIBarcodePicker_get_Size
+	.asciz "ScanditSDK_SIBarcodePicker_get_Size"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_get_Size
 	.long Lme_6b
 
 	.byte 2,118,16,3
@@ -9337,9 +9573,9 @@ Lfde55_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_get_Size
+	.long ScanditSDK_SIBarcodePicker_get_Size
 
-LDIFF_SYM316=Lme_6b - _ScanditSDK_SIBarcodePicker_get_Size
+LDIFF_SYM316=Lme_6b - ScanditSDK_SIBarcodePicker_get_Size
 	.long LDIFF_SYM316
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,48
 	.align 2
@@ -9349,7 +9585,10 @@ Lfde55_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:set_Size"
-	.long _ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
+	.asciz "ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
 	.long Lme_6c
 
 	.byte 2,118,16,3
@@ -9372,9 +9611,9 @@ Lfde56_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
+	.long ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
 
-LDIFF_SYM320=Lme_6c - _ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
+LDIFF_SYM320=Lme_6c - ScanditSDK_SIBarcodePicker_set_Size_System_Drawing_SizeF
 	.long LDIFF_SYM320
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,40,68,13,11
 	.align 2
@@ -9384,7 +9623,10 @@ Lfde56_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:Dispose"
-	.long _ScanditSDK_SIBarcodePicker_Dispose_bool
+	.asciz "ScanditSDK_SIBarcodePicker_Dispose_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker_Dispose_bool
 	.long Lme_6d
 
 	.byte 2,118,16,3
@@ -9407,9 +9649,9 @@ Lfde57_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker_Dispose_bool
+	.long ScanditSDK_SIBarcodePicker_Dispose_bool
 
-LDIFF_SYM324=Lme_6d - _ScanditSDK_SIBarcodePicker_Dispose_bool
+LDIFF_SYM324=Lme_6d - ScanditSDK_SIBarcodePicker_Dispose_bool
 	.long LDIFF_SYM324
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -9419,7 +9661,10 @@ Lfde57_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIBarcodePicker:.cctor"
-	.long _ScanditSDK_SIBarcodePicker__cctor
+	.asciz "ScanditSDK_SIBarcodePicker__cctor"
+
+	.byte 0,0
+	.long ScanditSDK_SIBarcodePicker__cctor
 	.long Lme_6e
 
 	.byte 2,118,16,0
@@ -9432,9 +9677,9 @@ Lfde58_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIBarcodePicker__cctor
+	.long ScanditSDK_SIBarcodePicker__cctor
 
-LDIFF_SYM326=Lme_6e - _ScanditSDK_SIBarcodePicker__cctor
+LDIFF_SYM326=Lme_6e - ScanditSDK_SIBarcodePicker__cctor
 	.long LDIFF_SYM326
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,16
 	.align 2
@@ -9466,7 +9711,10 @@ LDIFF_SYM330=LTDIE_21 - Ldebug_info_start
 	.long LDIFF_SYM330
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegateWrapper:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
+	.asciz "ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
 	.long Lme_72
 
 	.byte 2,118,16,3
@@ -9489,9 +9737,9 @@ Lfde59_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
 
-LDIFF_SYM334=Lme_72 - _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
+LDIFF_SYM334=Lme_72 - ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr
 	.long LDIFF_SYM334
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -9501,7 +9749,10 @@ Lfde59_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegateWrapper:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
+	.asciz "ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
 	.long Lme_73
 
 	.byte 2,118,16,3
@@ -9529,9 +9780,9 @@ Lfde60_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
 
-LDIFF_SYM339=Lme_73 - _ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
+LDIFF_SYM339=Lme_73 - ScanditSDK_SIOverlayControllerDelegateWrapper__ctor_intptr_bool
 	.long LDIFF_SYM339
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,32
 	.align 2
@@ -9563,7 +9814,10 @@ LDIFF_SYM343=LTDIE_22 - Ldebug_info_start
 	.long LDIFF_SYM343
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegateWrapper:DidScanBarcode"
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long Lme_74
 
 	.byte 2,118,16,3
@@ -9591,9 +9845,9 @@ Lfde61_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 
-LDIFF_SYM348=Lme_74 - _ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+LDIFF_SYM348=Lme_74 - ScanditSDK_SIOverlayControllerDelegateWrapper_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long LDIFF_SYM348
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,40
 	.align 2
@@ -9603,7 +9857,10 @@ Lfde61_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegateWrapper:DidCancel"
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long Lme_75
 
 	.byte 2,118,16,3
@@ -9631,9 +9888,9 @@ Lfde62_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 
-LDIFF_SYM353=Lme_75 - _ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+LDIFF_SYM353=Lme_75 - ScanditSDK_SIOverlayControllerDelegateWrapper_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long LDIFF_SYM353
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,40
 	.align 2
@@ -9643,7 +9900,10 @@ Lfde62_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegateWrapper:DidManualSearch"
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
+	.asciz "ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
 	.long Lme_76
 
 	.byte 2,118,16,3
@@ -9676,9 +9936,9 @@ Lfde63_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
+	.long ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
 
-LDIFF_SYM359=Lme_76 - _ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
+LDIFF_SYM359=Lme_76 - ScanditSDK_SIOverlayControllerDelegateWrapper_DidManualSearch_ScanditSDK_SIOverlayController_string
 	.long LDIFF_SYM359
 	.byte 12,13,0,72,14,8,135,2,68,14,20,132,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -9710,7 +9970,10 @@ LDIFF_SYM363=LTDIE_23 - Ldebug_info_start
 	.long LDIFF_SYM363
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegate:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDelegate__ctor
+	.asciz "ScanditSDK_SIOverlayControllerDelegate__ctor"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegate__ctor
 	.long Lme_77
 
 	.byte 2,118,16,3
@@ -9728,9 +9991,9 @@ Lfde64_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegate__ctor
+	.long ScanditSDK_SIOverlayControllerDelegate__ctor
 
-LDIFF_SYM366=Lme_77 - _ScanditSDK_SIOverlayControllerDelegate__ctor
+LDIFF_SYM366=Lme_77 - ScanditSDK_SIOverlayControllerDelegate__ctor
 	.long LDIFF_SYM366
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -9740,7 +10003,10 @@ Lfde64_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegate:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
+	.asciz "ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
 	.long Lme_78
 
 	.byte 2,118,16,3
@@ -9763,9 +10029,9 @@ Lfde65_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
+	.long ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
 
-LDIFF_SYM370=Lme_78 - _ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
+LDIFF_SYM370=Lme_78 - ScanditSDK_SIOverlayControllerDelegate__ctor_Foundation_NSObjectFlag
 	.long LDIFF_SYM370
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -9775,7 +10041,10 @@ Lfde65_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDelegate:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
+	.asciz "ScanditSDK_SIOverlayControllerDelegate__ctor_intptr"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
 	.long Lme_79
 
 	.byte 2,118,16,3
@@ -9798,9 +10067,9 @@ Lfde66_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
+	.long ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
 
-LDIFF_SYM374=Lme_79 - _ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
+LDIFF_SYM374=Lme_79 - ScanditSDK_SIOverlayControllerDelegate__ctor_intptr
 	.long LDIFF_SYM374
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -9810,7 +10079,10 @@ Lfde66_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:.ctor"
-	.long _ScanditSDK_SIOverlayController__ctor
+	.asciz "ScanditSDK_SIOverlayController__ctor"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__ctor
 	.long Lme_7d
 
 	.byte 2,118,16,3
@@ -9828,9 +10100,9 @@ Lfde67_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__ctor
+	.long ScanditSDK_SIOverlayController__ctor
 
-LDIFF_SYM377=Lme_7d - _ScanditSDK_SIOverlayController__ctor
+LDIFF_SYM377=Lme_7d - ScanditSDK_SIOverlayController__ctor
 	.long LDIFF_SYM377
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -9840,7 +10112,10 @@ Lfde67_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:.ctor"
-	.long _ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
+	.asciz "ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
 	.long Lme_7e
 
 	.byte 2,118,16,3
@@ -9863,9 +10138,9 @@ Lfde68_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
+	.long ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
 
-LDIFF_SYM381=Lme_7e - _ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
+LDIFF_SYM381=Lme_7e - ScanditSDK_SIOverlayController__ctor_Foundation_NSCoder
 	.long LDIFF_SYM381
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -9875,7 +10150,10 @@ Lfde68_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:.ctor"
-	.long _ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
+	.asciz "ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
 	.long Lme_7f
 
 	.byte 2,118,16,3
@@ -9898,9 +10176,9 @@ Lfde69_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
+	.long ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
 
-LDIFF_SYM385=Lme_7f - _ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
+LDIFF_SYM385=Lme_7f - ScanditSDK_SIOverlayController__ctor_Foundation_NSObjectFlag
 	.long LDIFF_SYM385
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -9910,7 +10188,10 @@ Lfde69_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:.ctor"
-	.long _ScanditSDK_SIOverlayController__ctor_intptr
+	.asciz "ScanditSDK_SIOverlayController__ctor_intptr"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__ctor_intptr
 	.long Lme_80
 
 	.byte 2,118,16,3
@@ -9933,9 +10214,9 @@ Lfde70_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__ctor_intptr
+	.long ScanditSDK_SIOverlayController__ctor_intptr
 
-LDIFF_SYM389=Lme_80 - _ScanditSDK_SIOverlayController__ctor_intptr
+LDIFF_SYM389=Lme_80 - ScanditSDK_SIOverlayController__ctor_intptr
 	.long LDIFF_SYM389
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,24
 	.align 2
@@ -9945,7 +10226,10 @@ Lfde70_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:get_ClassHandle"
-	.long _ScanditSDK_SIOverlayController_get_ClassHandle
+	.asciz "ScanditSDK_SIOverlayController_get_ClassHandle"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_get_ClassHandle
 	.long Lme_81
 
 	.byte 2,118,16,3
@@ -9963,9 +10247,9 @@ Lfde71_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_get_ClassHandle
+	.long ScanditSDK_SIOverlayController_get_ClassHandle
 
-LDIFF_SYM392=Lme_81 - _ScanditSDK_SIOverlayController_get_ClassHandle
+LDIFF_SYM392=Lme_81 - ScanditSDK_SIOverlayController_get_ClassHandle
 	.long LDIFF_SYM392
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -9975,7 +10259,10 @@ Lfde71_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:DrawViewfinder"
-	.long _ScanditSDK_SIOverlayController_DrawViewfinder_bool
+	.asciz "ScanditSDK_SIOverlayController_DrawViewfinder_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_DrawViewfinder_bool
 	.long Lme_82
 
 	.byte 2,118,16,3
@@ -9998,9 +10285,9 @@ Lfde72_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_DrawViewfinder_bool
+	.long ScanditSDK_SIOverlayController_DrawViewfinder_bool
 
-LDIFF_SYM396=Lme_82 - _ScanditSDK_SIOverlayController_DrawViewfinder_bool
+LDIFF_SYM396=Lme_82 - ScanditSDK_SIOverlayController_DrawViewfinder_bool
 	.long LDIFF_SYM396
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -10010,7 +10297,10 @@ Lfde72_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:ResetUI"
-	.long _ScanditSDK_SIOverlayController_ResetUI
+	.asciz "ScanditSDK_SIOverlayController_ResetUI"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_ResetUI
 	.long Lme_83
 
 	.byte 2,118,16,3
@@ -10028,9 +10318,9 @@ Lfde73_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_ResetUI
+	.long ScanditSDK_SIOverlayController_ResetUI
 
-LDIFF_SYM399=Lme_83 - _ScanditSDK_SIOverlayController_ResetUI
+LDIFF_SYM399=Lme_83 - ScanditSDK_SIOverlayController_ResetUI
 	.long LDIFF_SYM399
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -10040,7 +10330,10 @@ Lfde73_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetBannerImage"
-	.long _ScanditSDK_SIOverlayController_SetBannerImage_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetBannerImage_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetBannerImage_string_string
 	.long Lme_84
 
 	.byte 2,118,16,3
@@ -10083,9 +10376,9 @@ Lfde74_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetBannerImage_string_string
+	.long ScanditSDK_SIOverlayController_SetBannerImage_string_string
 
-LDIFF_SYM407=Lme_84 - _ScanditSDK_SIOverlayController_SetBannerImage_string_string
+LDIFF_SYM407=Lme_84 - ScanditSDK_SIOverlayController_SetBannerImage_string_string
 	.long LDIFF_SYM407
 	.byte 12,13,0,72,14,8,135,2,68,14,24,132,6,133,5,136,4,139,3,142,1,68,14,48
 	.align 2
@@ -10095,7 +10388,10 @@ Lfde74_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetBeepEnabled"
-	.long _ScanditSDK_SIOverlayController_SetBeepEnabled_bool
+	.asciz "ScanditSDK_SIOverlayController_SetBeepEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetBeepEnabled_bool
 	.long Lme_85
 
 	.byte 2,118,16,3
@@ -10118,9 +10414,9 @@ Lfde75_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetBeepEnabled_bool
+	.long ScanditSDK_SIOverlayController_SetBeepEnabled_bool
 
-LDIFF_SYM411=Lme_85 - _ScanditSDK_SIOverlayController_SetBeepEnabled_bool
+LDIFF_SYM411=Lme_85 - ScanditSDK_SIOverlayController_SetBeepEnabled_bool
 	.long LDIFF_SYM411
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -10130,7 +10426,10 @@ Lfde75_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetCameraSwitchButtonRelativePosition"
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
+	.asciz "ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
 	.long Lme_86
 
 	.byte 2,118,16,3
@@ -10168,9 +10467,9 @@ Lfde76_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
 
-LDIFF_SYM418=Lme_86 - _ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
+LDIFF_SYM418=Lme_86 - ScanditSDK_SIOverlayController_SetCameraSwitchButtonRelativePosition_single_single_single_single
 	.long LDIFF_SYM418
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,64,68,13,11
 	.align 2
@@ -10180,7 +10479,10 @@ Lfde76_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetCameraSwitchImageResource"
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
 	.long Lme_87
 
 	.byte 2,118,16,3
@@ -10223,9 +10525,9 @@ Lfde77_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
 
-LDIFF_SYM426=Lme_87 - _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
+LDIFF_SYM426=Lme_87 - ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string
 	.long LDIFF_SYM426
 	.byte 12,13,0,72,14,8,135,2,68,14,24,132,6,133,5,136,4,139,3,142,1,68,14,48
 	.align 2
@@ -10235,7 +10537,10 @@ Lfde77_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetCameraSwitchImageResource"
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
 	.long Lme_88
 
 	.byte 2,118,16,3
@@ -10288,9 +10593,9 @@ Lfde78_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
 
-LDIFF_SYM436=Lme_88 - _ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
+LDIFF_SYM436=Lme_88 - ScanditSDK_SIOverlayController_SetCameraSwitchImageResource_string_string_string
 	.long LDIFF_SYM436
 	.byte 12,13,0,72,14,8,135,2,68,14,28,132,7,134,6,136,5,138,4,139,3,142,1,68,14,72,68,13,11
 	.align 2
@@ -10331,7 +10636,10 @@ LDIFF_SYM440=LTDIE_24 - Ldebug_info_start
 	.long LDIFF_SYM440
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetCameraSwitchVisibility"
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
+	.asciz "ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
 	.long Lme_89
 
 	.byte 2,118,16,3
@@ -10354,9 +10662,9 @@ Lfde79_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
+	.long ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
 
-LDIFF_SYM444=Lme_89 - _ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
+LDIFF_SYM444=Lme_89 - ScanditSDK_SIOverlayController_SetCameraSwitchVisibility_ScanditSDK_SICameraSwitchVisibility
 	.long LDIFF_SYM444
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -10366,7 +10674,10 @@ Lfde79_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetLogoOffset"
-	.long _ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
+	.asciz "ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
 	.long Lme_8a
 
 	.byte 2,118,16,3
@@ -10404,9 +10715,9 @@ Lfde80_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
+	.long ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
 
-LDIFF_SYM451=Lme_8a - _ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
+LDIFF_SYM451=Lme_8a - ScanditSDK_SIOverlayController_SetLogoOffset_int_int_int_int
 	.long LDIFF_SYM451
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,56,68,13,11
 	.align 2
@@ -10416,7 +10727,10 @@ Lfde80_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetMaxSearchBarBarcodeLength"
-	.long _ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
+	.asciz "ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
 	.long Lme_8b
 
 	.byte 2,118,16,3
@@ -10439,9 +10753,9 @@ Lfde81_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
+	.long ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
 
-LDIFF_SYM455=Lme_8b - _ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
+LDIFF_SYM455=Lme_8b - ScanditSDK_SIOverlayController_SetMaxSearchBarBarcodeLength_int
 	.long LDIFF_SYM455
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -10451,7 +10765,10 @@ Lfde81_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetMinSearchBarBarcodeLength"
-	.long _ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
+	.asciz "ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
 	.long Lme_8c
 
 	.byte 2,118,16,3
@@ -10474,9 +10791,9 @@ Lfde82_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
+	.long ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
 
-LDIFF_SYM459=Lme_8c - _ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
+LDIFF_SYM459=Lme_8c - ScanditSDK_SIOverlayController_SetMinSearchBarBarcodeLength_int
 	.long LDIFF_SYM459
 	.byte 12,13,0,72,14,8,135,2,68,14,16,134,4,136,3,142,1,68,14,32
 	.align 2
@@ -10486,7 +10803,10 @@ Lfde82_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetScanSoundResource"
-	.long _ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetScanSoundResource_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
 	.long Lme_8d
 
 	.byte 2,118,16,3
@@ -10529,9 +10849,9 @@ Lfde83_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
+	.long ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
 
-LDIFF_SYM467=Lme_8d - _ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
+LDIFF_SYM467=Lme_8d - ScanditSDK_SIOverlayController_SetScanSoundResource_string_string
 	.long LDIFF_SYM467
 	.byte 12,13,0,72,14,8,135,2,68,14,24,132,6,133,5,136,4,139,3,142,1,68,14,48
 	.align 2
@@ -10541,7 +10861,10 @@ Lfde83_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:setSearchBarActionButtonCaption"
-	.long _ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
+	.asciz "ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
 	.long Lme_8e
 
 	.byte 2,118,16,3
@@ -10569,9 +10892,9 @@ Lfde84_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
+	.long ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
 
-LDIFF_SYM472=Lme_8e - _ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
+LDIFF_SYM472=Lme_8e - ScanditSDK_SIOverlayController_setSearchBarActionButtonCaption_string
 	.long LDIFF_SYM472
 	.byte 12,13,0,72,14,8,135,2,68,14,20,133,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -10581,7 +10904,10 @@ Lfde84_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetSearchBarCancelButtonCaption"
-	.long _ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
+	.asciz "ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
 	.long Lme_8f
 
 	.byte 2,118,16,3
@@ -10609,9 +10935,9 @@ Lfde85_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
+	.long ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
 
-LDIFF_SYM477=Lme_8f - _ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
+LDIFF_SYM477=Lme_8f - ScanditSDK_SIOverlayController_SetSearchBarCancelButtonCaption_string
 	.long LDIFF_SYM477
 	.byte 12,13,0,72,14,8,135,2,68,14,20,133,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -10676,7 +11002,10 @@ LDIFF_SYM481=LTDIE_25 - Ldebug_info_start
 	.long LDIFF_SYM481
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetSearchBarKeyboardType"
-	.long _ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
+	.asciz "ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
 	.long Lme_90
 
 	.byte 2,118,16,3
@@ -10699,9 +11028,9 @@ Lfde86_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
+	.long ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
 
-LDIFF_SYM485=Lme_90 - _ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
+LDIFF_SYM485=Lme_90 - ScanditSDK_SIOverlayController_SetSearchBarKeyboardType_UIKit_UIKeyboardType
 	.long LDIFF_SYM485
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -10711,7 +11040,10 @@ Lfde86_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetSearchBarPlaceholderText"
-	.long _ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
+	.asciz "ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
 	.long Lme_91
 
 	.byte 2,118,16,3
@@ -10739,9 +11071,9 @@ Lfde87_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
+	.long ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
 
-LDIFF_SYM490=Lme_91 - _ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
+LDIFF_SYM490=Lme_91 - ScanditSDK_SIOverlayController_SetSearchBarPlaceholderText_string
 	.long LDIFF_SYM490
 	.byte 12,13,0,72,14,8,135,2,68,14,20,133,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -10751,7 +11083,10 @@ Lfde87_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTextForInitializingCamera"
-	.long _ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
+	.asciz "ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
 	.long Lme_92
 
 	.byte 2,118,16,3
@@ -10779,9 +11114,9 @@ Lfde88_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
+	.long ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
 
-LDIFF_SYM495=Lme_92 - _ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
+LDIFF_SYM495=Lme_92 - ScanditSDK_SIOverlayController_SetTextForInitializingCamera_string
 	.long LDIFF_SYM495
 	.byte 12,13,0,72,14,8,135,2,68,14,20,133,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -10791,7 +11126,10 @@ Lfde88_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetToolBarButtonCaption"
-	.long _ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
+	.asciz "ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
 	.long Lme_93
 
 	.byte 2,118,16,3
@@ -10819,9 +11157,9 @@ Lfde89_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
+	.long ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
 
-LDIFF_SYM500=Lme_93 - _ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
+LDIFF_SYM500=Lme_93 - ScanditSDK_SIOverlayController_SetToolBarButtonCaption_string
 	.long LDIFF_SYM500
 	.byte 12,13,0,72,14,8,135,2,68,14,20,133,5,134,4,136,3,142,1,68,14,40
 	.align 2
@@ -10831,7 +11169,10 @@ Lfde89_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTorchButtonRelativePosition"
-	.long _ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
+	.asciz "ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
 	.long Lme_94
 
 	.byte 2,118,16,3
@@ -10869,9 +11210,9 @@ Lfde90_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
+	.long ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
 
-LDIFF_SYM507=Lme_94 - _ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
+LDIFF_SYM507=Lme_94 - ScanditSDK_SIOverlayController_SetTorchButtonRelativePosition_single_single_single_single
 	.long LDIFF_SYM507
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,64,68,13,11
 	.align 2
@@ -10881,7 +11222,10 @@ Lfde90_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTorchEnabled"
-	.long _ScanditSDK_SIOverlayController_SetTorchEnabled_bool
+	.asciz "ScanditSDK_SIOverlayController_SetTorchEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTorchEnabled_bool
 	.long Lme_95
 
 	.byte 2,118,16,3
@@ -10904,9 +11248,9 @@ Lfde91_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTorchEnabled_bool
+	.long ScanditSDK_SIOverlayController_SetTorchEnabled_bool
 
-LDIFF_SYM511=Lme_95 - _ScanditSDK_SIOverlayController_SetTorchEnabled_bool
+LDIFF_SYM511=Lme_95 - ScanditSDK_SIOverlayController_SetTorchEnabled_bool
 	.long LDIFF_SYM511
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -10916,7 +11260,10 @@ Lfde91_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTorchOffImageResource"
-	.long _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
 	.long Lme_96
 
 	.byte 2,118,16,3
@@ -10959,9 +11306,9 @@ Lfde92_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
+	.long ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
 
-LDIFF_SYM519=Lme_96 - _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
+LDIFF_SYM519=Lme_96 - ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string
 	.long LDIFF_SYM519
 	.byte 12,13,0,72,14,8,135,2,68,14,24,132,6,133,5,136,4,139,3,142,1,68,14,48
 	.align 2
@@ -10971,7 +11318,10 @@ Lfde92_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTorchOffImageResource"
-	.long _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
 	.long Lme_97
 
 	.byte 2,118,16,3
@@ -11024,9 +11374,9 @@ Lfde93_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
+	.long ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
 
-LDIFF_SYM529=Lme_97 - _ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
+LDIFF_SYM529=Lme_97 - ScanditSDK_SIOverlayController_SetTorchOffImageResource_string_string_string
 	.long LDIFF_SYM529
 	.byte 12,13,0,72,14,8,135,2,68,14,28,132,7,134,6,136,5,138,4,139,3,142,1,68,14,72,68,13,11
 	.align 2
@@ -11036,7 +11386,10 @@ Lfde93_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTorchOnImageResource"
-	.long _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
 	.long Lme_98
 
 	.byte 2,118,16,3
@@ -11079,9 +11432,9 @@ Lfde94_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
+	.long ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
 
-LDIFF_SYM537=Lme_98 - _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
+LDIFF_SYM537=Lme_98 - ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string
 	.long LDIFF_SYM537
 	.byte 12,13,0,72,14,8,135,2,68,14,24,132,6,133,5,136,4,139,3,142,1,68,14,48
 	.align 2
@@ -11091,7 +11444,10 @@ Lfde94_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetTorchOnImageResource"
-	.long _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
+	.asciz "ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
 	.long Lme_99
 
 	.byte 2,118,16,3
@@ -11144,9 +11500,9 @@ Lfde95_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
+	.long ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
 
-LDIFF_SYM547=Lme_99 - _ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
+LDIFF_SYM547=Lme_99 - ScanditSDK_SIOverlayController_SetTorchOnImageResource_string_string_string
 	.long LDIFF_SYM547
 	.byte 12,13,0,72,14,8,135,2,68,14,28,132,7,134,6,136,5,138,4,139,3,142,1,68,14,72,68,13,11
 	.align 2
@@ -11156,7 +11512,10 @@ Lfde95_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetVibrateEnabled"
-	.long _ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
+	.asciz "ScanditSDK_SIOverlayController_SetVibrateEnabled_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
 	.long Lme_9a
 
 	.byte 2,118,16,3
@@ -11179,9 +11538,9 @@ Lfde96_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
+	.long ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
 
-LDIFF_SYM551=Lme_9a - _ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
+LDIFF_SYM551=Lme_9a - ScanditSDK_SIOverlayController_SetVibrateEnabled_bool
 	.long LDIFF_SYM551
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11191,7 +11550,10 @@ Lfde96_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetViewfinderColor"
-	.long _ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
+	.asciz "ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
 	.long Lme_9b
 
 	.byte 2,118,16,3
@@ -11224,9 +11586,9 @@ Lfde97_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
+	.long ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
 
-LDIFF_SYM557=Lme_9b - _ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
+LDIFF_SYM557=Lme_9b - ScanditSDK_SIOverlayController_SetViewfinderColor_single_single_single
 	.long LDIFF_SYM557
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,64,68,13,11
 	.align 2
@@ -11236,7 +11598,10 @@ Lfde97_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetViewfinderDecodedColor"
-	.long _ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
+	.asciz "ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
 	.long Lme_9c
 
 	.byte 2,118,16,3
@@ -11269,9 +11634,9 @@ Lfde98_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
+	.long ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
 
-LDIFF_SYM563=Lme_9c - _ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
+LDIFF_SYM563=Lme_9c - ScanditSDK_SIOverlayController_SetViewfinderDecodedColor_single_single_single
 	.long LDIFF_SYM563
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,64,68,13,11
 	.align 2
@@ -11281,7 +11646,10 @@ Lfde98_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:SetViewfinderSize"
-	.long _ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
+	.asciz "ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
 	.long Lme_9d
 
 	.byte 2,118,16,3
@@ -11319,9 +11687,9 @@ Lfde99_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
+	.long ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
 
-LDIFF_SYM570=Lme_9d - _ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
+LDIFF_SYM570=Lme_9d - ScanditSDK_SIOverlayController_SetViewfinderSize_single_single_single_single
 	.long LDIFF_SYM570
 	.byte 12,13,0,72,14,8,135,2,68,14,20,136,5,138,4,139,3,142,1,68,14,64,68,13,11
 	.align 2
@@ -11331,7 +11699,10 @@ Lfde99_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:ShowSearchBar"
-	.long _ScanditSDK_SIOverlayController_ShowSearchBar_bool
+	.asciz "ScanditSDK_SIOverlayController_ShowSearchBar_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_ShowSearchBar_bool
 	.long Lme_9e
 
 	.byte 2,118,16,3
@@ -11354,9 +11725,9 @@ Lfde100_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_ShowSearchBar_bool
+	.long ScanditSDK_SIOverlayController_ShowSearchBar_bool
 
-LDIFF_SYM574=Lme_9e - _ScanditSDK_SIOverlayController_ShowSearchBar_bool
+LDIFF_SYM574=Lme_9e - ScanditSDK_SIOverlayController_ShowSearchBar_bool
 	.long LDIFF_SYM574
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11366,7 +11737,10 @@ Lfde100_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:ShowToolBar"
-	.long _ScanditSDK_SIOverlayController_ShowToolBar_bool
+	.asciz "ScanditSDK_SIOverlayController_ShowToolBar_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_ShowToolBar_bool
 	.long Lme_9f
 
 	.byte 2,118,16,3
@@ -11389,9 +11763,9 @@ Lfde101_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_ShowToolBar_bool
+	.long ScanditSDK_SIOverlayController_ShowToolBar_bool
 
-LDIFF_SYM578=Lme_9f - _ScanditSDK_SIOverlayController_ShowToolBar_bool
+LDIFF_SYM578=Lme_9f - ScanditSDK_SIOverlayController_ShowToolBar_bool
 	.long LDIFF_SYM578
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11401,7 +11775,10 @@ Lfde101_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:get_Delegate"
-	.long _ScanditSDK_SIOverlayController_get_Delegate
+	.asciz "ScanditSDK_SIOverlayController_get_Delegate"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_get_Delegate
 	.long Lme_a0
 
 	.byte 2,118,16,3
@@ -11419,9 +11796,9 @@ Lfde102_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_get_Delegate
+	.long ScanditSDK_SIOverlayController_get_Delegate
 
-LDIFF_SYM581=Lme_a0 - _ScanditSDK_SIOverlayController_get_Delegate
+LDIFF_SYM581=Lme_a0 - ScanditSDK_SIOverlayController_get_Delegate
 	.long LDIFF_SYM581
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -11431,7 +11808,10 @@ Lfde102_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:set_Delegate"
-	.long _ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
+	.asciz "ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
 	.long Lme_a1
 
 	.byte 2,118,16,3
@@ -11454,9 +11834,9 @@ Lfde103_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
+	.long ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
 
-LDIFF_SYM585=Lme_a1 - _ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
+LDIFF_SYM585=Lme_a1 - ScanditSDK_SIOverlayController_set_Delegate_ScanditSDK_SIOverlayControllerDelegate
 	.long LDIFF_SYM585
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -11511,7 +11891,10 @@ LDIFF_SYM593=LTDIE_26 - Ldebug_info_start
 	.long LDIFF_SYM593
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:get_ManualSearchBar"
-	.long _ScanditSDK_SIOverlayController_get_ManualSearchBar
+	.asciz "ScanditSDK_SIOverlayController_get_ManualSearchBar"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_get_ManualSearchBar
 	.long Lme_a2
 
 	.byte 2,118,16,3
@@ -11534,9 +11917,9 @@ Lfde104_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_get_ManualSearchBar
+	.long ScanditSDK_SIOverlayController_get_ManualSearchBar
 
-LDIFF_SYM597=Lme_a2 - _ScanditSDK_SIOverlayController_get_ManualSearchBar
+LDIFF_SYM597=Lme_a2 - ScanditSDK_SIOverlayController_get_ManualSearchBar
 	.long LDIFF_SYM597
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11546,7 +11929,10 @@ Lfde104_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:set_ManualSearchBar"
-	.long _ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
+	.asciz "ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
 	.long Lme_a3
 
 	.byte 2,118,16,3
@@ -11569,9 +11955,9 @@ Lfde105_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
+	.long ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
 
-LDIFF_SYM601=Lme_a3 - _ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
+LDIFF_SYM601=Lme_a3 - ScanditSDK_SIOverlayController_set_ManualSearchBar_UIKit_UISearchBar
 	.long LDIFF_SYM601
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11608,7 +11994,10 @@ LDIFF_SYM606=LTDIE_28 - Ldebug_info_start
 	.long LDIFF_SYM606
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:get_ToolBar"
-	.long _ScanditSDK_SIOverlayController_get_ToolBar
+	.asciz "ScanditSDK_SIOverlayController_get_ToolBar"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_get_ToolBar
 	.long Lme_a4
 
 	.byte 2,118,16,3
@@ -11631,9 +12020,9 @@ Lfde106_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_get_ToolBar
+	.long ScanditSDK_SIOverlayController_get_ToolBar
 
-LDIFF_SYM610=Lme_a4 - _ScanditSDK_SIOverlayController_get_ToolBar
+LDIFF_SYM610=Lme_a4 - ScanditSDK_SIOverlayController_get_ToolBar
 	.long LDIFF_SYM610
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11643,7 +12032,10 @@ Lfde106_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:set_ToolBar"
-	.long _ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
+	.asciz "ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
 	.long Lme_a5
 
 	.byte 2,118,16,3
@@ -11666,9 +12058,9 @@ Lfde107_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
+	.long ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
 
-LDIFF_SYM614=Lme_a5 - _ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
+LDIFF_SYM614=Lme_a5 - ScanditSDK_SIOverlayController_set_ToolBar_UIKit_UIToolbar
 	.long LDIFF_SYM614
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11678,7 +12070,10 @@ Lfde107_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:get_WeakDelegate"
-	.long _ScanditSDK_SIOverlayController_get_WeakDelegate
+	.asciz "ScanditSDK_SIOverlayController_get_WeakDelegate"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_get_WeakDelegate
 	.long Lme_a6
 
 	.byte 2,118,16,3
@@ -11701,9 +12096,9 @@ Lfde108_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_get_WeakDelegate
+	.long ScanditSDK_SIOverlayController_get_WeakDelegate
 
-LDIFF_SYM618=Lme_a6 - _ScanditSDK_SIOverlayController_get_WeakDelegate
+LDIFF_SYM618=Lme_a6 - ScanditSDK_SIOverlayController_get_WeakDelegate
 	.long LDIFF_SYM618
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,32
 	.align 2
@@ -11713,7 +12108,10 @@ Lfde108_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:set_WeakDelegate"
-	.long _ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
+	.asciz "ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
 	.long Lme_a7
 
 	.byte 2,118,16,3
@@ -11736,9 +12134,9 @@ Lfde109_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
+	.long ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
 
-LDIFF_SYM622=Lme_a7 - _ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
+LDIFF_SYM622=Lme_a7 - ScanditSDK_SIOverlayController_set_WeakDelegate_Foundation_NSObject
 	.long LDIFF_SYM622
 	.byte 12,13,0,72,14,8,135,2,68,14,32,132,8,133,7,134,6,136,5,138,4,139,3,142,1,68,14,40
 	.align 2
@@ -11748,7 +12146,10 @@ Lfde109_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:EnsureSIOverlayControllerDelegate"
-	.long _ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
+	.asciz "ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
 	.long Lme_a8
 
 	.byte 2,118,16,3
@@ -11771,9 +12172,9 @@ Lfde110_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
+	.long ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
 
-LDIFF_SYM626=Lme_a8 - _ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
+LDIFF_SYM626=Lme_a8 - ScanditSDK_SIOverlayController_EnsureSIOverlayControllerDelegate
 	.long LDIFF_SYM626
 	.byte 12,13,0,72,14,8,135,2,68,14,28,132,7,133,6,134,5,136,4,138,3,142,1,68,14,40
 	.align 2
@@ -12036,7 +12437,10 @@ LDIFF_SYM672=LTDIE_29 - Ldebug_info_start
 	.long LDIFF_SYM672
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:add_DidCancel"
-	.long _ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+	.asciz "ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 	.long Lme_a9
 
 	.byte 2,118,16,3
@@ -12059,9 +12463,9 @@ Lfde111_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+	.long ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 
-LDIFF_SYM676=Lme_a9 - _ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+LDIFF_SYM676=Lme_a9 - ScanditSDK_SIOverlayController_add_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 	.long LDIFF_SYM676
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12071,7 +12475,10 @@ Lfde111_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:remove_DidCancel"
-	.long _ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+	.asciz "ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 	.long Lme_aa
 
 	.byte 2,118,16,3
@@ -12094,9 +12501,9 @@ Lfde112_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+	.long ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 
-LDIFF_SYM680=Lme_aa - _ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+LDIFF_SYM680=Lme_aa - ScanditSDK_SIOverlayController_remove_DidCancel_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 	.long LDIFF_SYM680
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12128,7 +12535,10 @@ LDIFF_SYM684=LTDIE_37 - Ldebug_info_start
 	.long LDIFF_SYM684
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:add_DidManualSearch"
-	.long _ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+	.asciz "ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 	.long Lme_ab
 
 	.byte 2,118,16,3
@@ -12151,9 +12561,9 @@ Lfde113_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+	.long ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 
-LDIFF_SYM688=Lme_ab - _ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+LDIFF_SYM688=Lme_ab - ScanditSDK_SIOverlayController_add_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 	.long LDIFF_SYM688
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12163,7 +12573,10 @@ Lfde113_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:remove_DidManualSearch"
-	.long _ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+	.asciz "ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 	.long Lme_ac
 
 	.byte 2,118,16,3
@@ -12186,9 +12599,9 @@ Lfde114_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+	.long ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 
-LDIFF_SYM692=Lme_ac - _ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+LDIFF_SYM692=Lme_ac - ScanditSDK_SIOverlayController_remove_DidManualSearch_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 	.long LDIFF_SYM692
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12220,7 +12633,10 @@ LDIFF_SYM696=LTDIE_38 - Ldebug_info_start
 	.long LDIFF_SYM696
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:add_DidScanBarcode"
-	.long _ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+	.asciz "ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
 	.long Lme_ad
 
 	.byte 2,118,16,3
@@ -12243,9 +12659,9 @@ Lfde115_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+	.long ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
 
-LDIFF_SYM700=Lme_ad - _ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+LDIFF_SYM700=Lme_ad - ScanditSDK_SIOverlayController_add_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
 	.long LDIFF_SYM700
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12255,7 +12671,10 @@ Lfde115_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:remove_DidScanBarcode"
-	.long _ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+	.asciz "ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
 	.long Lme_ae
 
 	.byte 2,118,16,3
@@ -12278,9 +12697,9 @@ Lfde116_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+	.long ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
 
-LDIFF_SYM704=Lme_ae - _ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
+LDIFF_SYM704=Lme_ae - ScanditSDK_SIOverlayController_remove_DidScanBarcode_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs
 	.long LDIFF_SYM704
 	.byte 12,13,0,72,14,8,135,2,68,14,20,134,5,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12290,7 +12709,10 @@ Lfde116_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:Dispose"
-	.long _ScanditSDK_SIOverlayController_Dispose_bool
+	.asciz "ScanditSDK_SIOverlayController_Dispose_bool"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController_Dispose_bool
 	.long Lme_af
 
 	.byte 2,118,16,3
@@ -12313,9 +12735,9 @@ Lfde117_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController_Dispose_bool
+	.long ScanditSDK_SIOverlayController_Dispose_bool
 
-LDIFF_SYM708=Lme_af - _ScanditSDK_SIOverlayController_Dispose_bool
+LDIFF_SYM708=Lme_af - ScanditSDK_SIOverlayController_Dispose_bool
 	.long LDIFF_SYM708
 	.byte 12,13,0,72,14,8,135,2,68,14,16,136,4,138,3,142,1,68,14,24
 	.align 2
@@ -12325,7 +12747,10 @@ Lfde117_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController:.cctor"
-	.long _ScanditSDK_SIOverlayController__cctor
+	.asciz "ScanditSDK_SIOverlayController__cctor"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__cctor
 	.long Lme_b0
 
 	.byte 2,118,16,0
@@ -12338,9 +12763,9 @@ Lfde118_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__cctor
+	.long ScanditSDK_SIOverlayController__cctor
 
-LDIFF_SYM710=Lme_b0 - _ScanditSDK_SIOverlayController__cctor
+LDIFF_SYM710=Lme_b0 - ScanditSDK_SIOverlayController__cctor
 	.long LDIFF_SYM710
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,16
 	.align 2
@@ -12387,7 +12812,10 @@ LDIFF_SYM717=LTDIE_39 - Ldebug_info_start
 	.long LDIFF_SYM717
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController/_SIOverlayControllerDelegate:.ctor"
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
+	.asciz "ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
 	.long Lme_b1
 
 	.byte 2,118,16,3
@@ -12405,9 +12833,9 @@ Lfde119_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
 
-LDIFF_SYM720=Lme_b1 - _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
+LDIFF_SYM720=Lme_b1 - ScanditSDK_SIOverlayController__SIOverlayControllerDelegate__ctor
 	.long LDIFF_SYM720
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12467,7 +12895,10 @@ LDIFF_SYM729=LTDIE_40 - Ldebug_info_start
 	.long LDIFF_SYM729
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController/_SIOverlayControllerDelegate:DidCancel"
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long Lme_b2
 
 	.byte 2,118,16,3
@@ -12505,9 +12936,9 @@ Lfde120_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 
-LDIFF_SYM736=Lme_b2 - _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+LDIFF_SYM736=Lme_b2 - ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidCancel_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long LDIFF_SYM736
 	.byte 12,13,0,72,14,8,135,2,68,14,16,133,4,136,3,142,1,68,14,32
 	.align 2
@@ -12544,7 +12975,10 @@ LDIFF_SYM741=LTDIE_42 - Ldebug_info_start
 	.long LDIFF_SYM741
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController/_SIOverlayControllerDelegate:DidManualSearch"
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
+	.asciz "ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
 	.long Lme_b3
 
 	.byte 2,118,16,3
@@ -12582,9 +13016,9 @@ Lfde121_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
 
-LDIFF_SYM748=Lme_b3 - _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
+LDIFF_SYM748=Lme_b3 - ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidManualSearch_ScanditSDK_SIOverlayController_string
 	.long LDIFF_SYM748
 	.byte 12,13,0,72,14,8,135,2,68,14,16,133,4,136,3,142,1,68,14,32
 	.align 2
@@ -12621,7 +13055,10 @@ LDIFF_SYM753=LTDIE_43 - Ldebug_info_start
 	.long LDIFF_SYM753
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayController/_SIOverlayControllerDelegate:DidScanBarcode"
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long Lme_b4
 
 	.byte 2,118,16,3
@@ -12659,9 +13096,9 @@ Lfde122_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 
-LDIFF_SYM760=Lme_b4 - _ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
+LDIFF_SYM760=Lme_b4 - ScanditSDK_SIOverlayController__SIOverlayControllerDelegate_DidScanBarcode_ScanditSDK_SIOverlayController_Foundation_NSDictionary
 	.long LDIFF_SYM760
 	.byte 12,13,0,72,14,8,135,2,68,14,16,133,4,136,3,142,1,68,14,32
 	.align 2
@@ -12671,7 +13108,10 @@ Lfde122_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidCancelEventArgs:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
 	.long Lme_b5
 
 	.byte 2,118,16,3
@@ -12694,9 +13134,9 @@ Lfde123_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
 
-LDIFF_SYM764=Lme_b5 - _ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
+LDIFF_SYM764=Lme_b5 - ScanditSDK_SIOverlayControllerDidCancelEventArgs__ctor_Foundation_NSDictionary
 	.long LDIFF_SYM764
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12706,7 +13146,10 @@ Lfde123_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidCancelEventArgs:get_Status"
-	.long _ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
+	.asciz "ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
 	.long Lme_b6
 
 	.byte 2,118,16,3
@@ -12724,9 +13167,9 @@ Lfde124_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
+	.long ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
 
-LDIFF_SYM767=Lme_b6 - _ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
+LDIFF_SYM767=Lme_b6 - ScanditSDK_SIOverlayControllerDidCancelEventArgs_get_Status
 	.long LDIFF_SYM767
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12736,7 +13179,10 @@ Lfde124_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidCancelEventArgs:set_Status"
-	.long _ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
 	.long Lme_b7
 
 	.byte 2,118,16,3
@@ -12759,9 +13205,9 @@ Lfde125_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
 
-LDIFF_SYM771=Lme_b7 - _ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
+LDIFF_SYM771=Lme_b7 - ScanditSDK_SIOverlayControllerDidCancelEventArgs_set_Status_Foundation_NSDictionary
 	.long LDIFF_SYM771
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12771,7 +13217,10 @@ Lfde125_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidManualSearchEventArgs:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
+	.asciz "ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
 	.long Lme_b8
 
 	.byte 2,118,16,3
@@ -12794,9 +13243,9 @@ Lfde126_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
+	.long ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
 
-LDIFF_SYM775=Lme_b8 - _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
+LDIFF_SYM775=Lme_b8 - ScanditSDK_SIOverlayControllerDidManualSearchEventArgs__ctor_string
 	.long LDIFF_SYM775
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12806,7 +13255,10 @@ Lfde126_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidManualSearchEventArgs:get_Text"
-	.long _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
+	.asciz "ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
 	.long Lme_b9
 
 	.byte 2,118,16,3
@@ -12824,9 +13276,9 @@ Lfde127_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
+	.long ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
 
-LDIFF_SYM778=Lme_b9 - _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
+LDIFF_SYM778=Lme_b9 - ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_get_Text
 	.long LDIFF_SYM778
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12836,7 +13288,10 @@ Lfde127_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidManualSearchEventArgs:set_Text"
-	.long _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
+	.asciz "ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
 	.long Lme_ba
 
 	.byte 2,118,16,3
@@ -12859,9 +13314,9 @@ Lfde128_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
+	.long ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
 
-LDIFF_SYM782=Lme_ba - _ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
+LDIFF_SYM782=Lme_ba - ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_set_Text_string
 	.long LDIFF_SYM782
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12871,7 +13326,10 @@ Lfde128_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidScanEventArgs:.ctor"
-	.long _ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
 	.long Lme_bb
 
 	.byte 2,118,16,3
@@ -12894,9 +13352,9 @@ Lfde129_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
 
-LDIFF_SYM786=Lme_bb - _ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
+LDIFF_SYM786=Lme_bb - ScanditSDK_SIOverlayControllerDidScanEventArgs__ctor_Foundation_NSDictionary
 	.long LDIFF_SYM786
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12906,7 +13364,10 @@ Lfde129_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidScanEventArgs:get_Barcode"
-	.long _ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
+	.asciz "ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
 	.long Lme_bc
 
 	.byte 2,118,16,3
@@ -12924,9 +13385,9 @@ Lfde130_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
+	.long ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
 
-LDIFF_SYM789=Lme_bc - _ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
+LDIFF_SYM789=Lme_bc - ScanditSDK_SIOverlayControllerDidScanEventArgs_get_Barcode
 	.long LDIFF_SYM789
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12936,7 +13397,10 @@ Lfde130_end:
 
 	.byte 2
 	.asciz "ScanditSDK.SIOverlayControllerDidScanEventArgs:set_Barcode"
-	.long _ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
+	.asciz "ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary"
+
+	.byte 0,0
+	.long ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
 	.long Lme_bd
 
 	.byte 2,118,16,3
@@ -12959,9 +13423,9 @@ Lfde131_start:
 
 	.long 0
 	.align 2
-	.long _ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
+	.long ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
 
-LDIFF_SYM793=Lme_bd - _ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
+LDIFF_SYM793=Lme_bd - ScanditSDK_SIOverlayControllerDidScanEventArgs_set_Barcode_Foundation_NSDictionary
 	.long LDIFF_SYM793
 	.byte 12,13,0,72,14,8,135,2,68,14,12,136,3,142,1,68,14,24
 	.align 2
@@ -12971,7 +13435,10 @@ Lfde131_end:
 
 	.byte 2
 	.asciz "(wrapper delegate-invoke) System.EventHandler`1<ScanditSDK.SIOverlayControllerDidCancelEventArgs>:invoke_void_object_TEventArgs"
-	.long _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+	.asciz "wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs"
+
+	.byte 0,0
+	.long wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 	.long Lme_bf
 
 	.byte 2,118,16,3
@@ -13009,9 +13476,9 @@ Lfde132_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+	.long wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 
-LDIFF_SYM800=Lme_bf - _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
+LDIFF_SYM800=Lme_bf - wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidCancelEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidCancelEventArgs
 	.long LDIFF_SYM800
 	.byte 12,13,0,72,14,8,135,2,68,14,32,132,8,133,7,134,6,136,5,138,4,139,3,142,1
 	.align 2
@@ -13021,7 +13488,10 @@ Lfde132_end:
 
 	.byte 2
 	.asciz "(wrapper delegate-invoke) System.EventHandler`1<ScanditSDK.SIOverlayControllerDidManualSearchEventArgs>:invoke_void_object_TEventArgs"
-	.long _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+	.asciz "wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs"
+
+	.byte 0,0
+	.long wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 	.long Lme_c0
 
 	.byte 2,118,16,3
@@ -13059,9 +13529,9 @@ Lfde133_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+	.long wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 
-LDIFF_SYM807=Lme_c0 - _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
+LDIFF_SYM807=Lme_c0 - wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidManualSearchEventArgs
 	.long LDIFF_SYM807
 	.byte 12,13,0,72,14,8,135,2,68,14,32,132,8,133,7,134,6,136,5,138,4,139,3,142,1
 	.align 2
@@ -13071,7 +13541,10 @@ Lfde133_end:
 
 	.byte 2
 	.asciz "(wrapper delegate-invoke) System.EventHandler`1<ScanditSDK.SIOverlayControllerDidScanEventArgs>:invoke_void_object_TEventArgs"
-	.long _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
+	.asciz "wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs"
+
+	.byte 0,0
+	.long wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
 	.long Lme_c1
 
 	.byte 2,118,16,3
@@ -13109,9 +13582,9 @@ Lfde134_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
+	.long wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
 
-LDIFF_SYM814=Lme_c1 - _wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
+LDIFF_SYM814=Lme_c1 - wrapper_delegate_invoke_System_EventHandler_1_ScanditSDK_SIOverlayControllerDidScanEventArgs_invoke_void_object_TEventArgs_object_ScanditSDK_SIOverlayControllerDidScanEventArgs
 	.long LDIFF_SYM814
 	.byte 12,13,0,72,14,8,135,2,68,14,32,132,8,133,7,134,6,136,5,138,4,139,3,142,1
 	.align 2
@@ -13121,7 +13594,10 @@ Lfde134_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:IntPtr_objc_msgSend"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
 	.long Lme_c2
 
 	.byte 2,118,16,3
@@ -13129,7 +13605,7 @@ Lfde134_end:
 
 LDIFF_SYM815=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM815
-	.byte 2,125,0,3
+	.byte 1,86,3
 	.asciz "param1"
 
 LDIFF_SYM816=LDIE_I - Ldebug_info_start
@@ -13164,11 +13640,11 @@ Lfde135_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
 
-LDIFF_SYM822=Lme_c2 - _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
+LDIFF_SYM822=Lme_c2 - wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_intptr_intptr
 	.long LDIFF_SYM822
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,216
 	.byte 1
 	.align 2
 Lfde135_end:
@@ -13177,7 +13653,10 @@ Lfde135_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:IntPtr_objc_msgSendSuper"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
 	.long Lme_c3
 
 	.byte 2,118,16,3
@@ -13185,7 +13664,7 @@ Lfde135_end:
 
 LDIFF_SYM823=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM823
-	.byte 2,125,0,3
+	.byte 1,86,3
 	.asciz "param1"
 
 LDIFF_SYM824=LDIE_I - Ldebug_info_start
@@ -13220,11 +13699,11 @@ Lfde136_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
 
-LDIFF_SYM830=Lme_c3 - _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
+LDIFF_SYM830=Lme_c3 - wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_intptr_intptr
 	.long LDIFF_SYM830
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,216
 	.byte 1
 	.align 2
 Lfde136_end:
@@ -13233,7 +13712,10 @@ Lfde136_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:IntPtr_objc_msgSend_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
 	.long Lme_c4
 
 	.byte 2,118,16,3
@@ -13246,7 +13728,7 @@ LDIFF_SYM831=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM832=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM832
-	.byte 2,125,4,3
+	.byte 1,86,3
 	.asciz "param2"
 
 LDIFF_SYM833=LDIE_I - Ldebug_info_start
@@ -13281,9 +13763,9 @@ Lfde137_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
 
-LDIFF_SYM839=Lme_c4 - _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
+LDIFF_SYM839=Lme_c4 - wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_intptr_intptr_intptr
 	.long LDIFF_SYM839
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
@@ -13294,7 +13776,10 @@ Lfde137_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:IntPtr_objc_msgSendSuper_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
 	.long Lme_c5
 
 	.byte 2,118,16,3
@@ -13307,7 +13792,7 @@ LDIFF_SYM840=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM841=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM841
-	.byte 2,125,4,3
+	.byte 1,86,3
 	.asciz "param2"
 
 LDIFF_SYM842=LDIE_I - Ldebug_info_start
@@ -13342,9 +13827,9 @@ Lfde138_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
 
-LDIFF_SYM848=Lme_c5 - _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+LDIFF_SYM848=Lme_c5 - wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
 	.long LDIFF_SYM848
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
@@ -13355,7 +13840,10 @@ Lfde138_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_IntPtr_IntPtr_int_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
 	.long Lme_c6
 
 	.byte 2,118,16,3
@@ -13388,7 +13876,7 @@ LDIFF_SYM853=LDIE_I4 - Ldebug_info_start
 
 LDIFF_SYM854=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM854
-	.byte 2,123,28,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM855=LDIE_I4 - Ldebug_info_start
@@ -13413,9 +13901,9 @@ Lfde139_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
 
-LDIFF_SYM859=Lme_c6 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+LDIFF_SYM859=Lme_c6 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
 	.long LDIFF_SYM859
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
 	.byte 1,68,13,11
@@ -13426,7 +13914,10 @@ Lfde139_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_IntPtr_IntPtr_int_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
 	.long Lme_c7
 
 	.byte 2,118,16,3
@@ -13459,7 +13950,7 @@ LDIFF_SYM864=LDIE_I4 - Ldebug_info_start
 
 LDIFF_SYM865=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM865
-	.byte 2,123,28,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM866=LDIE_I4 - Ldebug_info_start
@@ -13484,9 +13975,9 @@ Lfde140_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
 
-LDIFF_SYM870=Lme_c7 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
+LDIFF_SYM870=Lme_c7 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_int_int_intptr_intptr_intptr_intptr_int_int
 	.long LDIFF_SYM870
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
 	.byte 1,68,13,11
@@ -13497,7 +13988,10 @@ Lfde140_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
 	.long Lme_c8
 
 	.byte 2,118,16,3
@@ -13515,7 +14009,7 @@ LDIFF_SYM872=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM873=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM873
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM874=LDIE_I4 - Ldebug_info_start
@@ -13540,11 +14034,11 @@ Lfde141_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
 
-LDIFF_SYM878=Lme_c8 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
+LDIFF_SYM878=Lme_c8 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_intptr_intptr_intptr
 	.long LDIFF_SYM878
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde141_end:
@@ -13553,7 +14047,10 @@ Lfde141_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
 	.long Lme_c9
 
 	.byte 2,118,16,3
@@ -13571,7 +14068,7 @@ LDIFF_SYM880=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM881=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM881
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM882=LDIE_I4 - Ldebug_info_start
@@ -13596,11 +14093,11 @@ Lfde142_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
 
-LDIFF_SYM886=Lme_c9 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
+LDIFF_SYM886=Lme_c9 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_intptr_intptr_intptr
 	.long LDIFF_SYM886
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde142_end:
@@ -13609,7 +14106,10 @@ Lfde142_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:SizeF_objc_msgSend"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
 	.long Lme_ca
 
 	.byte 2,118,16,3
@@ -13622,7 +14122,7 @@ LDIFF_SYM887=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM888=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM888
-	.byte 2,125,16,11
+	.byte 1,86,11
 	.asciz "V_0"
 
 LDIFF_SYM889=LDIE_I4 - Ldebug_info_start
@@ -13652,11 +14152,11 @@ Lfde143_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
 
-LDIFF_SYM894=Lme_ca - _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
+LDIFF_SYM894=Lme_ca - wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_intptr_intptr
 	.long LDIFF_SYM894
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
 	.align 2
 Lfde143_end:
@@ -13665,7 +14165,10 @@ Lfde143_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:SizeF_objc_msgSendSuper"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
 	.long Lme_cb
 
 	.byte 2,118,16,3
@@ -13678,7 +14181,7 @@ LDIFF_SYM895=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM896=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM896
-	.byte 2,125,16,11
+	.byte 1,86,11
 	.asciz "V_0"
 
 LDIFF_SYM897=LDIE_I4 - Ldebug_info_start
@@ -13708,11 +14211,11 @@ Lfde144_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
 
-LDIFF_SYM902=Lme_cb - _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
+LDIFF_SYM902=Lme_cb - wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_intptr_intptr
 	.long LDIFF_SYM902
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
 	.align 2
 Lfde144_end:
@@ -13753,7 +14256,10 @@ LDIFF_SYM908=LTDIE_44 - Ldebug_info_start
 	.long LDIFF_SYM908
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:SizeF_objc_msgSend_stret"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
 	.long Lme_cc
 
 	.byte 2,118,16,3
@@ -13771,7 +14277,7 @@ LDIFF_SYM910=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM911=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM911
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM912=LDIE_I4 - Ldebug_info_start
@@ -13796,11 +14302,11 @@ Lfde145_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
 
-LDIFF_SYM916=Lme_cc - _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
+LDIFF_SYM916=Lme_cc - wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSend_stret_System_Drawing_SizeF__intptr_intptr
 	.long LDIFF_SYM916
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde145_end:
@@ -13809,7 +14315,10 @@ Lfde145_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:SizeF_objc_msgSendSuper_stret"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
 	.long Lme_cd
 
 	.byte 2,118,16,3
@@ -13827,7 +14336,7 @@ LDIFF_SYM918=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM919=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM919
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM920=LDIE_I4 - Ldebug_info_start
@@ -13852,11 +14361,11 @@ Lfde146_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
 
-LDIFF_SYM924=Lme_cd - _wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
+LDIFF_SYM924=Lme_cd - wrapper_managed_to_native_ApiDefinition_Messaging_SizeF_objc_msgSendSuper_stret_System_Drawing_SizeF__intptr_intptr
 	.long LDIFF_SYM924
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde146_end:
@@ -13865,7 +14374,10 @@ Lfde146_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_SizeF"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
 	.long Lme_ce
 
 	.byte 2,118,16,3
@@ -13878,12 +14390,12 @@ LDIFF_SYM925=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM926=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM926
-	.byte 2,123,4,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM927=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM927
-	.byte 2,123,8,11
+	.byte 2,123,4,11
 	.asciz "V_0"
 
 LDIFF_SYM928=LDIE_I4 - Ldebug_info_start
@@ -13908,9 +14420,9 @@ Lfde147_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
 
-LDIFF_SYM932=Lme_ce - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
+LDIFF_SYM932=Lme_ce - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_SizeF_intptr_intptr_System_Drawing_SizeF
 	.long LDIFF_SYM932
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1,68,13,11
@@ -13921,7 +14433,10 @@ Lfde147_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_SizeF"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
 	.long Lme_cf
 
 	.byte 2,118,16,3
@@ -13934,12 +14449,12 @@ LDIFF_SYM933=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM934=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM934
-	.byte 2,123,4,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM935=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM935
-	.byte 2,123,8,11
+	.byte 2,123,4,11
 	.asciz "V_0"
 
 LDIFF_SYM936=LDIE_I4 - Ldebug_info_start
@@ -13964,9 +14479,9 @@ Lfde148_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
 
-LDIFF_SYM940=Lme_cf - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
+LDIFF_SYM940=Lme_cf - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_SizeF_intptr_intptr_System_Drawing_SizeF
 	.long LDIFF_SYM940
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1,68,13,11
@@ -13977,7 +14492,10 @@ Lfde148_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:int_objc_msgSend"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
 	.long Lme_d0
 
 	.byte 2,118,16,3
@@ -13985,7 +14503,7 @@ Lfde148_end:
 
 LDIFF_SYM941=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM941
-	.byte 2,125,0,3
+	.byte 1,86,3
 	.asciz "param1"
 
 LDIFF_SYM942=LDIE_I - Ldebug_info_start
@@ -14020,11 +14538,11 @@ Lfde149_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
 
-LDIFF_SYM948=Lme_d0 - _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
+LDIFF_SYM948=Lme_d0 - wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSend_intptr_intptr
 	.long LDIFF_SYM948
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,216
 	.byte 1
 	.align 2
 Lfde149_end:
@@ -14033,7 +14551,10 @@ Lfde149_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:int_objc_msgSendSuper"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
 	.long Lme_d1
 
 	.byte 2,118,16,3
@@ -14041,7 +14562,7 @@ Lfde149_end:
 
 LDIFF_SYM949=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM949
-	.byte 2,125,0,3
+	.byte 1,86,3
 	.asciz "param1"
 
 LDIFF_SYM950=LDIE_I - Ldebug_info_start
@@ -14076,11 +14597,11 @@ Lfde150_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
 
-LDIFF_SYM956=Lme_d1 - _wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
+LDIFF_SYM956=Lme_d1 - wrapper_managed_to_native_ApiDefinition_Messaging_int_objc_msgSendSuper_intptr_intptr
 	.long LDIFF_SYM956
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,216
 	.byte 1
 	.align 2
 Lfde150_end:
@@ -14116,7 +14637,10 @@ LDIFF_SYM961=LTDIE_45 - Ldebug_info_start
 	.long LDIFF_SYM961
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:Int64_objc_msgSend"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
 	.long Lme_d2
 
 	.byte 2,118,16,3
@@ -14129,7 +14653,7 @@ LDIFF_SYM962=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM963=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM963
-	.byte 2,125,20,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM964=LDIE_I4 - Ldebug_info_start
@@ -14159,9 +14683,9 @@ Lfde151_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
 
-LDIFF_SYM969=Lme_d2 - _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
+LDIFF_SYM969=Lme_d2 - wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSend_intptr_intptr
 	.long LDIFF_SYM969
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
 	.byte 1
@@ -14172,7 +14696,10 @@ Lfde151_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:Int64_objc_msgSendSuper"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
 	.long Lme_d3
 
 	.byte 2,118,16,3
@@ -14185,7 +14712,7 @@ LDIFF_SYM970=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM971=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM971
-	.byte 2,125,20,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM972=LDIE_I4 - Ldebug_info_start
@@ -14215,9 +14742,9 @@ Lfde152_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
 
-LDIFF_SYM977=Lme_d3 - _wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
+LDIFF_SYM977=Lme_d3 - wrapper_managed_to_native_ApiDefinition_Messaging_Int64_objc_msgSendSuper_intptr_intptr
 	.long LDIFF_SYM977
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
 	.byte 1
@@ -14228,7 +14755,10 @@ Lfde152_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
 	.long Lme_d4
 
 	.byte 2,118,16,3
@@ -14246,7 +14776,7 @@ LDIFF_SYM979=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM980=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM980
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM981=LDIE_I4 - Ldebug_info_start
@@ -14271,11 +14801,11 @@ Lfde153_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
 
-LDIFF_SYM985=Lme_d4 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
+LDIFF_SYM985=Lme_d4 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_intptr_intptr_int
 	.long LDIFF_SYM985
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde153_end:
@@ -14284,7 +14814,10 @@ Lfde153_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
 	.long Lme_d5
 
 	.byte 2,118,16,3
@@ -14302,7 +14835,7 @@ LDIFF_SYM987=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM988=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM988
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM989=LDIE_I4 - Ldebug_info_start
@@ -14327,11 +14860,11 @@ Lfde154_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
 
-LDIFF_SYM993=Lme_d5 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
+LDIFF_SYM993=Lme_d5 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_intptr_intptr_int
 	.long LDIFF_SYM993
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde154_end:
@@ -14340,7 +14873,10 @@ Lfde154_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_Int64"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
 	.long Lme_d6
 
 	.byte 2,118,16,3
@@ -14353,12 +14889,12 @@ LDIFF_SYM994=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM995=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM995
-	.byte 2,125,4,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM996=LDIE_I8 - Ldebug_info_start
 	.long LDIFF_SYM996
-	.byte 2,125,8,11
+	.byte 2,125,4,11
 	.asciz "V_0"
 
 LDIFF_SYM997=LDIE_I4 - Ldebug_info_start
@@ -14383,9 +14919,9 @@ Lfde155_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
 
-LDIFF_SYM1001=Lme_d6 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
+LDIFF_SYM1001=Lme_d6 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_Int64_intptr_intptr_long
 	.long LDIFF_SYM1001
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -14396,7 +14932,10 @@ Lfde155_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_Int64"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
 	.long Lme_d7
 
 	.byte 2,118,16,3
@@ -14409,12 +14948,12 @@ LDIFF_SYM1002=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1003=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1003
-	.byte 2,125,4,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1004=LDIE_I8 - Ldebug_info_start
 	.long LDIFF_SYM1004
-	.byte 2,125,8,11
+	.byte 2,125,4,11
 	.asciz "V_0"
 
 LDIFF_SYM1005=LDIE_I4 - Ldebug_info_start
@@ -14439,9 +14978,9 @@ Lfde156_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
 
-LDIFF_SYM1009=Lme_d7 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
+LDIFF_SYM1009=Lme_d7 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_Int64_intptr_intptr_long
 	.long LDIFF_SYM1009
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -14452,7 +14991,10 @@ Lfde156_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSend"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
 	.long Lme_d8
 
 	.byte 2,118,16,3
@@ -14465,7 +15007,7 @@ LDIFF_SYM1010=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1011=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1011
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1012=LDIE_I4 - Ldebug_info_start
@@ -14495,11 +15037,11 @@ Lfde157_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
 
-LDIFF_SYM1017=Lme_d8 - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
+LDIFF_SYM1017=Lme_d8 - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_intptr_intptr
 	.long LDIFF_SYM1017
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde157_end:
@@ -14508,7 +15050,10 @@ Lfde157_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSendSuper"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
 	.long Lme_d9
 
 	.byte 2,118,16,3
@@ -14521,7 +15066,7 @@ LDIFF_SYM1018=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1019=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1019
-	.byte 2,125,8,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1020=LDIE_I4 - Ldebug_info_start
@@ -14551,11 +15096,11 @@ Lfde158_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
 
-LDIFF_SYM1025=Lme_d9 - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
+LDIFF_SYM1025=Lme_d9 - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_intptr_intptr
 	.long LDIFF_SYM1025
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde158_end:
@@ -14564,7 +15109,10 @@ Lfde158_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_IntPtr_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
 	.long Lme_da
 
 	.byte 2,118,16,3
@@ -14587,7 +15135,7 @@ LDIFF_SYM1028=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1029=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM1029
-	.byte 2,125,12,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1030=LDIE_I4 - Ldebug_info_start
@@ -14612,9 +15160,9 @@ Lfde159_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
 
-LDIFF_SYM1034=Lme_da - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+LDIFF_SYM1034=Lme_da - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
 	.long LDIFF_SYM1034
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -14625,7 +15173,10 @@ Lfde159_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_IntPtr_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
 	.long Lme_db
 
 	.byte 2,118,16,3
@@ -14648,7 +15199,7 @@ LDIFF_SYM1037=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1038=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM1038
-	.byte 2,125,12,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1039=LDIE_I4 - Ldebug_info_start
@@ -14673,9 +15224,9 @@ Lfde160_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
 
-LDIFF_SYM1043=Lme_db - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+LDIFF_SYM1043=Lme_db - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
 	.long LDIFF_SYM1043
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -14686,7 +15237,10 @@ Lfde160_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:IntPtr_objc_msgSend_IntPtr_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
 	.long Lme_dc
 
 	.byte 2,118,16,3
@@ -14704,7 +15258,7 @@ LDIFF_SYM1045=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1046=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1046
-	.byte 2,125,8,3
+	.byte 1,86,3
 	.asciz "param3"
 
 LDIFF_SYM1047=LDIE_I4 - Ldebug_info_start
@@ -14739,11 +15293,11 @@ Lfde161_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
 
-LDIFF_SYM1053=Lme_dc - _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
+LDIFF_SYM1053=Lme_dc - wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSend_IntPtr_int_intptr_intptr_intptr_int
 	.long LDIFF_SYM1053
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde161_end:
@@ -14752,7 +15306,10 @@ Lfde161_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:IntPtr_objc_msgSendSuper_IntPtr_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
 	.long Lme_dd
 
 	.byte 2,118,16,3
@@ -14770,7 +15327,7 @@ LDIFF_SYM1055=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1056=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1056
-	.byte 2,125,8,3
+	.byte 1,86,3
 	.asciz "param3"
 
 LDIFF_SYM1057=LDIE_I4 - Ldebug_info_start
@@ -14805,11 +15362,11 @@ Lfde162_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
 
-LDIFF_SYM1063=Lme_dd - _wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
+LDIFF_SYM1063=Lme_dd - wrapper_managed_to_native_ApiDefinition_Messaging_IntPtr_objc_msgSendSuper_IntPtr_int_intptr_intptr_intptr_int
 	.long LDIFF_SYM1063
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
 	.align 2
 Lfde162_end:
@@ -14818,7 +15375,10 @@ Lfde162_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
 	.long Lme_de
 
 	.byte 2,118,16,3
@@ -14831,7 +15391,7 @@ LDIFF_SYM1064=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1065=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1065
-	.byte 2,125,4,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1066=LDIE_I4 - Ldebug_info_start
@@ -14856,9 +15416,9 @@ Lfde163_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
 
-LDIFF_SYM1070=Lme_de - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
+LDIFF_SYM1070=Lme_de - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_intptr_intptr
 	.long LDIFF_SYM1070
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
@@ -14869,7 +15429,10 @@ Lfde163_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
 	.long Lme_df
 
 	.byte 2,118,16,3
@@ -14882,7 +15445,7 @@ LDIFF_SYM1071=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1072=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1072
-	.byte 2,125,4,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1073=LDIE_I4 - Ldebug_info_start
@@ -14907,9 +15470,9 @@ Lfde164_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
 
-LDIFF_SYM1077=Lme_df - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
+LDIFF_SYM1077=Lme_df - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_intptr_intptr
 	.long LDIFF_SYM1077
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,224
 	.byte 1
@@ -14920,7 +15483,10 @@ Lfde164_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSend_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
 	.long Lme_e0
 
 	.byte 2,118,16,3
@@ -14938,7 +15504,7 @@ LDIFF_SYM1079=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1080=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM1080
-	.byte 2,125,12,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1081=LDIE_I4 - Ldebug_info_start
@@ -14968,9 +15534,9 @@ Lfde165_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
 
-LDIFF_SYM1086=Lme_e0 - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
+LDIFF_SYM1086=Lme_e0 - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_int_intptr_intptr_int
 	.long LDIFF_SYM1086
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -14981,7 +15547,10 @@ Lfde165_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSendSuper_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
 	.long Lme_e1
 
 	.byte 2,118,16,3
@@ -14999,7 +15568,7 @@ LDIFF_SYM1088=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1089=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM1089
-	.byte 2,125,12,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1090=LDIE_I4 - Ldebug_info_start
@@ -15029,9 +15598,9 @@ Lfde166_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
 
-LDIFF_SYM1095=Lme_e1 - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
+LDIFF_SYM1095=Lme_e1 - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_int_intptr_intptr_int
 	.long LDIFF_SYM1095
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -15042,7 +15611,10 @@ Lfde166_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_bool"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
 	.long Lme_e2
 
 	.byte 2,118,16,3
@@ -15050,17 +15622,17 @@ Lfde166_end:
 
 LDIFF_SYM1096=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1096
-	.byte 2,125,0,3
+	.byte 2,125,4,3
 	.asciz "param1"
 
 LDIFF_SYM1097=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1097
-	.byte 2,125,4,3
+	.byte 2,125,8,3
 	.asciz "param2"
 
 LDIFF_SYM1098=LDIE_BOOLEAN - Ldebug_info_start
 	.long LDIFF_SYM1098
-	.byte 2,125,8,11
+	.byte 2,125,12,11
 	.asciz "V_0"
 
 LDIFF_SYM1099=LDIE_I4 - Ldebug_info_start
@@ -15090,9 +15662,9 @@ Lfde167_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
 
-LDIFF_SYM1104=Lme_e2 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
+LDIFF_SYM1104=Lme_e2 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_bool_intptr_intptr_bool
 	.long LDIFF_SYM1104
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -15103,7 +15675,10 @@ Lfde167_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_bool"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
 	.long Lme_e3
 
 	.byte 2,118,16,3
@@ -15111,17 +15686,17 @@ Lfde167_end:
 
 LDIFF_SYM1105=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1105
-	.byte 2,125,0,3
+	.byte 2,125,4,3
 	.asciz "param1"
 
 LDIFF_SYM1106=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1106
-	.byte 2,125,4,3
+	.byte 2,125,8,3
 	.asciz "param2"
 
 LDIFF_SYM1107=LDIE_BOOLEAN - Ldebug_info_start
 	.long LDIFF_SYM1107
-	.byte 2,125,8,11
+	.byte 2,125,12,11
 	.asciz "V_0"
 
 LDIFF_SYM1108=LDIE_I4 - Ldebug_info_start
@@ -15151,9 +15726,9 @@ Lfde168_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
 
-LDIFF_SYM1113=Lme_e3 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
+LDIFF_SYM1113=Lme_e3 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_bool_intptr_intptr_bool
 	.long LDIFF_SYM1113
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -15164,7 +15739,10 @@ Lfde168_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_float_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
 	.long Lme_e4
 
 	.byte 2,118,16,3
@@ -15177,17 +15755,17 @@ LDIFF_SYM1114=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1115=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1115
-	.byte 2,125,12,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1116=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1116
-	.byte 2,125,16,3
+	.byte 2,125,12,3
 	.asciz "param3"
 
 LDIFF_SYM1117=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1117
-	.byte 2,125,20,11
+	.byte 2,125,16,11
 	.asciz "V_0"
 
 LDIFF_SYM1118=LDIE_I4 - Ldebug_info_start
@@ -15212,9 +15790,9 @@ Lfde169_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
 
-LDIFF_SYM1122=Lme_e4 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
+LDIFF_SYM1122=Lme_e4 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_intptr_intptr_single_single
 	.long LDIFF_SYM1122
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
 	.byte 1
@@ -15225,7 +15803,10 @@ Lfde169_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_float_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
 	.long Lme_e5
 
 	.byte 2,118,16,3
@@ -15238,17 +15819,17 @@ LDIFF_SYM1123=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1124=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1124
-	.byte 2,125,12,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1125=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1125
-	.byte 2,125,16,3
+	.byte 2,125,12,3
 	.asciz "param3"
 
 LDIFF_SYM1126=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1126
-	.byte 2,125,20,11
+	.byte 2,125,16,11
 	.asciz "V_0"
 
 LDIFF_SYM1127=LDIE_I4 - Ldebug_info_start
@@ -15273,9 +15854,9 @@ Lfde170_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
 
-LDIFF_SYM1131=Lme_e5 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
+LDIFF_SYM1131=Lme_e5 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_intptr_intptr_single_single
 	.long LDIFF_SYM1131
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
 	.byte 1
@@ -15286,7 +15867,10 @@ Lfde170_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
 	.long Lme_e6
 
 	.byte 2,118,16,3
@@ -15299,12 +15883,12 @@ LDIFF_SYM1132=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1133=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1133
-	.byte 2,125,12,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1134=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1134
-	.byte 2,125,16,11
+	.byte 2,125,12,11
 	.asciz "V_0"
 
 LDIFF_SYM1135=LDIE_I4 - Ldebug_info_start
@@ -15329,11 +15913,11 @@ Lfde171_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
 
-LDIFF_SYM1139=Lme_e6 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
+LDIFF_SYM1139=Lme_e6 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_intptr_intptr_single
 	.long LDIFF_SYM1139
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
 	.align 2
 Lfde171_end:
@@ -15342,7 +15926,10 @@ Lfde171_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
 	.long Lme_e7
 
 	.byte 2,118,16,3
@@ -15355,12 +15942,12 @@ LDIFF_SYM1140=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1141=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1141
-	.byte 2,125,12,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1142=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1142
-	.byte 2,125,16,11
+	.byte 2,125,12,11
 	.asciz "V_0"
 
 LDIFF_SYM1143=LDIE_I4 - Ldebug_info_start
@@ -15385,11 +15972,11 @@ Lfde172_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
 
-LDIFF_SYM1147=Lme_e7 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
+LDIFF_SYM1147=Lme_e7 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_intptr_intptr_single
 	.long LDIFF_SYM1147
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
 	.align 2
 Lfde172_end:
@@ -15398,7 +15985,10 @@ Lfde172_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_IntPtr_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long Lme_e8
 
 	.byte 2,118,16,3
@@ -15421,7 +16011,7 @@ LDIFF_SYM1150=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1151=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1151
-	.byte 2,125,12,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1152=LDIE_I4 - Ldebug_info_start
@@ -15446,9 +16036,9 @@ Lfde173_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 
-LDIFF_SYM1156=Lme_e8 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+LDIFF_SYM1156=Lme_e8 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long LDIFF_SYM1156
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -15459,7 +16049,10 @@ Lfde173_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_IntPtr_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long Lme_e9
 
 	.byte 2,118,16,3
@@ -15482,7 +16075,7 @@ LDIFF_SYM1159=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1160=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1160
-	.byte 2,125,12,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1161=LDIE_I4 - Ldebug_info_start
@@ -15507,9 +16100,9 @@ Lfde174_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 
-LDIFF_SYM1165=Lme_e9 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+LDIFF_SYM1165=Lme_e9 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long LDIFF_SYM1165
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
@@ -15520,7 +16113,10 @@ Lfde174_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSend_IntPtr_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long Lme_ea
 
 	.byte 2,118,16,3
@@ -15543,7 +16139,7 @@ LDIFF_SYM1168=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1169=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1169
-	.byte 2,125,16,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1170=LDIE_I4 - Ldebug_info_start
@@ -15573,11 +16169,11 @@ Lfde175_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 
-LDIFF_SYM1175=Lme_ea - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+LDIFF_SYM1175=Lme_ea - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long LDIFF_SYM1175
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
 	.align 2
 Lfde175_end:
@@ -15586,7 +16182,10 @@ Lfde175_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSendSuper_IntPtr_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long Lme_eb
 
 	.byte 2,118,16,3
@@ -15609,7 +16208,7 @@ LDIFF_SYM1178=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1179=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1179
-	.byte 2,125,16,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1180=LDIE_I4 - Ldebug_info_start
@@ -15639,11 +16238,11 @@ Lfde176_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 
-LDIFF_SYM1185=Lme_eb - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
+LDIFF_SYM1185=Lme_eb - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_intptr_intptr_intptr_intptr
 	.long LDIFF_SYM1185
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,240
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,232
 	.byte 1
 	.align 2
 Lfde176_end:
@@ -15652,7 +16251,10 @@ Lfde176_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSend_IntPtr_IntPtr_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
 	.long Lme_ec
 
 	.byte 2,118,16,3
@@ -15680,7 +16282,7 @@ LDIFF_SYM1189=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1190=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1190
-	.byte 2,123,28,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1191=LDIE_I4 - Ldebug_info_start
@@ -15710,9 +16312,9 @@ Lfde177_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
 
-LDIFF_SYM1196=Lme_ec - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+LDIFF_SYM1196=Lme_ec - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSend_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
 	.long LDIFF_SYM1196
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
 	.byte 1,68,13,11
@@ -15723,7 +16325,10 @@ Lfde177_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
 	.long Lme_ed
 
 	.byte 2,118,16,3
@@ -15751,7 +16356,7 @@ LDIFF_SYM1200=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1201=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1201
-	.byte 2,123,28,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1202=LDIE_I4 - Ldebug_info_start
@@ -15781,9 +16386,9 @@ Lfde178_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
 
-LDIFF_SYM1207=Lme_ed - _wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
+LDIFF_SYM1207=Lme_ed - wrapper_managed_to_native_ApiDefinition_Messaging_bool_objc_msgSendSuper_IntPtr_IntPtr_IntPtr_intptr_intptr_intptr_intptr_intptr
 	.long LDIFF_SYM1207
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
 	.byte 1,68,13,11
@@ -15794,7 +16399,10 @@ Lfde178_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_float_float_float_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
 	.long Lme_ee
 
 	.byte 2,118,16,3
@@ -15807,27 +16415,27 @@ LDIFF_SYM1208=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1209=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1209
-	.byte 2,123,20,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1210=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1210
-	.byte 2,123,24,3
+	.byte 2,123,20,3
 	.asciz "param3"
 
 LDIFF_SYM1211=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1211
-	.byte 2,123,28,3
+	.byte 2,123,24,3
 	.asciz "param4"
 
 LDIFF_SYM1212=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1212
-	.byte 2,123,32,3
+	.byte 2,123,28,3
 	.asciz "param5"
 
 LDIFF_SYM1213=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1213
-	.byte 2,123,36,11
+	.byte 2,123,32,11
 	.asciz "V_0"
 
 LDIFF_SYM1214=LDIE_I4 - Ldebug_info_start
@@ -15852,9 +16460,9 @@ Lfde179_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
 
-LDIFF_SYM1218=Lme_ee - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
+LDIFF_SYM1218=Lme_ee - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_float_intptr_intptr_single_single_single_single
 	.long LDIFF_SYM1218
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,128
 	.byte 2,68,13,11
@@ -15865,7 +16473,10 @@ Lfde179_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_float_float_float_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
 	.long Lme_ef
 
 	.byte 2,118,16,3
@@ -15878,27 +16489,27 @@ LDIFF_SYM1219=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1220=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1220
-	.byte 2,123,20,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1221=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1221
-	.byte 2,123,24,3
+	.byte 2,123,20,3
 	.asciz "param3"
 
 LDIFF_SYM1222=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1222
-	.byte 2,123,28,3
+	.byte 2,123,24,3
 	.asciz "param4"
 
 LDIFF_SYM1223=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1223
-	.byte 2,123,32,3
+	.byte 2,123,28,3
 	.asciz "param5"
 
 LDIFF_SYM1224=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1224
-	.byte 2,123,36,11
+	.byte 2,123,32,11
 	.asciz "V_0"
 
 LDIFF_SYM1225=LDIE_I4 - Ldebug_info_start
@@ -15923,9 +16534,9 @@ Lfde180_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
 
-LDIFF_SYM1229=Lme_ef - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
+LDIFF_SYM1229=Lme_ef - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_float_intptr_intptr_single_single_single_single
 	.long LDIFF_SYM1229
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,128
 	.byte 2,68,13,11
@@ -15936,7 +16547,10 @@ Lfde180_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_float_float_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
 	.long Lme_f0
 
 	.byte 2,118,16,3
@@ -15949,22 +16563,22 @@ LDIFF_SYM1230=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1231=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1231
-	.byte 2,123,20,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1232=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1232
-	.byte 2,123,24,3
+	.byte 2,123,20,3
 	.asciz "param3"
 
 LDIFF_SYM1233=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1233
-	.byte 2,123,28,3
+	.byte 2,123,24,3
 	.asciz "param4"
 
 LDIFF_SYM1234=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1234
-	.byte 2,123,32,11
+	.byte 2,123,28,11
 	.asciz "V_0"
 
 LDIFF_SYM1235=LDIE_I4 - Ldebug_info_start
@@ -15989,12 +16603,12 @@ Lfde181_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
 
-LDIFF_SYM1239=Lme_f0 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
+LDIFF_SYM1239=Lme_f0 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_float_float_float_intptr_intptr_single_single_single
 	.long LDIFF_SYM1239
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,128
-	.byte 2,68,13,11
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
+	.byte 1,68,13,11
 	.align 2
 Lfde181_end:
 
@@ -16002,7 +16616,10 @@ Lfde181_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_float_float_float"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
 	.long Lme_f1
 
 	.byte 2,118,16,3
@@ -16015,22 +16632,22 @@ LDIFF_SYM1240=LDIE_I - Ldebug_info_start
 
 LDIFF_SYM1241=LDIE_I - Ldebug_info_start
 	.long LDIFF_SYM1241
-	.byte 2,123,20,3
+	.byte 1,90,3
 	.asciz "param2"
 
 LDIFF_SYM1242=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1242
-	.byte 2,123,24,3
+	.byte 2,123,20,3
 	.asciz "param3"
 
 LDIFF_SYM1243=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1243
-	.byte 2,123,28,3
+	.byte 2,123,24,3
 	.asciz "param4"
 
 LDIFF_SYM1244=LDIE_R4 - Ldebug_info_start
 	.long LDIFF_SYM1244
-	.byte 2,123,32,11
+	.byte 2,123,28,11
 	.asciz "V_0"
 
 LDIFF_SYM1245=LDIE_I4 - Ldebug_info_start
@@ -16055,12 +16672,12 @@ Lfde182_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
 
-LDIFF_SYM1249=Lme_f1 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
+LDIFF_SYM1249=Lme_f1 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_float_float_float_intptr_intptr_single_single_single
 	.long LDIFF_SYM1249
-	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,128
-	.byte 2,68,13,11
+	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
+	.byte 1,68,13,11
 	.align 2
 Lfde182_end:
 
@@ -16068,7 +16685,10 @@ Lfde182_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSend_int_int_int_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
 	.long Lme_f2
 
 	.byte 2,118,16,3
@@ -16101,7 +16721,7 @@ LDIFF_SYM1254=LDIE_I4 - Ldebug_info_start
 
 LDIFF_SYM1255=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM1255
-	.byte 2,123,28,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1256=LDIE_I4 - Ldebug_info_start
@@ -16126,9 +16746,9 @@ Lfde183_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
 
-LDIFF_SYM1260=Lme_f2 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
+LDIFF_SYM1260=Lme_f2 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSend_int_int_int_int_intptr_intptr_int_int_int_int
 	.long LDIFF_SYM1260
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
 	.byte 1,68,13,11
@@ -16139,7 +16759,10 @@ Lfde183_end:
 
 	.byte 2
 	.asciz "(wrapper managed-to-native) ApiDefinition.Messaging:void_objc_msgSendSuper_int_int_int_int"
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
+	.asciz "wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int"
+
+	.byte 0,0
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
 	.long Lme_f3
 
 	.byte 2,118,16,3
@@ -16172,7 +16795,7 @@ LDIFF_SYM1265=LDIE_I4 - Ldebug_info_start
 
 LDIFF_SYM1266=LDIE_I4 - Ldebug_info_start
 	.long LDIFF_SYM1266
-	.byte 2,123,28,11
+	.byte 1,90,11
 	.asciz "V_0"
 
 LDIFF_SYM1267=LDIE_I4 - Ldebug_info_start
@@ -16197,9 +16820,9 @@ Lfde184_start:
 
 	.long 0
 	.align 2
-	.long _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
+	.long wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
 
-LDIFF_SYM1271=Lme_f3 - _wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
+LDIFF_SYM1271=Lme_f3 - wrapper_managed_to_native_ApiDefinition_Messaging_void_objc_msgSendSuper_int_int_int_int_intptr_intptr_int_int_int_int
 	.long LDIFF_SYM1271
 	.byte 12,13,0,72,14,8,135,2,72,14,48,132,12,133,11,134,10,136,8,137,7,138,6,139,5,140,4,142,3,68,14,248
 	.byte 1,68,13,11

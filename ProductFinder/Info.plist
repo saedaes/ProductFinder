@@ -7,7 +7,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.1</string>
+	<string>9.0</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>Spanish</string>
@@ -15,7 +15,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>FixBuy</string>
 	<key>CFBundleIdentifier</key>
-	<string>mx.fixbuy</string>
+	<string>com.mx.fixbuy</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -38,5 +38,17 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Para utilzar todas sus funciones FixBuy necesita obtener tu ubicación</string>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>UIMainNibFile</key>
+	<string>MainView_iPhone</string>
+	<key>UIMainNibFile~ipad</key>
+	<string>MainView_iPad</string>
 </dict>
 </plist>

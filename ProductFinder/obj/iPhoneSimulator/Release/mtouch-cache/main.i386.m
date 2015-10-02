@@ -14,9 +14,12 @@ void xamarin_register_assemblies ()
 
 }
 
+void xamarin_create_classes_Xamarin_iOS();
 void xamarin_setup ()
 {
 	xamarin_use_old_dynamic_registrar = FALSE;
+	xamarin_create_classes_Xamarin_iOS();
+	xamarin_init_mono_debug = FALSE;
 	xamarin_executable_name = "ProductFinder.exe";
 	xamarin_use_new_assemblies = 1;
 	mono_use_llvm = FALSE;

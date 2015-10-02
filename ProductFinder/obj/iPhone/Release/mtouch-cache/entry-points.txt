@@ -80,9 +80,6 @@ FBLoggingBehaviorPerformanceCharacteristics
 FBLoggingBehaviorSessionStateTransitions
 FBLoggingBehaviorUIControlErrors
 FBPostObject
-monotouch_GetFolderPath
-monotouch_timezone_get_data
-monotouch_log
 xamarin_release_managed_ref
 xamarin_create_managed_ref
 xamarin_get_block_descriptor
@@ -94,3 +91,6 @@ Flush
 ReadZStream
 WriteZStream
 monotouch_start_wwan
+monotouch_GetFolderPath
+monotouch_log
+monotouch_timezone_get_data

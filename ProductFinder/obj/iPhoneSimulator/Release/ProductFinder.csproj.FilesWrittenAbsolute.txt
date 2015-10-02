@@ -1,223 +1,142 @@
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MainView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MainView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ScanView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ScanView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductDetailView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductDetailView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NameSearchResultView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NameSearchResultView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/UploadProductView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/UploadProductView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductStoresListView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductStoresListView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/AboutUsView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/AboutUsView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoginView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoginView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/RegistryView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/RegistryView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MyListsView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MyListsView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsInListView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsInListView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/StatesView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/StatesView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsStorePricesView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsStorePricesView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoadNewProductView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoadNewProductView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsListView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsListView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsDetailView_iPhone.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsDetailView_iPad.nib
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/list128.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/locationred.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/trash48.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/trash24.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/add_to_list24.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/add_to_list48.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/facebook.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/fix.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Adds-Add-list-icon.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Circle_Green.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/add.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/add_to_list24.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/add_to_list48.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/bad_price.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/blucircle.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/blue-cross.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/fixBuy.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/location_iconBlue.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/locationred.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/mapa.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/mapa1.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/noticias.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Icon-60@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/info24.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/info48.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/SesionV.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/listaV.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/buscarV.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/mapaV.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/serviciosV.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Barcode.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/listIcon.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/menu.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/FIXBUY100px.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/FIXBUY300px.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/list.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list128.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list64.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/TOOLBAR_completa2.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/INICIAR_SESION_ICON.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/LISTAS_ICON.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/SERVICIOS_ICON.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/TIENDAS_ICON.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/UBICACION_ICON.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/buscar_icon.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/home.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Barra_LoginRemainder.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/INICIAR_SESIONBig.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/SERVICIOS_ICONBig.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/UBICACION_ICONBig.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/buscar_iconBig.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list_new.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list_new128.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-568h@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/new_list_new24.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/new_list_new48.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/new_list_new128.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/ListaVerde.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Portrait.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Landscape.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Portrait@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Landscape@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/LICENSE-2.0.txt
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/beep.wav
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon-pressed.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon-pressed@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon-pressed.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon-pressed@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon-pressed.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon-pressed@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/poweredby.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/poweredby@2x.png
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/de.lproj/scanditsdk.strings
-/Users/marco/Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/en.lproj/scanditsdk.strings
-/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/ScanditSDK.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/Newtonsoft.Json.MonoTouch.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/MonoTouch.FacebookConnect.dll
-/Users/marco/Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/Facebook.dll
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MainView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MainView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ScanView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ScanView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductDetailView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductDetailView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NameSearchResultView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NameSearchResultView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/UploadProductView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/UploadProductView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductStoresListView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductStoresListView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/AboutUsView_iPhone.nib
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/AboutUsView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoginView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoginView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/RegistryView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/RegistryView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MyListsView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MyListsView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsInListView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsInListView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/StatesView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/StatesView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsStorePricesView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsStorePricesView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoadNewProductView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/AboutUsView_iPhone.nib
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoadNewProductView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsListView_iPhone.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsListView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsDetailView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoadNewProductView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoginView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/LoginView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MainView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MainView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MyListsView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/MyListsView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NameSearchResultView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NameSearchResultView_iPhone.nib
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsDetailView_iPad.nib
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/list128.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/locationred.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/trash48.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/trash24.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/add_to_list24.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/add_to_list48.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/facebook.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/fix.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Adds-Add-list-icon.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Circle_Green.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/add.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/add_to_list24.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/add_to_list48.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/bad_price.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/blucircle.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/blue-cross.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/fixBuy.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/location_iconBlue.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/locationred.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/mapa.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/mapa1.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/noticias.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Icon-60@2x.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/info24.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/info48.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/SesionV.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/listaV.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/buscarV.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/mapaV.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/serviciosV.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Barcode.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/listIcon.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/menu.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/FIXBUY100px.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/FIXBUY300px.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/list.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list128.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list64.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/TOOLBAR_completa2.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/INICIAR_SESION_ICON.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/LISTAS_ICON.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/SERVICIOS_ICON.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/TIENDAS_ICON.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/UBICACION_ICON.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/buscar_icon.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/home.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Barra_LoginRemainder.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/INICIAR_SESIONBig.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/SERVICIOS_ICONBig.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/UBICACION_ICONBig.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/buscar_iconBig.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list_new.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/new_list_new128.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-568h@2x.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default@2x.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/new_list_new24.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/new_list_new48.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/new_list_new128.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Images/ListaVerde.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Portrait.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Landscape.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Portrait@2x.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/Default-Landscape@2x.png
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/ScanditSDK.dll
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/Newtonsoft.Json.MonoTouch.dll
-/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/MonoTouch.FacebookConnect.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsDetailView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsListView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/NewsListView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductDetailView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductDetailView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductStoresListView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductStoresListView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsInListView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsInListView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsStorePricesView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ProductsStorePricesView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/RegistryView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/RegistryView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ScanView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/ScanView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/StatesView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/StatesView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/TermsView~ipad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/TermsView~iphone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/UploadProductView_iPad.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ibtool/UploadProductView_iPhone.nib
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/list128.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/locationred.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/trash48.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/trash24.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/add_to_list24.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/add_to_list48.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/facebook.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/fix.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Adds-Add-list-icon.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Circle_Green.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/add.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/add_to_list24.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/add_to_list48.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/bad_price.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/blucircle.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/blue-cross.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/fixBuy.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/location_iconBlue.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/locationred.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/mapa.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/mapa1.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/noticias.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Icon-60@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/info24.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/info48.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/SesionV.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/listaV.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/buscarV.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/mapaV.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/serviciosV.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Barcode.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/listIcon.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/menu.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/FIXBUY100px.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/FIXBUY300px.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/list.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/new_list128.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/new_list64.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/TOOLBAR_completa2.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/INICIAR_SESION_ICON.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/LISTAS_ICON.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/SERVICIOS_ICON.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/TIENDAS_ICON.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/UBICACION_ICON.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/buscar_icon.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/home.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Barra_LoginRemainder.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/INICIAR_SESIONBig.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/SERVICIOS_ICONBig.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/UBICACION_ICONBig.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/buscar_iconBig.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/new_list_new.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/new_list_new128.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default-568h@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/new_list_new24.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/new_list_new48.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/new_list_new128.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Images/ListaVerde.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default-Portrait.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default-Landscape.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default-Portrait@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default-Landscape@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Busqueda.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Servicios.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Tiendas.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Listas.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Sesion.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Ubicacion.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/LOGOPNG (1).png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/lupa.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/busquedaproductos_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/iniciarsesion_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/mislistas_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/miubicacion_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/servicios_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/tiendasregistradas_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/top10_ver.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/Default.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/FacebookSDKResources.bundle/Contents/Resources/en.lproj/Localizable.strings
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/optimized/FacebookSDKResources.bundle/Contents/Resources/he.lproj/Localizable.strings
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/LICENSE-2.0.txt
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/beep.wav
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon-pressed.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon-pressed@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/camera-swap-icon@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon-pressed.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon-pressed@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-off-icon@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon-pressed.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon-pressed@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/flashlight-turn-on-icon@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/poweredby.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/poweredby@2x.png
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/de.lproj/scanditsdk.strings
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/en.lproj/scanditsdk.strings
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/ProductFinder.exe.mdb
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/ProductFinder.exe
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ProductFinder.exe
 /Users/marco/Xamarin Projects/ProductFinder/ProductFinder/obj/iPhoneSimulator/Release/ProductFinder.exe.mdb
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/ScanditSDK.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/Newtonsoft.Json.MonoTouch.dll
+/Users/marco/Xamarin Projects/ProductFinder/ProductFinder/bin/iPhoneSimulator/Release/MonoTouch.FacebookConnect.dll
