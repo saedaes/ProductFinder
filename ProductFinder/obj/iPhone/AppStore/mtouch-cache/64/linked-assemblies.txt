@@ -1,0 +1,11 @@
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/System.Runtime.Serialization.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/ProductFinder.exe
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/System.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/System.Xml.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/ScanditSDK.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/MonoTouch.FacebookConnect.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/Newtonsoft.Json.MonoTouch.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/Xamarin.iOS.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/System.Core.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/mscorlib.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache/64/Link/System.ServiceModel.Internals.dll

@@ -1,0 +1,3 @@
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/External/Newtonsoft.Json/Newtonsoft.Json/obj/Release/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/External/Newtonsoft.Json/Newtonsoft.Json/bin/Release/Newtonsoft.Json.MonoTouch.dll
+/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/External/Newtonsoft.Json/Newtonsoft.Json/obj/Release/Newtonsoft.Json.MonoTouch.dll

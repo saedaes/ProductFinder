@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/AboutUsView_iPad.nib">
+      <LogicalName>AboutUsView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/AboutUsView_iPhone.nib">
+      <LogicalName>AboutUsView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/LoadNewProductView_iPad.nib">
+      <LogicalName>LoadNewProductView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/LoadNewProductView_iPhone.nib">
+      <LogicalName>LoadNewProductView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/LoginView_iPad.nib">
+      <LogicalName>LoginView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/LoginView_iPhone.nib">
+      <LogicalName>LoginView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/MainView_iPad.nib">
+      <LogicalName>MainView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/MainView_iPhone.nib">
+      <LogicalName>MainView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/MyListsView_iPad.nib">
+      <LogicalName>MyListsView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/MyListsView_iPhone.nib">
+      <LogicalName>MyListsView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/NameSearchResultView_iPad.nib">
+      <LogicalName>NameSearchResultView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/NameSearchResultView_iPhone.nib">
+      <LogicalName>NameSearchResultView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/NewsDetailView_iPad.nib">
+      <LogicalName>NewsDetailView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/NewsDetailView_iPhone.nib">
+      <LogicalName>NewsDetailView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/NewsListView_iPad.nib">
+      <LogicalName>NewsListView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/NewsListView_iPhone.nib">
+      <LogicalName>NewsListView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/PrivacyNoticeView~ipad.nib">
+      <LogicalName>PrivacyNoticeView~ipad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/PrivacyNoticeView~iphone.nib">
+      <LogicalName>PrivacyNoticeView~iphone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductDetailView_iPad.nib">
+      <LogicalName>ProductDetailView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductDetailView_iPhone.nib">
+      <LogicalName>ProductDetailView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductStoresListView_iPad.nib">
+      <LogicalName>ProductStoresListView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductStoresListView_iPhone.nib">
+      <LogicalName>ProductStoresListView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductsInListView_iPad.nib">
+      <LogicalName>ProductsInListView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductsInListView_iPhone.nib">
+      <LogicalName>ProductsInListView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductsStorePricesView_iPad.nib">
+      <LogicalName>ProductsStorePricesView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ProductsStorePricesView_iPhone.nib">
+      <LogicalName>ProductsStorePricesView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/RegistryView_iPad.nib">
+      <LogicalName>RegistryView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/RegistryView_iPhone.nib">
+      <LogicalName>RegistryView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ScanView_iPad.nib">
+      <LogicalName>ScanView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/ScanView_iPhone.nib">
+      <LogicalName>ScanView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/StatesView_iPad.nib">
+      <LogicalName>StatesView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/StatesView_iPhone.nib">
+      <LogicalName>StatesView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/TermsView~ipad.nib">
+      <LogicalName>TermsView~ipad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/TermsView~iphone.nib">
+      <LogicalName>TermsView~iphone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/UploadProductView_iPad.nib">
+      <LogicalName>UploadProductView_iPad.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/AppStore/ibtool/UploadProductView_iPhone.nib">
+      <LogicalName>UploadProductView_iPhone.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+  </ItemGroup>
+</Project>

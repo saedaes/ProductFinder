@@ -1,0 +1,47 @@
+# Version: 9.6.2.4 (cycle6-xi: d8bedd0)
+# [first argument, ignore] # /Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/mtouch.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/9.6.2.4/bin/mtouch \
+	--cache \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-cache \
+	--dev \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/bin/iPhone/AppStore/ProductFinder.app \
+	--executable \
+	ProductFinder \
+	--linksdkonly \
+	--sdkroot \
+	/Applications/Xcode.app/Contents/Developer \
+	--sdk \
+	9.3 \
+	--targetver \
+	9.3 \
+	"--abi=armv7,arm64" \
+	--symbollist \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/obj/iPhone/AppStore/mtouch-symbols.list \
+	--dsym=no \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Xml.dll \
+	-r \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/Components/scandit-4.3.0/lib/ios-unified/ScanditSDK.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Mono.Data.Sqlite.dll \
+	-r \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/External/Newtonsoft.Json.MonoTouch.dll \
+	-r \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/Components/facebookios-3.23.0/lib/ios-unified/MonoTouch.FacebookConnect.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
+	-r \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/Components/scandit-4.3.0/lib/ios-unified/ScanditSDK.dll \
+	-r \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/External/Newtonsoft.Json.MonoTouch.dll \
+	-r \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/Components/facebookios-3.23.0/lib/ios-unified/MonoTouch.FacebookConnect.dll \
+	--target-framework \
+	"Xamarin.iOS,v1.0" \
+	/Volumes/Almacenamiento/Programacion/Projects/ProductFinder/ProductFinder/bin/iPhone/AppStore//ProductFinder.exe \
