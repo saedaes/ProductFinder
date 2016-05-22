@@ -2,6 +2,7 @@ using System;
 using CoreGraphics;
 using Foundation;
 using UIKit;
+using System.IO;
 
 namespace ProductFinder
 {
@@ -29,6 +30,13 @@ namespace ProductFinder
 		{
 			base.ViewDidLoad ();
 
+			UIWebView webView = new UIWebView (View.Bounds);
+			View.AddSubview(webView);
+
+			string fileName = "documents/Servicios.pdf"; // remember case-sensitive
+			string localDocUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);
+			webView.LoadRequest(new NSUrlRequest(new NSUrl(localDocUrl, false)));
+			webView.ScalesPageToFit = true;
 		}
 	}
 }

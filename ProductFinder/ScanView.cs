@@ -90,6 +90,9 @@ namespace ProductFinder
 				people = new List<Person> (from p in db.Table<Person> () select p);
 			}
 
+			//Establecemos las imagenes de los botones
+			setButtonImages();
+
 			//Eventos para los botones de informacion
 			this.btnInfo1.TouchUpInside += (sender, e) => {
 				ToastView view = new ToastView("Busca productos por código de barras o nombre", 3000);
@@ -316,6 +319,16 @@ namespace ProductFinder
 					//solo atrapamos la excepcion, no hacemos nada
 				}
 			};
+		}
+
+		public void setButtonImages()
+		{
+			this.btnScan.SetImage (UIImage.FromFile("Images/Busqueda.png"), UIControlState.Normal);
+			this.btnTiendas.SetImage (UIImage.FromFile("Images/Tiendas.png"), UIControlState.Normal);
+			this.btnListas.SetImage (UIImage.FromFile("Images/Listas.png"),UIControlState.Normal);
+			this.btnServicios.SetImage (UIImage.FromFile("Images/servicios.png"),UIControlState.Normal);
+			this.btnNovedades.SetImage (UIImage.FromFile("Images/ubicacion.png"), UIControlState.Normal);
+			this.btnSesion.SetImage (UIImage.FromFile("Images/sesion.png"), UIControlState.Normal);
 		}
 
 		public override void ViewWillAppear (bool animated)

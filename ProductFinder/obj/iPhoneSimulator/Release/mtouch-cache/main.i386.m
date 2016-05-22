@@ -24,6 +24,7 @@ void xamarin_setup ()
 	xamarin_use_new_assemblies = 1;
 	mono_use_llvm = FALSE;
 	xamarin_log_level = 0;
+	xamarin_use_sgen = TRUE;
 	xamarin_new_refcount = TRUE;
 	setenv ("MONO_GC_PARAMS", "nursery-size=512k", 1);
 }

@@ -21,7 +21,7 @@ namespace ProductFinder
 		UINavigationController rootNavigationController;
 		MainView mainView;
 
-		private const string AppId = "864193300263405";
+		private const string AppId = "661258913936079";
 		private const string DisplayName = "FixBuy";
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
