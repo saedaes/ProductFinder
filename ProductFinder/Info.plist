@@ -55,7 +55,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>UIMainNibFile</key>
 	<string>MainView_iPhone</string>
 	<key>UIMainNibFile~ipad</key>
@@ -116,5 +116,7 @@
 	<string>YES</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3.1</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Para utilzar todas sus funciones FixBuy necesita obtener tu ubicación</string>
 </dict>
 </plist>
