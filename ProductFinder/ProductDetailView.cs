@@ -143,7 +143,7 @@ namespace ProductFinder
 					this.imgTienda.Image = Images.sinImagen;
 				}
 				this.lblTiendaNombre.Text = producto.tienda_nombre;
-				this.lblTiendaDireccion.Text = producto.tienda_direccion;
+				this.lblTiendaDireccion.Text = producto.tienda_direccion + "\n \nTeléfono: " + producto.tienda_telefono;
 				if(distancia != 0){
 					this.lblTiendaDistancia.Text = "A "+ Math.Round(distancia,2)+"km de tu ubicación";
 				}else{

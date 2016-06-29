@@ -19,6 +19,7 @@ namespace ProductFinder
 		public string tienda_imagen { get; set;}
 		public string tienda_latitud { get; set;}
 		public string tienda_longitud { get; set;}
+		public string tienda_telefono { get; set;}
 		public string inicio_validez { get; set;}
 		public string final_validez { get; set;}
 		public string es_oferta { get; set;}
@@ -90,6 +91,7 @@ namespace ProductFinder
 			response.tienda_imagen = jObject ["branch_image_path"].ToString ();
 			response.tienda_latitud = jObject ["latitude"].ToString ();
 			response.tienda_longitud = jObject ["longitude"].ToString ();
+			response.tienda_telefono = jObject ["phone"].ToString ();
 			response.inicio_validez = jObject ["CAST(price_histories.validity_start as date)"].ToString ();
 			response.final_validez = jObject ["CAST(price_histories.validity_end as date)"].ToString ();
 			response.es_oferta = jObject ["price_type_id"].ToString ();
